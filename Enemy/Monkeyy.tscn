@@ -1,0 +1,325 @@
+[gd_scene load_steps=60 format=2]
+
+[ext_resource path="res://怪物ui/小猕猴/28619-4.png" type="Texture" id=1]
+[ext_resource path="res://怪物ui/小猕猴/28619-3.png" type="Texture" id=2]
+[ext_resource path="res://怪物ui/小猕猴/28612-2.png" type="Texture" id=3]
+[ext_resource path="res://怪物ui/小猕猴/28620-1.png" type="Texture" id=4]
+[ext_resource path="res://怪物ui/小猕猴/28613-2.png" type="Texture" id=5]
+[ext_resource path="res://怪物ui/小猕猴/28619-1.png" type="Texture" id=6]
+[ext_resource path="res://怪物ui/小猕猴/28619-2.png" type="Texture" id=7]
+[ext_resource path="res://怪物ui/小猕猴/28613-1.png" type="Texture" id=8]
+[ext_resource path="res://怪物ui/小猕猴/28613-7.png" type="Texture" id=9]
+[ext_resource path="res://怪物ui/小猕猴/28615-1.png" type="Texture" id=10]
+[ext_resource path="res://怪物ui/小猕猴/28612-3.png" type="Texture" id=11]
+[ext_resource path="res://怪物ui/小猕猴/28613-3.png" type="Texture" id=12]
+[ext_resource path="res://怪物ui/小猕猴/28613-4.png" type="Texture" id=13]
+[ext_resource path="res://怪物ui/小猕猴/28612-4.png" type="Texture" id=14]
+[ext_resource path="res://怪物ui/小猕猴/28613-5.png" type="Texture" id=15]
+[ext_resource path="res://怪物ui/小猕猴/28613-6.png" type="Texture" id=16]
+[ext_resource path="res://怪物ui/小猕猴/28616-1.png" type="Texture" id=17]
+[ext_resource path="res://怪物ui/小猕猴/28613-8.png" type="Texture" id=18]
+[ext_resource path="res://怪物ui/小猕猴/28617-1.png" type="Texture" id=19]
+[ext_resource path="res://怪物ui/小猕猴/28617-2.png" type="Texture" id=20]
+[ext_resource path="res://怪物ui/小猕猴/28618-1.png" type="Texture" id=21]
+[ext_resource path="res://怪物ui/小猕猴/28611-4.png" type="Texture" id=22]
+[ext_resource path="res://怪物ui/小猕猴/28611-1.png" type="Texture" id=23]
+[ext_resource path="res://怪物ui/小猕猴/28611-2.png" type="Texture" id=24]
+[ext_resource path="res://怪物ui/小猕猴/28611-3.png" type="Texture" id=25]
+[ext_resource path="res://怪物ui/小猕猴/28612-1.png" type="Texture" id=26]
+[ext_resource path="res://FCTmgr.tscn" type="PackedScene" id=27]
+[ext_resource path="res://UI/HealthBar.tscn" type="PackedScene" id=28]
+[ext_resource path="res://UI/Name.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Enemy/Snake.gd" type="Script" id=30]
+[ext_resource path="res://MUSIC/monkey.wav" type="AudioStream" id=31]
+[ext_resource path="res://MUSIC/3703.wav" type="AudioStream" id=32]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+[sub_resource type="ShaderMaterial" id=2]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "preattack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 21 ), ExtResource( 7 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "injury",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 24.0
+height = 32.0
+
+[sub_resource type="Animation" id=5]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "attack" ]
+}
+
+[sub_resource type="Animation" id=6]
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "die" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Name:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HealthBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=7]
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "injury" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.419608, 0.0941176, 0.0941176, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "walk" ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "injury"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+priority = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachine" id=25]
+states/attack/node = SubResource( 10 )
+states/attack/position = Vector2( 746, 263 )
+states/die/node = SubResource( 11 )
+states/die/position = Vector2( 582, 63 )
+states/idle/node = SubResource( 12 )
+states/idle/position = Vector2( 582, 194 )
+states/injury/node = SubResource( 13 )
+states/injury/position = Vector2( 318, 63 )
+states/run/node = SubResource( 14 )
+states/run/position = Vector2( 318, 194 )
+transitions = [ "idle", "injury", SubResource( 15 ), "idle", "run", SubResource( 16 ), "run", "injury", SubResource( 17 ), "injury", "idle", SubResource( 18 ), "idle", "die", SubResource( 19 ), "run", "idle", SubResource( 20 ), "injury", "die", SubResource( 21 ), "idle", "attack", SubResource( 22 ), "attack", "idle", SubResource( 23 ), "attack", "run", SubResource( 24 ) ]
+start_node = "idle"
+end_node = "die"
+graph_offset = Vector2( -196, 10 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+
+[sub_resource type="RectangleShape2D" id=27]
+extents = Vector2( 296, 40 )
+
+[node name="Monster" type="KinematicBody2D"]
+material = SubResource( 1 )
+script = ExtResource( 30 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 2 )
+frames = SubResource( 3 )
+animation = "idle"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 5 )
+anims/die = SubResource( 6 )
+anims/idle = SubResource( 7 )
+anims/injury = SubResource( 8 )
+anims/run = SubResource( 9 )
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
+tree_root = SubResource( 25 )
+anim_player = NodePath("..")
+active = true
+parameters/playback = SubResource( 26 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="HealthBar" parent="." instance=ExtResource( 28 )]
+visible = false
+margin_left = -24.0
+margin_top = -48.0
+margin_right = -24.0
+margin_bottom = -48.0
+
+[node name="Name" parent="." instance=ExtResource( 29 )]
+visible = false
+margin_left = -32.0
+margin_top = 48.0
+margin_right = -32.0
+margin_bottom = 48.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0, 8 )
+shape = SubResource( 27 )
+
+[node name="FCTmgr" parent="." instance=ExtResource( 27 )]
+
+[node name="floor_left" type="RayCast2D" parent="."]
+position = Vector2( -8, 0 )
+enabled = true
+collision_mask = 4
+collide_with_areas = true
+
+[node name="floor_right" type="RayCast2D" parent="."]
+position = Vector2( 8, 0 )
+enabled = true
+collision_mask = 4
+collide_with_areas = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="non-combat" type="Timer" parent="."]
+
+[node name="attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 32 )
+
+[node name="deathAndInjury" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="non-combat" to="." method="_on_noncombat_timeout"]

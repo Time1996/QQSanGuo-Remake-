@@ -1,0 +1,455 @@
+[gd_scene load_steps=99 format=2]
+
+[ext_resource path="res://Character/Steve.gd" type="Script" id=1]
+[ext_resource path="res://assets/motion/attack/04/Sprite_14.png" type="Texture" id=2]
+[ext_resource path="res://ANIMATION/idle.tres" type="Animation" id=3]
+[ext_resource path="res://assets/motion/run2/Sprite_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/motion/run2/Sprite_2.png" type="Texture" id=5]
+[ext_resource path="res://assets/motion/run2/Sprite_3.png" type="Texture" id=6]
+[ext_resource path="res://assets/motion/run2/Sprite_4.png" type="Texture" id=7]
+[ext_resource path="res://assets/motion/run2/Sprite_5.png" type="Texture" id=8]
+[ext_resource path="res://assets/motion/run2/Sprite_6.png" type="Texture" id=9]
+[ext_resource path="res://assets/motion/jump/Sprite_1.png" type="Texture" id=10]
+[ext_resource path="res://assets/motion/run2/Sprite_8.png" type="Texture" id=11]
+[ext_resource path="res://assets/motion/run2/Sprite_7.png" type="Texture" id=12]
+[ext_resource path="res://assets/motion/attack/04/Sprite_12.png" type="Texture" id=13]
+[ext_resource path="res://assets/motion/attack/04/Sprite_13.png" type="Texture" id=14]
+[ext_resource path="res://assets/motion/attack/04/Sprite_11.png" type="Texture" id=15]
+[ext_resource path="res://assets/motion/attack/04/Sprite_9.png" type="Texture" id=16]
+[ext_resource path="res://assets/motion/attack/04/Sprite_10.png" type="Texture" id=17]
+[ext_resource path="res://assets/motion/attack/04/Sprite_6.png" type="Texture" id=18]
+[ext_resource path="res://assets/motion/attack/04/Sprite_5.png" type="Texture" id=19]
+[ext_resource path="res://assets/motion/attack/04/Sprite_8.png" type="Texture" id=20]
+[ext_resource path="res://assets/motion/attack/04/Sprite_7.png" type="Texture" id=21]
+[ext_resource path="res://assets/motion/attack/04/Sprite_1.png" type="Texture" id=22]
+[ext_resource path="res://assets/motion/attack/04/Sprite_3.png" type="Texture" id=23]
+[ext_resource path="res://assets/motion/attack/04/Sprite_2.png" type="Texture" id=24]
+[ext_resource path="res://assets/motion/attack/04/Sprite_4.png" type="Texture" id=25]
+[ext_resource path="res://assets/motion/climb/Sprite_1.png" type="Texture" id=26]
+[ext_resource path="res://assets/motion/idle2/Sprite_1.png" type="Texture" id=27]
+[ext_resource path="res://assets/motion/idle2/Sprite_4.png" type="Texture" id=28]
+[ext_resource path="res://EFECTIVE/js/483-1.png" type="Texture" id=29]
+[ext_resource path="res://ANIMATION/attack2.tres" type="Animation" id=30]
+[ext_resource path="res://assets/motion/idle2/Sprite_3.png" type="Texture" id=31]
+[ext_resource path="res://assets/motion/climb/Sprite_2.png" type="Texture" id=32]
+[ext_resource path="res://assets/motion/idle2/Sprite_2.png" type="Texture" id=33]
+[ext_resource path="res://assets/motion/die/Sprite_2.png" type="Texture" id=34]
+[ext_resource path="res://assets/motion/die/Sprite_1.png" type="Texture" id=35]
+[ext_resource path="res://assets/motion/die/Sprite_5.png" type="Texture" id=36]
+[ext_resource path="res://assets/motion/die/Sprite_4.png" type="Texture" id=37]
+[ext_resource path="res://assets/motion/die/Sprite_3.png" type="Texture" id=38]
+[ext_resource path="res://EFECTIVE/js/306-9.png" type="Texture" id=39]
+[ext_resource path="res://EFECTIVE/js/482-3.png" type="Texture" id=40]
+[ext_resource path="res://EFECTIVE/js/306-4.png" type="Texture" id=41]
+[ext_resource path="res://EFECTIVE/js/483-3.png" type="Texture" id=42]
+[ext_resource path="res://EFECTIVE/js/483-2.png" type="Texture" id=43]
+[ext_resource path="res://EFECTIVE/js/482-5.png" type="Texture" id=44]
+[ext_resource path="res://EFECTIVE/js/482-1.png" type="Texture" id=45]
+[ext_resource path="res://EFECTIVE/js/306-5.png" type="Texture" id=46]
+[ext_resource path="res://assets/motion/掉落/Sprite_1.png" type="Texture" id=47]
+[ext_resource path="res://FCTmgr.tscn" type="PackedScene" id=48]
+[ext_resource path="res://EFECTIVE/js/306-10.png" type="Texture" id=49]
+[ext_resource path="res://EFECTIVE/js/306-3.png" type="Texture" id=50]
+[ext_resource path="res://EFECTIVE/js/483-4.png" type="Texture" id=51]
+[ext_resource path="res://EFECTIVE/js/306-7.png" type="Texture" id=52]
+[ext_resource path="res://EFECTIVE/js/306-2.png" type="Texture" id=53]
+[ext_resource path="res://EFECTIVE/js/482-4.png" type="Texture" id=54]
+[ext_resource path="res://EFECTIVE/js/483-5.png" type="Texture" id=55]
+[ext_resource path="res://EFECTIVE/js/306-6.png" type="Texture" id=56]
+[ext_resource path="res://EFECTIVE/js/306-1.png" type="Texture" id=57]
+[ext_resource path="res://EFECTIVE/js/482-2.png" type="Texture" id=58]
+[ext_resource path="res://EFECTIVE/js/306-8.png" type="Texture" id=59]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "attackLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "attackRight"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "clim"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "injury"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=26]
+resource_local_to_scene = true
+states/attackLeft/node = SubResource( 1 )
+states/attackLeft/position = Vector2( -65, 62 )
+states/attackRight/node = SubResource( 2 )
+states/attackRight/position = Vector2( -56.04, 212 )
+states/clim/node = SubResource( 3 )
+states/clim/position = Vector2( 710, 39 )
+states/die/node = SubResource( 4 )
+states/die/position = Vector2( 407, -15 )
+states/idle/node = SubResource( 5 )
+states/idle/position = Vector2( 266, 62 )
+states/injury/node = SubResource( 6 )
+states/injury/position = Vector2( 124.96, -32.32 )
+states/jump/node = SubResource( 7 )
+states/jump/position = Vector2( 525, 192 )
+states/run/node = SubResource( 8 )
+states/run/position = Vector2( 252, 212 )
+transitions = [ "idle", "run", SubResource( 9 ), "run", "idle", SubResource( 10 ), "idle", "attackLeft", SubResource( 11 ), "attackLeft", "idle", SubResource( 12 ), "idle", "jump", SubResource( 13 ), "jump", "idle", SubResource( 14 ), "jump", "clim", SubResource( 15 ), "clim", "jump", SubResource( 16 ), "idle", "clim", SubResource( 17 ), "clim", "idle", SubResource( 18 ), "idle", "die", SubResource( 19 ), "run", "attackLeft", SubResource( 20 ), "run", "attackRight", SubResource( 21 ), "idle", "attackRight", SubResource( 22 ), "attackRight", "idle", SubResource( 23 ), "idle", "injury", SubResource( 24 ), "injury", "idle", SubResource( 25 ) ]
+start_node = "idle"
+end_node = "die"
+graph_offset = Vector2( -506.198, 0.0999985 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
+
+[sub_resource type="Animation" id=28]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/HitBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1.03527 ),
+"update": 1,
+"values": [ "attack" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimatedSprite:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimatedSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimatedSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -72, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AnimatedSprite2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("AnimatedSprite2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -24, 10 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "clim" ]
+}
+
+[sub_resource type="Animation" id=30]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "die" ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "injury"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "injury" ]
+}
+
+[sub_resource type="Animation" id=32]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "jump" ]
+}
+
+[sub_resource type="Animation" id=33]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "walk" ]
+}
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ ExtResource( 27 ), ExtResource( 33 ), ExtResource( 31 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "attack",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 47 ) ],
+"loop": true,
+"name": "injury",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "walk",
+"speed": 14.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 36 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 32 ) ],
+"loop": false,
+"name": "clim",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 40, 32 )
+
+[sub_resource type="CapsuleShape2D" id=36]
+radius = 4.90596
+height = 81.6411
+
+[sub_resource type="SpriteFrames" id=37]
+animations = [ {
+"frames": [ ExtResource( 45 ), ExtResource( 58 ), ExtResource( 40 ), ExtResource( 54 ), ExtResource( 44 ), ExtResource( 29 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 51 ), ExtResource( 55 ) ],
+"loop": true,
+"name": "e2",
+"speed": 8.0
+} ]
+
+[sub_resource type="SpriteFrames" id=38]
+animations = [ {
+"frames": [ ExtResource( 57 ), ExtResource( 53 ), ExtResource( 50 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 52 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 49 ) ],
+"loop": true,
+"name": "accmulate",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=39]
+extents = Vector2( 48, 56 )
+
+[node name="Steve" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 26 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 27 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attackLeft = SubResource( 28 )
+anims/attackRight = ExtResource( 30 )
+anims/clim = SubResource( 29 )
+anims/die = SubResource( 30 )
+anims/idle = ExtResource( 3 )
+anims/injury = SubResource( 31 )
+anims/jump = SubResource( 32 )
+anims/run = SubResource( 33 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( -3.55271e-15, -8 )
+scale = Vector2( 0.8, 0.8 )
+frames = SubResource( 34 )
+animation = "idle"
+frame = 3
+playing = true
+
+[node name="HitBox" type="Area2D" parent="Sprite"]
+position = Vector2( -313.071, -21.2937 )
+scale = Vector2( 1.25, 1.25 )
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HitBox"]
+show_behind_parent = true
+position = Vector2( 330.457, 33.035 )
+shape = SubResource( 35 )
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 36 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 72, 0 )
+scale = Vector2( 1.4, 1.2 )
+frames = SubResource( 37 )
+animation = "e2"
+frame = 6
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 24, 10 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 38 )
+animation = "accmulate"
+frame = 2
+playing = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="FCTmgr" parent="." instance=ExtResource( 48 )]
+position = Vector2( 8, -40 )
+
+[node name="pickableArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickableArea"]
+shape = SubResource( 39 )
+
+[node name="self_heal" type="Timer" parent="."]
+autostart = true
+[connection signal="health_updated" from="." to="." method="_on_Steve_health_updated"]
+[connection signal="body_entered" from="Sprite/HitBox" to="." method="_on_HitBox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="pickableArea" to="." method="_on_pickableArea_body_entered"]
+[connection signal="body_exited" from="pickableArea" to="." method="_on_pickableArea_body_exited"]
+[connection signal="timeout" from="self_heal" to="." method="_on_self_heal_timeout"]

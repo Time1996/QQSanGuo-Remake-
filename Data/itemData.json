@@ -1,0 +1,16 @@
+{
+  "铁剑":{
+    "ItemCategory":"Sword",
+    "ItemAttack":3,
+    "ItemSpeed":1,
+    "StackSize":1,
+    "Description":"铁打的剑 普普通通",	
+  },
+  "金疮药":{
+    "ItemCategory":"Consumble",
+    "AddHealth":100,
+    "AddEnergy":0,
+    "StackSize":99,
+    "Description":"行走江湖必备"	,
+  }
+}
