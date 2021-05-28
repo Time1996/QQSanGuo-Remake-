@@ -144,7 +144,7 @@ states/run/position = Vector2( 252, 212 )
 transitions = [ "idle", "run", SubResource( 9 ), "run", "idle", SubResource( 10 ), "idle", "attackLeft", SubResource( 11 ), "attackLeft", "idle", SubResource( 12 ), "idle", "jump", SubResource( 13 ), "jump", "idle", SubResource( 14 ), "jump", "clim", SubResource( 15 ), "clim", "jump", SubResource( 16 ), "idle", "clim", SubResource( 17 ), "clim", "idle", SubResource( 18 ), "idle", "die", SubResource( 19 ), "run", "attackLeft", SubResource( 20 ), "run", "attackRight", SubResource( 21 ), "idle", "attackRight", SubResource( 22 ), "attackRight", "idle", SubResource( 23 ), "idle", "injury", SubResource( 24 ), "injury", "idle", SubResource( 25 ) ]
 start_node = "idle"
 end_node = "die"
-graph_offset = Vector2( -506.198, 0.0999985 )
+graph_offset = Vector2( -441.198, -17.9 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
@@ -397,7 +397,7 @@ position = Vector2( -3.55271e-15, -8 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 34 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="HitBox" type="Area2D" parent="Sprite"]
@@ -422,7 +422,6 @@ position = Vector2( 72, 0 )
 scale = Vector2( 1.4, 1.2 )
 frames = SubResource( 37 )
 animation = "e2"
-frame = 6
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
