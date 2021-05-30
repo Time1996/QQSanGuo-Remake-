@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Character/Steve.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/PNG/Tiles/platformPack_tile001.png" type="Texture" id=2]
@@ -68,6 +68,7 @@
 [ext_resource path="res://16898-1.png" type="Texture" id=66]
 [ext_resource path="res://19470-1.png" type="Texture" id=67]
 [ext_resource path="res://16899-1.png" type="Texture" id=68]
+[ext_resource path="res://Skill.tscn" type="PackedScene" id=69]
 
 [sub_resource type="TileSet" id=1]
 0/name = "16868-1.png 0"
@@ -764,13 +765,13 @@ shape = SubResource( 15 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 352 )
 frames = SubResource( 16 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 416 )
 frames = SubResource( 17 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="TransPort2" type="Area2D" parent="."]
@@ -789,13 +790,13 @@ shape = SubResource( 15 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
 frames = SubResource( 16 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
 frames = SubResource( 17 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Snake" parent="." groups=[
@@ -907,6 +908,8 @@ position = Vector2( -80, -64 )
 position = Vector2( -184, -64 )
 
 [node name="Tween" type="Tween" parent="Spawner"]
+
+[node name="Skill" parent="." instance=ExtResource( 69 )]
 [connection signal="body_entered" from="climb" to="Steve" method="_on_climb_body_entered"]
 [connection signal="body_exited" from="climb" to="Steve" method="_on_climb_body_exited"]
 [connection signal="body_entered" from="TransPort" to="Steve" method="_on_TransPort_body_entered"]

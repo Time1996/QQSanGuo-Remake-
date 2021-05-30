@@ -28,12 +28,10 @@ var chase_target_state = 0
 var target = 0
 var target_derection = 1
 
-	
+
 func _ready():
-	
 	$AnimatedSprite.visible = false
 	state_machine = $AnimationTree.get("parameters/playback")
-
 
 var items_in_range = {}
 
@@ -92,9 +90,6 @@ func move_to_target(delta, min_dist):
 
 
 func game_play(delta):
-	if monirable == 1:
-		$"../climb".monitorable = !($"../climb".monitorable)
-		print($"../climb".monitorable)
 	velocity.x = 0
 	$CollisionShape2D.disabled = false
 	if not is_on_floor():
@@ -199,7 +194,6 @@ func die():
 	state_machine.travel("die")
 	set_physics_process(false)
 func closet_enemy(min_dist):
-	yield(get_tree(), "idle_frame")
 	## 遍历敌人组 选择两点间距离最近的敌人
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for i in enemies:
@@ -218,37 +212,33 @@ func closet_enemy(min_dist):
 				target_derection = 1
 			chase_target_state = 1
 			break
-	emit_signal("chaseing")
-	return self
+	
 func _on_TransPort_body_entered(body):
 	print(body)
 	trans = 1
-	pass # Replace with function body.
+
 
 
 func _on_climb_body_exited(body):
 	state = 0
 	monirable = 0
-	pass # Replace with function body.
+
 
 
 func _on_TransPort_body_exited(body):
 	trans = 0
-	pass # Replace with function body.
+
 
 
 func _on_Timer_timeout():
 	attacking = 0
-	
-	pass # Replace with function body.
-
 
 func _on_HitBox_body_entered(body):
 	if !(body is KinematicBody2D):
 		print("fuck that's not enemy!")
 	if body.is_in_group("enemy"):
 		body.call_deferred("injury", 5)
-	pass # Replace with function body.
+
 
 
 func _on_climb_body_entered(body):
@@ -331,7 +321,6 @@ func _on_self_heal_timeout():
 	
 	if health >= max_health:
 		health = max_health
-	print(health)
 	magic += 2 ##2点魔法
 	if magic >= max_magic:
 		magic = max_magic

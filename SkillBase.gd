@@ -13,6 +13,8 @@ export (String) var skill_name
 export (Texture) var skill_icon
 export (String) var input_key
 export (int, 0 , 10000) var cast_dist
+export (int, 0 , 10000) var need_level
+export (int, 0 , 10000) var damage
 export (float, 0, 10000) var cooldown = 1.0
 export (float, 0, 10000) var duration = 0.5
 export (String) var job_name
@@ -23,15 +25,17 @@ var _duration_countdown: float = -1
 
 var _cooling_timer := Timer.new()
 
-
-
 var skill_data = {}
 
 func _ready():
 	var picture_path = "res://assets/texture/js"
-	skill_data = FileManager.parse_csv_file("res://Data/skill_" + job_name + ".csv")
-	print("res://Data/skill_" + job_name + ".csv")
+	skill_data = SkillsFactory.skill_data[skill_name]
+	cast_dist = skill_data["attack_range"]
+	need_level = skill_data["need_level"]
+	damage = skill_data["damage"]
+	print(damage)
 	print(skill_data)
+	
 	set_physics_process(false)
 	
 	if input_key == '':
@@ -45,7 +49,6 @@ func _ready():
 		add_child(_cooling_timer)
 		
 	##设置相应的技能图标
-	print(picture_path +'/'+ skill_name)
 	$background.texture = skill_icon
 	
 func _unhandled_input(event):

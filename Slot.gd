@@ -1,44 +1,72 @@
 extends Panel
 
+var default_style = null
+var selected_style = null
+var hotbar_style = null
 
-var styleBox = null
+var default_tex = preload("res://UI/21804-1.png")
+var selected_tex = preload("res://item_slot_selected_background.png")
+var hotbar_tex = preload("res://item_slot_default_background.png")
+
 var item = null
 var ItemClass = preload("res://Item.tscn")
 var slot_index
+var slot_type
 
+enum SlotType{#第一个设置0 后面的自动递增+1
+	HOTBAR = 0,
+	INVENTORY,
+}
 func _ready():
 	#item = ItemClass.instance()
 	#item.scale = item.scale * 0.5
 	#add_child(item)
-	styleBox = StyleBoxTexture.new()
-	styleBox.texture = preload("res://UI/21804-1.png")
-	self.hint_tooltip = "111"
+	
+	selected_style = StyleBoxTexture.new()
+	default_style = StyleBoxTexture.new()
+	hotbar_style = StyleBoxTexture.new()
+	
+	default_style.texture = default_tex
+	selected_style.texture = selected_tex
+	hotbar_style.texture = hotbar_tex
+	
+	refresh_style()
+#	styleBox.texture = preload("res://UI/21804-1.png")
+#	self.hint_tooltip = "111"
 	pass
 
 func refresh_style():
-	set("custom_styles/panel", styleBox)
-	self.rect_size = Vector2(235, 25)
-	self.rect_min_size = Vector2(235, 25)
+	yield(get_tree(),"idle_frame")
+	if SlotType.HOTBAR == slot_type and PlayerInventory.active_item_slot == slot_index:
+		set('custom_styles/panel', selected_style)
+		pass
+	elif SlotType.INVENTORY == slot_type:
+		print(slot_type)
+		set('custom_styles/panel', default_style)
+		self.rect_size = Vector2(235, 25)
+		self.rect_min_size = Vector2(235, 25)
+		pass
+	else:
+		set('custom_styles/panel', hotbar_style)
+		pass
+	
 
 func pickFromSlot():
-	print("拉起")
 	remove_child(item)
-	var inventoryNode = get_parent()
+	var inventoryNode = find_parent("UserInterFace")
 	inventoryNode.add_child(item)
 	item = null
 
 func putIntoSlot(new_item):
-	print("放下")
 	item = new_item
 	item.position = Vector2(0, 0)
-	var inventoryNode = get_parent()
+	var inventoryNode = find_parent("UserInterFace")
 	inventoryNode.remove_child(item)
 	add_child(item)
 	#refresh_style() ##暂时不用 用了之后会导致放下后 大小不对
 
 func initialize_item(item_name, item_quantity):
 	if item == null:##有BUG 每次重新打开会
-		print("新物品增加")
 		item = ItemClass.instance()
 		item.scale *= 0.5
 		item.set_item(item_name, item_quantity)
