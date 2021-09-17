@@ -1,14 +1,19 @@
 extends KinematicBody2D
 
 export(NodePath)var route
+
 export var max_health = 100
 export var max_magic = 100
-export var magic = 100
+export var basic_damage = 20
+export var basic_defende = 10
 var state_machine
 
-onready var health = max_health setget _set_health
+var experience_pool = 100 #经验池
 
-signal health_updated(health)
+onready var health = max_health setget _set_health
+onready var magic = max_health setget _set_health
+
+signal health_updated(health, magic)
 signal dead()
 
 var monirable = 0 ##物体进入藤子时 重复true和false来达到 实时检测的目的
@@ -31,6 +36,7 @@ var target_derection = 1
 
 func _ready():
 	$AnimatedSprite.visible = false
+	$AnimatedSprite2.visible = false
 	state_machine = $AnimationTree.get("parameters/playback")
 
 var items_in_range = {}
@@ -193,6 +199,7 @@ func injury(damage):
 func die():
 	state_machine.travel("die")
 	set_physics_process(false)
+	
 func closet_enemy(min_dist):
 	## 遍历敌人组 选择两点间距离最近的敌人
 	var enemies = get_tree().get_nodes_in_group("enemy")
@@ -237,7 +244,7 @@ func _on_HitBox_body_entered(body):
 	if !(body is KinematicBody2D):
 		print("fuck that's not enemy!")
 	if body.is_in_group("enemy"):
-		body.call_deferred("injury", 5)
+		body.call_deferred("injury", basic_damage)  ##对敌造成汇总伤害 自身基础+技能+装备
 
 
 
@@ -259,7 +266,7 @@ func _set_health(value):
 	var prev_health = health
 	health = clamp(value, 0, max_health)
 	if health != prev_health:
-		emit_signal("health_updated", health)
+		emit_signal("health_updated", health, magic)
 		if health == 0:
 			dead()
 			
@@ -282,7 +289,7 @@ func _on_Steve_health_updated(value):
 		dead()
 	state_machine.travel("injury")
 	$FCTmgr.show_value(value)
-	get_parent().get_node("UserInterFace").emit_signal("health_updated",health)
+	get_parent().get_node("UserInterFace").emit_signal("health_updated",health, magic)
 	yield($AnimatedSprite,"animation_finished")
 	pass # Replace with function body.
 
@@ -324,5 +331,30 @@ func _on_self_heal_timeout():
 	magic += 2 ##2点魔法
 	if magic >= max_magic:
 		magic = max_magic
-	
+	get_parent().get_node("UserInterFace").emit_signal("health_updated",health, magic)
 	pass # Replace with function body.
+
+func get_save_stats():
+	return {
+		'filename' : get_filename(),
+		'parent' : get_parent().get_path(),
+		'x_pos' : position.x,
+		'y_pos' : position.y,
+		'stats' : {
+			'max_health' : max_health,
+			'max_magic' : max_magic,
+			'health' : health,
+			'magic' : magic,
+			'basic_damage' : basic_damage,
+			'basic_defende' : basic_defende,
+		}
+	}
+
+func load_save_stats(stats): #需要保存的信息 目前是位置 属性
+	position = Vector2(stats.x_pos, stats.y_pos)
+	max_health = stats.stats.max_health
+	max_magic = stats.stats.max_magic
+	health = stats.stats.health
+	magic = stats.stats.magic
+	basic_damage = stats.stats.basic_damage
+	basic_defende = stats.stats.basic_defende

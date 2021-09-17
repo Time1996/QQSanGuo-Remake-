@@ -1,10 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Slot.gd" type="Script" id=1]
 [ext_resource path="res://Inventory.gd" type="Script" id=2]
 [ext_resource path="res://knapsack.gd" type="Script" id=3]
+[ext_resource path="res://Character/Sprite.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/ui/main_item.png" type="Texture" id=5]
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://UI/side_bar/75606-3.png" type="Texture" id=7]
 [ext_resource path="res://UI/21801-1.png" type="Texture" id=8]
+[ext_resource path="res://UI/side_bar/75616-2.png" type="Texture" id=9]
+[ext_resource path="res://UI/side_bar/75616-3.png" type="Texture" id=10]
+[ext_resource path="res://UI/side_bar/75606-2.png" type="Texture" id=11]
+[ext_resource path="res://UI/side_bar/75606-4.png" type="Texture" id=12]
+[ext_resource path="res://UI/side_bar/75606-1.png" type="Texture" id=13]
+[ext_resource path="res://UI/side_bar/75616-4.png" type="Texture" id=14]
+[ext_resource path="res://UI/side_bar/75616-1.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
@@ -113,3 +123,126 @@ margin_bottom = 257.0
 rect_min_size = Vector2( 235, 25 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
+
+[node name="Money" type="Label" parent="."]
+margin_left = 256.0
+margin_top = 536.0
+margin_right = 352.0
+margin_bottom = 559.0
+text = "11000"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Backpack" type="Label" parent="."]
+margin_left = 528.0
+margin_top = 536.0
+margin_right = 624.0
+margin_bottom = 559.0
+text = "1/9"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Juntuan" type="Label" parent="."]
+margin_left = 392.0
+margin_top = 536.0
+margin_right = 488.0
+margin_bottom = 559.0
+text = "2200"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wugong" type="Label" parent="."]
+margin_left = 370.0
+margin_top = 381.0
+margin_right = 406.0
+margin_bottom = 404.0
+text = "20"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wufang" type="Label" parent="."]
+margin_left = 369.782
+margin_top = 406.0
+margin_right = 405.782
+margin_bottom = 429.0
+text = "10"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shugong" type="Label" parent="."]
+margin_left = 370.0
+margin_top = 433.404
+margin_right = 406.0
+margin_bottom = 456.404
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shufang" type="Label" parent="."]
+margin_left = 369.782
+margin_top = 460.326
+margin_right = 405.782
+margin_bottom = 483.326
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" parent="." instance=ExtResource( 4 )]
+position = Vector2( 370, 282.8 )
+
+[node name="name" type="Label" parent="."]
+margin_left = 269.656
+margin_top = 162.8
+margin_right = 469.656
+margin_bottom = 185.8
+custom_fonts/font = ExtResource( 6 )
+text = "我行我素"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 819.0
+margin_top = 119.0
+margin_right = 841.0
+margin_bottom = 141.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 11 )
+texture_disabled = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+margin_left = 793.6
+margin_top = 119.0
+margin_right = 815.6
+margin_bottom = 141.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+
+[editable path="Sprite"]

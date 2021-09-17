@@ -43,8 +43,6 @@ func refresh_style():
 	elif SlotType.INVENTORY == slot_type:
 		print(slot_type)
 		set('custom_styles/panel', default_style)
-		self.rect_size = Vector2(235, 25)
-		self.rect_min_size = Vector2(235, 25)
 		pass
 	else:
 		set('custom_styles/panel', hotbar_style)
@@ -68,10 +66,11 @@ func putIntoSlot(new_item):
 func initialize_item(item_name, item_quantity):
 	if item == null:##有BUG 每次重新打开会
 		item = ItemClass.instance()
-		item.scale *= 0.5
+#		self.rect_size = Vector2(235, 25)
+#		self.rect_min_size = Vector2(235, 25)
+		item.scale *= 0.6
 		item.set_item(item_name, item_quantity)
 		add_child(item)
-		
 	else:
 		item.set_item(item_name, item_quantity)
 	#refresh_style()

@@ -16,7 +16,7 @@ func _ready():
 	#else:
 	item_name = "金疮药"
 
-func _physics_process(delta):
+func _physics_process(delta): ##物理效果
 	if being_picked_up == false:
 		velocity = velocity.move_toward(Vector2(0, MAX_SPEED), ACCELERATION * delta)
 	else:

@@ -1,43 +1,10 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://Character/Steve.gd" type="Script" id=1]
-[ext_resource path="res://assets/motion/attack/04/Sprite_14.png" type="Texture" id=2]
+[ext_resource path="res://Character/Sprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ANIMATION/idle.tres" type="Animation" id=3]
-[ext_resource path="res://assets/motion/run2/Sprite_1.png" type="Texture" id=4]
-[ext_resource path="res://assets/motion/run2/Sprite_2.png" type="Texture" id=5]
-[ext_resource path="res://assets/motion/run2/Sprite_3.png" type="Texture" id=6]
-[ext_resource path="res://assets/motion/run2/Sprite_4.png" type="Texture" id=7]
-[ext_resource path="res://assets/motion/run2/Sprite_5.png" type="Texture" id=8]
-[ext_resource path="res://assets/motion/run2/Sprite_6.png" type="Texture" id=9]
-[ext_resource path="res://assets/motion/jump/Sprite_1.png" type="Texture" id=10]
-[ext_resource path="res://assets/motion/run2/Sprite_8.png" type="Texture" id=11]
-[ext_resource path="res://assets/motion/run2/Sprite_7.png" type="Texture" id=12]
-[ext_resource path="res://assets/motion/attack/04/Sprite_12.png" type="Texture" id=13]
-[ext_resource path="res://assets/motion/attack/04/Sprite_13.png" type="Texture" id=14]
-[ext_resource path="res://assets/motion/attack/04/Sprite_11.png" type="Texture" id=15]
-[ext_resource path="res://assets/motion/attack/04/Sprite_9.png" type="Texture" id=16]
-[ext_resource path="res://assets/motion/attack/04/Sprite_10.png" type="Texture" id=17]
-[ext_resource path="res://assets/motion/attack/04/Sprite_6.png" type="Texture" id=18]
-[ext_resource path="res://assets/motion/attack/04/Sprite_5.png" type="Texture" id=19]
-[ext_resource path="res://assets/motion/attack/04/Sprite_8.png" type="Texture" id=20]
-[ext_resource path="res://assets/motion/attack/04/Sprite_7.png" type="Texture" id=21]
-[ext_resource path="res://assets/motion/attack/04/Sprite_1.png" type="Texture" id=22]
-[ext_resource path="res://assets/motion/attack/04/Sprite_3.png" type="Texture" id=23]
-[ext_resource path="res://assets/motion/attack/04/Sprite_2.png" type="Texture" id=24]
-[ext_resource path="res://assets/motion/attack/04/Sprite_4.png" type="Texture" id=25]
-[ext_resource path="res://assets/motion/climb/Sprite_1.png" type="Texture" id=26]
-[ext_resource path="res://assets/motion/idle2/Sprite_1.png" type="Texture" id=27]
-[ext_resource path="res://assets/motion/idle2/Sprite_4.png" type="Texture" id=28]
 [ext_resource path="res://EFECTIVE/js/483-1.png" type="Texture" id=29]
 [ext_resource path="res://ANIMATION/attack2.tres" type="Animation" id=30]
-[ext_resource path="res://assets/motion/idle2/Sprite_3.png" type="Texture" id=31]
-[ext_resource path="res://assets/motion/climb/Sprite_2.png" type="Texture" id=32]
-[ext_resource path="res://assets/motion/idle2/Sprite_2.png" type="Texture" id=33]
-[ext_resource path="res://assets/motion/die/Sprite_2.png" type="Texture" id=34]
-[ext_resource path="res://assets/motion/die/Sprite_1.png" type="Texture" id=35]
-[ext_resource path="res://assets/motion/die/Sprite_5.png" type="Texture" id=36]
-[ext_resource path="res://assets/motion/die/Sprite_4.png" type="Texture" id=37]
-[ext_resource path="res://assets/motion/die/Sprite_3.png" type="Texture" id=38]
 [ext_resource path="res://EFECTIVE/js/306-9.png" type="Texture" id=39]
 [ext_resource path="res://EFECTIVE/js/482-3.png" type="Texture" id=40]
 [ext_resource path="res://EFECTIVE/js/306-4.png" type="Texture" id=41]
@@ -46,7 +13,6 @@
 [ext_resource path="res://EFECTIVE/js/482-5.png" type="Texture" id=44]
 [ext_resource path="res://EFECTIVE/js/482-1.png" type="Texture" id=45]
 [ext_resource path="res://EFECTIVE/js/306-5.png" type="Texture" id=46]
-[ext_resource path="res://assets/motion/掉落/Sprite_1.png" type="Texture" id=47]
 [ext_resource path="res://FCTmgr.tscn" type="PackedScene" id=48]
 [ext_resource path="res://EFECTIVE/js/306-10.png" type="Texture" id=49]
 [ext_resource path="res://EFECTIVE/js/306-3.png" type="Texture" id=50]
@@ -59,6 +25,7 @@
 [ext_resource path="res://EFECTIVE/js/306-1.png" type="Texture" id=57]
 [ext_resource path="res://EFECTIVE/js/482-2.png" type="Texture" id=58]
 [ext_resource path="res://EFECTIVE/js/306-8.png" type="Texture" id=59]
+[ext_resource path="res://Camera2D.tscn" type="PackedScene" id=67]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "attackLeft"
@@ -126,9 +93,9 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachine" id=26]
 resource_local_to_scene = true
 states/attackLeft/node = SubResource( 1 )
-states/attackLeft/position = Vector2( -65, 62 )
+states/attackLeft/position = Vector2( -274, 55 )
 states/attackRight/node = SubResource( 2 )
-states/attackRight/position = Vector2( -56.04, 212 )
+states/attackRight/position = Vector2( -274, 206 )
 states/clim/node = SubResource( 3 )
 states/clim/position = Vector2( 710, 39 )
 states/die/node = SubResource( 4 )
@@ -144,7 +111,7 @@ states/run/position = Vector2( 252, 212 )
 transitions = [ "idle", "run", SubResource( 9 ), "run", "idle", SubResource( 10 ), "idle", "attackLeft", SubResource( 11 ), "attackLeft", "idle", SubResource( 12 ), "idle", "jump", SubResource( 13 ), "jump", "idle", SubResource( 14 ), "jump", "clim", SubResource( 15 ), "clim", "jump", SubResource( 16 ), "idle", "clim", SubResource( 17 ), "clim", "idle", SubResource( 18 ), "idle", "die", SubResource( 19 ), "run", "attackLeft", SubResource( 20 ), "run", "attackRight", SubResource( 21 ), "idle", "attackRight", SubResource( 22 ), "attackRight", "idle", SubResource( 23 ), "idle", "injury", SubResource( 24 ), "injury", "idle", SubResource( 25 ) ]
 start_node = "idle"
 end_node = "die"
-graph_offset = Vector2( -441.198, -17.9 )
+graph_offset = Vector2( -420.198, -78.9 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
@@ -265,7 +232,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=31]
-resource_name = "injury"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
@@ -309,52 +275,27 @@ tracks/0/keys = {
 "values": [ "walk" ]
 }
 
-[sub_resource type="SpriteFrames" id=34]
-animations = [ {
-"frames": [ ExtResource( 27 ), ExtResource( 33 ), ExtResource( 31 ), ExtResource( 28 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "attack",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 38 ), ExtResource( 37 ), ExtResource( 36 ) ],
-"loop": true,
-"name": "die",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 47 ) ],
-"loop": true,
-"name": "injury",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "walk",
-"speed": 14.0
-}, {
-"frames": [ ExtResource( 26 ), ExtResource( 32 ) ],
-"loop": false,
-"name": "clim",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "jump",
-"speed": 5.0
-} ]
+[sub_resource type="Animation" id=34]
+resource_name = "yinxuejianwu"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "yinyuejianwu" ]
+}
 
-[sub_resource type="RectangleShape2D" id=35]
-extents = Vector2( 40, 32 )
-
-[sub_resource type="CapsuleShape2D" id=36]
+[sub_resource type="CapsuleShape2D" id=35]
 radius = 4.90596
 height = 81.6411
 
-[sub_resource type="SpriteFrames" id=37]
+[sub_resource type="SpriteFrames" id=36]
 animations = [ {
 "frames": [ ExtResource( 45 ), ExtResource( 58 ), ExtResource( 40 ), ExtResource( 54 ), ExtResource( 44 ), ExtResource( 29 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 51 ), ExtResource( 55 ) ],
 "loop": true,
@@ -362,7 +303,7 @@ animations = [ {
 "speed": 8.0
 } ]
 
-[sub_resource type="SpriteFrames" id=38]
+[sub_resource type="SpriteFrames" id=37]
 animations = [ {
 "frames": [ ExtResource( 57 ), ExtResource( 53 ), ExtResource( 50 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 52 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 49 ) ],
 "loop": true,
@@ -370,11 +311,12 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=39]
+[sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 48, 56 )
 
 [node name="Steve" type="KinematicBody2D"]
 script = ExtResource( 1 )
+route = NodePath(".")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 26 )
@@ -391,47 +333,29 @@ anims/idle = ExtResource( 3 )
 anims/injury = SubResource( 31 )
 anims/jump = SubResource( 32 )
 anims/run = SubResource( 33 )
+anims/yinxuejianwu = SubResource( 34 )
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
-position = Vector2( -3.55271e-15, -8 )
-scale = Vector2( 0.8, 0.8 )
-frames = SubResource( 34 )
-animation = "idle"
-frame = 2
-playing = true
-
-[node name="HitBox" type="Area2D" parent="Sprite"]
-position = Vector2( -313.071, -21.2937 )
-scale = Vector2( 1.25, 1.25 )
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HitBox"]
-show_behind_parent = true
-position = Vector2( 330.457, 33.035 )
-shape = SubResource( 35 )
-disabled = true
+[node name="Sprite" parent="." instance=ExtResource( 2 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
-shape = SubResource( 36 )
+shape = SubResource( 35 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( -72, 0 )
 scale = Vector2( 1.4, 1.2 )
-frames = SubResource( 37 )
+frames = SubResource( 36 )
 animation = "e2"
-frame = 9
+frame = 7
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( -24, 10 )
 scale = Vector2( 0.3, 0.3 )
-frames = SubResource( 38 )
+frames = SubResource( 37 )
 animation = "accmulate"
-frame = 4
+frame = 5
 playing = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -444,12 +368,13 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickableArea"]
-shape = SubResource( 39 )
+shape = SubResource( 38 )
 
 [node name="self_heal" type="Timer" parent="."]
 autostart = true
+
+[node name="Camera2D" parent="." instance=ExtResource( 67 )]
 [connection signal="health_updated" from="." to="." method="_on_Steve_health_updated"]
-[connection signal="body_entered" from="Sprite/HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="pickableArea" to="." method="_on_pickableArea_body_entered"]
 [connection signal="body_exited" from="pickableArea" to="." method="_on_pickableArea_body_exited"]

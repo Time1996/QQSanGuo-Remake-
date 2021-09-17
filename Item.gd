@@ -1,5 +1,7 @@
 extends Node2D
 
+##物品数据脚本
+
 var item_name
 var item_quantity
 func _ready():
@@ -34,3 +36,16 @@ func set_item(nm, qt):
 		$Label.visible = true
 		$Label.text = str(item_quantity)
 
+func get_save_stats():
+	return {
+		'filename' : get_filename(),
+		'parent' : get_parent().get_path(),
+		'data' : {
+			'name' : item_name,
+			'quantity' : item_quantity,
+		}
+	}
+
+func load_save_stats(data):
+	item_name = data.data.name
+	item_quantity = data.data.quantity

@@ -12,28 +12,35 @@ use_filter = true
 font_data = ExtResource( 4 )
 
 [node name="Hotbar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 440.0
+margin_right = -720.0
+margin_bottom = -120.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 162.0
-margin_bottom = 22.0
+anchor_left = 0.414
+anchor_top = 0.48
+anchor_right = 0.719
+anchor_bottom = 0.5
+margin_left = -127.856
+margin_top = -21.2
+margin_right = 85.424
+margin_bottom = 18.0
 texture = ExtResource( 1 )
+expand = true
 __meta__ = {
-"_edit_use_anchors_": true
+"_edit_use_anchors_": false
 }
 
 [node name="HotbarSlots" type="GridContainer" parent="."]
-margin_left = 2.0
-margin_top = 2.0
-margin_right = 178.0
-margin_bottom = 42.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
 custom_constants/hseparation = 2
 columns = 8
 __meta__ = {
@@ -41,65 +48,65 @@ __meta__ = {
 }
 
 [node name="HotbarSlot1" type="Panel" parent="HotbarSlots"]
-margin_right = 18.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
+margin_right = 36.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
 script = ExtResource( 3 )
 
 [node name="HotbarSlot2" type="Panel" parent="HotbarSlots"]
-margin_left = 20.0
-margin_right = 38.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
+margin_left = 38.0
+margin_right = 74.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
 script = ExtResource( 3 )
 
 [node name="HotbarSlot3" type="Panel" parent="HotbarSlots"]
-margin_left = 40.0
-margin_right = 58.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
+margin_left = 76.0
+margin_right = 112.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
 script = ExtResource( 3 )
 
 [node name="HotbarSlot4" type="Panel" parent="HotbarSlots"]
-margin_left = 60.0
-margin_right = 78.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
+margin_left = 114.0
+margin_right = 150.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
 script = ExtResource( 3 )
 
 [node name="HotbarSlot5" type="Panel" parent="HotbarSlots"]
-margin_left = 80.0
-margin_right = 98.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
+margin_left = 152.0
+margin_right = 188.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
 script = ExtResource( 3 )
 
 [node name="HotbarSlot6" type="Panel" parent="HotbarSlots"]
-margin_left = 100.0
-margin_right = 118.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
+margin_left = 190.0
+margin_right = 226.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
 script = ExtResource( 3 )
 
 [node name="HotbarSlot7" type="Panel" parent="HotbarSlots"]
-margin_left = 120.0
-margin_right = 138.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
+margin_left = 228.0
+margin_right = 264.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
 script = ExtResource( 3 )
 
 [node name="HotbarSlot8" type="Panel" parent="HotbarSlots"]
-margin_left = 140.0
-margin_right = 158.0
-margin_bottom = 18.0
-rect_min_size = Vector2( 18, 18 )
+margin_left = 266.0
+margin_right = 302.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 36, 36 )
 script = ExtResource( 3 )
 
 [node name="ActiveItemLabel" type="Label" parent="."]
 margin_top = -24.0
 margin_right = 32.0
 custom_fonts/font = SubResource( 1 )
-text = "測試"
+text = "测试"
 __meta__ = {
 "_edit_use_anchors_": false
 }

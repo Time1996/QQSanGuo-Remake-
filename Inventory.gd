@@ -1,7 +1,13 @@
 extends Node2D
 
+##库存系统
+
 const SlotClass = preload("res://Slot.gd")
 onready var inventory_slots = $ScrollContainer/VBoxContainer
+
+export var money = 11000
+export var juntuan = 1000
+export var backpack = 9
 
 
 func _ready():
@@ -53,7 +59,7 @@ func left_click_different_item(event, slot):
 	
 func left_click_same_item(slot):
 	var stack_size = int(jsonData.item_data[slot.item.item_name]["StackSize"])
-	var able_to_add = stack_size - slot.item.item_quantity 
+	var able_to_add = stack_size - slot.item.item_quantity
 	if able_to_add >= find_parent("UserInterFace").holding_item.item_quantity: ##可以合并
 		PlayerInventory.add_item_quantity(slot, find_parent("UserInterFace").holding_item.item_quantity)
 		slot.item.add_item_quantity(find_parent("UserInterFace").holding_item.item_quantity)
@@ -72,3 +78,8 @@ func left_click_not_holding(slot):
 	find_parent("UserInterFace").holding_item = slot.item
 	slot.pickFromSlot()
 	find_parent("UserInterFace").holding_item.global_position = get_global_mouse_position()
+
+
+func _on_TextureButton_pressed():
+	self.visible = !self.visible
+	pass # Replace with function body.

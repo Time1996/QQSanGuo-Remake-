@@ -1,5 +1,7 @@
 extends Label
 
+##浮动文本伤害
+
 func show_value(value, travel, duration, spread, crit=false):
 	text = value
 	var movement = travel.rotated(rand_range(-spread/2, spread/2))

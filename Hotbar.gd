@@ -1,5 +1,7 @@
 extends Control
 
+##快捷栏
+
 const SlotClass = preload("res://Slot.gd")
 onready var hotbar = $HotbarSlots
 onready var slots = hotbar.get_children()
@@ -17,7 +19,7 @@ func _ready():
 	initialize_hotbar()
 	update_active_item_label()
 
-func update_active_item_label():
+func update_active_item_label(): ##物品信息 左上角文字显示
 	if slots[PlayerInventory.active_item_slot].item != null:
 		active_item_label.text = slots[PlayerInventory.active_item_slot].item.item_name
 	else:
@@ -36,7 +38,7 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 				if !slot.item: ##空的 直接放进去
 					left_click_empty_slot(slot)
 				else: ##不空 先把有的存在变量里跟随鼠标 然后拿着的放进去之后 把拿着的变成本来在框里的
-					if find_parent("UserInterFace").holding_item != slot.item.item_name: ## 如果不是同种物品
+					if find_parent("UserInterFace").holding_item != slot.item: ## 如果不是同种物品
 						left_click_different_item(event, slot)
 					else:
 						left_click_same_item(slot)
@@ -83,3 +85,7 @@ func left_click_not_holding(slot):
 	find_parent("UserInterFace").holding_item = slot.item
 	slot.pickFromSlot()
 	find_parent("UserInterFace").holding_item.global_position = get_global_mouse_position()
+
+
+
+

@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://login.jpeg" type="Texture" id=1]
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Login.gd" type="Script" id=3]
+[ext_resource path="res://MUSIC/guyidaoqianduan(shu).ogg" type="AudioStream" id=4]
+
+[node name="Login" type="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.0
+margin_top = -47.5
+margin_right = 38.0
+margin_bottom = 47.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="Button" parent="VBoxContainer"]
+margin_right = 76.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 2 )
+text = "江湖启航"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Load" type="Button" parent="VBoxContainer"]
+margin_top = 33.0
+margin_right = 76.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 2 )
+text = "回忆往事"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+margin_top = 66.0
+margin_right = 76.0
+margin_bottom = 95.0
+custom_fonts/font = ExtResource( 2 )
+text = "退隐江湖"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+[connection signal="pressed" from="VBoxContainer/Login" to="." method="_on_Login_pressed"]
+[connection signal="pressed" from="VBoxContainer/Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

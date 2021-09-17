@@ -1,5 +1,7 @@
 extends Node2D
 
+##UI界面
+
 const SlotClass = preload("res://Slot.gd")
 onready var inventory_slots = $GridContainer
 var holding_item = null

@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal monster_die
+
 export var attack1 = 2#攻击力
 export var defend = 1#防御力
 export var max_health = 100#初始最大生命
@@ -9,6 +11,8 @@ export var attack_range = 100#攻击范围
 var attacking = 0
 var injurying = 0
 var time = 0
+
+var itemDrop = preload("res://ItemDrop.tscn")
 
 enum{
 	IDLE,
@@ -152,6 +156,15 @@ func injury(damage):
 	else:
 		state = COMBAT
 		yield($AnimatedSprite, "animation_finished")
+		
+func Drop():
+	##死后有概率掉落物品
+	#if randi()%2:
+		
+	var item = itemDrop.instance()
+	item.position = position
+	get_parent().add_child(item)
+	
 func dead():
 	state_machine.travel("die")
 	set_process(false)
@@ -159,8 +172,11 @@ func dead():
 		$deathAndInjury.play()
 	$Tween.interpolate_property(self, "modulate", Color(255,255,255,0), Color(255, 255, 255, 1), 1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	$Tween.start()
-	yield($AnimatedSprite, "animation_finished")
 	
+	Drop()
+	
+	yield($AnimatedSprite, "animation_finished")
+	emit_signal("monster_die")
 	queue_free()
 	
 func choose(array):

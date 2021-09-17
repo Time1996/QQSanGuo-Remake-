@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/side_bar/experience.png" type="Texture" id=1]
+
+[node name="exprience" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -544.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_right = 801.0
+margin_bottom = 55.0
+texture_under = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
