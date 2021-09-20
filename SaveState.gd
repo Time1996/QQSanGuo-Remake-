@@ -31,18 +31,41 @@ func load_game():
 #		node.queue_free()
 		
 	save_file.open(save_filename, File.READ)
+	get_tree().change_scene("res://Leve1.tscn")
+	
+	#等场景加载好了再执行下面的内容
+	yield(get_tree().create_timer(1.0),"timeout")
+	
 	while save_file.get_position() < save_file.get_len():
 		var node_data = parse_json(save_file.get_line())
 		print(node_data)
 		print(node_data.size())
 #		var new_obj = load(node_data.filename).instance()
 #		get_node(node_data.parent).call_deferred('add_child', new_obj)
-		get_tree().change_scene("res://Leve1.tscn")
 		if node_data.filename == "res://Character/Steve.tscn":
 			get_node("/root/Level1/Steve").load_save_stats(node_data) ##人物信息加载 node_data里面各取所需
-		else:
+		elif node_data.filename == "res://Item.tscn":
 			var item = load("res://Item.tscn").instance()
 			item.load_save_stats(node_data)
-			get_node(node_data.parent).add_child(item) ##库存信息加载
-	
+			item.scale *= 0.6
+			item.add_to_group("Persist")
+			print("slot++")
+			print(item.item_slot)
+#			PlayerInventory.remove_item(int(node_data.data.slot))
+			var type_name = node_data.parent
+			var inv_or_hot = type_name.substr(type_name.length()-2, 1)
+			print("inv_or_hot")
+			print(inv_or_hot)
+			if inv_or_hot == 'l':#背包
+				PlayerInventory.add_item_to_empty_slot(item, get_node(node_data.parent), false)
+			else:				#快捷栏
+				print("hotbar")
+				PlayerInventory.add_item_to_empty_slot(item, get_node(node_data.parent), true)
+				get_tree().get_root().get_node("Level1").get_node("UserInterFace").get_node("Hotbar").initialize_hotbar()
+			print('Panel'+str(item.item_slot))
+			
+#			get_node(node_data.parent).add_child(item)##库存信息加载
+#		else:
+#			print("yes")
+#			PlayerInventory.load_save_stats(node_data)
 	save_file.close()

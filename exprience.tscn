@@ -13,6 +13,7 @@ __meta__ = {
 [node name="TextureProgress" type="TextureProgress" parent="."]
 margin_right = 801.0
 margin_bottom = 55.0
+value = 100.0
 texture_under = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

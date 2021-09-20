@@ -43,7 +43,7 @@ func add_item_to_empty_slot(item, slot, is_hotbar: bool = false):
 		hotbar[slot.slot_index] = [item.item_name, item.item_quantity]
 	else:
 		inventory[slot.slot_index] = [item.item_name, item.item_quantity]
-
+	
 func remove_item(slot, is_hotbar: bool = false):
 	if is_hotbar:
 		hotbar.erase(slot.slot_index)
@@ -66,7 +66,7 @@ func update_slot_visual(slot_index, item_name, new_quantity):
 
 func active_item_scroll_down():
 	active_item_slot = (active_item_slot + 1) % NUM_HOTBAR_SLOTS #向右移动
-	print(active_item_slot)
+#	print(active_item_slot)
 	emit_signal("active_item_updated")
 	
 func active_item_scroll_up():
@@ -74,5 +74,5 @@ func active_item_scroll_up():
 		active_item_slot = NUM_HOTBAR_SLOTS - 1
 	else:
 		active_item_slot -= 1
-	print(active_item_slot)
+#	print(active_item_slot)
 	emit_signal("active_item_updated")

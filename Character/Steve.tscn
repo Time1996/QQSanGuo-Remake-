@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Character/Steve.gd" type="Script" id=1]
 [ext_resource path="res://Character/Sprite.tscn" type="PackedScene" id=2]
@@ -291,11 +291,14 @@ tracks/0/keys = {
 "values": [ "yinyuejianwu" ]
 }
 
-[sub_resource type="CapsuleShape2D" id=35]
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 60, 40 )
+
+[sub_resource type="CapsuleShape2D" id=36]
 radius = 4.90596
 height = 81.6411
 
-[sub_resource type="SpriteFrames" id=36]
+[sub_resource type="SpriteFrames" id=37]
 animations = [ {
 "frames": [ ExtResource( 45 ), ExtResource( 58 ), ExtResource( 40 ), ExtResource( 54 ), ExtResource( 44 ), ExtResource( 29 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 51 ), ExtResource( 55 ) ],
 "loop": true,
@@ -303,7 +306,7 @@ animations = [ {
 "speed": 8.0
 } ]
 
-[sub_resource type="SpriteFrames" id=37]
+[sub_resource type="SpriteFrames" id=38]
 animations = [ {
 "frames": [ ExtResource( 57 ), ExtResource( 53 ), ExtResource( 50 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 52 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 49 ) ],
 "loop": true,
@@ -311,12 +314,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=38]
+[sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 48, 56 )
 
 [node name="Steve" type="KinematicBody2D"]
 script = ExtResource( 1 )
 route = NodePath(".")
+max_health = 1000
+max_magic = 1000
+money = 110000
+juntuan = 22000
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 26 )
@@ -337,23 +344,31 @@ anims/yinxuejianwu = SubResource( 34 )
 
 [node name="Sprite" parent="." instance=ExtResource( 2 )]
 
+[node name="HitBox" type="Area2D" parent="Sprite"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HitBox"]
+position = Vector2( 120, 10 )
+shape = SubResource( 35 )
+disabled = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
-shape = SubResource( 35 )
+shape = SubResource( 36 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( -72, 0 )
+position = Vector2( 72, 0 )
 scale = Vector2( 1.4, 1.2 )
-frames = SubResource( 36 )
+frames = SubResource( 37 )
 animation = "e2"
-frame = 7
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-position = Vector2( -24, 10 )
+position = Vector2( 24, 10 )
 scale = Vector2( 0.3, 0.3 )
-frames = SubResource( 37 )
+frames = SubResource( 38 )
 animation = "accmulate"
 frame = 5
 playing = true
@@ -368,13 +383,14 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickableArea"]
-shape = SubResource( 38 )
+shape = SubResource( 39 )
 
 [node name="self_heal" type="Timer" parent="."]
 autostart = true
 
 [node name="Camera2D" parent="." instance=ExtResource( 67 )]
 [connection signal="health_updated" from="." to="." method="_on_Steve_health_updated"]
+[connection signal="body_entered" from="Sprite/HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="pickableArea" to="." method="_on_pickableArea_body_entered"]
 [connection signal="body_exited" from="pickableArea" to="." method="_on_pickableArea_body_exited"]

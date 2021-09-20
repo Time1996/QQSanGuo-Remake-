@@ -1,77 +1,82 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=96 format=2]
 
-[ext_resource path="res://Character/Steve.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/PNG/Tiles/platformPack_tile001.png" type="Texture" id=2]
-[ext_resource path="res://assets/PNG/Tiles/platformPack_tile004.png" type="Texture" id=3]
-[ext_resource path="res://assets/map/9023-1.png" type="Texture" id=4]
-[ext_resource path="res://assets/map/9024-1.png" type="Texture" id=5]
-[ext_resource path="res://assets/map/8985-1.png" type="Texture" id=6]
-[ext_resource path="res://assets/map/16869-1.png" type="Texture" id=7]
-[ext_resource path="res://assets/map/16868-1.png" type="Texture" id=8]
-[ext_resource path="res://assets/map/12683-1.png" type="Texture" id=9]
-[ext_resource path="res://assets/map/16870-1.png" type="Texture" id=10]
-[ext_resource path="res://assets/map/14476-1.png" type="Texture" id=11]
-[ext_resource path="res://assets/map/14477-1.png" type="Texture" id=12]
-[ext_resource path="res://MUSIC/bajun(shu).ogg" type="AudioStream" id=13]
-[ext_resource path="res://assets/map/9009-1.png" type="Texture" id=14]
-[ext_resource path="res://assets/map/9011-1.png" type="Texture" id=15]
-[ext_resource path="res://assets/map/9010-1.png" type="Texture" id=16]
-[ext_resource path="res://assets/map/19175-1.png" type="Texture" id=17]
-[ext_resource path="res://assets/map/19176-1.png" type="Texture" id=18]
-[ext_resource path="res://assets/map/19177-1.png" type="Texture" id=19]
-[ext_resource path="res://assets/map/19178-1.png" type="Texture" id=20]
-[ext_resource path="res://assets/map/19174-1.png" type="Texture" id=21]
-[ext_resource path="res://assets/map/19194-1.png" type="Texture" id=22]
-[ext_resource path="res://assets/map/19187-1.png" type="Texture" id=23]
-[ext_resource path="res://assets/map/19193-1.png" type="Texture" id=24]
-[ext_resource path="res://assets/map/19195-1.png" type="Texture" id=25]
-[ext_resource path="res://assets/map/19192-1.png" type="Texture" id=26]
-[ext_resource path="res://assets/map/12685-4.png" type="Texture" id=27]
-[ext_resource path="res://assets/map/12685-14.png" type="Texture" id=28]
-[ext_resource path="res://assets/map/12684-14.png" type="Texture" id=29]
-[ext_resource path="res://assets/map/12684-15.png" type="Texture" id=30]
-[ext_resource path="res://assets/map/12685-10.png" type="Texture" id=31]
-[ext_resource path="res://assets/map/12684-9.png" type="Texture" id=32]
-[ext_resource path="res://assets/map/12685-1.png" type="Texture" id=33]
-[ext_resource path="res://assets/map/12685-8.png" type="Texture" id=34]
+[ext_resource path="res://Character/Steve.gd" type="Script" id=1]
+[ext_resource path="res://Spawner.gd" type="Script" id=2]
+[ext_resource path="res://SkillBase.gd" type="Script" id=3]
+[ext_resource path="res://19470-1.png" type="Texture" id=4]
+[ext_resource path="res://16898-1.png" type="Texture" id=5]
+[ext_resource path="res://MUSIC/普通攻击(js).wav" type="AudioStream" id=6]
+[ext_resource path="res://16899-1.png" type="Texture" id=7]
+[ext_resource path="res://MUSIC/fmusic001.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Enemy/Snake.gd" type="Script" id=9]
+[ext_resource path="res://assets/PNG/Tiles/platformPack_tile001.png" type="Texture" id=10]
+[ext_resource path="res://MUSIC/bajun(shu).ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/map/9011-1.png" type="Texture" id=12]
+[ext_resource path="res://assets/map/8985-1.png" type="Texture" id=13]
+[ext_resource path="res://assets/map/9023-1.png" type="Texture" id=14]
+[ext_resource path="res://assets/map/16868-1.png" type="Texture" id=15]
+[ext_resource path="res://assets/PNG/Tiles/platformPack_tile004.png" type="Texture" id=16]
+[ext_resource path="res://assets/map/16869-1.png" type="Texture" id=17]
+[ext_resource path="res://assets/map/12683-1.png" type="Texture" id=18]
+[ext_resource path="res://assets/map/16870-1.png" type="Texture" id=19]
+[ext_resource path="res://assets/map/9024-1.png" type="Texture" id=20]
+[ext_resource path="res://assets/map/14476-1.png" type="Texture" id=21]
+[ext_resource path="res://assets/map/14477-1.png" type="Texture" id=22]
+[ext_resource path="res://assets/map/9009-1.png" type="Texture" id=23]
+[ext_resource path="res://ItemDrop.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/map/19193-1.png" type="Texture" id=25]
+[ext_resource path="res://assets/map/12684-1.png" type="Texture" id=26]
+[ext_resource path="res://assets/map/19175-1.png" type="Texture" id=27]
+[ext_resource path="res://assets/map/19176-1.png" type="Texture" id=28]
+[ext_resource path="res://assets/map/12685-9.png" type="Texture" id=29]
+[ext_resource path="res://assets/map/12684-6.png" type="Texture" id=30]
+[ext_resource path="res://assets/map/19187-1.png" type="Texture" id=31]
+[ext_resource path="res://assets/map/9010-1.png" type="Texture" id=32]
+[ext_resource path="res://assets/map/12685-14.png" type="Texture" id=33]
+[ext_resource path="res://assets/map/12685-10.png" type="Texture" id=34]
 [ext_resource path="res://assets/map/12684-2.png" type="Texture" id=35]
-[ext_resource path="res://assets/map/12685-3.png" type="Texture" id=36]
-[ext_resource path="res://assets/map/12685-6.png" type="Texture" id=37]
-[ext_resource path="res://assets/map/12684-8.png" type="Texture" id=38]
-[ext_resource path="res://assets/map/12685-12.png" type="Texture" id=39]
-[ext_resource path="res://assets/map/12684-7.png" type="Texture" id=40]
-[ext_resource path="res://assets/map/12684-12.png" type="Texture" id=41]
-[ext_resource path="res://assets/map/12685-5.png" type="Texture" id=42]
-[ext_resource path="res://assets/map/12685-13.png" type="Texture" id=43]
-[ext_resource path="res://assets/map/12684-3.png" type="Texture" id=44]
-[ext_resource path="res://assets/map/12684-11.png" type="Texture" id=45]
-[ext_resource path="res://assets/map/12684-13.png" type="Texture" id=46]
-[ext_resource path="res://assets/map/12685-2.png" type="Texture" id=47]
-[ext_resource path="res://assets/map/12685-9.png" type="Texture" id=48]
-[ext_resource path="res://assets/map/12684-1.png" type="Texture" id=49]
-[ext_resource path="res://assets/map/12684-6.png" type="Texture" id=50]
-[ext_resource path="res://assets/map/12685-15.png" type="Texture" id=51]
-[ext_resource path="res://assets/map/12684-10.png" type="Texture" id=52]
-[ext_resource path="res://assets/map/12685-11.png" type="Texture" id=53]
-[ext_resource path="res://assets/map/12684-5.png" type="Texture" id=54]
-[ext_resource path="res://assets/map/12685-7.png" type="Texture" id=55]
-[ext_resource path="res://assets/map/12684-4.png" type="Texture" id=56]
-[ext_resource path="res://Enemy/Snake.tscn" type="PackedScene" id=57]
-[ext_resource path="res://Level1.gd" type="Script" id=58]
-[ext_resource path="res://UserInterFace.tscn" type="PackedScene" id=60]
-[ext_resource path="res://Enemy/Monkeyy.tscn" type="PackedScene" id=61]
-[ext_resource path="res://MUSIC/fmusic001.ogg" type="AudioStream" id=62]
-[ext_resource path="res://MUSIC/普通攻击(js).wav" type="AudioStream" id=63]
-[ext_resource path="res://ItemDrop.tscn" type="PackedScene" id=64]
-[ext_resource path="res://Spawner.gd" type="Script" id=65]
-[ext_resource path="res://16898-1.png" type="Texture" id=66]
-[ext_resource path="res://19470-1.png" type="Texture" id=67]
-[ext_resource path="res://16899-1.png" type="Texture" id=68]
-[ext_resource path="res://Skill.tscn" type="PackedScene" id=69]
+[ext_resource path="res://assets/map/19178-1.png" type="Texture" id=36]
+[ext_resource path="res://assets/map/19174-1.png" type="Texture" id=37]
+[ext_resource path="res://assets/map/19195-1.png" type="Texture" id=38]
+[ext_resource path="res://assets/map/12685-8.png" type="Texture" id=39]
+[ext_resource path="res://assets/map/12684-12.png" type="Texture" id=40]
+[ext_resource path="res://assets/map/12685-4.png" type="Texture" id=41]
+[ext_resource path="res://assets/map/12685-1.png" type="Texture" id=42]
+[ext_resource path="res://assets/map/12684-14.png" type="Texture" id=43]
+[ext_resource path="res://assets/map/12684-8.png" type="Texture" id=44]
+[ext_resource path="res://assets/map/12684-15.png" type="Texture" id=45]
+[ext_resource path="res://assets/map/12685-12.png" type="Texture" id=46]
+[ext_resource path="res://assets/map/12684-7.png" type="Texture" id=47]
+[ext_resource path="res://assets/map/12685-5.png" type="Texture" id=48]
+[ext_resource path="res://assets/map/12685-13.png" type="Texture" id=49]
+[ext_resource path="res://assets/map/12684-13.png" type="Texture" id=50]
+[ext_resource path="res://assets/map/12684-9.png" type="Texture" id=51]
+[ext_resource path="res://assets/map/19192-1.png" type="Texture" id=52]
+[ext_resource path="res://assets/map/12684-11.png" type="Texture" id=53]
+[ext_resource path="res://assets/map/12685-3.png" type="Texture" id=54]
+[ext_resource path="res://assets/map/19177-1.png" type="Texture" id=55]
+[ext_resource path="res://assets/map/12685-2.png" type="Texture" id=56]
+[ext_resource path="res://assets/map/12685-6.png" type="Texture" id=57]
+[ext_resource path="res://assets/map/19194-1.png" type="Texture" id=58]
+[ext_resource path="res://assets/map/12684-3.png" type="Texture" id=59]
+[ext_resource path="res://assets/map/12684-5.png" type="Texture" id=60]
+[ext_resource path="res://assets/map/12685-15.png" type="Texture" id=61]
+[ext_resource path="res://assets/map/12685-11.png" type="Texture" id=62]
+[ext_resource path="res://assets/map/12684-10.png" type="Texture" id=63]
+[ext_resource path="res://assets/map/12685-7.png" type="Texture" id=64]
+[ext_resource path="res://assets/map/12684-4.png" type="Texture" id=65]
+[ext_resource path="res://Enemy/Snake.tscn" type="PackedScene" id=66]
+[ext_resource path="res://Level1.gd" type="Script" id=67]
+[ext_resource path="res://Control.gd" type="Script" id=68]
+[ext_resource path="res://ItemDrop.gd" type="Script" id=69]
+[ext_resource path="res://Skill.tscn" type="PackedScene" id=70]
+[ext_resource path="res://UserInterFace.tscn" type="PackedScene" id=71]
+[ext_resource path="res://Enemy/Monkeyy.tscn" type="PackedScene" id=72]
+[ext_resource path="res://Character/Steve.tscn" type="PackedScene" id=73]
 
 [sub_resource type="TileSet" id=1]
 0/name = "16868-1.png 0"
-0/texture = ExtResource( 8 )
+0/texture = ExtResource( 15 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 320, 160 )
@@ -85,7 +90,7 @@
 0/shapes = [  ]
 0/z_index = 0
 1/name = "16869-1.png 1"
-1/texture = ExtResource( 7 )
+1/texture = ExtResource( 17 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 224, 160 )
@@ -99,7 +104,7 @@
 1/shapes = [  ]
 1/z_index = 0
 2/name = "16870-1.png 2"
-2/texture = ExtResource( 10 )
+2/texture = ExtResource( 19 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 80, 80 )
@@ -113,7 +118,7 @@
 2/shapes = [  ]
 2/z_index = 0
 3/name = "12683-1.png 3"
-3/texture = ExtResource( 9 )
+3/texture = ExtResource( 18 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 64, 320, 32, 32 )
@@ -127,7 +132,7 @@
 3/shapes = [  ]
 3/z_index = 0
 4/name = "14476-1.png 4"
-4/texture = ExtResource( 11 )
+4/texture = ExtResource( 21 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 0, 192, 224 )
@@ -141,7 +146,7 @@
 4/shapes = [  ]
 4/z_index = 0
 5/name = "14477-1.png 5"
-5/texture = ExtResource( 12 )
+5/texture = ExtResource( 22 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 128, 224, 32, 32 )
@@ -155,7 +160,7 @@
 5/shapes = [  ]
 5/z_index = 0
 6/name = "14477-1.png 6"
-6/texture = ExtResource( 12 )
+6/texture = ExtResource( 22 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 0, 192, 256 )
@@ -169,7 +174,7 @@
 6/shapes = [  ]
 6/z_index = 0
 7/name = "12683-1.png 7"
-7/texture = ExtResource( 9 )
+7/texture = ExtResource( 18 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, -32, 96, 384 )
@@ -183,7 +188,7 @@
 7/shapes = [  ]
 7/z_index = 0
 8/name = "19174-1.png 8"
-8/texture = ExtResource( 21 )
+8/texture = ExtResource( 37 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( -32, 0, 96, 32 )
@@ -197,7 +202,7 @@
 8/shapes = [  ]
 8/z_index = 0
 9/name = "19175-1.png 9"
-9/texture = ExtResource( 17 )
+9/texture = ExtResource( 27 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 128, 96 )
@@ -211,7 +216,7 @@
 9/shapes = [  ]
 9/z_index = 0
 10/name = "19176-1.png 10"
-10/texture = ExtResource( 18 )
+10/texture = ExtResource( 28 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 96, 64 )
@@ -225,7 +230,7 @@
 10/shapes = [  ]
 10/z_index = 0
 11/name = "19177-1.png 11"
-11/texture = ExtResource( 19 )
+11/texture = ExtResource( 55 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 0, 0, 96, 64 )
@@ -239,7 +244,7 @@
 11/shapes = [  ]
 11/z_index = 0
 12/name = "19178-1.png 12"
-12/texture = ExtResource( 20 )
+12/texture = ExtResource( 36 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 0, 0, 64, 32 )
@@ -253,7 +258,7 @@
 12/shapes = [  ]
 12/z_index = 0
 13/name = "19187-1.png 13"
-13/texture = ExtResource( 23 )
+13/texture = ExtResource( 31 )
 13/tex_offset = Vector2( 0, 0 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 0, 0, 128, 96 )
@@ -267,7 +272,7 @@
 13/shapes = [  ]
 13/z_index = 0
 14/name = "19192-1.png 14"
-14/texture = ExtResource( 26 )
+14/texture = ExtResource( 52 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 0, 0, 160, 64 )
@@ -281,7 +286,7 @@
 14/shapes = [  ]
 14/z_index = 0
 15/name = "19193-1.png 15"
-15/texture = ExtResource( 24 )
+15/texture = ExtResource( 25 )
 15/tex_offset = Vector2( 0, 0 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 0, 0, 80, 48 )
@@ -295,7 +300,7 @@
 15/shapes = [  ]
 15/z_index = 0
 16/name = "19194-1.png 16"
-16/texture = ExtResource( 22 )
+16/texture = ExtResource( 58 )
 16/tex_offset = Vector2( 0, 0 )
 16/modulate = Color( 1, 1, 1, 1 )
 16/region = Rect2( 0, 0, 112, 64 )
@@ -309,7 +314,7 @@
 16/shapes = [  ]
 16/z_index = 0
 17/name = "19195-1.png 17"
-17/texture = ExtResource( 25 )
+17/texture = ExtResource( 38 )
 17/tex_offset = Vector2( 0, 0 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 0, 0, 80, 64 )
@@ -323,7 +328,7 @@
 17/shapes = [  ]
 17/z_index = 0
 18/name = "16898-1.png 18"
-18/texture = ExtResource( 66 )
+18/texture = ExtResource( 5 )
 18/tex_offset = Vector2( 0, 0 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 0, 0, 160, 80 )
@@ -337,7 +342,7 @@
 18/shapes = [  ]
 18/z_index = 0
 19/name = "16899-1.png 19"
-19/texture = ExtResource( 68 )
+19/texture = ExtResource( 7 )
 19/tex_offset = Vector2( 0, 0 )
 19/modulate = Color( 1, 1, 1, 1 )
 19/region = Rect2( 0, 0, 128, 48 )
@@ -351,7 +356,7 @@
 19/shapes = [  ]
 19/z_index = 0
 20/name = "19470-1.png 20"
-20/texture = ExtResource( 67 )
+20/texture = ExtResource( 4 )
 20/tex_offset = Vector2( 0, 0 )
 20/modulate = Color( 1, 1, 1, 1 )
 20/region = Rect2( 0, 0, 64, 144 )
@@ -365,7 +370,7 @@
 20/shapes = [  ]
 20/z_index = 0
 21/name = "19470-1.png 21"
-21/texture = ExtResource( 67 )
+21/texture = ExtResource( 4 )
 21/tex_offset = Vector2( 0, 0 )
 21/modulate = Color( 1, 1, 1, 1 )
 21/region = Rect2( -16, 0, 16, 16 )
@@ -387,7 +392,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="TileSet" id=4]
 0/name = "platformPack_tile001.png 0"
-0/texture = ExtResource( 2 )
+0/texture = ExtResource( 10 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 64, 64 )
@@ -408,7 +413,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 } ]
 0/z_index = 0
 1/name = "platformPack_tile004.png 1"
-1/texture = ExtResource( 3 )
+1/texture = ExtResource( 16 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 64, 64 )
@@ -473,7 +478,7 @@ extents = Vector2( 40, 16.5 )
 
 [sub_resource type="SpriteFrames" id=19]
 animations = [ {
-"frames": [ ExtResource( 49 ), ExtResource( 35 ), ExtResource( 44 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 50 ), ExtResource( 40 ), ExtResource( 38 ), ExtResource( 32 ), ExtResource( 52 ), ExtResource( 45 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 35 ), ExtResource( 59 ), ExtResource( 65 ), ExtResource( 60 ), ExtResource( 30 ), ExtResource( 47 ), ExtResource( 44 ), ExtResource( 51 ), ExtResource( 63 ), ExtResource( 53 ), ExtResource( 40 ), ExtResource( 50 ), ExtResource( 43 ), ExtResource( 45 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -481,14 +486,18 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=20]
 animations = [ {
-"frames": [ ExtResource( 33 ), ExtResource( 47 ), ExtResource( 36 ), ExtResource( 27 ), ExtResource( 42 ), ExtResource( 37 ), ExtResource( 55 ), ExtResource( 34 ), ExtResource( 48 ), ExtResource( 31 ), ExtResource( 53 ), ExtResource( 39 ), ExtResource( 43 ), ExtResource( 28 ), ExtResource( 51 ) ],
+"frames": [ ExtResource( 42 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 41 ), ExtResource( 48 ), ExtResource( 57 ), ExtResource( 64 ), ExtResource( 39 ), ExtResource( 29 ), ExtResource( 34 ), ExtResource( 62 ), ExtResource( 46 ), ExtResource( 49 ), ExtResource( 33 ), ExtResource( 61 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
+[sub_resource type="ShaderMaterial" id=21]
+
+[sub_resource type="ShaderMaterial" id=22]
+
 [node name="Level1" type="Node2D"]
-script = ExtResource( 58 )
+script = ExtResource( 67 )
 
 [node name="Tile OneWay" type="TileMap" parent="."]
 position = Vector2( 64, 0 )
@@ -499,10 +508,11 @@ format = 1
 tile_data = PoolIntArray( -2293758, 4, 0, -2228185, 6, 0, -1900554, 16, 0, -1900545, 15, 0, -1966080, 7, 0, -1966072, 16, 0, -1835028, 8, 0, -1835027, 0, 0, -1835019, 1, 0, -1835015, 0, 0, -1900544, 1, 0, -1900539, 0, 0, -1834991, 16, 0, -1834974, 15, 0, -1834970, 14, 0, -1834963, 16, 0, -1703947, 2, 0, -1769467, 2, 0, -1769462, 0, 0, -1769454, 0, 0, -1769446, 0, 0, -1769438, 1, 0, -1769433, 0, 0, -1769429, 7, 0, -1638361, 2, 0, -1507321, 6, 0, -1507318, 6, 0, -1441780, 4, 0, -1441740, 6, 0, -1441733, 6, 0, -1376195, 4, 0, -1179626, 13, 0, -1114106, 14, 0, -1114099, 14, 0, -1114073, 13, 0, -983043, 8, 0, -983042, 0, 0, -1048573, 7, 0, -1048570, 1, 0, -1048566, 0, 0, -1048558, 0, 0, -1048519, 17, 0, -983026, 1, 0, -983024, 8, 0, -983016, 0, 0, -983008, 0, 0, -982999, 0, 0, -982991, 1, 0, -982986, 0, 0, -982981, 0, 0, -982979, 7, 0, -982974, 8, 0, -917494, 2, 0, -917467, 1, 0, -851949, 2, 0, -851914, 2, 0, -786390, 2, 0, -131082, 10, 0, -65551, 8, 0, -65550, 0, 0, -65543, 1, 0, -65539, 0, 0, -131071, 7, 0, -131020, 0, 0, -131013, 1, 0, -131010, 0, 0, -131003, 8, 0, -65483, 11, 0, 65534, 2, 0, 38, 0, 0, 40, 7, 0, 46, 0, 0, 65580, 1, 0, 131124, 2, 0, 327689, 6, 0, 655368, 13, 0, 655392, 9, 0, 720900, 11, 0, 720901, 12, 0, 720905, 10, 0, 720906, 12, 0, 720926, 11, 0, 720928, 8, 0, 851959, 0, 0, 851967, 0, 0, 786439, 1, 0, 786444, 0, 0, 786452, 1, 0, 786457, 0, 0, 786464, 1, 0, 786468, 0, 0, 786474, 0, 0, 852017, 18, 0, 852026, 20, 0, 917515, 2, 0, 917536, 2, 0, 917555, 18, 0, 983093, 18, 0, 983099, 13, 0, 1048631, 18, 0, 1114168, 0, 0, 1114176, 0, 0, 1114183, 0, 0, 1114191, 12, 0, 1179712, 12, 0, 1966244, 18, 0 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2( 10, 0 )
+scroll_offset = Vector2( 520, 425.728 )
 
 [node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
 show_behind_parent = true
+position = Vector2( -286.4, -314.854 )
 scale = Vector2( 2, 2 )
 motion_scale = Vector2( 0.2, 0.2 )
 motion_offset = Vector2( 0, -40 )
@@ -513,10 +523,11 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/sky"]
 z_index = 1
-texture = ExtResource( 6 )
+texture = ExtResource( 13 )
 centered = false
 
 [node name="cloud" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -1721.3, -543.709 )
 motion_scale = Vector2( 0.4, 0.4 )
 motion_offset = Vector2( 0, -120 )
 motion_mirroring = Vector2( 2236.5, 774 )
@@ -524,16 +535,16 @@ motion_mirroring = Vector2( 2236.5, 774 )
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/cloud"]
 position = Vector2( 448, -160 )
 z_index = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 20 )
 centered = false
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/cloud"]
 z_index = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 14 )
 centered = false
 
 [node name="mountain" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 32, 352 )
+position = Vector2( -636.2, 607.437 )
 scale = Vector2( 1, 1.2 )
 motion_scale = Vector2( 0.6, 0.6 )
 motion_offset = Vector2( 0, -120 )
@@ -543,10 +554,10 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/mountain"]
-texture = ExtResource( 14 )
+texture = ExtResource( 23 )
 
 [node name="mountain2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 640, 416 )
+position = Vector2( -386.7, 671.437 )
 scale = Vector2( 1, 1.2 )
 motion_scale = Vector2( 0.6, 0.6 )
 motion_offset = Vector2( 0, -120 )
@@ -556,10 +567,10 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/mountain2"]
-texture = ExtResource( 15 )
+texture = ExtResource( 12 )
 
 [node name="mountain3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 80, 384 )
+position = Vector2( -523.2, 639.437 )
 scale = Vector2( 1, 1.2 )
 motion_scale = Vector2( 0.6, 0.6 )
 motion_offset = Vector2( 0, -120 )
@@ -571,7 +582,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/mountain3"]
 position = Vector2( 0, -106.667 )
 scale = Vector2( 1, 1.73059 )
-texture = ExtResource( 16 )
+texture = ExtResource( 32 )
 centered = false
 
 [node name="Tiles Solid" type="TileMap" parent="."]
@@ -705,18 +716,28 @@ one_way_collision = true
 position = Vector2( 1392, 480 )
 shape = SubResource( 13 )
 
-[node name="Steve" parent="." groups=[
+[node name="Steve" type="KinematicBody2D" parent="." groups=[
 "Persist",
-] instance=ExtResource( 1 )]
-position = Vector2( -8, -104 )
+] instance=ExtResource( 73 )]
+position = Vector2( -8, -85.728 )
 z_index = 1
 input_pickable = true
+script = ExtResource( 1 )
+route = NodePath(".")
+max_health = 1000
+max_magic = 1000
+basic_damage = 20
+basic_defende = 10
+money = 110000
+juntuan = 22000
+JUMP = -800
+SPEED = 400
 
 [node name="Timer" type="Timer" parent="Steve"]
 wait_time = 2.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 13 )
+stream = ExtResource( 11 )
 autoplay = true
 
 [node name="climb" type="Area2D" parent="."]
@@ -757,13 +778,13 @@ shape = SubResource( 18 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 352 )
 frames = SubResource( 19 )
-frame = 11
+frame = 8
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 416 )
 frames = SubResource( 20 )
-frame = 6
+frame = 3
 playing = true
 
 [node name="TransPort2" type="Area2D" parent="."]
@@ -782,50 +803,71 @@ shape = SubResource( 18 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
 frames = SubResource( 19 )
-frame = 11
+frame = 8
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
 frames = SubResource( 20 )
-frame = 6
+frame = 3
 playing = true
 
-[node name="Snake" parent="." groups=[
+[node name="Snake" type="KinematicBody2D" parent="." groups=[
 "enemy",
-] instance=ExtResource( 57 )]
-position = Vector2( 1072, 376 )
+] instance=ExtResource( 66 )]
+material = SubResource( 21 )
+position = Vector2( 1105.19, 375.921 )
 rotation = -0.00863177
 collision_layer = 2
 collision_mask = 2147483648
+script = ExtResource( 9 )
+attack1 = 2
+defend = 1
+max_health = 100
+health = 100
+attack_range = 100
 
-[node name="UserInterFace" parent="." instance=ExtResource( 60 )]
+[node name="UserInterFace" type="CanvasLayer" parent="." instance=ExtResource( 71 )]
+script = ExtResource( 68 )
 
-[node name="Monkey" parent="." groups=[
+[node name="Monkey" type="KinematicBody2D" parent="." groups=[
 "enemy",
-] instance=ExtResource( 61 )]
-position = Vector2( 1440, -16 )
+] instance=ExtResource( 72 )]
+material = SubResource( 22 )
+position = Vector2( 1599.86, -16.08 )
 collision_layer = 2
 collision_mask = 0
+script = ExtResource( 9 )
+attack1 = 2
+defend = 1
+max_health = 100
+health = 100
+attack_range = 100
 
 [node name="Battle" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 62 )
+stream = ExtResource( 8 )
 
 [node name="BattleTime" type="Timer" parent="."]
 
 [node name="BattleSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 63 )
+stream = ExtResource( 6 )
 
-[node name="ItemDrop" parent="." instance=ExtResource( 64 )]
+[node name="ItemDrop" type="KinematicBody2D" parent="." instance=ExtResource( 24 )]
 position = Vector2( 712, 400 )
 z_index = 1
+collision_layer = 12
+collision_mask = 0
+script = ExtResource( 69 )
 
-[node name="ItemDrop2" parent="." instance=ExtResource( 64 )]
+[node name="ItemDrop2" type="KinematicBody2D" parent="." instance=ExtResource( 24 )]
 position = Vector2( 760, 400 )
 z_index = 1
+collision_layer = 12
+collision_mask = 0
+script = ExtResource( 69 )
 
 [node name="Spawner" type="Node2D" parent="."]
-script = ExtResource( 65 )
+script = ExtResource( 2 )
 
 [node name="2_1" type="Position2D" parent="Spawner"]
 position = Vector2( -272, -64 )
@@ -838,8 +880,19 @@ position = Vector2( -184, -64 )
 
 [node name="Tween" type="Tween" parent="Spawner"]
 
-[node name="Skill" parent="." instance=ExtResource( 69 )]
-
+[node name="Skill" type="Node2D" parent="." instance=ExtResource( 70 )]
+script = ExtResource( 3 )
+host_node = NodePath("..")
+skill_name = "回风拂柳"
+skill_icon = null
+input_key = "R"
+cast_dist = 75.0
+need_level = 1.0
+damage = 20.0
+cooldown = 1.0
+duration = 0.5
+job_name = "js"
+[connection signal="health_updated" from="Steve" to="Steve" method="_on_Steve_health_updated"]
 [connection signal="body_entered" from="climb" to="Steve" method="_on_climb_body_entered"]
 [connection signal="body_exited" from="climb" to="Steve" method="_on_climb_body_exited"]
 [connection signal="body_entered" from="TransPort" to="Steve" method="_on_TransPort_body_entered"]
@@ -847,6 +900,8 @@ position = Vector2( -184, -64 )
 [connection signal="body_entered" from="TransPort2" to="Steve" method="_on_TransPort_body_entered"]
 [connection signal="body_exited" from="TransPort2" to="Steve" method="_on_TransPort_body_exited"]
 [connection signal="monster_die" from="Snake" to="." method="_on_Snake_monster_die"]
+[connection signal="health_updated" from="UserInterFace" to="UserInterFace" method="_on_UserInterFace_health_updated"]
 [connection signal="monster_die" from="Monkey" to="." method="_on_Monkey_monster_die"]
+[connection signal="monster_die" from="Monkey" to="Monkey" method="_on_Monster_monster_die"]
 [connection signal="timeout" from="BattleTime" to="Steve" method="_on_BattleTime_timeout"]
 [connection signal="monster_die" from="Spawner" to="Spawner" method="_on_Spawner_monster_die"]

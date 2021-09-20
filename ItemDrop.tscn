@@ -42,7 +42,7 @@ script = ExtResource( 5 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -0.575796 )
 frames = SubResource( 1 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

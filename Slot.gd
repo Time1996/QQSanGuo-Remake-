@@ -18,10 +18,7 @@ enum SlotType{#第一个设置0 后面的自动递增+1
 	INVENTORY,
 }
 func _ready():
-	#item = ItemClass.instance()
-	#item.scale = item.scale * 0.5
-	#add_child(item)
-	
+	slot_index = int(self.name.substr(self.name.length()-1, self.name.length()-1))
 	selected_style = StyleBoxTexture.new()
 	default_style = StyleBoxTexture.new()
 	hotbar_style = StyleBoxTexture.new()
@@ -66,14 +63,11 @@ func putIntoSlot(new_item):
 func initialize_item(item_name, item_quantity):
 	if item == null:##有BUG 每次重新打开会
 		item = ItemClass.instance()
-#		self.rect_size = Vector2(235, 25)
-#		self.rect_min_size = Vector2(235, 25)
 		item.scale *= 0.6
 		item.set_item(item_name, item_quantity)
 		add_child(item)
 	else:
 		item.set_item(item_name, item_quantity)
-	#refresh_style()
 	
 func _make_custom_tooltip(for_text):
 	var label = Label.new()

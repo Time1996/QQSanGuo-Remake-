@@ -243,6 +243,7 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 
 [editable path="Sprite"]

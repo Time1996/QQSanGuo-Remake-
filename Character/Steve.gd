@@ -6,6 +6,8 @@ export var max_health = 100
 export var max_magic = 100
 export var basic_damage = 20
 export var basic_defende = 10
+export var money = 11000
+export var juntuan = 2200
 var state_machine
 
 var experience_pool = 100 #经验池
@@ -224,18 +226,12 @@ func _on_TransPort_body_entered(body):
 	print(body)
 	trans = 1
 
-
-
 func _on_climb_body_exited(body):
 	state = 0
 	monirable = 0
 
-
-
 func _on_TransPort_body_exited(body):
 	trans = 0
-
-
 
 func _on_Timer_timeout():
 	attacking = 0
@@ -245,9 +241,6 @@ func _on_HitBox_body_entered(body):
 		print("fuck that's not enemy!")
 	if body.is_in_group("enemy"):
 		body.call_deferred("injury", basic_damage)  ##对敌造成汇总伤害 自身基础+技能+装备
-
-
-
 func _on_climb_body_entered(body):
 	monirable = 1
 	if cnt > 1 and Input.is_action_pressed("up") or Input.is_action_pressed("down"):
@@ -255,7 +248,6 @@ func _on_climb_body_entered(body):
 	cnt+=1
 	if cnt > 10:
 		cnt = 2
-
 
 func _on_Steve_injury():
 	health -= 10
@@ -276,8 +268,6 @@ func dead():
 	##弹出死亡界面 这里先重新载入地图
 	get_tree().change_scene("res://Level1.tscn")
 	
-
-
 func _on_Steve_health_updated(value):
 	#var prev_health = health
 	health -= value
@@ -347,6 +337,9 @@ func get_save_stats():
 			'magic' : magic,
 			'basic_damage' : basic_damage,
 			'basic_defende' : basic_defende,
+			'money' : money,
+			'juntuan' : juntuan,
+			'exprience' : experience_pool,
 		}
 	}
 
@@ -358,3 +351,8 @@ func load_save_stats(stats): #需要保存的信息 目前是位置 属性
 	magic = stats.stats.magic
 	basic_damage = stats.stats.basic_damage
 	basic_defende = stats.stats.basic_defende
+	money = stats.stats.money
+	juntuan = stats.stats.juntuan
+	experience_pool = stats.stats.exprience
+
+

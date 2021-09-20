@@ -44,6 +44,11 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "attack",
@@ -52,11 +57,6 @@ animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 21 ), ExtResource( 7 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "injury",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 14 ) ],
@@ -251,7 +251,6 @@ script = ExtResource( 30 )
 material = SubResource( 2 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -319,6 +318,7 @@ stream = ExtResource( 32 )
 
 [node name="deathAndInjury" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 31 )
+[connection signal="monster_die" from="." to="." method="_on_Monster_monster_die"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
