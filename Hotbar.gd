@@ -30,7 +30,6 @@ func initialize_hotbar():
 	for i in range(slots.size()): ##每个子节点都连上 函数
 		if PlayerInventory.hotbar.has(i): ##initialize_item函数 有BUG 
 			slots[i].initialize_item(PlayerInventory.hotbar[i][0], PlayerInventory.hotbar[i][1])
-
 func slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT && event.pressed:

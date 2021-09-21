@@ -8,9 +8,6 @@ var item_slot
 func _ready():
 	item_name = "金疮药"
 #	item_slot = get_parent().slot_index
-	print(item_name)
-	print("item_slot")
-	print(item_slot)
 	$TextureRect.texture = load("res://UI/item_icons/" + item_name + ".png")
 	var stack_size = int(jsonData.item_data[item_name]["StackSize"])
 #	item_quantity = randi() % stack_size + 1

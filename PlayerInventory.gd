@@ -2,16 +2,16 @@ extends Node
 
 signal active_item_updated
 
-const NUM_INVENTORY_SLOTS = 20
+const NUM_INVENTORY_SLOTS = 9
 const NUM_HOTBAR_SLOTS = 8
 
 ##背包初始内容
 var inventory = {
-	0 : ["金疮药", 99]
+#	0 : ["金疮药", 99]
 }
 
 var hotbar = {
-	0 : ["金疮药", 99]
+#	0 : ["金疮药", 99]
 }
 
 var active_item_slot = 0
@@ -76,3 +76,15 @@ func active_item_scroll_up():
 		active_item_slot -= 1
 #	print(active_item_slot)
 	emit_signal("active_item_updated")
+
+func remove_all_item():
+	print("clear")
+	hotbar.clear()
+#	get_tree().get_root().get_node("Level1").get_node("UserInterFace").get_node("Hotbar").initialize_hotbar()
+	inventory.clear()
+#	for i in NUM_HOTBAR_SLOTS:
+#		if hotbar.has(i):
+#			hotbar.erase(i)
+#	for i in NUM_INVENTORY_SLOTS:
+#		if inventory.has(i):
+#			inventory.erase(i)

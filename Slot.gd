@@ -18,7 +18,7 @@ enum SlotType{#第一个设置0 后面的自动递增+1
 	INVENTORY,
 }
 func _ready():
-	slot_index = int(self.name.substr(self.name.length()-1, self.name.length()-1))
+	slot_index = int(self.name.substr(self.name.length()-1, 1))
 	selected_style = StyleBoxTexture.new()
 	default_style = StyleBoxTexture.new()
 	hotbar_style = StyleBoxTexture.new()

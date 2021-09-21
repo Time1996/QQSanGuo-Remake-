@@ -22,3 +22,8 @@ func _on_Snake_monster_die():
 
 func _on_Spawner_monster_die():
 	pass # Replace with function body.
+
+
+func _on_TransPort_body_entered(body):
+	
+	pass # Replace with function body.

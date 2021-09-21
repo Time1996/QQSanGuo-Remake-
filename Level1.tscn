@@ -1,8 +1,7 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Character/Steve.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/PNG/Tiles/platformPack_tile001.png" type="Texture" id=2]
-[ext_resource path="res://assets/PNG/Tiles/platformPack_tile004.png" type="Texture" id=3]
+[ext_resource path="res://TransPort.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/map/9023-1.png" type="Texture" id=4]
 [ext_resource path="res://assets/map/9024-1.png" type="Texture" id=5]
 [ext_resource path="res://assets/map/8985-1.png" type="Texture" id=6]
@@ -387,7 +386,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [sub_resource type="TileSet" id=4]
 0/name = "platformPack_tile001.png 0"
-0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 64, 64 )
@@ -408,7 +406,6 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 } ]
 0/z_index = 0
 1/name = "platformPack_tile004.png 1"
-1/texture = ExtResource( 3 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 64, 64 )
@@ -745,34 +742,12 @@ shape = SubResource( 16 )
 position = Vector2( 1400, 152 )
 shape = SubResource( 16 )
 
-[node name="TransPort" type="Area2D" parent="."]
-z_index = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort"]
-position = Vector2( -136, 416.5 )
-z_index = 2
-shape = SubResource( 18 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort"]
-position = Vector2( -136, 352 )
-frames = SubResource( 19 )
-frame = 11
-playing = true
-
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort"]
-position = Vector2( -136, 416 )
-frames = SubResource( 20 )
-frame = 6
-playing = true
+[node name="TransPort" parent="." instance=ExtResource( 2 )]
 
 [node name="TransPort2" type="Area2D" parent="."]
 position = Vector2( 2696, 152 )
 z_index = 2
 monitorable = false
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort2"]
 position = Vector2( -136, 416.5 )
@@ -782,13 +757,13 @@ shape = SubResource( 18 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
 frames = SubResource( 19 )
-frame = 11
+frame = 10
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
 frames = SubResource( 20 )
-frame = 6
+frame = 5
 playing = true
 
 [node name="Snake" parent="." groups=[
@@ -842,8 +817,7 @@ position = Vector2( -184, -64 )
 
 [connection signal="body_entered" from="climb" to="Steve" method="_on_climb_body_entered"]
 [connection signal="body_exited" from="climb" to="Steve" method="_on_climb_body_exited"]
-[connection signal="body_entered" from="TransPort" to="Steve" method="_on_TransPort_body_entered"]
-[connection signal="body_exited" from="TransPort" to="Steve" method="_on_TransPort_body_exited"]
+[connection signal="body_entered" from="TransPort" to="." method="_on_TransPort_body_entered"]
 [connection signal="body_entered" from="TransPort2" to="Steve" method="_on_TransPort_body_entered"]
 [connection signal="body_exited" from="TransPort2" to="Steve" method="_on_TransPort_body_exited"]
 [connection signal="monster_die" from="Snake" to="." method="_on_Snake_monster_die"]

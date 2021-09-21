@@ -148,7 +148,7 @@ func game_play(delta):
 				closet_enemy(min_dist)
 				move_to_target(delta, min_dist)
 			elif trans == 1 and Input.is_action_pressed("up"):
-				get_tree().change_scene("res://Level1.tscn")
+				get_tree().change_scene("res://Scene/JiangLinXiJiao.tscn")
 			elif Input.is_action_just_pressed("tab"):
 				var min_dist = 99999999
 #				min_dist = closet_enemy(min_dist)
@@ -269,11 +269,7 @@ func dead():
 	get_tree().change_scene("res://Level1.tscn")
 	
 func _on_Steve_health_updated(value):
-	#var prev_health = health
 	health -= value
-	#health -= clamp(value, 0, max_health)
-	#if health != prev_health:
-		#emit_signal("health_updated", health)
 	if health <= 0:
 		velocity = Vector2.ZERO
 		dead()

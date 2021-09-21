@@ -21,7 +21,7 @@ margin_bottom = 88.0
 
 [node name="Inventory" parent="." instance=ExtResource( 1 )]
 visible = false
-position = Vector2( 0, -72 )
+position = Vector2( -110.866, -72 )
 
 [node name="Hotbar" parent="." instance=ExtResource( 5 )]
 anchor_left = 0.362

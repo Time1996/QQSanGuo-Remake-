@@ -9,7 +9,6 @@ onready var inventory_slots = $ScrollContainer/VBoxContainer
 func _ready():
 	var slots = inventory_slots.get_children()
 	for i in range(slots.size()): ##每个子节点都连上 函数
-		print(i)
 		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]]) #捕获每次gui_input信号 对于每次捕捉到的信号 进行处理slot_gui_input函数 传递的参数是[slots[i]
 		slots[i].slot_index = i
 		slots[i].slot_type = SlotClass.SlotType.INVENTORY
