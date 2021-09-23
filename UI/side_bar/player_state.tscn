@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://UI/side_bar/75616-1.png" type="Texture" id=1]
+[ext_resource path="res://UI/side_bar/75606-2.png" type="Texture" id=2]
+[ext_resource path="res://UI/side_bar/75606-4.png" type="Texture" id=3]
+[ext_resource path="res://UI/side_bar/75606-3.png" type="Texture" id=4]
+[ext_resource path="res://UI/side_bar/75606-1.png" type="Texture" id=5]
+[ext_resource path="res://UI/side_bar/75616-2.png" type="Texture" id=6]
+[ext_resource path="res://UI/side_bar/75616-3.png" type="Texture" id=7]
+[ext_resource path="res://UI/side_bar/player_state.gd" type="Script" id=8]
+[ext_resource path="res://UI/player_state/75874-1.png" type="Texture" id=9]
+[ext_resource path="res://UI/player_state/75874-2.png" type="Texture" id=10]
+[ext_resource path="res://UI/player_state/75859-1.png" type="Texture" id=11]
+[ext_resource path="res://UI/player_state/75865-1.png" type="Texture" id=12]
+[ext_resource path="res://UI/player_state/75856-1.png" type="Texture" id=13]
+[ext_resource path="res://UI/player_state/75860-1.png" type="Texture" id=14]
+[ext_resource path="res://UI/player_state/75865-2.png" type="Texture" id=15]
+
+[node name="player_state" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -433.0
+margin_bottom = -174.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 364.0
+margin_bottom = 88.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="75856-1" type="Sprite" parent="TextureRect"]
+position = Vector2( 289.438, 69.4032 )
+texture = ExtResource( 13 )
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 16.0
+margin_top = 88.0
+margin_right = 380.0
+margin_bottom = 422.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 132.6
+margin_top = 56.1865
+margin_right = 214.6
+margin_bottom = 96.1865
+texture_normal = ExtResource( 12 )
+texture_focused = ExtResource( 15 )
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+margin_left = 47.9458
+margin_top = 56.1865
+margin_right = 129.946
+margin_bottom = 96.1865
+texture_normal = ExtResource( 9 )
+texture_focused = ExtResource( 10 )
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+margin_left = 336.0
+margin_top = 27.0
+margin_right = 353.0
+margin_bottom = 43.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 3 )
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+margin_left = 316.0
+margin_top = 27.0
+margin_right = 332.0
+margin_bottom = 44.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="."]
+margin_left = 225.871
+margin_top = 55.2495
+margin_right = 249.871
+margin_bottom = 86.2495
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="TextureButton3" to="." method="_on_TextureButton3_pressed"]

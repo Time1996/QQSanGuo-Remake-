@@ -1,8 +1,10 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Character/Steve.gd" type="Script" id=1]
 [ext_resource path="res://Character/Sprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ANIMATION/idle.tres" type="Animation" id=3]
+[ext_resource path="res://assets/map/jianglinxi/8997-1.png" type="Texture" id=4]
+[ext_resource path="res://assets/map/jianglinxi/10460-1.png" type="Texture" id=5]
 [ext_resource path="res://EFECTIVE/js/483-1.png" type="Texture" id=29]
 [ext_resource path="res://ANIMATION/attack2.tres" type="Animation" id=30]
 [ext_resource path="res://EFECTIVE/js/306-9.png" type="Texture" id=39]
@@ -27,10 +29,10 @@
 [ext_resource path="res://EFECTIVE/js/306-8.png" type="Texture" id=59]
 [ext_resource path="res://Camera2D.tscn" type="PackedScene" id=67]
 
-[sub_resource type="AnimationNodeAnimation" id=1]
+[sub_resource type="AnimationNodeAnimation" id=32]
 animation = "attackLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=2]
+[sub_resource type="AnimationNodeAnimation" id=33]
 animation = "attackRight"
 
 [sub_resource type="AnimationNodeAnimation" id=3]
@@ -92,9 +94,9 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id=26]
 resource_local_to_scene = true
-states/attackLeft/node = SubResource( 1 )
+states/attackLeft/node = SubResource( 32 )
 states/attackLeft/position = Vector2( -274, 55 )
-states/attackRight/node = SubResource( 2 )
+states/attackRight/node = SubResource( 33 )
 states/attackRight/position = Vector2( -274, 206 )
 states/clim/node = SubResource( 3 )
 states/clim/position = Vector2( 710, 39 )
@@ -246,7 +248,7 @@ tracks/0/keys = {
 "values": [ "injury" ]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=40]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
@@ -261,7 +263,7 @@ tracks/0/keys = {
 "values": [ "jump" ]
 }
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=41]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
@@ -317,13 +319,30 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 48, 56 )
 
-[node name="Steve" type="KinematicBody2D"]
+[node name="Steve" type="KinematicBody2D" groups=[
+"Persist",
+]]
 script = ExtResource( 1 )
 route = NodePath(".")
 max_health = 1000
 max_magic = 1000
 money = 110000
 juntuan = 22000
+
+[node name="Camera2D" parent="." instance=ExtResource( 67 )]
+drag_margin_h_enabled = false
+
+[node name="jianglinxijiao" type="Sprite" parent="Camera2D"]
+visible = false
+z_index = -99
+texture = ExtResource( 4 )
+
+[node name="jianglinxijiao2" type="Sprite" parent="Camera2D"]
+visible = false
+position = Vector2( 152, -152 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -99
+texture = ExtResource( 5 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 26 )
@@ -338,8 +357,8 @@ anims/clim = SubResource( 29 )
 anims/die = SubResource( 30 )
 anims/idle = ExtResource( 3 )
 anims/injury = SubResource( 31 )
-anims/jump = SubResource( 32 )
-anims/run = SubResource( 33 )
+anims/jump = SubResource( 40 )
+anims/run = SubResource( 41 )
 anims/yinxuejianwu = SubResource( 34 )
 
 [node name="Sprite" parent="." instance=ExtResource( 2 )]
@@ -362,7 +381,7 @@ position = Vector2( 72, 0 )
 scale = Vector2( 1.4, 1.2 )
 frames = SubResource( 37 )
 animation = "e2"
-frame = 1
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -370,7 +389,7 @@ position = Vector2( 24, 10 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 38 )
 animation = "accmulate"
-frame = 5
+frame = 9
 playing = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -388,7 +407,6 @@ shape = SubResource( 39 )
 [node name="self_heal" type="Timer" parent="."]
 autostart = true
 
-[node name="Camera2D" parent="." instance=ExtResource( 67 )]
 [connection signal="health_updated" from="." to="." method="_on_Steve_health_updated"]
 [connection signal="body_entered" from="Sprite/HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

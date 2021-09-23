@@ -9,7 +9,23 @@
 [ext_resource path="res://UI/67378-2.png" type="Texture" id=7]
 [ext_resource path="res://UI/67379-1.png" type="Texture" id=8]
 [ext_resource path="res://UI/67379-2.png" type="Texture" id=9]
-[ext_resource path="res://BackPack.gd" type="Script" id=10]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends TextureRect
+
+func get_drag_data(position):
+	var Contorl = self.duplicate()
+	print(\"YEs\")
+	var posi = get_global_mouse_position()
+	Contorl.rect_position = posi
+	print(Contorl.rect_position)
+	set_drag_preview(Contorl)
+	return Contorl
+	
+
+func _ready():
+	pass
+"
 
 [node name="Control" type="TextureRect"]
 anchor_right = 1.0
@@ -18,7 +34,7 @@ mouse_filter = 0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
-script = ExtResource( 10 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

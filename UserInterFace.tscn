@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Control.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Hotbar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://SaveAndLoad.tscn" type="PackedScene" id=6]
 [ext_resource path="res://exprience.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/side_bar/player_task.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/side_bar/player_state.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/side_bar/player_skill.tscn" type="PackedScene" id=10]
 
 [node name="UserInterFace" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -45,16 +48,29 @@ __meta__ = {
 [node name="SaveAndLoad" parent="." instance=ExtResource( 6 )]
 visible = false
 
-[node name="Button" type="Button" parent="."]
-margin_right = 12.0
-margin_bottom = 29.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="exprience" parent="." instance=ExtResource( 7 )]
 margin_top = 545.26
 margin_bottom = 1.25989
 
+[node name="player_skill" parent="." instance=ExtResource( 10 )]
+visible = false
+margin_left = -33.2977
+margin_top = 54.7035
+margin_right = -55.2977
+margin_bottom = -102.296
+
+[node name="player_state" parent="." instance=ExtResource( 9 )]
+visible = false
+margin_left = 212.868
+margin_top = 61.8387
+margin_right = -220.132
+margin_bottom = -112.161
+
+[node name="player_task" parent="." instance=ExtResource( 8 )]
+visible = false
+margin_left = 117.244
+margin_top = 30.9194
+margin_right = -106.756
+margin_bottom = -50.0806
+
 [connection signal="health_updated" from="." to="." method="_on_UserInterFace_health_updated"]
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

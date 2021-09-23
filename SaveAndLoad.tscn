@@ -20,19 +20,19 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="CenterContainer"]
 margin_top = 236.0
-margin_right = 1024.0
+margin_right = 800.0
 margin_bottom = 265.0
 text = "保存"
 
 [node name="Button2" type="Button" parent="CenterContainer"]
 margin_top = 269.0
-margin_right = 1024.0
+margin_right = 800.0
 margin_bottom = 298.0
 text = "载入"
 
 [node name="Button4" type="Button" parent="CenterContainer"]
 margin_top = 302.0
-margin_right = 1024.0
+margin_right = 800.0
 margin_bottom = 331.0
 text = "返回主菜单"
 
@@ -49,9 +49,10 @@ __meta__ = {
 
 [node name="Button3" type="Button" parent="CenterContainer"]
 margin_top = 335.0
-margin_right = 1024.0
+margin_right = 800.0
 margin_bottom = 364.0
 text = "关闭"
+
 [connection signal="pressed" from="CenterContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CenterContainer/Button2" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="CenterContainer/Button4" to="." method="_on_Button4_pressed"]

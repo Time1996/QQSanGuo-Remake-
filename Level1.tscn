@@ -702,9 +702,14 @@ one_way_collision = true
 position = Vector2( 1392, 480 )
 shape = SubResource( 13 )
 
-[node name="Steve" parent="." groups=[
-"Persist",
-] instance=ExtResource( 1 )]
+[node name="Snake" parent="." groups=[
+"enemy",
+] instance=ExtResource( 57 )]
+position = Vector2( 1072, 376 )
+rotation = -0.00863177
+collision_mask = 2147483648
+
+[node name="Steve" parent="." instance=ExtResource( 1 )]
 position = Vector2( -8, -104 )
 z_index = 1
 input_pickable = true
@@ -757,22 +762,14 @@ shape = SubResource( 18 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
 frames = SubResource( 19 )
-frame = 10
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
 frames = SubResource( 20 )
-frame = 5
+frame = 11
 playing = true
-
-[node name="Snake" parent="." groups=[
-"enemy",
-] instance=ExtResource( 57 )]
-position = Vector2( 1072, 376 )
-rotation = -0.00863177
-collision_layer = 2
-collision_mask = 2147483648
 
 [node name="UserInterFace" parent="." instance=ExtResource( 60 )]
 
@@ -780,7 +777,6 @@ collision_mask = 2147483648
 "enemy",
 ] instance=ExtResource( 61 )]
 position = Vector2( 1440, -16 )
-collision_layer = 2
 collision_mask = 0
 
 [node name="Battle" type="AudioStreamPlayer" parent="."]
@@ -815,12 +811,12 @@ position = Vector2( -184, -64 )
 
 [node name="Skill" parent="." instance=ExtResource( 69 )]
 
+[connection signal="monster_die" from="Snake" to="." method="_on_Snake_monster_die"]
 [connection signal="body_entered" from="climb" to="Steve" method="_on_climb_body_entered"]
 [connection signal="body_exited" from="climb" to="Steve" method="_on_climb_body_exited"]
 [connection signal="body_entered" from="TransPort" to="." method="_on_TransPort_body_entered"]
 [connection signal="body_entered" from="TransPort2" to="Steve" method="_on_TransPort_body_entered"]
 [connection signal="body_exited" from="TransPort2" to="Steve" method="_on_TransPort_body_exited"]
-[connection signal="monster_die" from="Snake" to="." method="_on_Snake_monster_die"]
 [connection signal="monster_die" from="Monkey" to="." method="_on_Monkey_monster_die"]
 [connection signal="timeout" from="BattleTime" to="Steve" method="_on_BattleTime_timeout"]
 [connection signal="monster_die" from="Spawner" to="Spawner" method="_on_Spawner_monster_die"]

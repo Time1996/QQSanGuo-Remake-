@@ -112,5 +112,9 @@ texture_pressed = ExtResource( 22 )
 texture_hover = ExtResource( 23 )
 texture_disabled = ExtResource( 24 )
 stretch_mode = 5
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button5" to="." method="_on_Button5_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button6" to="." method="_on_Button6_pressed"]

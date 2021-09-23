@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var mouse_shape = preload("res://assets/mouse/28158-1.png")
+
 signal monster_die
 
 export var attack1 = 2#攻击力
@@ -136,15 +138,21 @@ func injury(damage):
 	if crit < 0.5:
 		damage *= 1.5
 		
+		$critical_attack.visible = true
+		
 		var offset = Vector2()
-		offset.x = rand_range(-5, 5)
-		offset.y = rand_range(-5, 5)
+		offset.x = rand_range(-15, 15)
+		offset.y = rand_range(-15, 15)
 		var newpos = get_parent().get_node("Steve/Camera2D").get_position()
 		var oldpos = newpos
 		newpos += offset
 		get_parent().get_node("Steve/Camera2D").set_position(newpos)
-		yield(get_tree().create_timer(0.1),"timeout")
+		yield(get_tree().create_timer(0.18),"timeout")
 		get_parent().get_node("Steve/Camera2D").set_position(oldpos)
+		yield(get_tree().create_timer(0.18),"timeout")
+		$critical_attack.visible = false
+		
+		
 		$FCTmgr.show_value(damage, true)
 	else:
 		$FCTmgr.show_value(damage, false)
@@ -202,4 +210,10 @@ func _on_noncombat_timeout():
 	$Timer.start(0.1)
 	time = 0
 	#state = IDLE
+	pass # Replace with function body.
+
+
+func _on_Monster_mouse_entered():
+	print("mouse inter")
+	Input.set_custom_mouse_cursor(mouse_shape)
 	pass # Replace with function body.

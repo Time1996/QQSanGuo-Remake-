@@ -44,7 +44,7 @@ func get_property() -> Dictionary:
 	for property in property_list:
 		var property_value = get(property)
 		data[property] = property_value
-	print(data)
+#	print(data)
 	return data
 
 ## 设置物品的属性
