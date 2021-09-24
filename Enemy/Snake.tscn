@@ -18,7 +18,7 @@
 [ext_resource path="res://assets/map/竹叶青/14359-3.png" type="Texture" id=16]
 [ext_resource path="res://MUSIC/3701.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/map/竹叶青/14362-1.png" type="Texture" id=18]
-[ext_resource path="res://EFECTIVE/js/数字经验/434-1.png" type="Texture" id=19]
+[ext_resource path="res://EFECTIVE/js/digit/434-1.png" type="Texture" id=19]
 [ext_resource path="res://assets/map/竹叶青/14359-7.png" type="Texture" id=21]
 [ext_resource path="res://assets/map/竹叶青/14359-6.png" type="Texture" id=22]
 [ext_resource path="res://assets/map/竹叶青/14364-1.png" type="Texture" id=23]
@@ -45,11 +45,6 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 26 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "die",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 18 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "attack",
@@ -58,6 +53,11 @@ animations = [ {
 "frames": [ ExtResource( 34 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 23 ) ],
 "loop": true,
 "name": "injury",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 26 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "die",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 32 ) ],
@@ -255,7 +255,7 @@ script = ExtResource( 27 )
 material = SubResource( 2 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -32,7 +32,7 @@
 [ext_resource path="res://Enemy/Snake.gd" type="Script" id=30]
 [ext_resource path="res://MUSIC/monkey.wav" type="AudioStream" id=31]
 [ext_resource path="res://MUSIC/3703.wav" type="AudioStream" id=32]
-[ext_resource path="res://EFECTIVE/js/数字经验/434-1.png" type="Texture" id=33]
+[ext_resource path="res://EFECTIVE/js/digit/437-1.png" type="Texture" id=33]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -45,11 +45,6 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ) ],
-"loop": false,
-"name": "die",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "attack",
@@ -58,6 +53,11 @@ animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 21 ), ExtResource( 7 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "injury",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": false,
+"name": "die",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 26 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 14 ) ],
@@ -249,6 +249,8 @@ material = SubResource( 1 )
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 30 )
+attack1 = 4
+defend = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 2 )

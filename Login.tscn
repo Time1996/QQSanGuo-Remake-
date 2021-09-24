@@ -110,13 +110,13 @@ anims/cloud = SubResource( 1 )
 
 [node name="9023-1" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.764706 )
-position = Vector2( 784, 160 )
+position = Vector2( 552, 48 )
 scale = Vector2( 0.741449, 0.639535 )
 texture = ExtResource( 6 )
 
 [node name="9024-1" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.67451 )
-position = Vector2( 256, 408 )
+position = Vector2( 192, 144 )
 texture = ExtResource( 5 )
 
 [connection signal="pressed" from="VBoxContainer/Login" to="." method="_on_Login_pressed"]

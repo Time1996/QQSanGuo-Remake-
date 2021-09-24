@@ -178,7 +178,7 @@ func dead():
 	set_process(false)
 	if $deathAndInjury.playing == false:
 		$deathAndInjury.play()
-	$Tween.interpolate_property(self, "modulate", Color(255,255,255,0), Color(255, 255, 255, 1), 1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
+	$Tween.interpolate_property(self, "modulate:a", 1, 0, 1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	$Tween.start()
 	
 	Drop()

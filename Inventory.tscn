@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Slot.gd" type="Script" id=1]
 [ext_resource path="res://Inventory.gd" type="Script" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://UI/side_bar/75606-1.png" type="Texture" id=13]
 [ext_resource path="res://UI/side_bar/75616-4.png" type="Texture" id=14]
 [ext_resource path="res://UI/side_bar/75616-1.png" type="Texture" id=15]
+[ext_resource path="res://UI/67379-1.png" type="Texture" id=16]
+[ext_resource path="res://UI/67378-1.png" type="Texture" id=17]
+[ext_resource path="res://UI/67379-2.png" type="Texture" id=18]
+[ext_resource path="res://UI/67378-2.png" type="Texture" id=19]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
@@ -203,6 +207,7 @@ __meta__ = {
 
 [node name="Sprite" parent="." instance=ExtResource( 4 )]
 position = Vector2( 370, 282.8 )
+frame = 2
 
 [node name="name" type="Label" parent="."]
 margin_left = 269.656
@@ -240,6 +245,28 @@ texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 14 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+margin_left = 561.0
+margin_top = 190.375
+margin_right = 602.0
+margin_bottom = 225.375
+texture_normal = ExtResource( 17 )
+texture_focused = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+margin_left = 520.0
+margin_top = 190.375
+margin_right = 561.0
+margin_bottom = 225.375
+texture_normal = ExtResource( 16 )
+texture_focused = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

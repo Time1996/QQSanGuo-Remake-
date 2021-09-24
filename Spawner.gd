@@ -6,7 +6,7 @@ var eneme_set = preload("res://Enemy//Snake.tscn")
 
 
 func _ready():
-	monster_generation(3)
+	monster_generation(10)
 	pass
 
 func monster_generation(num):
@@ -32,6 +32,8 @@ func respawn():
 
 
 func _on_Spawner_monster_die():
-	get_node("../Steve").money += 200
-	get_node("../Steve").money
+	get_node("../Steve").money += 100
+	get_node("../Steve").gain_experience(1)
+	print(get_node("../Steve").money)
+	print(get_node("../Steve").experience_pool)
 	pass # Replace with function body.

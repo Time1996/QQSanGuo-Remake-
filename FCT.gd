@@ -3,7 +3,13 @@ extends Label
 ##浮动文本伤害
 
 func show_value(value, travel, duration, spread, crit=false):
-	text = value
+	
+	var value_str = str(value)
+	for i in value_str.length():
+#		$HBoxContainer/T1.texture = load("res://EFECTIVE/js/digit/"+value_str.substr(i, 1)+".png")
+		get_node("HBoxContainer/"+str(i+1)).texture = load("res://EFECTIVE/js/digit/"+value_str.substr(i, 1)+".png")
+		get_node("HBoxContainer/"+str(i+1)).visible = true
+#	text = value
 	var movement = travel.rotated(rand_range(-spread/2, spread/2))
 	rect_pivot_offset = rect_size / 2
 	$Tween.interpolate_property(self, "rect_position", rect_position, 
@@ -19,7 +25,11 @@ func show_value(value, travel, duration, spread, crit=false):
 									0.4, Tween.TRANS_BACK, Tween.EASE_IN)
 	$Tween.start()
 	yield($Tween, "tween_all_completed")
+	
 	queue_free()
 
 func _ready():
+	var box_size = $HBoxContainer.get_children()
+	for i in box_size:
+		i.visible = false
 	pass

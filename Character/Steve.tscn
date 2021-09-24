@@ -1,38 +1,49 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://Character/Steve.gd" type="Script" id=1]
 [ext_resource path="res://Character/Sprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ANIMATION/idle.tres" type="Animation" id=3]
 [ext_resource path="res://assets/map/jianglinxi/8997-1.png" type="Texture" id=4]
 [ext_resource path="res://assets/map/jianglinxi/10460-1.png" type="Texture" id=5]
-[ext_resource path="res://EFECTIVE/js/483-1.png" type="Texture" id=29]
+[ext_resource path="res://EFECTIVE/js/digit/435-1.png" type="Texture" id=6]
+[ext_resource path="res://EFECTIVE/js/digit/437-1.png" type="Texture" id=7]
+[ext_resource path="res://EFECTIVE/js/2/232-1.png" type="Texture" id=8]
+[ext_resource path="res://EFECTIVE/level_up/446-1.png" type="Texture" id=9]
+[ext_resource path="res://EFECTIVE/level_up/446-2.png" type="Texture" id=10]
+[ext_resource path="res://EFECTIVE/js/2/232-3.png" type="Texture" id=11]
+[ext_resource path="res://EFECTIVE/js/2/232-4.png" type="Texture" id=12]
+[ext_resource path="res://EFECTIVE/js/2/232-5.png" type="Texture" id=13]
+[ext_resource path="res://EFECTIVE/level_up/446-6.png" type="Texture" id=14]
+[ext_resource path="res://EFECTIVE/level_up/446-5.png" type="Texture" id=15]
+[ext_resource path="res://EFECTIVE/level_up/446-7.png" type="Texture" id=16]
+[ext_resource path="res://EFECTIVE/level_up/446-3.png" type="Texture" id=17]
+[ext_resource path="res://EFECTIVE/level_up/446-4.png" type="Texture" id=18]
+[ext_resource path="res://EFECTIVE/level_up/446-11.png" type="Texture" id=19]
+[ext_resource path="res://EFECTIVE/level_up/446-13.png" type="Texture" id=20]
+[ext_resource path="res://EFECTIVE/level_up/446-8.png" type="Texture" id=21]
+[ext_resource path="res://EFECTIVE/level_up/446-12.png" type="Texture" id=22]
+[ext_resource path="res://EFECTIVE/level_up/446-9.png" type="Texture" id=23]
+[ext_resource path="res://EFECTIVE/level_up/446-14.png" type="Texture" id=24]
+[ext_resource path="res://EFECTIVE/level_up/446-10.png" type="Texture" id=25]
+[ext_resource path="res://EFECTIVE/level_up/446-15.png" type="Texture" id=26]
 [ext_resource path="res://ANIMATION/attack2.tres" type="Animation" id=30]
 [ext_resource path="res://EFECTIVE/js/306-9.png" type="Texture" id=39]
-[ext_resource path="res://EFECTIVE/js/482-3.png" type="Texture" id=40]
 [ext_resource path="res://EFECTIVE/js/306-4.png" type="Texture" id=41]
-[ext_resource path="res://EFECTIVE/js/483-3.png" type="Texture" id=42]
-[ext_resource path="res://EFECTIVE/js/483-2.png" type="Texture" id=43]
-[ext_resource path="res://EFECTIVE/js/482-5.png" type="Texture" id=44]
-[ext_resource path="res://EFECTIVE/js/482-1.png" type="Texture" id=45]
 [ext_resource path="res://EFECTIVE/js/306-5.png" type="Texture" id=46]
 [ext_resource path="res://FCTmgr.tscn" type="PackedScene" id=48]
 [ext_resource path="res://EFECTIVE/js/306-10.png" type="Texture" id=49]
 [ext_resource path="res://EFECTIVE/js/306-3.png" type="Texture" id=50]
-[ext_resource path="res://EFECTIVE/js/483-4.png" type="Texture" id=51]
 [ext_resource path="res://EFECTIVE/js/306-7.png" type="Texture" id=52]
 [ext_resource path="res://EFECTIVE/js/306-2.png" type="Texture" id=53]
-[ext_resource path="res://EFECTIVE/js/482-4.png" type="Texture" id=54]
-[ext_resource path="res://EFECTIVE/js/483-5.png" type="Texture" id=55]
 [ext_resource path="res://EFECTIVE/js/306-6.png" type="Texture" id=56]
 [ext_resource path="res://EFECTIVE/js/306-1.png" type="Texture" id=57]
-[ext_resource path="res://EFECTIVE/js/482-2.png" type="Texture" id=58]
 [ext_resource path="res://EFECTIVE/js/306-8.png" type="Texture" id=59]
 [ext_resource path="res://Camera2D.tscn" type="PackedScene" id=67]
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=1]
 animation = "attackLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=2]
 animation = "attackRight"
 
 [sub_resource type="AnimationNodeAnimation" id=3]
@@ -94,9 +105,9 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id=26]
 resource_local_to_scene = true
-states/attackLeft/node = SubResource( 32 )
+states/attackLeft/node = SubResource( 1 )
 states/attackLeft/position = Vector2( -274, 55 )
-states/attackRight/node = SubResource( 33 )
+states/attackRight/node = SubResource( 2 )
 states/attackRight/position = Vector2( -274, 206 )
 states/clim/node = SubResource( 3 )
 states/clim/position = Vector2( 710, 39 )
@@ -113,7 +124,7 @@ states/run/position = Vector2( 252, 212 )
 transitions = [ "idle", "run", SubResource( 9 ), "run", "idle", SubResource( 10 ), "idle", "attackLeft", SubResource( 11 ), "attackLeft", "idle", SubResource( 12 ), "idle", "jump", SubResource( 13 ), "jump", "idle", SubResource( 14 ), "jump", "clim", SubResource( 15 ), "clim", "jump", SubResource( 16 ), "idle", "clim", SubResource( 17 ), "clim", "idle", SubResource( 18 ), "idle", "die", SubResource( 19 ), "run", "attackLeft", SubResource( 20 ), "run", "attackRight", SubResource( 21 ), "idle", "attackRight", SubResource( 22 ), "attackRight", "idle", SubResource( 23 ), "idle", "injury", SubResource( 24 ), "injury", "idle", SubResource( 25 ) ]
 start_node = "idle"
 end_node = "die"
-graph_offset = Vector2( -420.198, -78.9 )
+graph_offset = Vector2( -331.198, -82.9 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
@@ -125,10 +136,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.2, 0.4, 0.8, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ true, false, false, true ]
+"values": [ false, true ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:animation")
@@ -234,6 +245,45 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=31]
+resource_name = "experience"
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -27.5, -7.5 ), Vector2( -27.5, -80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=32]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
@@ -248,7 +298,7 @@ tracks/0/keys = {
 "values": [ "injury" ]
 }
 
-[sub_resource type="Animation" id=40]
+[sub_resource type="Animation" id=33]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
@@ -263,7 +313,7 @@ tracks/0/keys = {
 "values": [ "jump" ]
 }
 
-[sub_resource type="Animation" id=41]
+[sub_resource type="Animation" id=34]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
@@ -277,8 +327,7 @@ tracks/0/keys = {
 "values": [ "walk" ]
 }
 
-[sub_resource type="Animation" id=34]
-resource_name = "yinxuejianwu"
+[sub_resource type="Animation" id=35]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
@@ -293,22 +342,28 @@ tracks/0/keys = {
 "values": [ "yinyuejianwu" ]
 }
 
-[sub_resource type="RectangleShape2D" id=35]
+[sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 60, 40 )
 
-[sub_resource type="CapsuleShape2D" id=36]
+[sub_resource type="CapsuleShape2D" id=37]
 radius = 4.90596
 height = 81.6411
 
-[sub_resource type="SpriteFrames" id=37]
+[sub_resource type="CanvasItemMaterial" id=38]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id=39]
 animations = [ {
-"frames": [ ExtResource( 45 ), ExtResource( 58 ), ExtResource( 40 ), ExtResource( 54 ), ExtResource( 44 ), ExtResource( 29 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 51 ), ExtResource( 55 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "e2",
-"speed": 8.0
+"speed": 14.0
 } ]
 
-[sub_resource type="SpriteFrames" id=38]
+[sub_resource type="RectangleShape2D" id=41]
+extents = Vector2( 48, 56 )
+
+[sub_resource type="SpriteFrames" id=40]
 animations = [ {
 "frames": [ ExtResource( 57 ), ExtResource( 53 ), ExtResource( 50 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 52 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 49 ) ],
 "loop": true,
@@ -316,8 +371,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=39]
-extents = Vector2( 48, 56 )
+[sub_resource type="CanvasItemMaterial" id=42]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id=43]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "default",
+"speed": 14.0
+} ]
 
 [node name="Steve" type="KinematicBody2D" groups=[
 "Persist",
@@ -326,8 +389,6 @@ script = ExtResource( 1 )
 route = NodePath(".")
 max_health = 1000
 max_magic = 1000
-money = 110000
-juntuan = 22000
 
 [node name="Camera2D" parent="." instance=ExtResource( 67 )]
 drag_margin_h_enabled = false
@@ -355,41 +416,35 @@ anims/attackLeft = SubResource( 28 )
 anims/attackRight = ExtResource( 30 )
 anims/clim = SubResource( 29 )
 anims/die = SubResource( 30 )
+anims/experience = SubResource( 31 )
 anims/idle = ExtResource( 3 )
-anims/injury = SubResource( 31 )
-anims/jump = SubResource( 40 )
-anims/run = SubResource( 41 )
-anims/yinxuejianwu = SubResource( 34 )
+anims/injury = SubResource( 32 )
+anims/jump = SubResource( 33 )
+anims/run = SubResource( 34 )
+anims/yinxuejianwu = SubResource( 35 )
 
 [node name="Sprite" parent="." instance=ExtResource( 2 )]
+frame = 2
 
 [node name="HitBox" type="Area2D" parent="Sprite"]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HitBox"]
 position = Vector2( 120, 10 )
-shape = SubResource( 35 )
-disabled = true
+shape = SubResource( 36 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
-shape = SubResource( 36 )
+shape = SubResource( 37 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
-position = Vector2( 72, 0 )
-scale = Vector2( 1.4, 1.2 )
-frames = SubResource( 37 )
+material = SubResource( 38 )
+position = Vector2( -72, 0 )
+scale = Vector2( 0.67, 1 )
+frames = SubResource( 39 )
 animation = "e2"
-frame = 3
-playing = true
-
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-position = Vector2( 24, 10 )
-scale = Vector2( 0.3, 0.3 )
-frames = SubResource( 38 )
-animation = "accmulate"
-frame = 9
+frame = 1
 playing = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -402,10 +457,96 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickableArea"]
-shape = SubResource( 39 )
+shape = SubResource( 41 )
 
 [node name="self_heal" type="Timer" parent="."]
 autostart = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -27.5
+margin_top = -80.0
+margin_right = 141.5
+margin_bottom = -40.0
+custom_constants/separation = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="TextureRect" parent="HBoxContainer"]
+margin_right = 61.0
+margin_bottom = 40.0
+texture = ExtResource( 6 )
+
+[node name="1" type="TextureRect" parent="HBoxContainer"]
+margin_left = 62.0
+margin_right = 73.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="2" type="TextureRect" parent="HBoxContainer"]
+margin_left = 74.0
+margin_right = 85.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="3" type="TextureRect" parent="HBoxContainer"]
+margin_left = 86.0
+margin_right = 97.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="4" type="TextureRect" parent="HBoxContainer"]
+margin_left = 98.0
+margin_right = 109.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="5" type="TextureRect" parent="HBoxContainer"]
+margin_left = 110.0
+margin_right = 121.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="6" type="TextureRect" parent="HBoxContainer"]
+margin_left = 122.0
+margin_right = 133.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="7" type="TextureRect" parent="HBoxContainer"]
+margin_left = 134.0
+margin_right = 145.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="8" type="TextureRect" parent="HBoxContainer"]
+margin_left = 146.0
+margin_right = 157.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="9" type="TextureRect" parent="HBoxContainer"]
+margin_left = 158.0
+margin_right = 169.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( -24, 10 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 40 )
+animation = "accmulate"
+frame = 7
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
+visible = false
+material = SubResource( 42 )
+position = Vector2( 5.24408, 5.24408 )
+frames = SubResource( 43 )
+frame = 7
 
 [connection signal="health_updated" from="." to="." method="_on_Steve_health_updated"]
 [connection signal="body_entered" from="Sprite/HitBox" to="." method="_on_HitBox_body_entered"]

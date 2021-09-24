@@ -16,10 +16,18 @@ func _input(event):
 		PlayerInventory.active_item_scroll_down()
 	
 	
+
 func _ready():
+	for i in get_node("Caracter/HBoxContainer").get_children():
+		i.visible = false
 	pass
 
-
+func update_text(level, m_health, m_magic):
+	for i in str(level).length():
+		get_node("Caracter/HBoxContainer/"+str(i+1)).texture = load("res://UI/level/"+str(level).substr(i,1)+".png")
+		get_node("Caracter/HBoxContainer/"+str(i+1)).visible = true
+	max_health = m_health
+	max_magic = m_magic
 func _on_UserInterFace_health_updated(health, magic):
 	$Caracter/Bar/HealthBar.max_value = max_health
 	$Caracter/Bar/MaigcBar.max_value = max_magic

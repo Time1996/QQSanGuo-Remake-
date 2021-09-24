@@ -8,9 +8,15 @@ export var basic_damage = 20
 export var basic_defende = 10
 export var money = 11000
 export var juntuan = 2200
+export var level = 1
 var state_machine
 
-var experience_pool = 100 #经验池
+onready var userInterface = get_parent().get_node("UserInterFace")
+
+var experience = 0
+var experience_pool = 0 #经验池
+var experience_required = get_required_experience(level+1)
+
 
 onready var health = max_health setget _set_health
 onready var magic = max_health setget _set_health
@@ -40,8 +46,40 @@ func _ready():
 	$AnimatedSprite.visible = false
 	$AnimatedSprite2.visible = false
 	state_machine = $AnimationTree.get("parameters/playback")
-
+	$HBoxContainer.visible = false
+	for i in $HBoxContainer.get_children():
+		i.visible = false
 var items_in_range = {}
+
+func get_required_experience(level):
+	return 1*level-1
+
+func gain_experience(amount):
+	get_node("HBoxContainer/0").visible = true
+	var str_amount = str(amount)
+	for i in str_amount.length():
+		get_node("HBoxContainer/"+str(i+1)).texture = load("res://EFECTIVE/js/digit/"+str_amount.substr(i,1)+str_amount.substr(i,1)+".png")
+		get_node("HBoxContainer/"+str(i+1)).visible = true
+	$AnimationPlayer.play("experience")
+	experience_pool += amount
+	experience += amount
+	while experience >= experience_required:
+		experience -= experience_required
+		level_up()
+
+func level_up():
+	level += 1
+	experience_required = get_required_experience(level + 1)
+	max_health += level * 10
+	max_magic += level * 5
+	basic_damage += level * 2
+	basic_defende += level * 1
+	$AnimatedSprite3.visible = true
+	$AnimatedSprite3.play("defalut")
+	yield($AnimatedSprite3, "animation_finished")
+	$AnimatedSprite3.visible = false
+	$AnimatedSprite3.stop()
+	userInterface.update_text(level, max_health, max_magic)
 
 func _input(event):
 	if event.is_action_pressed("pickUp"):
