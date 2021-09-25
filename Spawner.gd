@@ -32,8 +32,6 @@ func respawn():
 
 
 func _on_Spawner_monster_die():
-	get_node("../Steve").money += 100
+	get_node("../Steve").gain_money(100, 1)
 	get_node("../Steve").gain_experience(1)
-	print(get_node("../Steve").money)
-	print(get_node("../Steve").experience_pool)
 	pass # Replace with function body.

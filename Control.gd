@@ -22,12 +22,32 @@ func _ready():
 		i.visible = false
 	pass
 
-func update_text(level, m_health, m_magic):
+func update_text(level, m_health, m_magic, b_damage, b_defend, b_shugong, b_shufang):
 	for i in str(level).length():
 		get_node("Caracter/HBoxContainer/"+str(i+1)).texture = load("res://UI/level/"+str(level).substr(i,1)+".png")
 		get_node("Caracter/HBoxContainer/"+str(i+1)).visible = true
 	max_health = m_health
 	max_magic = m_magic
+	$Inventory/Wugong.text = str(b_damage)
+	$Inventory/Wufang.text = str(b_defend)
+	$Inventory/Shugong.text = str(b_shugong)
+	$Inventory/Shufang.text = str(b_shufang)
+	
+func update_inventory(m, j):
+	$Inventory/Money.text = str(m)
+	$Inventory/Juntuan.text = str(j)
+	var cnt = 0
+	for i in $Inventory/ScrollContainer/VBoxContainer.get_children():
+		if i.get_children().size()!=0:
+			cnt += 1
+	$Inventory/Backpack.text = str(cnt) + "/50"
+	
+func update_exp(value):
+	print("value")
+	print(value)
+	$exprience/TextureProgress.value = value
+	$exprience/Label.text = str(value) + "%"
+
 func _on_UserInterFace_health_updated(health, magic):
 	$Caracter/Bar/HealthBar.max_value = max_health
 	$Caracter/Bar/MaigcBar.max_value = max_magic

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Character/Steve.gd" type="Script" id=1]
 [ext_resource path="res://Character/Sprite.tscn" type="PackedScene" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://EFECTIVE/level_up/446-14.png" type="Texture" id=24]
 [ext_resource path="res://EFECTIVE/level_up/446-10.png" type="Texture" id=25]
 [ext_resource path="res://EFECTIVE/level_up/446-15.png" type="Texture" id=26]
+[ext_resource path="res://EFECTIVE/level_up/9001.wav" type="AudioStream" id=27]
 [ext_resource path="res://ANIMATION/attack2.tres" type="Animation" id=30]
 [ext_resource path="res://EFECTIVE/js/306-9.png" type="Texture" id=39]
 [ext_resource path="res://EFECTIVE/js/306-4.png" type="Texture" id=41]
@@ -136,7 +137,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -387,8 +388,6 @@ animations = [ {
 ]]
 script = ExtResource( 1 )
 route = NodePath(".")
-max_health = 1000
-max_magic = 1000
 
 [node name="Camera2D" parent="." instance=ExtResource( 67 )]
 drag_margin_h_enabled = false
@@ -424,7 +423,6 @@ anims/run = SubResource( 34 )
 anims/yinxuejianwu = SubResource( 35 )
 
 [node name="Sprite" parent="." instance=ExtResource( 2 )]
-frame = 2
 
 [node name="HitBox" type="Area2D" parent="Sprite"]
 collision_mask = 2
@@ -432,6 +430,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HitBox"]
 position = Vector2( 120, 10 )
 shape = SubResource( 36 )
+disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
@@ -440,11 +439,11 @@ shape = SubResource( 37 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
 material = SubResource( 38 )
-position = Vector2( -72, 0 )
+position = Vector2( 72, 0 )
 scale = Vector2( 0.67, 1 )
 frames = SubResource( 39 )
 animation = "e2"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -534,11 +533,12 @@ margin_bottom = 40.0
 texture = ExtResource( 7 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
-position = Vector2( -24, 10 )
+visible = false
+position = Vector2( 24, 10 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 40 )
 animation = "accmulate"
-frame = 7
+frame = 9
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -547,6 +547,26 @@ material = SubResource( 42 )
 position = Vector2( 5.24408, 5.24408 )
 frames = SubResource( 43 )
 frame = 7
+
+[node name="level_up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="."]
+margin_left = -30.7013
+margin_top = 56.0633
+margin_right = 61.2987
+margin_bottom = 79.0633
+text = "Super赛亚宁"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="health_updated" from="." to="." method="_on_Steve_health_updated"]
 [connection signal="body_entered" from="Sprite/HitBox" to="." method="_on_HitBox_body_entered"]

@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/ui/main_item.png" type="Texture" id=5]
 [ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI/side_bar/75606-3.png" type="Texture" id=7]
-[ext_resource path="res://UI/21801-1.png" type="Texture" id=8]
+[ext_resource path="res://UI/player_inventory/main/67445-1.png" type="Texture" id=8]
 [ext_resource path="res://UI/side_bar/75616-2.png" type="Texture" id=9]
 [ext_resource path="res://UI/side_bar/75616-3.png" type="Texture" id=10]
 [ext_resource path="res://UI/side_bar/75606-2.png" type="Texture" id=11]
@@ -22,21 +22,32 @@
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 8 )
-region_rect = Rect2( 0, 0, 447, 41 )
+region_rect = Rect2( 0, 0, 205, 34 )
 
-[node name="Inventory" type="Node2D"]
+[node name="Inventory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+margin_left = 400.518
+margin_top = -0.391342
+margin_right = 500.518
+margin_bottom = 99.6087
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 192.0
-margin_top = 88.0
-margin_right = 744.0
-margin_bottom = 515.0
-rect_scale = Vector2( 1.2, 1.2 )
+margin_left = -207.561
+margin_top = -213.227
+margin_right = 344.439
+margin_bottom = 213.773
+rect_scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 5 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -44,128 +55,128 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_left = 520.0
-margin_top = 232.0
-margin_right = 760.0
-margin_bottom = 456.0
-rect_scale = Vector2( 1.2, 1.2 )
+margin_left = 491.0
+margin_top = 226.607
+margin_right = 752.0
+margin_bottom = 472.607
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 margin_right = 235.0
-margin_bottom = 257.0
+margin_bottom = 350.0
+custom_constants/separation = 10
 
 [node name="Panel1" type="Panel" parent="ScrollContainer/VBoxContainer"]
 margin_right = 235.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 235, 25 )
+margin_bottom = 30.0
+rect_min_size = Vector2( 235, 30 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Panel2" type="Panel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 29.0
+margin_top = 40.0
 margin_right = 235.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 235, 25 )
+margin_bottom = 70.0
+rect_min_size = Vector2( 235, 30 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Panel3" type="Panel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 58.0
+margin_top = 80.0
 margin_right = 235.0
-margin_bottom = 83.0
-rect_min_size = Vector2( 235, 25 )
+margin_bottom = 110.0
+rect_min_size = Vector2( 235, 30 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Panel4" type="Panel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 87.0
+margin_top = 120.0
 margin_right = 235.0
-margin_bottom = 112.0
-rect_min_size = Vector2( 235, 25 )
+margin_bottom = 150.0
+rect_min_size = Vector2( 235, 30 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Panel5" type="Panel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 116.0
+margin_top = 160.0
 margin_right = 235.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 235, 25 )
+margin_bottom = 190.0
+rect_min_size = Vector2( 235, 30 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Panel6" type="Panel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 145.0
+margin_top = 200.0
 margin_right = 235.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 235, 25 )
+margin_bottom = 230.0
+rect_min_size = Vector2( 235, 30 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Panel7" type="Panel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 174.0
+margin_top = 240.0
 margin_right = 235.0
-margin_bottom = 199.0
-rect_min_size = Vector2( 235, 25 )
+margin_bottom = 270.0
+rect_min_size = Vector2( 235, 30 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Panel8" type="Panel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 203.0
+margin_top = 280.0
 margin_right = 235.0
-margin_bottom = 228.0
-rect_min_size = Vector2( 235, 25 )
+margin_bottom = 310.0
+rect_min_size = Vector2( 235, 30 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Panel9" type="Panel" parent="ScrollContainer/VBoxContainer"]
-margin_top = 232.0
+margin_top = 320.0
 margin_right = 235.0
-margin_bottom = 257.0
-rect_min_size = Vector2( 235, 25 )
+margin_bottom = 350.0
+rect_min_size = Vector2( 235, 30 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Money" type="Label" parent="."]
-margin_left = 256.0
-margin_top = 536.0
-margin_right = 352.0
-margin_bottom = 559.0
-text = "11000"
+margin_left = 255.752
+margin_top = 500.0
+margin_right = 338.752
+margin_bottom = 523.0
+text = "0"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Backpack" type="Label" parent="."]
-margin_left = 528.0
-margin_top = 536.0
-margin_right = 624.0
-margin_bottom = 559.0
-text = "1/9"
+margin_left = 501.904
+margin_top = 500.0
+margin_right = 592.904
+margin_bottom = 523.0
+text = "0/50"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Juntuan" type="Label" parent="."]
-margin_left = 392.0
-margin_top = 536.0
-margin_right = 488.0
-margin_bottom = 559.0
-text = "2200"
+margin_left = 378.054
+margin_top = 500.0
+margin_right = 459.054
+margin_bottom = 523.0
+text = "0"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Wugong" type="Label" parent="."]
-margin_left = 370.0
-margin_top = 381.0
-margin_right = 406.0
-margin_bottom = 404.0
+margin_left = 360.73
+margin_top = 357.618
+margin_right = 396.73
+margin_bottom = 380.618
 text = "20"
 align = 1
 __meta__ = {
@@ -173,10 +184,10 @@ __meta__ = {
 }
 
 [node name="Wufang" type="Label" parent="."]
-margin_left = 369.782
-margin_top = 406.0
-margin_right = 405.782
-margin_bottom = 429.0
+margin_left = 360.73
+margin_top = 380.0
+margin_right = 396.73
+margin_bottom = 403.0
 text = "10"
 align = 1
 __meta__ = {
@@ -184,10 +195,10 @@ __meta__ = {
 }
 
 [node name="Shugong" type="Label" parent="."]
-margin_left = 370.0
-margin_top = 433.404
-margin_right = 406.0
-margin_bottom = 456.404
+margin_left = 360.73
+margin_top = 403.0
+margin_right = 396.73
+margin_bottom = 426.0
 text = "0"
 align = 1
 __meta__ = {
@@ -195,10 +206,10 @@ __meta__ = {
 }
 
 [node name="Shufang" type="Label" parent="."]
-margin_left = 369.782
-margin_top = 460.326
-margin_right = 405.782
-margin_bottom = 483.326
+margin_left = 360.73
+margin_top = 426.0
+margin_right = 396.73
+margin_bottom = 449.0
 text = "0"
 align = 1
 __meta__ = {
@@ -206,14 +217,15 @@ __meta__ = {
 }
 
 [node name="Sprite" parent="." instance=ExtResource( 4 )]
-position = Vector2( 370, 282.8 )
-frame = 2
+position = Vector2( 360.73, 274.618 )
+scale = Vector2( 0.7, 0.7 )
+frame = 3
 
 [node name="name" type="Label" parent="."]
-margin_left = 269.656
-margin_top = 162.8
-margin_right = 469.656
-margin_bottom = 185.8
+margin_left = 262.0
+margin_top = 154.618
+margin_right = 462.0
+margin_bottom = 177.618
 custom_fonts/font = ExtResource( 6 )
 text = "我行我素"
 align = 1
@@ -222,10 +234,10 @@ __meta__ = {
 }
 
 [node name="TextureButton" type="TextureButton" parent="."]
-margin_left = 819.0
-margin_top = 119.0
-margin_right = 841.0
-margin_bottom = 141.0
+margin_left = 768.191
+margin_top = 117.317
+margin_right = 785.191
+margin_bottom = 134.317
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 11 )
@@ -236,10 +248,10 @@ __meta__ = {
 }
 
 [node name="TextureButton2" type="TextureButton" parent="."]
-margin_left = 793.6
-margin_top = 119.0
-margin_right = 815.6
-margin_bottom = 141.0
+margin_left = 745.583
+margin_top = 117.495
+margin_right = 762.583
+margin_bottom = 134.495
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 9 )
@@ -250,10 +262,10 @@ __meta__ = {
 }
 
 [node name="TextureButton3" type="TextureButton" parent="."]
-margin_left = 561.0
-margin_top = 190.375
-margin_right = 602.0
-margin_bottom = 225.375
+margin_left = 532.0
+margin_top = 143.649
+margin_right = 573.0
+margin_bottom = 178.649
 texture_normal = ExtResource( 17 )
 texture_focused = ExtResource( 19 )
 __meta__ = {
@@ -261,10 +273,10 @@ __meta__ = {
 }
 
 [node name="TextureButton4" type="TextureButton" parent="."]
-margin_left = 520.0
-margin_top = 190.375
-margin_right = 561.0
-margin_bottom = 225.375
+margin_left = 491.0
+margin_top = 143.649
+margin_right = 532.0
+margin_bottom = 178.649
 texture_normal = ExtResource( 16 )
 texture_focused = ExtResource( 18 )
 __meta__ = {

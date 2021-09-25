@@ -15,15 +15,15 @@ func _ready():
 	if item_quantity == 1:
 		$Label.visible = false
 	else:
-		$Label.text = String(item_quantity)
+		$Label.text = "X"+String(item_quantity)
 	
 func add_item_quantity(amount):
 	item_quantity += amount
-	$Label.text = String(item_quantity)
+	$Label.text = "X"+String(item_quantity)
 
 func sub_item_quantity(amount):
 	item_quantity -= amount
-	$Label.text = String(item_quantity)
+	$Label.text = "X"+String(item_quantity)
 
 func set_item(nm, qt):
 	item_name = nm
@@ -35,7 +35,7 @@ func set_item(nm, qt):
 		$Label.visible = false
 	else:
 		$Label.visible = true
-		$Label.text = str(item_quantity)
+		$Label.text = "X"+str(item_quantity)
 
 func get_save_stats():
 	item_slot = get_parent().slot_index
@@ -58,3 +58,15 @@ func load_save_stats(stats):
 	item_name = stats.data.name
 	item_quantity = stats.data.quantity
 	item_slot = stats.data.slot
+
+
+func _on_Label2_mouse_entered():
+	$Label2.text = item_name
+	$Label2.visible = true
+	print('YEE')
+	pass # Replace with function body.
+
+
+func _on_Label2_mouse_exited():
+	$Label2.visible = false
+	pass # Replace with function body.

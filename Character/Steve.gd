@@ -2,12 +2,14 @@ extends KinematicBody2D
 
 export(NodePath)var route
 
-export var max_health = 100
-export var max_magic = 100
+export var max_health = 1000
+export var max_magic = 1000
 export var basic_damage = 20
 export var basic_defende = 10
-export var money = 11000
-export var juntuan = 2200
+export var basic_shugong = 0
+export var basic_shufang = 0
+export var money = 0
+export var juntuan = 0
 export var level = 1
 var state_machine
 
@@ -49,7 +51,7 @@ func _ready():
 	$HBoxContainer.visible = false
 	for i in $HBoxContainer.get_children():
 		i.visible = false
-var items_in_range = {}
+var items_in_range = {} ##掉落物范围检测 暂存数组
 
 func get_required_experience(level):
 	return 1*level-1
@@ -66,6 +68,7 @@ func gain_experience(amount):
 	while experience >= experience_required:
 		experience -= experience_required
 		level_up()
+	userInterface.update_exp(int(experience*100/experience_required))
 
 func level_up():
 	level += 1
@@ -74,18 +77,30 @@ func level_up():
 	max_magic += level * 5
 	basic_damage += level * 2
 	basic_defende += level * 1
+	basic_shugong += level
+	basic_shufang += level
+	
+	$level_up.play()
 	$AnimatedSprite3.visible = true
 	$AnimatedSprite3.play("defalut")
 	yield($AnimatedSprite3, "animation_finished")
 	$AnimatedSprite3.visible = false
 	$AnimatedSprite3.stop()
-	userInterface.update_text(level, max_health, max_magic)
+	userInterface.update_text(level, max_health, max_magic,
+							 basic_damage, basic_defende,
+							 basic_shugong, basic_shufang)
+	
+func gain_money(amount_m, amount_j):
+	money += amount_m
+	juntuan += amount_j
+	userInterface.update_inventory(money, juntuan)
 
 func _input(event):
 	if event.is_action_pressed("pickUp"):
 		if items_in_range.size() > 0:
 			var pickup_item = items_in_range.values()[0]
 			pickup_item.pick_up_item(self)
+			gain_money(0, 0)
 			items_in_range.erase(pickup_item)
 
 

@@ -1,25 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/装备图标/20035-1.png" type="Texture" id=1]
 [ext_resource path="res://Item.gd" type="Script" id=2]
+[ext_resource path="res://assets/font/PuHuiTi-Regular.otf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
 [node name="Item" type="Node2D" groups=[
 "Persist",
 ]]
+position = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
-
-[node name="Label" type="Label" parent="."]
-margin_left = 32.0
-margin_top = 24.0
-margin_right = 56.0
-margin_bottom = 40.0
-rect_scale = Vector2( 1.2, 1.2 )
-text = "99"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
@@ -31,3 +25,28 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="."]
+margin_left = 0.777946
+margin_top = 20.4284
+margin_right = 36.7779
+margin_bottom = 43.4284
+rect_scale = Vector2( 1.2, 1.2 )
+custom_fonts/font = SubResource( 1 )
+text = "X99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 43.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="mouse_entered" from="Label2" to="." method="_on_Label2_mouse_entered"]
+[connection signal="mouse_exited" from="Label2" to="." method="_on_Label2_mouse_exited"]

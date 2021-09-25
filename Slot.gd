@@ -4,9 +4,10 @@ var default_style = null
 var selected_style = null
 var hotbar_style = null
 
-var default_tex = preload("res://UI/21804-1.png")
-var selected_tex = preload("res://item_slot_selected_background.png")
+var default_tex = preload("res://UI/player_inventory/main/67445-1.png")
+var selected_tex = preload("res://UI/player_inventory/main/67438-1.png")
 var hotbar_tex = preload("res://item_slot_default_background.png")
+
 
 var item = null
 var ItemClass = preload("res://Item.tscn")
@@ -38,7 +39,6 @@ func refresh_style():
 		set('custom_styles/panel', selected_style)
 		pass
 	elif SlotType.INVENTORY == slot_type:
-		print(slot_type)
 		set('custom_styles/panel', default_style)
 		pass
 	else:
@@ -63,11 +63,20 @@ func putIntoSlot(new_item):
 func initialize_item(item_name, item_quantity):
 	if item == null:##有BUG 每次重新打开会
 		item = ItemClass.instance()
-		item.scale *= 0.6
+		item.scale *= 0.75
 		item.set_item(item_name, item_quantity)
 		add_child(item)
 	else:
 		item.set_item(item_name, item_quantity)
+		
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_RIGHT && event.pressed:
+			get_parent().get_parent().get_parent().get_node("PopupMenu").popup(
+				get_global_mouse_position().x, get_global_mouse_position().y,
+				110, 110
+			)
 	
 func _make_custom_tooltip(for_text):
 	var label = Label.new()

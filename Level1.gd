@@ -8,22 +8,18 @@ func _ready():
 
 
 func _on_Monkey_monster_die():
-	$Steve.money += 200
+	$Steve.gain_money(200, 2)
 	$Steve.gain_experience(2)
 	get_node("Steve/AnimationPlayer").play("experience")
 	print("experience + 2")
-	print("money + 200")
-	print($Steve.money)
 	pass # Replace with function body.
 
 
 func _on_Snake_monster_die():
-	$Steve.money += 100
+	$Steve.gain_money(100, 1)
 	$Steve.gain_experience(1)
 	get_node("Steve/AnimationPlayer").play("experience")
 	print("experience + 1")
-	print("money + 100")
-	print($Steve.money)
 	pass # Replace with function body.
 
 
