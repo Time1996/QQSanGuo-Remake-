@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://assets/map/竹叶青/14363-1.png" type="Texture" id=1]
 [ext_resource path="res://assets/map/竹叶青/14359-8.png" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://MUSIC/3701.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/map/竹叶青/14362-1.png" type="Texture" id=18]
 [ext_resource path="res://EFECTIVE/js/digit/434-1.png" type="Texture" id=19]
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=20]
 [ext_resource path="res://assets/map/竹叶青/14359-7.png" type="Texture" id=21]
 [ext_resource path="res://assets/map/竹叶青/14359-6.png" type="Texture" id=22]
 [ext_resource path="res://assets/map/竹叶青/14364-1.png" type="Texture" id=23]
@@ -27,18 +28,24 @@
 [ext_resource path="res://assets/map/竹叶青/14365-4.png" type="Texture" id=26]
 [ext_resource path="res://Enemy/Snake.gd" type="Script" id=27]
 [ext_resource path="res://UI/HealthBar.tscn" type="PackedScene" id=28]
-[ext_resource path="res://UI/Name.tscn" type="PackedScene" id=29]
+[ext_resource path="res://UI/name/name_middle.png" type="Texture" id=29]
 [ext_resource path="res://FCTmgr.tscn" type="PackedScene" id=30]
 [ext_resource path="res://assets/map/竹叶青/14358-3.png" type="Texture" id=31]
 [ext_resource path="res://assets/map/竹叶青/14358-4.png" type="Texture" id=32]
 [ext_resource path="res://assets/map/竹叶青/14357-1.png" type="Texture" id=33]
 [ext_resource path="res://assets/map/竹叶青/14361-1.png" type="Texture" id=34]
+[ext_resource path="res://UI/name/name_right.png" type="Texture" id=35]
+[ext_resource path="res://UI/name/name_left.png" type="Texture" id=36]
 
 [sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 48.0
+height = 96.0
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="ShaderMaterial" id=3]
+
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
 "frames": [ ExtResource( 33 ), ExtResource( 9 ), ExtResource( 24 ), ExtResource( 8 ) ],
 "loop": true,
@@ -71,11 +78,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 24.0
 height = 32.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -90,7 +97,7 @@ tracks/0/keys = {
 "values": [ "attack" ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -116,7 +123,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -130,7 +137,7 @@ tracks/0/keys = {
 "values": [ "idle" ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -169,7 +176,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -10, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -183,33 +190,31 @@ tracks/0/keys = {
 "values": [ "walk" ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "injury"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 switch_mode = 2
 auto_advance = true
 priority = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
@@ -218,30 +223,32 @@ priority = 0
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
-[sub_resource type="AnimationNodeStateMachine" id=25]
-states/attack/node = SubResource( 10 )
+[sub_resource type="AnimationNodeStateMachine" id=26]
+states/attack/node = SubResource( 11 )
 states/attack/position = Vector2( 746, 263 )
-states/die/node = SubResource( 11 )
+states/die/node = SubResource( 12 )
 states/die/position = Vector2( 582, 63 )
-states/idle/node = SubResource( 12 )
+states/idle/node = SubResource( 13 )
 states/idle/position = Vector2( 582, 194 )
-states/injury/node = SubResource( 13 )
+states/injury/node = SubResource( 14 )
 states/injury/position = Vector2( 318, 63 )
-states/run/node = SubResource( 14 )
+states/run/node = SubResource( 15 )
 states/run/position = Vector2( 318, 194 )
-transitions = [ "idle", "injury", SubResource( 15 ), "idle", "run", SubResource( 16 ), "run", "injury", SubResource( 17 ), "injury", "idle", SubResource( 18 ), "idle", "die", SubResource( 19 ), "run", "idle", SubResource( 20 ), "injury", "die", SubResource( 21 ), "idle", "attack", SubResource( 22 ), "attack", "idle", SubResource( 23 ), "attack", "run", SubResource( 24 ) ]
+transitions = [ "idle", "injury", SubResource( 16 ), "idle", "run", SubResource( 17 ), "run", "injury", SubResource( 18 ), "injury", "idle", SubResource( 19 ), "idle", "die", SubResource( 20 ), "run", "idle", SubResource( 21 ), "injury", "die", SubResource( 22 ), "idle", "attack", SubResource( 23 ), "attack", "idle", SubResource( 24 ), "attack", "run", SubResource( 25 ) ]
 start_node = "idle"
 end_node = "die"
 graph_offset = Vector2( -60, 39 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
-[sub_resource type="RectangleShape2D" id=27]
+[sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 296, 40 )
 
 [node name="Monster" type="KinematicBody2D"]
@@ -251,28 +258,36 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource( 27 )
 
+[node name="mouse_event" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse_event"]
+z_index = 10
+shape = SubResource( 2 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 2 )
-frames = SubResource( 3 )
+material = SubResource( 3 )
+frames = SubResource( 4 )
 animation = "idle"
 frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 5 )
-anims/die = SubResource( 6 )
-anims/idle = SubResource( 7 )
-anims/injury = SubResource( 8 )
-anims/run = SubResource( 9 )
+anims/attack = SubResource( 6 )
+anims/die = SubResource( 7 )
+anims/idle = SubResource( 8 )
+anims/injury = SubResource( 9 )
+anims/run = SubResource( 10 )
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
-tree_root = SubResource( 25 )
+tree_root = SubResource( 26 )
 anim_player = NodePath("..")
 active = true
-parameters/playback = SubResource( 26 )
+parameters/playback = SubResource( 27 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -284,19 +299,65 @@ margin_top = -48.0
 margin_right = -24.0
 margin_bottom = -48.0
 
-[node name="Name" parent="." instance=ExtResource( 29 )]
+[node name="Name" type="Control" parent="."]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = -32.0
 margin_top = 48.0
 margin_right = -32.0
 margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Name"]
+margin_right = 80.0
+margin_bottom = 19.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="left" type="TextureRect" parent="Name/HBoxContainer"]
+margin_right = 10.0
+margin_bottom = 19.0
+texture = ExtResource( 36 )
+
+[node name="middle" type="TextureRect" parent="Name/HBoxContainer"]
+margin_left = 10.0
+margin_right = 70.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 19 )
+texture = ExtResource( 29 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="Name/HBoxContainer/middle"]
+margin_left = 3.53339
+margin_top = -2.22865
+margin_right = 51.5334
+margin_bottom = 20.7714
+custom_fonts/font = ExtResource( 20 )
+text = "小青蛇"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right" type="TextureRect" parent="Name/HBoxContainer"]
+margin_left = 70.0
+margin_right = 80.0
+margin_bottom = 19.0
+texture = ExtResource( 35 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 27 )
+shape = SubResource( 28 )
 
 [node name="FCTmgr" parent="." instance=ExtResource( 30 )]
 
@@ -329,6 +390,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 19 )
 
 [connection signal="mouse_entered" from="." to="." method="_on_Monster_mouse_entered"]
+[connection signal="mouse_entered" from="mouse_event" to="." method="_on_mouse_event_mouse_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://UI/side_bar/69816-1.png" type="Texture" id=1]
 [ext_resource path="res://UI/side_bar/69812-2.png" type="Texture" id=2]
@@ -25,6 +25,18 @@
 [ext_resource path="res://UI/side_bar/69827-2.png" type="Texture" id=23]
 [ext_resource path="res://UI/side_bar/69827-4.png" type="Texture" id=24]
 [ext_resource path="res://UI/side_bar/69816-2.png" type="Texture" id=25]
+[ext_resource path="res://UI/side_bar/69878-4.png" type="Texture" id=26]
+[ext_resource path="res://UI/side_bar/69878-1.png" type="Texture" id=27]
+[ext_resource path="res://UI/side_bar/69878-3.png" type="Texture" id=28]
+[ext_resource path="res://UI/side_bar/69878-2.png" type="Texture" id=29]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 27 ), ExtResource( 29 ), ExtResource( 28 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "default",
+"speed": 6.0
+} ]
 
 [node name="side_bar" type="Control"]
 anchor_left = 1.0
@@ -112,6 +124,12 @@ texture_pressed = ExtResource( 22 )
 texture_hover = ExtResource( 23 )
 texture_disabled = ExtResource( 24 )
 stretch_mode = 5
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -32, -32 )
+frames = SubResource( 1 )
+frame = 2
+playing = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_Button2_pressed"]

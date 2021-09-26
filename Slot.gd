@@ -5,7 +5,7 @@ var selected_style = null
 var hotbar_style = null
 
 var default_tex = preload("res://UI/player_inventory/main/67445-1.png")
-var selected_tex = preload("res://UI/player_inventory/main/67438-1.png")
+var selected_tex = preload("res://UI/player_inventory/main/67445-2.png")
 var hotbar_tex = preload("res://item_slot_default_background.png")
 
 
@@ -27,6 +27,12 @@ func _ready():
 	default_style.texture = default_tex
 	selected_style.texture = selected_tex
 	hotbar_style.texture = hotbar_tex
+	
+	var nodes = get_parent()
+	
+	for i in nodes.get_children(): ## 这串代码会卡 不知道为什么
+		i.connect("mouse_entered", i, "mouse_enter")
+		i.connect("mouse_exited", i, "mouse_exit")
 	
 	refresh_style()
 #	styleBox.texture = preload("res://UI/21804-1.png")
@@ -70,16 +76,26 @@ func initialize_item(item_name, item_quantity):
 		item.set_item(item_name, item_quantity)
 		
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_RIGHT && event.pressed:
-			get_parent().get_parent().get_parent().get_node("PopupMenu").popup(
-				get_global_mouse_position().x, get_global_mouse_position().y,
-				110, 110
-			)
+#func _input(event):
+#	if event is InputEventMouseButton:
+#		if event.button_index == BUTTON_RIGHT && event.pressed:
+#			get_parent().get_parent().get_parent().get_node("PopupMenu").popup(
+#				get_global_mouse_position().x, get_global_mouse_position().y,
+#				110, 110
+#			)
 	
 func _make_custom_tooltip(for_text):
 	var label = Label.new()
 	var goods_data = "123"	# 物品数据
 	#label.text = print(goods_data, '\t')
 	return label
+
+
+func mouse_enter():
+	set('custom_styles/panel', selected_style)
+	pass # Replace with function body.
+
+
+func mouse_exit():
+	set('custom_styles/panel', default_style)
+	pass # Replace with function body.

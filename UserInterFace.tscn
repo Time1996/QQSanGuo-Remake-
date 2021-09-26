@@ -14,7 +14,7 @@
 [node name="UserInterFace" type="CanvasLayer"]
 script = ExtResource( 2 )
 
-[node name="Caracter" parent="." instance=ExtResource( 4 )]
+[node name="Character" parent="." instance=ExtResource( 4 )]
 
 [node name="side_bar" parent="." instance=ExtResource( 3 )]
 margin_left = -8.0
@@ -77,4 +77,9 @@ margin_top = 30.9194
 margin_right = -106.756
 margin_bottom = -50.0806
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [connection signal="health_updated" from="." to="." method="_on_UserInterFace_health_updated"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -49,6 +49,7 @@ func _ready():
 	$AnimatedSprite2.visible = false
 	state_machine = $AnimationTree.get("parameters/playback")
 	$HBoxContainer.visible = false
+	$fly_left.frame = $fly_right.frame
 	for i in $HBoxContainer.get_children():
 		i.visible = false
 var items_in_range = {} ##掉落物范围检测 暂存数组
@@ -94,6 +95,16 @@ func gain_money(amount_m, amount_j):
 	money += amount_m
 	juntuan += amount_j
 	userInterface.update_inventory(money, juntuan)
+	
+func gain_speed():
+	SPEED *= 2
+	$speed.start(10)
+	$fly_left.visible = true
+	$fly_right.visible = true
+	
+func gain_recover():
+	$health.start(60*5)
+	$recover.visible = true
 
 func _input(event):
 	if event.is_action_pressed("pickUp"):
@@ -137,7 +148,8 @@ func move_to_target(delta, min_dist):
 		target_derection = 1
 		$Sprite.scale.x = 0.8
 		$AnimatedSprite.scale.x = 0.8
-	if target <= 100: #skill_dist
+	##在范围内了 双方同时开始动画 进行伤害计算 并播放动画
+	if target <= 100: #skill_dist 100
 		chase_target_state = 0
 		state_machine.travel("idle")
 		attack()
@@ -263,9 +275,15 @@ func closet_enemy(min_dist):
 		if dist < min_dist:
 			min_dist = dist
 			velocity.x = i.position.x - position.x
+			
 	for i in enemies:
 		if sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2)) == min_dist:
 			#i.call_deferred("injury", 1)
+			userInterface.get_node("Character").get_node("Target").visible = true
+			userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+i.Name+".png")
+			userInterface.get_node("Character").get_node("Target").get_node("name").text = i.Name
+			userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = i.get_node("HealthBar").get_node("HealthBar").value
+			print(i.get_node("HealthBar").get_node("HealthBar").value)
 			target = abs(position.x - i.position.x) + 30
 			target_derection = position.x - i.position.x
 			if target_derection > 0:
@@ -405,3 +423,17 @@ func load_save_stats(stats): #需要保存的信息 目前是位置 属性
 	experience_pool = stats.stats.exprience
 
 
+
+
+func _on_speed_timeout():
+	$speed.stop()
+	$fly_left.visible = false
+	$fly_right.visible = false
+	SPEED = 400
+	pass # Replace with function body.
+
+
+func _on_health_timeout():
+	$health.stop()
+	$recover.visible = false
+	pass # Replace with function body.

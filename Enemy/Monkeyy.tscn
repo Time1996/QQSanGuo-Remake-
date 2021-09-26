@@ -1,81 +1,104 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=65 format=2]
 
-[ext_resource path="res://怪物ui/小猕猴/28619-4.png" type="Texture" id=1]
-[ext_resource path="res://怪物ui/小猕猴/28619-3.png" type="Texture" id=2]
-[ext_resource path="res://怪物ui/小猕猴/28612-2.png" type="Texture" id=3]
-[ext_resource path="res://怪物ui/小猕猴/28620-1.png" type="Texture" id=4]
-[ext_resource path="res://怪物ui/小猕猴/28613-2.png" type="Texture" id=5]
-[ext_resource path="res://怪物ui/小猕猴/28619-1.png" type="Texture" id=6]
-[ext_resource path="res://怪物ui/小猕猴/28619-2.png" type="Texture" id=7]
-[ext_resource path="res://怪物ui/小猕猴/28613-1.png" type="Texture" id=8]
-[ext_resource path="res://怪物ui/小猕猴/28613-7.png" type="Texture" id=9]
-[ext_resource path="res://怪物ui/小猕猴/28615-1.png" type="Texture" id=10]
-[ext_resource path="res://怪物ui/小猕猴/28612-3.png" type="Texture" id=11]
-[ext_resource path="res://怪物ui/小猕猴/28613-3.png" type="Texture" id=12]
-[ext_resource path="res://怪物ui/小猕猴/28613-4.png" type="Texture" id=13]
-[ext_resource path="res://怪物ui/小猕猴/28612-4.png" type="Texture" id=14]
-[ext_resource path="res://怪物ui/小猕猴/28613-5.png" type="Texture" id=15]
-[ext_resource path="res://怪物ui/小猕猴/28613-6.png" type="Texture" id=16]
-[ext_resource path="res://怪物ui/小猕猴/28616-1.png" type="Texture" id=17]
-[ext_resource path="res://怪物ui/小猕猴/28613-8.png" type="Texture" id=18]
-[ext_resource path="res://怪物ui/小猕猴/28617-1.png" type="Texture" id=19]
-[ext_resource path="res://怪物ui/小猕猴/28617-2.png" type="Texture" id=20]
-[ext_resource path="res://怪物ui/小猕猴/28618-1.png" type="Texture" id=21]
-[ext_resource path="res://怪物ui/小猕猴/28611-4.png" type="Texture" id=22]
-[ext_resource path="res://怪物ui/小猕猴/28611-1.png" type="Texture" id=23]
-[ext_resource path="res://怪物ui/小猕猴/28611-2.png" type="Texture" id=24]
-[ext_resource path="res://怪物ui/小猕猴/28611-3.png" type="Texture" id=25]
-[ext_resource path="res://怪物ui/小猕猴/28612-1.png" type="Texture" id=26]
+[ext_resource path="res://Monster_ui/小猕猴/28616-1.png" type="Texture" id=1]
+[ext_resource path="res://Monster_ui/小猕猴/28611-4.png" type="Texture" id=2]
+[ext_resource path="res://Monster_ui/小猕猴/28620-1.png" type="Texture" id=3]
+[ext_resource path="res://Monster_ui/小猕猴/28613-1.png" type="Texture" id=4]
+[ext_resource path="res://Monster_ui/小猕猴/28615-1.png" type="Texture" id=5]
+[ext_resource path="res://Monster_ui/小猕猴/28619-2.png" type="Texture" id=6]
+[ext_resource path="res://Monster_ui/小猕猴/28613-7.png" type="Texture" id=7]
+[ext_resource path="res://Monster_ui/小猕猴/28611-1.png" type="Texture" id=8]
+[ext_resource path="res://Monster_ui/小猕猴/28613-3.png" type="Texture" id=9]
+[ext_resource path="res://Monster_ui/小猕猴/28613-8.png" type="Texture" id=10]
+[ext_resource path="res://Monster_ui/小猕猴/28619-4.png" type="Texture" id=11]
+[ext_resource path="res://Monster_ui/小猕猴/28611-2.png" type="Texture" id=12]
+[ext_resource path="res://Monster_ui/小猕猴/28617-1.png" type="Texture" id=13]
+[ext_resource path="res://Monster_ui/小猕猴/28613-6.png" type="Texture" id=14]
+[ext_resource path="res://Monster_ui/小猕猴/28613-2.png" type="Texture" id=15]
+[ext_resource path="res://Monster_ui/小猕猴/28619-3.png" type="Texture" id=16]
+[ext_resource path="res://Monster_ui/小猕猴/28611-3.png" type="Texture" id=17]
+[ext_resource path="res://Monster_ui/小猕猴/28618-1.png" type="Texture" id=18]
+[ext_resource path="res://Monster_ui/小猕猴/28612-1.png" type="Texture" id=19]
+[ext_resource path="res://Monster_ui/小猕猴/28613-5.png" type="Texture" id=20]
+[ext_resource path="res://Monster_ui/小猕猴/28612-2.png" type="Texture" id=21]
+[ext_resource path="res://Monster_ui/小猕猴/28612-3.png" type="Texture" id=22]
+[ext_resource path="res://Monster_ui/小猕猴/28612-4.png" type="Texture" id=23]
+[ext_resource path="res://Monster_ui/小猕猴/28617-2.png" type="Texture" id=24]
+[ext_resource path="res://Monster_ui/小猕猴/28613-4.png" type="Texture" id=25]
+[ext_resource path="res://Monster_ui/小猕猴/28619-1.png" type="Texture" id=26]
 [ext_resource path="res://FCTmgr.tscn" type="PackedScene" id=27]
 [ext_resource path="res://UI/HealthBar.tscn" type="PackedScene" id=28]
-[ext_resource path="res://UI/Name.tscn" type="PackedScene" id=29]
+[ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=29]
 [ext_resource path="res://Enemy/Snake.gd" type="Script" id=30]
 [ext_resource path="res://MUSIC/monkey.wav" type="AudioStream" id=31]
 [ext_resource path="res://MUSIC/3703.wav" type="AudioStream" id=32]
-[ext_resource path="res://EFECTIVE/js/digit/437-1.png" type="Texture" id=33]
+[ext_resource path="res://EFECTIVE/js/digit/434-1.png" type="Texture" id=33]
+[ext_resource path="res://UI/name/name_middle.png" type="Texture" id=34]
+[ext_resource path="res://UI/name/name_right.png" type="Texture" id=35]
+[ext_resource path="res://UI/name/name_left.png" type="Texture" id=36]
 
 [sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
 
-[sub_resource type="SpriteFrames" id=3]
+uniform float width:hint_range(0.0,30.0);
+uniform vec4 outline_color:hint_color;
+
+void fragment(){
+    float size = width * 1.0 / float(textureSize(TEXTURE,0).x);
+    vec4 sprite_color = texture(TEXTURE,UV);
+    float alpha = -8.0 * sprite_color.a;
+    alpha += texture(TEXTURE,UV + vec2(0.0,-size)).a;
+    alpha += texture(TEXTURE,UV + vec2(size,-size)).a;
+    alpha += texture(TEXTURE,UV + vec2(size,0)).a;
+    alpha += texture(TEXTURE,UV + vec2(size,size)).a;
+    alpha += texture(TEXTURE,UV + vec2(0.0,size)).a;
+    alpha += texture(TEXTURE,UV + vec2(-size,size)).a;
+    alpha += texture(TEXTURE,UV + vec2(-size,0.0)).a;
+    alpha += texture(TEXTURE,UV + vec2(-size,-size)).a;
+    vec4 final_color = mix(sprite_color,outline_color,clamp(alpha,0.0,1.0));
+    COLOR = vec4(final_color.rgb,clamp(abs(alpha) + sprite_color.a,0.0,1.0));
+} "
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/width = 0.0
+shader_param/outline_color = Color( 1, 0.937255, 0.0196078, 1 )
+
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 22 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 19 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 13 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 21 ), ExtResource( 7 ), ExtResource( 19 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 24 ), ExtResource( 18 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "injury",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 26 ), ExtResource( 6 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 3 ) ],
 "loop": false,
 "name": "die",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "preattack",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 9 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 25 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 7 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "walk",
-"speed": 5.0
+"speed": 8.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 24.0
 height = 32.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -90,7 +113,7 @@ tracks/0/keys = {
 "values": [ "attack" ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -128,7 +151,7 @@ tracks/2/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -142,7 +165,7 @@ tracks/0/keys = {
 "values": [ "idle" ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -169,7 +192,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.419608, 0.0941176, 0.0941176, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
 tracks/0/interp = 1
@@ -183,33 +206,31 @@ tracks/0/keys = {
 "values": [ "walk" ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "injury"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 switch_mode = 2
 auto_advance = true
 priority = 0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
@@ -218,63 +239,75 @@ priority = 0
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
-[sub_resource type="AnimationNodeStateMachine" id=25]
-states/attack/node = SubResource( 10 )
+[sub_resource type="AnimationNodeStateMachine" id=26]
+states/attack/node = SubResource( 11 )
 states/attack/position = Vector2( 746, 263 )
-states/die/node = SubResource( 11 )
+states/die/node = SubResource( 12 )
 states/die/position = Vector2( 582, 63 )
-states/idle/node = SubResource( 12 )
+states/idle/node = SubResource( 13 )
 states/idle/position = Vector2( 582, 194 )
-states/injury/node = SubResource( 13 )
+states/injury/node = SubResource( 14 )
 states/injury/position = Vector2( 318, 63 )
-states/run/node = SubResource( 14 )
+states/run/node = SubResource( 15 )
 states/run/position = Vector2( 318, 194 )
-transitions = [ "idle", "injury", SubResource( 15 ), "idle", "run", SubResource( 16 ), "run", "injury", SubResource( 17 ), "injury", "idle", SubResource( 18 ), "idle", "die", SubResource( 19 ), "run", "idle", SubResource( 20 ), "injury", "die", SubResource( 21 ), "idle", "attack", SubResource( 22 ), "attack", "idle", SubResource( 23 ), "attack", "run", SubResource( 24 ) ]
+transitions = [ "idle", "injury", SubResource( 16 ), "idle", "run", SubResource( 17 ), "run", "injury", SubResource( 18 ), "injury", "idle", SubResource( 19 ), "idle", "die", SubResource( 20 ), "run", "idle", SubResource( 21 ), "injury", "die", SubResource( 22 ), "idle", "attack", SubResource( 23 ), "attack", "idle", SubResource( 24 ), "attack", "run", SubResource( 25 ) ]
 start_node = "idle"
 end_node = "die"
 graph_offset = Vector2( -196, 10 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
-[sub_resource type="RectangleShape2D" id=27]
+[sub_resource type="RectangleShape2D" id=28]
 extents = Vector2( 296, 40 )
 
 [node name="Monster" type="KinematicBody2D"]
 material = SubResource( 1 )
+input_pickable = true
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 30 )
 attack1 = 4
 defend = 2
 
+[node name="mouse_event" type="Control" parent="."]
+margin_left = -48.0
+margin_top = -24.0
+margin_right = 64.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 2 )
-frames = SubResource( 3 )
+material = SubResource( 3 )
+frames = SubResource( 4 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 5 )
-anims/die = SubResource( 6 )
-anims/idle = SubResource( 7 )
-anims/injury = SubResource( 8 )
-anims/run = SubResource( 9 )
+anims/attack = SubResource( 6 )
+anims/die = SubResource( 7 )
+anims/idle = SubResource( 8 )
+anims/injury = SubResource( 9 )
+anims/run = SubResource( 10 )
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
-tree_root = SubResource( 25 )
+tree_root = SubResource( 26 )
 anim_player = NodePath("..")
 active = true
-parameters/playback = SubResource( 26 )
+parameters/playback = SubResource( 27 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -286,12 +319,58 @@ margin_top = -48.0
 margin_right = -24.0
 margin_bottom = -48.0
 
-[node name="Name" parent="." instance=ExtResource( 29 )]
+[node name="Name" type="Control" parent="."]
 visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = -32.0
 margin_top = 48.0
 margin_right = -32.0
 margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Name"]
+margin_right = 80.0
+margin_bottom = 19.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="left" type="TextureRect" parent="Name/HBoxContainer"]
+margin_right = 10.0
+margin_bottom = 19.0
+texture = ExtResource( 36 )
+
+[node name="middle" type="TextureRect" parent="Name/HBoxContainer"]
+margin_left = 10.0
+margin_right = 70.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 60, 19 )
+texture = ExtResource( 34 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="name" type="Label" parent="Name/HBoxContainer/middle"]
+margin_left = 3.53339
+margin_top = -2.22865
+margin_right = 51.5334
+margin_bottom = 20.7714
+custom_fonts/font = ExtResource( 29 )
+text = "小猕猴"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right" type="TextureRect" parent="Name/HBoxContainer"]
+margin_left = 70.0
+margin_right = 80.0
+margin_bottom = 19.0
+texture = ExtResource( 35 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -299,7 +378,7 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, 8 )
-shape = SubResource( 27 )
+shape = SubResource( 28 )
 
 [node name="FCTmgr" parent="." instance=ExtResource( 27 )]
 
@@ -332,6 +411,7 @@ scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 33 )
 
 [connection signal="monster_die" from="." to="." method="_on_Monster_monster_die"]
+[connection signal="mouse_entered" from="mouse_event" to="." method="_on_mouse_event_mouse_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

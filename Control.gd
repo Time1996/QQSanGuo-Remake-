@@ -18,14 +18,14 @@ func _input(event):
 	
 
 func _ready():
-	for i in get_node("Caracter/HBoxContainer").get_children():
+	for i in get_node("Character/HBoxContainer").get_children():
 		i.visible = false
 	pass
 
 func update_text(level, m_health, m_magic, b_damage, b_defend, b_shugong, b_shufang):
 	for i in str(level).length():
-		get_node("Caracter/HBoxContainer/"+str(i+1)).texture = load("res://UI/level/"+str(level).substr(i,1)+".png")
-		get_node("Caracter/HBoxContainer/"+str(i+1)).visible = true
+		get_node("Character/HBoxContainer/"+str(i+1)).texture = load("res://UI/level/"+str(level).substr(i,1)+".png")
+		get_node("Character/HBoxContainer/"+str(i+1)).visible = true
 	max_health = m_health
 	max_magic = m_magic
 	$Inventory/Wugong.text = str(b_damage)
@@ -43,18 +43,16 @@ func update_inventory(m, j):
 	$Inventory/Backpack.text = str(cnt) + "/50"
 	
 func update_exp(value):
-	print("value")
-	print(value)
 	$exprience/TextureProgress.value = value
 	$exprience/Label.text = str(value) + "%"
 
 func _on_UserInterFace_health_updated(health, magic):
-	$Caracter/Bar/HealthBar.max_value = max_health
-	$Caracter/Bar/MaigcBar.max_value = max_magic
-	$Caracter/Bar/HealthBar.value = health
-	$Caracter/Health.text = str(health) + "/" + str(max_health)
-	$Caracter/Bar/MaigcBar.value = magic
-	$Caracter/Magic.text = str(magic) + "/" + str(max_magic)
+	$Character/Bar/HealthBar.max_value = max_health
+	$Character/Bar/MaigcBar.max_value = max_magic
+	$Character/Bar/HealthBar.value = health
+	$Character/Health.text = str(health) + "/" + str(max_health)
+	$Character/Bar/MaigcBar.value = magic
+	$Character/Magic.text = str(magic) + "/" + str(max_magic)
 	pass # Replace with function body.
 
 #func load_save_stats(stats): #需要保存的信息 金币 物品等
@@ -64,4 +62,9 @@ func _on_UserInterFace_health_updated(health, magic):
 func _on_Button_pressed():
 	$Hotbar.visible = !$Hotbar.visible
 	$Hotbar.initialize_hotbar()
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
+	$Character/Target.visible = false
 	pass # Replace with function body.

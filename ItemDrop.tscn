@@ -1,17 +1,46 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/装备图标/drop/29652-1.png" type="Texture" id=1]
 [ext_resource path="res://UI/装备图标/drop/29652-4.png" type="Texture" id=2]
 [ext_resource path="res://UI/装备图标/drop/29652-2.png" type="Texture" id=3]
 [ext_resource path="res://UI/装备图标/drop/29652-3.png" type="Texture" id=4]
 [ext_resource path="res://ItemDrop.gd" type="Script" id=5]
+[ext_resource path="res://UI/item_drop/32207-4.png" type="Texture" id=6]
+[ext_resource path="res://UI/item_drop/32207-1.png" type="Texture" id=7]
+[ext_resource path="res://UI/item_drop/32207-2.png" type="Texture" id=8]
+[ext_resource path="res://UI/item_drop/32207-3.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "加速",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "金疮药",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "default",
+"name": "铁剑",
 "speed": 7.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "回城符",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "清心露",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "神行之卷",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -42,6 +71,7 @@ script = ExtResource( 5 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -0.575796 )
 frames = SubResource( 1 )
+animation = "加速"
 frame = 3
 playing = true
 

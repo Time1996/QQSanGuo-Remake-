@@ -8,7 +8,7 @@ var item_slot
 func _ready():
 	item_name = "金疮药"
 #	item_slot = get_parent().slot_index
-	$TextureRect.texture = load("res://UI/item_icons/" + item_name + ".png")
+	$TextureRect.texture_normal = load("res://UI/item_icons/" + item_name + ".png")
 	var stack_size = int(jsonData.item_data[item_name]["StackSize"])
 #	item_quantity = randi() % stack_size + 1
 	
@@ -28,7 +28,7 @@ func sub_item_quantity(amount):
 func set_item(nm, qt):
 	item_name = nm
 	item_quantity = qt
-	$TextureRect.texture = load("res://UI/item_icons/" + item_name + ".png")
+	$TextureRect.texture_normal = load("res://UI/item_icons/" + item_name + ".png")
 	
 	var stack_size = int(jsonData.item_data[item_name]["StackSize"])
 	if stack_size == 1:

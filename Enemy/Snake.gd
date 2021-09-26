@@ -13,6 +13,7 @@ export var attack_range = 100#攻击范围
 var attacking = 0
 var injurying = 0
 var time = 0
+onready var Name = get_node("Name").get_node("HBoxContainer").get_node("middle/name").text
 
 var itemDrop = preload("res://ItemDrop.tscn")
 
@@ -213,7 +214,7 @@ func _on_noncombat_timeout():
 	pass # Replace with function body.
 
 
-func _on_Monster_mouse_entered():
+func _on_mouse_event_mouse_entered():
 	print("mouse inter")
 	Input.set_custom_mouse_cursor(mouse_shape)
 	pass # Replace with function body.

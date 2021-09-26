@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=106 format=2]
 
 [ext_resource path="res://Character/Steve.gd" type="Script" id=1]
 [ext_resource path="res://Character/Sprite.tscn" type="PackedScene" id=2]
@@ -27,13 +27,30 @@
 [ext_resource path="res://EFECTIVE/level_up/446-10.png" type="Texture" id=25]
 [ext_resource path="res://EFECTIVE/level_up/446-15.png" type="Texture" id=26]
 [ext_resource path="res://EFECTIVE/level_up/9001.wav" type="AudioStream" id=27]
+[ext_resource path="res://EFECTIVE/js/digit/454-1.png" type="Texture" id=28]
+[ext_resource path="res://ANIMATION/fly.tres" type="SpriteFrames" id=29]
 [ext_resource path="res://ANIMATION/attack2.tres" type="Animation" id=30]
+[ext_resource path="res://EFECTIVE/state/187-1.png" type="Texture" id=31]
+[ext_resource path="res://EFECTIVE/state/187-3.png" type="Texture" id=32]
+[ext_resource path="res://EFECTIVE/state/187-2.png" type="Texture" id=33]
+[ext_resource path="res://EFECTIVE/state/187-4.png" type="Texture" id=34]
+[ext_resource path="res://EFECTIVE/state/187-13.png" type="Texture" id=35]
+[ext_resource path="res://EFECTIVE/state/187-14.png" type="Texture" id=36]
+[ext_resource path="res://EFECTIVE/state/187-15.png" type="Texture" id=37]
+[ext_resource path="res://EFECTIVE/state/187-5.png" type="Texture" id=38]
 [ext_resource path="res://EFECTIVE/js/306-9.png" type="Texture" id=39]
+[ext_resource path="res://EFECTIVE/state/187-7.png" type="Texture" id=40]
 [ext_resource path="res://EFECTIVE/js/306-4.png" type="Texture" id=41]
+[ext_resource path="res://EFECTIVE/state/187-8.png" type="Texture" id=42]
+[ext_resource path="res://EFECTIVE/state/187-9.png" type="Texture" id=43]
+[ext_resource path="res://EFECTIVE/state/187-10.png" type="Texture" id=44]
+[ext_resource path="res://EFECTIVE/state/187-6.png" type="Texture" id=45]
 [ext_resource path="res://EFECTIVE/js/306-5.png" type="Texture" id=46]
+[ext_resource path="res://EFECTIVE/state/187-11.png" type="Texture" id=47]
 [ext_resource path="res://FCTmgr.tscn" type="PackedScene" id=48]
 [ext_resource path="res://EFECTIVE/js/306-10.png" type="Texture" id=49]
 [ext_resource path="res://EFECTIVE/js/306-3.png" type="Texture" id=50]
+[ext_resource path="res://EFECTIVE/state/187-12.png" type="Texture" id=51]
 [ext_resource path="res://EFECTIVE/js/306-7.png" type="Texture" id=52]
 [ext_resource path="res://EFECTIVE/js/306-2.png" type="Texture" id=53]
 [ext_resource path="res://EFECTIVE/js/306-6.png" type="Texture" id=56]
@@ -343,17 +360,44 @@ tracks/0/keys = {
 "values": [ "yinyuejianwu" ]
 }
 
-[sub_resource type="RectangleShape2D" id=36]
+[sub_resource type="Shader" id=36]
+code = "shader_type canvas_item;
+
+uniform float width:hint_range(0.0,30.0);
+uniform vec4 outline_color:hint_color;
+
+void fragment(){
+    float size = width * 1.0 / float(textureSize(TEXTURE,0).x);
+    vec4 sprite_color = texture(TEXTURE,UV);
+    float alpha = -8.0 * sprite_color.a;
+    alpha += texture(TEXTURE,UV + vec2(0.0,-size)).a;
+    alpha += texture(TEXTURE,UV + vec2(size,-size)).a;
+    alpha += texture(TEXTURE,UV + vec2(size,0)).a;
+    alpha += texture(TEXTURE,UV + vec2(size,size)).a;
+    alpha += texture(TEXTURE,UV + vec2(0.0,size)).a;
+    alpha += texture(TEXTURE,UV + vec2(-size,size)).a;
+    alpha += texture(TEXTURE,UV + vec2(-size,0.0)).a;
+    alpha += texture(TEXTURE,UV + vec2(-size,-size)).a;
+    vec4 final_color = mix(sprite_color,outline_color,clamp(alpha,0.0,1.0));
+    COLOR = vec4(final_color.rgb,clamp(abs(alpha) + sprite_color.a,0.0,1.0));
+} "
+
+[sub_resource type="ShaderMaterial" id=37]
+shader = SubResource( 36 )
+shader_param/width = 0.0
+shader_param/outline_color = Color( 0.996078, 1, 0, 1 )
+
+[sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 60, 40 )
 
-[sub_resource type="CapsuleShape2D" id=37]
+[sub_resource type="CapsuleShape2D" id=39]
 radius = 4.90596
 height = 81.6411
 
-[sub_resource type="CanvasItemMaterial" id=38]
+[sub_resource type="CanvasItemMaterial" id=40]
 blend_mode = 1
 
-[sub_resource type="SpriteFrames" id=39]
+[sub_resource type="SpriteFrames" id=41]
 animations = [ {
 "frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
@@ -361,10 +405,10 @@ animations = [ {
 "speed": 14.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=41]
+[sub_resource type="RectangleShape2D" id=42]
 extents = Vector2( 48, 56 )
 
-[sub_resource type="SpriteFrames" id=40]
+[sub_resource type="SpriteFrames" id=43]
 animations = [ {
 "frames": [ ExtResource( 57 ), ExtResource( 53 ), ExtResource( 50 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 52 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 49 ) ],
 "loop": true,
@@ -372,15 +416,29 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CanvasItemMaterial" id=42]
+[sub_resource type="CanvasItemMaterial" id=44]
 blend_mode = 1
 
-[sub_resource type="SpriteFrames" id=43]
+[sub_resource type="SpriteFrames" id=45]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 23 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 22 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 26 ) ],
 "loop": true,
 "name": "default",
 "speed": 14.0
+} ]
+
+[sub_resource type="CanvasItemMaterial" id=46]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=47]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id=48]
+animations = [ {
+"frames": [ ExtResource( 31 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 34 ), ExtResource( 38 ), ExtResource( 45 ), ExtResource( 40 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 47 ), ExtResource( 51 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
 } ]
 
 [node name="Steve" type="KinematicBody2D" groups=[
@@ -423,27 +481,29 @@ anims/run = SubResource( 34 )
 anims/yinxuejianwu = SubResource( 35 )
 
 [node name="Sprite" parent="." instance=ExtResource( 2 )]
+material = SubResource( 37 )
+frame = 2
 
 [node name="HitBox" type="Area2D" parent="Sprite"]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/HitBox"]
 position = Vector2( 120, 10 )
-shape = SubResource( 36 )
+shape = SubResource( 38 )
 disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 8 )
-shape = SubResource( 37 )
+shape = SubResource( 39 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 visible = false
-material = SubResource( 38 )
+material = SubResource( 40 )
 position = Vector2( 72, 0 )
 scale = Vector2( 0.67, 1 )
-frames = SubResource( 39 )
+frames = SubResource( 41 )
 animation = "e2"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -456,7 +516,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickableArea"]
-shape = SubResource( 41 )
+shape = SubResource( 42 )
 
 [node name="self_heal" type="Timer" parent="."]
 autostart = true
@@ -536,16 +596,16 @@ texture = ExtResource( 7 )
 visible = false
 position = Vector2( 24, 10 )
 scale = Vector2( 0.3, 0.3 )
-frames = SubResource( 40 )
+frames = SubResource( 43 )
 animation = "accmulate"
-frame = 9
+frame = 3
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
 visible = false
-material = SubResource( 42 )
+material = SubResource( 44 )
 position = Vector2( 5.24408, 5.24408 )
-frames = SubResource( 43 )
+frames = SubResource( 45 )
 frame = 7
 
 [node name="level_up" type="AudioStreamPlayer" parent="."]
@@ -568,9 +628,48 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="speed" type="Timer" parent="."]
+
+[node name="health" type="Timer" parent="."]
+
+[node name="magic" type="Timer" parent="."]
+
+[node name="miss" type="Sprite" parent="."]
+visible = false
+position = Vector2( 5.88757, -91.6806 )
+texture = ExtResource( 28 )
+
+[node name="fly_left" type="AnimatedSprite" parent="."]
+visible = false
+material = SubResource( 46 )
+position = Vector2( -32.1353, 48.686 )
+scale = Vector2( 0.431948, 0.34901 )
+frames = ExtResource( 29 )
+frame = 4
+playing = true
+
+[node name="fly_right" type="AnimatedSprite" parent="."]
+visible = false
+material = SubResource( 46 )
+position = Vector2( 42.9738, 48.6878 )
+scale = Vector2( 0.431948, 0.34901 )
+frames = ExtResource( 29 )
+frame = 2
+playing = true
+flip_h = true
+
+[node name="recover" type="AnimatedSprite" parent="."]
+material = SubResource( 47 )
+position = Vector2( 9.51367, 3.56763 )
+frames = SubResource( 48 )
+frame = 7
+playing = true
+
 [connection signal="health_updated" from="." to="." method="_on_Steve_health_updated"]
 [connection signal="body_entered" from="Sprite/HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="pickableArea" to="." method="_on_pickableArea_body_entered"]
 [connection signal="body_exited" from="pickableArea" to="." method="_on_pickableArea_body_exited"]
 [connection signal="timeout" from="self_heal" to="." method="_on_self_heal_timeout"]
+[connection signal="timeout" from="speed" to="." method="_on_speed_timeout"]
+[connection signal="timeout" from="health" to="." method="_on_health_timeout"]
