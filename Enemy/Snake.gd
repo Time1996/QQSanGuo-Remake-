@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var mouse_shape = preload("res://assets/mouse/28158-1.png")
+var mouse_default = preload("res://assets/mouse/28168-1.png")
 
 signal monster_die
 
@@ -14,7 +15,7 @@ var attacking = 0
 var injurying = 0
 var time = 0
 onready var Name = get_node("Name").get_node("HBoxContainer").get_node("middle/name").text
-
+onready var userInterface = get_parent().get_node("UserInterFace")
 var itemDrop = preload("res://ItemDrop.tscn")
 
 enum{
@@ -217,4 +218,10 @@ func _on_noncombat_timeout():
 func _on_mouse_event_mouse_entered():
 	print("mouse inter")
 	Input.set_custom_mouse_cursor(mouse_shape)
+	pass # Replace with function body.
+
+
+func _on_Snake_mouse_exited():
+	print("mouse exited")
+	Input.set_custom_mouse_cursor(mouse_default)
 	pass # Replace with function body.

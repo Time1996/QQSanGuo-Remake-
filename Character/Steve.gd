@@ -11,6 +11,8 @@ export var basic_shufang = 0
 export var money = 0
 export var juntuan = 0
 export var level = 1
+
+var key_state ##技能键位
 var state_machine
 
 onready var userInterface = get_parent().get_node("UserInterFace")
@@ -18,7 +20,6 @@ onready var userInterface = get_parent().get_node("UserInterFace")
 var experience = 0
 var experience_pool = 0 #经验池
 var experience_required = get_required_experience(level+1)
-
 
 onready var health = max_health setget _set_health
 onready var magic = max_health setget _set_health
@@ -43,10 +44,9 @@ var chase_target_state = 0
 var target = 0
 var target_derection = 1
 
-
 func _ready():
-	$AnimatedSprite.visible = false
-	$AnimatedSprite2.visible = false
+	$Control/AnimatedSprite.visible = false
+	$Control/AnimatedSprite2.visible = false
 	state_machine = $AnimationTree.get("parameters/playback")
 	$HBoxContainer.visible = false
 	$fly_left.frame = $fly_right.frame
@@ -82,11 +82,11 @@ func level_up():
 	basic_shufang += level
 	
 	$level_up.play()
-	$AnimatedSprite3.visible = true
-	$AnimatedSprite3.play("defalut")
-	yield($AnimatedSprite3, "animation_finished")
-	$AnimatedSprite3.visible = false
-	$AnimatedSprite3.stop()
+	$Control/AnimatedSprite3.visible = true
+	$Control/AnimatedSprite3.play("defalut")
+	yield($Control/AnimatedSprite3, "animation_finished")
+	$Control/AnimatedSprite3.visible = false
+	$Control/AnimatedSprite3.stop()
 	userInterface.update_text(level, max_health, max_magic,
 							 basic_damage, basic_defende,
 							 basic_shugong, basic_shufang)
@@ -142,16 +142,14 @@ func move_to_target(delta, min_dist):
 	
 	if target_derection > 0:
 		target_derection = -1
-		$Sprite.scale.x = -0.8
-		$AnimatedSprite.scale.x = -0.8
+		$Control.rect_scale.x = -1
 	else:
 		target_derection = 1
-		$Sprite.scale.x = 0.8
-		$AnimatedSprite.scale.x = 0.8
+		$Control.rect_scale.x = 1
 	##在范围内了 双方同时开始动画 进行伤害计算 并播放动画
 	if target <= 100: #skill_dist 100
 		chase_target_state = 0
-		state_machine.travel("idle")
+#		state_machine.travel("idle")
 		attack()
 		return
 		
@@ -190,8 +188,7 @@ func game_play(delta):
 			if Input.is_action_pressed("right"):
 				derection = 1
 				state_machine.travel("run")
-				$Sprite.scale.x = 0.8
-				$AnimatedSprite.scale.x = 0.8
+				$Control.rect_scale.x = 1
 				if Input.is_action_just_pressed("jump"):
 					derection = 1
 					velocity.y = JUMP
@@ -199,8 +196,7 @@ func game_play(delta):
 			elif Input.is_action_pressed("left"):
 				derection = -1
 				state_machine.travel("run")
-				$Sprite.scale.x = -0.8
-				$AnimatedSprite.scale.x = -0.8
+				$Control.rect_scale.x = -1
 				if Input.is_action_just_pressed("jump"):
 					derection = -1
 					velocity.y = JUMP
@@ -208,6 +204,7 @@ func game_play(delta):
 			elif Input.is_action_just_pressed("jump"):
 				velocity.y = JUMP
 			elif Input.is_action_pressed('attack'):
+				key_state = 'D' ##这里先用技能
 				var min_dist = 99999999
 #				min_dist = closet_enemy(min_dist)
 				closet_enemy(min_dist)
@@ -242,14 +239,12 @@ func game_play(delta):
 	else:
 		velocity.y = 300 * upOrDown
 		if Input.is_action_pressed("left") and Input.is_action_just_pressed("jump"):
-			$Sprite.scale.x = -0.8
-			$AnimatedSprite.scale.x = -0.8
+			$Control.rect_scale.x = -1
 			state = 0
 			derection = -1
 			velocity.y = JUMP
 		elif Input.is_action_pressed("right") and Input.is_action_just_pressed("jump"):
-			$Sprite.scale.x = 0.8
-			$AnimatedSprite.scale.x = 0.8
+			$Control.rect_scale.x = 1
 			state = 0
 			derection = 1
 			velocity.y = JUMP
@@ -335,7 +330,7 @@ func _set_health(value):
 			
 func dead():
 	state_machine.travel("die")
-	yield($Sprite,"animation_finished")
+	yield($Control/Sprite,"animation_finished")
 	##弹出死亡界面 这里先重新载入地图
 	get_tree().change_scene("res://Level1.tscn")
 	
@@ -347,7 +342,7 @@ func _on_Steve_health_updated(value):
 	state_machine.travel("injury")
 	$FCTmgr.show_value(value)
 	get_parent().get_node("UserInterFace").emit_signal("health_updated",health, magic)
-	yield($AnimatedSprite,"animation_finished")
+	yield($Control/AnimatedSprite,"animation_finished")
 	pass # Replace with function body.
 
 
@@ -367,18 +362,25 @@ func _on_pickableArea_body_exited(body):
 
 func attack():
 	attacking = 1
-	get_parent().get_node("BattleSound").play()
 	get_parent().get_node("AudioStreamPlayer").stop()
 	if  get_parent().get_node("Battle").playing == false:
 		get_parent().get_node("Battle").play()
 		get_parent().get_node("BattleTime").start(25)
 
-	$Timer.start(1.1)
-	if $AnimatedSprite.scale.x > 0:
-		state_machine.travel("attackRight")
-	else:
-		state_machine.travel("attackLeft")
 	
+	if key_state == 'W':
+		get_node("BattleSound").stream = load("res://MUSIC/js/hhfl.wav")
+		state_machine.travel("hhfl")
+	elif key_state == 'A':
+		get_node("BattleSound").stream = load("res://MUSIC/js/40.wav")
+		state_machine.travel("attack")
+	elif key_state == 'D':
+		state_machine.travel("40")
+		get_node("BattleSound").stream = load("res://MUSIC/js/40.wav")
+	get_node("BattleSound").play()
+#	yield($AnimationPlayer,"animation_finished")
+#	attacking = 0
+	$Timer.start(1.2)
 
 func _on_self_heal_timeout():
 	health += 4 ##每秒回复4点生命

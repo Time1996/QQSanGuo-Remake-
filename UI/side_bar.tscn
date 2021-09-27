@@ -128,7 +128,7 @@ stretch_mode = 5
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -32, -32 )
 frames = SubResource( 1 )
-frame = 2
+frame = 3
 playing = true
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_Button_pressed"]

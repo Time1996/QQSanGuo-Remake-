@@ -12,6 +12,7 @@
 [ext_resource path="res://UI/side_bar/player_skill.tscn" type="PackedScene" id=10]
 
 [node name="UserInterFace" type="CanvasLayer"]
+layer = 0
 script = ExtResource( 2 )
 
 [node name="Character" parent="." instance=ExtResource( 4 )]
