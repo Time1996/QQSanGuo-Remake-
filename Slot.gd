@@ -56,6 +56,7 @@ func pickFromSlot():
 	remove_child(item)
 	var inventoryNode = find_parent("UserInterFace")
 	inventoryNode.add_child(item)
+	item.get_node("TextureRect").mouse_filter = MOUSE_FILTER_IGNORE
 	item = null
 
 func putIntoSlot(new_item):
@@ -64,6 +65,7 @@ func putIntoSlot(new_item):
 	var inventoryNode = find_parent("UserInterFace")
 	inventoryNode.remove_child(item)
 	add_child(item)
+	item.get_node("TextureRect").mouse_filter = MOUSE_FILTER_STOP
 	#refresh_style() ##暂时不用 用了之后会导致放下后 大小不对
 
 func initialize_item(item_name, item_quantity):

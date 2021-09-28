@@ -56,14 +56,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 34 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "injury",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 18 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 37 ), ExtResource( 38 ) ],
 "loop": true,
 "name": "attack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "injury",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 26 ), ExtResource( 3 ) ],
@@ -71,14 +71,14 @@ animations = [ {
 "name": "die",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "walk",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 13 ), ExtResource( 25 ), ExtResource( 31 ), ExtResource( 32 ) ],
 "loop": true,
 "name": "preattack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "walk",
 "speed": 5.0
 } ]
 
@@ -274,7 +274,7 @@ shape = SubResource( 2 )
 material = SubResource( 3 )
 frames = SubResource( 4 )
 animation = "idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

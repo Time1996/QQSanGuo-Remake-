@@ -132,11 +132,13 @@ func move_to_target(delta, min_dist):
 	if min_dist == 99999999: ##当前层没找到目标
 		chase_target_state = 0
 		return
+	var enemy_id ##标记是哪个敌人
 	for i in enemies:
 		if sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2)) == min_dist:
 			#i.call_deferred("injury", 1)
 			target = abs(position.x - i.position.x) + 30
 			target_derection = position.x - i.position.x
+			enemy_id = i
 			chase_target_state = 1
 			break
 	
@@ -149,8 +151,10 @@ func move_to_target(delta, min_dist):
 	##在范围内了 双方同时开始动画 进行伤害计算 并播放动画
 	if target <= 100: #skill_dist 100
 		chase_target_state = 0
+		enemy_id.injury(20) ##指定敌人收到伤害
 #		state_machine.travel("idle")
 		attack()
+		
 		return
 		
 	velocity.x = delta * SPEED * target_derection * 50
@@ -274,11 +278,11 @@ func closet_enemy(min_dist):
 	for i in enemies:
 		if sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2)) == min_dist:
 			#i.call_deferred("injury", 1)
-			userInterface.get_node("Character").get_node("Target").visible = true
-			userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+i.Name+".png")
-			userInterface.get_node("Character").get_node("Target").get_node("name").text = i.Name
-			userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = i.get_node("HealthBar").get_node("HealthBar").value
-			print(i.get_node("HealthBar").get_node("HealthBar").value)
+#			userInterface.get_node("Character").get_node("Target").visible = true
+#			userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+i.Name+".png")
+#			userInterface.get_node("Character").get_node("Target").get_node("name").text = i.Name
+#			userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = i.get_node("HealthBar").get_node("HealthBar").value
+#			print(i.get_node("HealthBar").get_node("HealthBar").value)
 			target = abs(position.x - i.position.x) + 30
 			target_derection = position.x - i.position.x
 			if target_derection > 0:
@@ -380,7 +384,7 @@ func attack():
 	get_node("BattleSound").play()
 #	yield($AnimationPlayer,"animation_finished")
 #	attacking = 0
-	$Timer.start(1.2)
+	$Timer.start(1.6)
 
 func _on_self_heal_timeout():
 	health += 4 ##每秒回复4点生命

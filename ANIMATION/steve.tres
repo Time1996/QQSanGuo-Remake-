@@ -115,7 +115,7 @@ animations = [ {
 "name": "clim",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 59 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 54 ), ExtResource( 49 ), ExtResource( 55 ), ExtResource( 51 ), ExtResource( 43 ), ExtResource( 56 ), ExtResource( 45 ), ExtResource( 50 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 44 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 44 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 44 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 44 ), ExtResource( 52 ) ],
+"frames": [ ExtResource( 59 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 54 ), ExtResource( 49 ), ExtResource( 55 ), ExtResource( 51 ), ExtResource( 43 ), ExtResource( 56 ), ExtResource( 45 ), ExtResource( 50 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 44 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 44 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 44 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 44 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 44 ), ExtResource( 52 ) ],
 "loop": false,
 "name": "40",
 "speed": 28.0

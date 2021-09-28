@@ -26,9 +26,9 @@ func _physics_process(delta): ##物理效果
 		var dist = global_position.distance_to(player.global_position)
 		if dist < 5:
 			##if item is effect:
-			player.gain_speed()
+#			player.gain_speed()
 			##else:
-#			PlayerInventory.add_item(item_name, 1) ##加入包里
+			PlayerInventory.add_item(item_name, 1) ##加入包里
 			queue_free()
 		
 	velocity = move_and_slide(velocity, Vector2.UP)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://Character/Steve.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TransPort.tscn" type="PackedScene" id=2]
@@ -58,9 +58,11 @@
 [ext_resource path="res://assets/map/12684-4.png" type="Texture" id=56]
 [ext_resource path="res://Enemy/Snake.tscn" type="PackedScene" id=57]
 [ext_resource path="res://Level1.gd" type="Script" id=58]
+[ext_resource path="res://assets/map/bajun/13311-1.png" type="Texture" id=59]
 [ext_resource path="res://UserInterFace.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Enemy/Monkeyy.tscn" type="PackedScene" id=61]
 [ext_resource path="res://MUSIC/fmusic001.ogg" type="AudioStream" id=62]
+[ext_resource path="res://assets/map/bajun/13312-1.png" type="Texture" id=63]
 [ext_resource path="res://ItemDrop.tscn" type="PackedScene" id=64]
 [ext_resource path="res://16898-1.png" type="Texture" id=66]
 [ext_resource path="res://19470-1.png" type="Texture" id=67]
@@ -431,6 +433,12 @@ extents = Vector2( 176, 64 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 336, 64 )
 
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 195.708, 64 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 56.2872, 25.4355 )
+
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 272, 64 )
 
@@ -498,7 +506,11 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 4
 format = 1
-tile_data = PoolIntArray( -2293758, 4, 0, -2228185, 6, 0, -1900554, 16, 0, -1900545, 15, 0, -1966080, 7, 0, -1966072, 16, 0, -1835028, 8, 0, -1835027, 0, 0, -1835019, 1, 0, -1835015, 0, 0, -1900544, 1, 0, -1900539, 0, 0, -1834991, 16, 0, -1834974, 15, 0, -1834970, 14, 0, -1834963, 16, 0, -1703947, 2, 0, -1769467, 2, 0, -1769462, 0, 0, -1769454, 0, 0, -1769446, 0, 0, -1769438, 1, 0, -1769433, 0, 0, -1769429, 7, 0, -1638361, 2, 0, -1507321, 6, 0, -1507318, 6, 0, -1441780, 4, 0, -1441740, 6, 0, -1441733, 6, 0, -1376195, 4, 0, -1179626, 13, 0, -1114106, 14, 0, -1114099, 14, 0, -1114073, 13, 0, -983043, 8, 0, -983042, 0, 0, -1048573, 7, 0, -1048570, 1, 0, -1048566, 0, 0, -1048558, 0, 0, -1048519, 17, 0, -983026, 1, 0, -983024, 8, 0, -983016, 0, 0, -983008, 0, 0, -982999, 0, 0, -982991, 1, 0, -982986, 0, 0, -982981, 0, 0, -982979, 7, 0, -982974, 8, 0, -917494, 2, 0, -917467, 1, 0, -851949, 2, 0, -851914, 2, 0, -786390, 2, 0, -131082, 10, 0, -65551, 8, 0, -65550, 0, 0, -65543, 1, 0, -65539, 0, 0, -131071, 7, 0, -131020, 0, 0, -131013, 1, 0, -131010, 0, 0, -131003, 8, 0, -65483, 11, 0, 65534, 2, 0, 38, 0, 0, 40, 7, 0, 46, 0, 0, 65580, 1, 0, 131124, 2, 0, 327689, 6, 0, 655368, 13, 0, 655392, 9, 0, 720900, 11, 0, 720901, 12, 0, 720905, 10, 0, 720906, 12, 0, 720926, 11, 0, 720928, 8, 0, 851959, 0, 0, 851967, 0, 0, 786439, 1, 0, 786444, 0, 0, 786452, 1, 0, 786457, 0, 0, 786464, 1, 0, 786468, 0, 0, 786474, 0, 0, 852017, 18, 0, 852026, 20, 0, 917515, 2, 0, 917536, 2, 0, 917555, 18, 0, 983093, 18, 0, 983099, 13, 0, 1048631, 18, 0, 1114168, 0, 0, 1114176, 0, 0, 1114183, 0, 0, 1114191, 12, 0, 1179712, 12, 0 )
+tile_data = PoolIntArray( -2293758, 4, 0, -2228185, 6, 0, -1900554, 16, 0, -1900545, 15, 0, -1966080, 7, 0, -1966072, 16, 0, -1835028, 8, 0, -1835027, 0, 0, -1835019, 1, 0, -1835015, 0, 0, -1900544, 1, 0, -1900539, 0, 0, -1834991, 16, 0, -1834974, 15, 0, -1834970, 14, 0, -1834963, 16, 0, -1703947, 2, 0, -1769467, 2, 0, -1769462, 0, 0, -1769454, 0, 0, -1769446, 0, 0, -1769438, 1, 0, -1769433, 0, 0, -1769429, 7, 0, -1638361, 2, 0, -1507321, 6, 0, -1507318, 6, 0, -1441780, 4, 0, -1441740, 6, 0, -1441733, 6, 0, -1376195, 4, 0, -1179626, 13, 0, -1114106, 14, 0, -1114099, 14, 0, -1114073, 13, 0, -983043, 8, 0, -983042, 0, 0, -1048573, 7, 0, -1048570, 1, 0, -1048566, 0, 0, -1048558, 0, 0, -1048519, 17, 0, -983026, 1, 0, -983024, 8, 0, -983016, 0, 0, -983008, 0, 0, -982999, 0, 0, -982991, 1, 0, -982986, 0, 0, -982981, 0, 0, -982979, 7, 0, -982974, 8, 0, -917494, 2, 0, -917467, 1, 0, -851949, 2, 0, -851914, 2, 0, -786390, 2, 0, -131082, 10, 0, -65551, 8, 0, -65550, 0, 0, -65543, 1, 0, -65539, 0, 0, -131071, 7, 0, -131020, 0, 0, -131013, 1, 0, -131010, 0, 0, -131003, 8, 0, -65483, 11, 0, 65534, 2, 0, 38, 0, 0, 40, 7, 0, 46, 0, 0, 65580, 1, 0, 131124, 2, 0, 327689, 6, 0, 655368, 13, 0, 655392, 9, 0, 720900, 11, 0, 720901, 12, 0, 720905, 10, 0, 720906, 12, 0, 720926, 11, 0, 720928, 8, 0, 851959, 0, 0, 851967, 0, 0, 786439, 1, 0, 786444, 0, 0, 786452, 1, 0, 786457, 0, 0, 786464, 1, 0, 786468, 0, 0, 786474, 0, 0, 852026, 20, 0, 917515, 2, 0, 917536, 2, 0, 983099, 13, 0, 1114166, 0, 0, 1114168, 0, 0, 1114176, 0, 0, 1114183, 0, 0, 1114191, 12, 0, 1179712, 12, 0 )
+
+[node name="16898-1" type="Sprite" parent="Tile OneWay"]
+position = Vector2( 1648.69, 440.224 )
+texture = ExtResource( 66 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2( 10, 0 )
@@ -611,6 +623,16 @@ position = Vector2( 2320, 640 )
 shape = SubResource( 6 )
 one_way_collision = true
 
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
+position = Vector2( 1789.89, 640.441 )
+shape = SubResource( 23 )
+one_way_collision = true
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
+position = Vector2( 1859.97, 551.674 )
+shape = SubResource( 24 )
+one_way_collision = true
+
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 1568, 96 )
 shape = SubResource( 7 )
@@ -704,7 +726,7 @@ shape = SubResource( 11 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 32, 48 )
 scale = Vector2( 0.980769, 0.9375 )
-polygon = PoolVector2Array( 1761.88, 469.333, 1859.77, 529.067, 1925.02, 554.667, 1991.5, 564.267, 1990.28, 699.733, 1647.69, 392.533 )
+polygon = PoolVector2Array( 1800.07, 480.221, 1827.29, 507.273, 1825.25, 532.19, 1650.36, 532.19, 1649.68, 391.231, 1682.35, 401.91, 1723.18, 425.403, 1767.41, 453.168 )
 one_way_collision = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
@@ -775,13 +797,13 @@ shape = SubResource( 20 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
 frames = SubResource( 21 )
-frame = 14
+frame = 4
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
 frames = SubResource( 22 )
-frame = 9
+frame = 14
 playing = true
 
 [node name="UserInterFace" parent="." instance=ExtResource( 60 )]
@@ -812,6 +834,39 @@ z_index = 1
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="13311-1" type="Sprite" parent="."]
+position = Vector2( 2854.69, 340.787 )
+z_index = -1
+texture = ExtResource( 59 )
+offset = Vector2( 0, -15 )
+flip_h = true
+
+[node name="13312-1" type="Sprite" parent="."]
+position = Vector2( 2393.01, 339.475 )
+z_index = -1
+texture = ExtResource( 63 )
+offset = Vector2( 0, -15 )
+flip_h = true
+
+[node name="16898-1" type="Sprite" parent="."]
+position = Vector2( 1766.73, 479.857 )
+texture = ExtResource( 66 )
+
+[node name="16898-2" type="Sprite" parent="."]
+position = Vector2( 1818.32, 519.542 )
+texture = ExtResource( 66 )
+
+[node name="16899-1" type="Sprite" parent="."]
+position = Vector2( 1859.6, 546.166 )
+texture = ExtResource( 68 )
 
 [connection signal="monster_die" from="Snake" to="." method="_on_Snake_monster_die"]
 [connection signal="mouse_exited" from="Snake" to="Snake" method="_on_Snake_mouse_exited"]

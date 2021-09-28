@@ -32,12 +32,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PopupMenu" type="PopupMenu" parent="."]
-margin_left = 400.518
-margin_top = -0.391342
-margin_right = 500.518
-margin_bottom = 99.6087
-
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -219,7 +213,7 @@ __meta__ = {
 [node name="Sprite" parent="." instance=ExtResource( 4 )]
 position = Vector2( 360.73, 274.618 )
 scale = Vector2( 0.7, 0.7 )
-frame = 2
+frame = 3
 
 [node name="name" type="Label" parent="."]
 margin_left = 262.0

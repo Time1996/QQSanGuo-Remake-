@@ -59,14 +59,12 @@ func load_save_stats(stats):
 	item_quantity = stats.data.quantity
 	item_slot = stats.data.slot
 
-
-func _on_Label2_mouse_entered():
+func _on_TextureRect_mouse_entered():
 	$Label2.text = item_name
 	$Label2.visible = true
-	print('YEE')
 	pass # Replace with function body.
 
 
-func _on_Label2_mouse_exited():
+func _on_TextureRect_mouse_exited():
 	$Label2.visible = false
 	pass # Replace with function body.

@@ -142,6 +142,13 @@ func injury(damage):
 		
 		$critical_attack.visible = true
 		
+		
+		userInterface.get_node("Character").get_node("Target").visible = true
+		userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+Name+".png")
+		userInterface.get_node("Character").get_node("Target").get_node("name").text = Name
+		
+		print(health)
+		
 		var offset = Vector2()
 		offset.x = rand_range(-15, 15)
 		offset.y = rand_range(-15, 15)
@@ -166,6 +173,7 @@ func injury(damage):
 	else:
 		state = COMBAT
 		yield($AnimatedSprite, "animation_finished")
+	userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = health
 		
 func Drop():
 	##死后有概率掉落物品
