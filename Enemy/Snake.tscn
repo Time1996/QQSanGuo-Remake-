@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://assets/map/竹叶青/14363-1.png" type="Texture" id=1]
 [ext_resource path="res://assets/map/竹叶青/14359-8.png" type="Texture" id=2]
@@ -40,6 +40,8 @@
 [ext_resource path="res://Monster_ui/竹叶青/14358-4.png" type="Texture" id=38]
 [ext_resource path="res://Monster_ui/竹叶青/14358-1.png" type="Texture" id=39]
 [ext_resource path="res://Monster_ui/竹叶青/14358-2.png" type="Texture" id=40]
+[ext_resource path="res://Enemy/Enemytarget.tres" type="Animation" id=41]
+[ext_resource path="res://Monster_ui/19613-1.png" type="Texture" id=42]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -273,7 +275,7 @@ shape = SubResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 3 )
 frames = SubResource( 4 )
-animation = "idle"
+animation = "attack"
 frame = 1
 playing = true
 
@@ -286,6 +288,7 @@ anims/die = SubResource( 7 )
 anims/idle = SubResource( 8 )
 anims/injury = SubResource( 9 )
 anims/run = SubResource( 10 )
+anims/target = ExtResource( 41 )
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
 tree_root = SubResource( 26 )
@@ -392,6 +395,15 @@ visible = false
 position = Vector2( 0, -80 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 19 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -51.2861 )
+texture = ExtResource( 42 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+autoplay = "Enemytarget"
+anims/Enemytarget = ExtResource( 41 )
 
 [connection signal="mouse_entered" from="." to="." method="_on_Monster_mouse_entered"]
 [connection signal="mouse_entered" from="mouse_event" to="." method="_on_mouse_event_mouse_entered"]

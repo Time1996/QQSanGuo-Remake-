@@ -41,6 +41,7 @@ func init():
 	$HealthBar.visible = true
 	$Name.visible = true
 	$HealthBar/HealthBar.value = max_health
+	$Sprite.visible = false
 	randomize()
 	
 func _ready():
@@ -142,13 +143,6 @@ func injury(damage):
 		
 		$critical_attack.visible = true
 		
-		
-		userInterface.get_node("Character").get_node("Target").visible = true
-		userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+Name+".png")
-		userInterface.get_node("Character").get_node("Target").get_node("name").text = Name
-		
-		print(health)
-		
 		var offset = Vector2()
 		offset.x = rand_range(-15, 15)
 		offset.y = rand_range(-15, 15)
@@ -165,15 +159,20 @@ func injury(damage):
 		$FCTmgr.show_value(damage, true)
 	else:
 		$FCTmgr.show_value(damage, false)
+		
 	health -= damage
 	$HealthBar/HealthBar.value = health
+	userInterface.get_node("Character").get_node("Target").visible = true
+	userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+Name+".png")
+	userInterface.get_node("Character").get_node("Target").get_node("name").text = Name
+	userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = health
 	state_machine.travel("injury")
 	if health <= 0:
 		state = DIE
 	else:
 		state = COMBAT
 		yield($AnimatedSprite, "animation_finished")
-	userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = health
+	
 		
 func Drop():
 	##死后有概率掉落物品
@@ -192,9 +191,10 @@ func dead():
 	$Tween.start()
 	
 	Drop()
-	
-	yield($AnimatedSprite, "animation_finished")
 	emit_signal("monster_die")
+	userInterface.get_node("Character").get_node("Target").visible = false
+	yield($AnimatedSprite, "animation_finished")
+	
 	queue_free()
 	
 func choose(array):

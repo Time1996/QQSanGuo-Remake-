@@ -11,10 +11,14 @@ var being_picked_up = false
 
 func _ready():
 	randomize()
+	var name_set = jsonData.item_data.keys()
+	item_name = name_set[int(randi()%name_set.size())]
+	$Sprite.animation = item_name
+	print(item_name)
 	#if randi() % 2 == 0:
 	#	item_name = "铁剑"
 	#else:
-	item_name = "金疮药"
+#	item_name = "金疮药"
 
 func _physics_process(delta): ##物理效果
 	if being_picked_up == false:

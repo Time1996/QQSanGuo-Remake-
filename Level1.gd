@@ -30,9 +30,9 @@ func _on_Spawner_monster_die():
 func _on_TransPort_body_entered(body):
 	pass # Replace with function body.
 
-
-func _on_Timer_timeout():#auto generation
-	var nodes = get_tree().get_nodes_in_group("enemy").size()
-	if nodes < 10:
-		$Spawner_Snake.monster_generation(10-nodes)
-	pass # Replace with function body.
+#
+#func _on_Timer_timeout():#auto generation
+#	var nodes = get_tree().get_nodes_in_group("enemy").size()
+#	if nodes < 10:
+#		$Spawner_Snake.monster_generation(10-nodes)
+#	pass # Replace with function body.

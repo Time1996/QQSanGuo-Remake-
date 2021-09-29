@@ -13,6 +13,9 @@ export var juntuan = 0
 export var level = 1
 
 var key_state ##技能键位
+var selected_skill
+var skill_damage
+
 var state_machine
 
 onready var userInterface = get_parent().get_node("UserInterFace")
@@ -139,6 +142,7 @@ func move_to_target(delta, min_dist):
 			target = abs(position.x - i.position.x) + 30
 			target_derection = position.x - i.position.x
 			enemy_id = i
+			i.get_node("Sprite").visible = true
 			chase_target_state = 1
 			break
 	
@@ -149,9 +153,9 @@ func move_to_target(delta, min_dist):
 		target_derection = 1
 		$Control.rect_scale.x = 1
 	##在范围内了 双方同时开始动画 进行伤害计算 并播放动画
-	if target <= 100: #skill_dist 100
+	if target <= 175: #skill_dist 100
 		chase_target_state = 0
-		enemy_id.injury(20) ##指定敌人收到伤害
+		enemy_id.injury(basic_damage) ##指定敌人收到伤害 +skill_damage
 #		state_machine.travel("idle")
 		attack()
 		
@@ -372,6 +376,13 @@ func attack():
 		get_parent().get_node("BattleTime").start(25)
 
 	
+#	match selected_skill:
+#		SkillsFactory.skill_data[selected_skill].skill_type
+#		var skill = load("res://Skill.tscn").instance()
+#		skill.skill_name = skill_data[selected_skill].skill_name ##一句话即可获取所有技能数据 都存入skill节点了 拿来用即可
+#		state_machine.travel(skill.skill_name)
+#		get_node("BattleSound").stream = load("res://MUSIC/js/"+skill.skill_name+".wav")
+#		skill_damage = skill.caculate(basic_damage, defend)
 	if key_state == 'W':
 		get_node("BattleSound").stream = load("res://MUSIC/js/hhfl.wav")
 		state_machine.travel("hhfl")

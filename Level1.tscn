@@ -1,8 +1,7 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://Character/Steve.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TransPort.tscn" type="PackedScene" id=2]
-[ext_resource path="res://AutoGeneration/Spawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/map/9023-1.png" type="Texture" id=4]
 [ext_resource path="res://assets/map/9024-1.png" type="Texture" id=5]
 [ext_resource path="res://assets/map/8985-1.png" type="Texture" id=6]
@@ -433,55 +432,58 @@ extents = Vector2( 176, 64 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 336, 64 )
 
-[sub_resource type="RectangleShape2D" id=23]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 195.708, 64 )
 
-[sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 56.2872, 25.4355 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 272, 64 )
-
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 256, 64 )
+extents = Vector2( 70.463, 64 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 192, 64 )
+extents = Vector2( 56.2872, 25.4355 )
 
 [sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 64, 64 )
+extents = Vector2( 272, 64 )
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 32, 216 )
-
-[sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 32, 266.569 )
-
-[sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 38.6841, 135.452 )
-
-[sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 312, 8 )
-
-[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 256, 64 )
 
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 192, 64 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 64, 64 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 32, 216 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 32, 266.569 )
+
 [sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 8, 160 )
+extents = Vector2( 38.6841, 135.452 )
 
 [sub_resource type="RectangleShape2D" id=17]
-extents = Vector2( 8, 160 )
+extents = Vector2( 312, 8 )
 
 [sub_resource type="RectangleShape2D" id=18]
-extents = Vector2( 8, 160 )
+extents = Vector2( 256, 64 )
 
 [sub_resource type="RectangleShape2D" id=19]
-extents = Vector2( 8, 152 )
+extents = Vector2( 8, 160 )
 
 [sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 8, 160 )
+
+[sub_resource type="RectangleShape2D" id=21]
+extents = Vector2( 8, 160 )
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 8, 152 )
+
+[sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 40, 16.5 )
 
-[sub_resource type="SpriteFrames" id=21]
+[sub_resource type="SpriteFrames" id=24]
 animations = [ {
 "frames": [ ExtResource( 49 ), ExtResource( 35 ), ExtResource( 44 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 50 ), ExtResource( 40 ), ExtResource( 38 ), ExtResource( 32 ), ExtResource( 52 ), ExtResource( 45 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 29 ), ExtResource( 30 ) ],
 "loop": true,
@@ -489,13 +491,69 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=25]
 animations = [ {
 "frames": [ ExtResource( 33 ), ExtResource( 47 ), ExtResource( 36 ), ExtResource( 27 ), ExtResource( 42 ), ExtResource( 37 ), ExtResource( 55 ), ExtResource( 34 ), ExtResource( 48 ), ExtResource( 31 ), ExtResource( 53 ), ExtResource( 39 ), ExtResource( 43 ), ExtResource( 28 ), ExtResource( 51 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="GDScript" id=26]
+script/source = "extends Node2D
+
+signal monster_die
+
+var eneme_set = preload(\"res://Enemy//Snake.tscn\")
+
+
+func _ready():
+	monster_generation(10)
+	pass
+
+func monster_generation(num):
+	yield(get_tree(), \"idle_frame\")
+	
+	for i in range(1, num+1):
+		var e1 = eneme_set.instance()
+		var s =\"2_\"+str(i)
+		e1.position = get_node(s).position
+		e1.add_to_group(\"enemy\")
+		e1.set_collision_layer_bit(1,1)
+		e1.set_collision_layer_bit(0,0)
+		e1.set_collision_mask_bit(0,0)
+		e1.connect(\"monster_die\", self, \"_on_Spawner_monster_die\", [s])
+		get_node(\"/root/Level1\").add_child(e1)
+		$Tween.interpolate_property(e1, \"modulate\", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1,Tween.TRANS_LINEAR)
+		
+		$Tween.start()
+		yield($Tween,\"tween_completed\")
+
+func monster_specify_place(num):
+	var e1 = eneme_set.instance()
+	var s = num
+	e1.position = get_node(s).position
+	e1.add_to_group(\"enemy\")
+	e1.set_collision_layer_bit(1,1)
+	e1.set_collision_layer_bit(0,0)
+	e1.set_collision_mask_bit(0,0)
+	e1.connect(\"monster_die\", self, \"_on_Spawner_monster_die\", [s])
+	get_node(\"/root/Level1\").add_child(e1)
+	$Tween.interpolate_property(e1, \"modulate\", Color(1, 1, 1, 0), Color(1, 1, 1, 1), 1,Tween.TRANS_LINEAR)
+	
+	$Tween.start()
+	yield($Tween,\"tween_completed\")
+	
+func respawn():
+	monster_generation((randi()%3)+1)
+
+
+func _on_Spawner_monster_die(num):
+	get_node(\"../Steve\").gain_money(100, 1)
+	get_node(\"../Steve\").gain_experience(1)
+	monster_specify_place(num)
+	pass # Replace with function body.
+"
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 58 )
@@ -625,103 +683,107 @@ one_way_collision = true
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 1789.89, 640.441 )
-shape = SubResource( 23 )
+shape = SubResource( 7 )
 one_way_collision = true
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
+position = Vector2( 1733.7, 594.743 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 1859.97, 551.674 )
-shape = SubResource( 24 )
+shape = SubResource( 9 )
 one_way_collision = true
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 1568, 96 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 one_way_collision = true
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 2000, -384 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 one_way_collision = true
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 1344, -768 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 one_way_collision = true
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 800, -768 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 one_way_collision = true
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( -256, -848 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 one_way_collision = true
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 1456, -384 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 one_way_collision = true
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 288, -424 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 one_way_collision = true
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 272, -848 )
-shape = SubResource( 8 )
+shape = SubResource( 11 )
 one_way_collision = true
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 752, -424 )
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 464, -768 )
-shape = SubResource( 10 )
+shape = SubResource( 13 )
 one_way_collision = true
 
 [node name="wall" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( -232, 200 )
-shape = SubResource( 11 )
+shape = SubResource( 14 )
 
 [node name="wall2" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( -400, -248 )
-shape = SubResource( 11 )
+shape = SubResource( 14 )
 
 [node name="wall3" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( -400, -632 )
-shape = SubResource( 11 )
+shape = SubResource( 14 )
 
 [node name="wall4" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( -552, -1088 )
-shape = SubResource( 11 )
+shape = SubResource( 14 )
 
 [node name="wall5" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( -552, -1480 )
-shape = SubResource( 11 )
+shape = SubResource( 14 )
 
 [node name="wall6" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 2384, -240 )
-shape = SubResource( 11 )
+shape = SubResource( 14 )
 
 [node name="wall9" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 2637.4, 316.89 )
-shape = SubResource( 12 )
+shape = SubResource( 15 )
 
 [node name="wall10" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 2493.27, 13.5493 )
 rotation = 1.5708
-shape = SubResource( 13 )
+shape = SubResource( 16 )
 
 [node name="wall7" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 2384, -672 )
-shape = SubResource( 11 )
+shape = SubResource( 14 )
 
 [node name="wall8" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 2384, -1104 )
-shape = SubResource( 11 )
+shape = SubResource( 14 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 32, 48 )
@@ -731,12 +793,12 @@ one_way_collision = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 2048, -32 )
-shape = SubResource( 14 )
+shape = SubResource( 17 )
 one_way_collision = true
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="Tiles Solid/StaticBody2D"]
 position = Vector2( 1392, 480 )
-shape = SubResource( 15 )
+shape = SubResource( 18 )
 
 [node name="Snake" parent="." groups=[
 "enemy",
@@ -760,27 +822,27 @@ autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="climb"]
 position = Vector2( 152, 120 )
-shape = SubResource( 16 )
+shape = SubResource( 19 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="climb"]
 position = Vector2( 216, -336 )
-shape = SubResource( 17 )
+shape = SubResource( 20 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="climb"]
 position = Vector2( 120, -760 )
-shape = SubResource( 18 )
+shape = SubResource( 21 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="climb"]
 position = Vector2( 1496, -704 )
-shape = SubResource( 19 )
+shape = SubResource( 22 )
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="climb"]
 position = Vector2( 2072, -296 )
-shape = SubResource( 18 )
+shape = SubResource( 21 )
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="climb"]
 position = Vector2( 1400, 152 )
-shape = SubResource( 18 )
+shape = SubResource( 21 )
 
 [node name="TransPort" parent="." instance=ExtResource( 2 )]
 
@@ -792,18 +854,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort2"]
 position = Vector2( -136, 416.5 )
 z_index = 2
-shape = SubResource( 20 )
+shape = SubResource( 23 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
-frames = SubResource( 21 )
-frame = 4
+frames = SubResource( 24 )
+frame = 8
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
-frames = SubResource( 22 )
-frame = 14
+frames = SubResource( 25 )
+frame = 3
 playing = true
 
 [node name="UserInterFace" parent="." instance=ExtResource( 60 )]
@@ -827,13 +889,45 @@ z_index = 1
 position = Vector2( 760, 400 )
 z_index = 1
 
-[node name="Spawner_Snake" parent="." instance=ExtResource( 3 )]
+[node name="Spawner_Snake" type="Node2D" parent="."]
+script = SubResource( 26 )
+
+[node name="2_1" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( -272, -64 )
+
+[node name="2_2" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( -80, -64 )
+
+[node name="2_3" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( -184, -64 )
+
+[node name="2_4" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( 1609.76, 378.885 )
+
+[node name="2_5" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( 25.5369, 385.234 )
+
+[node name="2_6" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( 187.452, 385.234 )
+
+[node name="2_7" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( 2108.21, 550.324 )
+
+[node name="2_8" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( 1981.21, 550.324 )
+
+[node name="2_9" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( 2258.85, 548.273 )
+
+[node name="2_10" type="Position2D" parent="Spawner_Snake"]
+position = Vector2( 2393.01, 546.063 )
+
+[node name="Tween" type="Tween" parent="Spawner_Snake"]
 
 [node name="Skill" parent="." instance=ExtResource( 69 )]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
-autostart = true
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
@@ -877,4 +971,5 @@ texture = ExtResource( 68 )
 [connection signal="body_exited" from="TransPort2" to="Steve" method="_on_TransPort_body_exited"]
 [connection signal="monster_die" from="Monkey" to="." method="_on_Monkey_monster_die"]
 [connection signal="timeout" from="BattleTime" to="Steve" method="_on_BattleTime_timeout"]
+[connection signal="monster_die" from="Spawner_Snake" to="Spawner_Snake" method="_on_Spawner_monster_die"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
