@@ -291,7 +291,6 @@ __meta__ = {
 material = SubResource( 3 )
 frames = SubResource( 4 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -417,7 +416,7 @@ autoplay = "Enemytarget"
 anims/Enemytarget = ExtResource( 37 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -53.935 )
+position = Vector2( 0, -47.7533 )
 texture = ExtResource( 38 )
 
 [connection signal="monster_die" from="." to="." method="_on_Monster_monster_die"]

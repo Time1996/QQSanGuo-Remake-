@@ -28,6 +28,7 @@ func _on_Button4_pressed():
 
 
 func _on_AcceptDialog_confirmed():
+#	SceneChange.goto_scene("res://Login.tscn", self)
 	get_tree().change_scene("res://Login.tscn")
 	pass # Replace with function body.
 

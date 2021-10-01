@@ -28,6 +28,8 @@ func _on_Spawner_monster_die():
 
 
 func _on_TransPort_body_entered(body):
+	SceneChange.goto_scene("res://JiangLinXiJiao.tscn", self)
+#	get_tree().change_scene("res://JiangLinXiJiao.tscn")
 	pass # Replace with function body.
 
 #
@@ -36,3 +38,9 @@ func _on_TransPort_body_entered(body):
 #	if nodes < 10:
 #		$Spawner_Snake.monster_generation(10-nodes)
 #	pass # Replace with function body.
+
+
+func _on_TransPort2_body_entered(body):
+	SceneChange.goto_scene("res://Scene/bajun.tscn", self)
+#	get_tree().change_scene("res://Scene/bajun.tscn")
+	pass # Replace with function body.

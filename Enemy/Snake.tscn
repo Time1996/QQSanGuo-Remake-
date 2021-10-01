@@ -276,7 +276,7 @@ shape = SubResource( 2 )
 material = SubResource( 3 )
 frames = SubResource( 4 )
 animation = "attack"
-frame = 1
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -398,7 +398,7 @@ texture = ExtResource( 19 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, -51.2861 )
+position = Vector2( 0, -51.1754 )
 texture = ExtResource( 42 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]

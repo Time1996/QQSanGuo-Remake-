@@ -35,6 +35,9 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="main_task" type="TextureRect" parent="."]
 visible = false
@@ -110,6 +113,9 @@ texture_pressed = ExtResource( 12 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 10 )
 
+[connection signal="gui_input" from="current_task" to="." method="_on_current_task_gui_input"]
+[connection signal="gui_input" from="main_task" to="." method="_on_current_task_gui_input"]
+[connection signal="gui_input" from="remain_task" to="." method="_on_current_task_gui_input"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]
 [connection signal="pressed" from="TextureButton3" to="." method="_on_TextureButton3_pressed"]

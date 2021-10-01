@@ -4,12 +4,12 @@
 [ext_resource path="res://Control.gd" type="Script" id=2]
 [ext_resource path="res://UI/side_bar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/Character_UI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Hotbar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://SaveAndLoad.tscn" type="PackedScene" id=6]
 [ext_resource path="res://exprience.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/side_bar/player_task.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/side_bar/player_state.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/side_bar/player_skill.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/buy_and_sell.tscn" type="PackedScene" id=11]
 
 [node name="UserInterFace" type="CanvasLayer"]
 layer = 0
@@ -33,18 +33,6 @@ margin_left = -502.701
 margin_top = -339.742
 margin_right = 297.299
 margin_bottom = 260.258
-
-[node name="Hotbar" parent="." instance=ExtResource( 5 )]
-anchor_left = 0.362
-anchor_top = 0.9
-anchor_right = 0.5
-margin_left = 126.941
-margin_top = -34.827
-margin_right = 289.629
-margin_bottom = -54.827
-hint_tooltip = "rr"
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="SaveAndLoad" parent="." instance=ExtResource( 6 )]
 visible = false
@@ -78,6 +66,13 @@ margin_left = 117.244
 margin_top = 30.9194
 margin_right = -106.756
 margin_bottom = -50.0806
+
+[node name="buy_and_sell" parent="." instance=ExtResource( 11 )]
+visible = false
+margin_left = 123.421
+margin_top = 33.1878
+margin_right = 163.421
+margin_bottom = 73.1878
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0

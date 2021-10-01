@@ -1,21 +1,10 @@
 extends CanvasLayer
 var holding_item = null
-onready var max_health = get_parent().get_node("Steve").max_health
-onready var max_magic = get_parent().get_node("Steve").max_magic
+onready var max_health = PlayerInventory.max_health
+onready var max_magic = PlayerInventory.max_magic
 
 signal health_updated()
 
-func _input(event):
-	if event.is_action_pressed("inventory"):
-		$Inventory.visible = !$Inventory.visible
-		$Inventory.initialize_inventory()
-		
-	if event.is_action_pressed("scroll_up"):
-		PlayerInventory.active_item_scroll_up()
-	elif event.is_action_pressed("scroll_down"):
-		PlayerInventory.active_item_scroll_down()
-	
-	
 
 func _ready():
 	for i in get_node("Character/HBoxContainer").get_children():

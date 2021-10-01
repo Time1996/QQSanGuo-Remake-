@@ -2,15 +2,15 @@ extends KinematicBody2D
 
 export(NodePath)var route
 
-export var max_health = 1000
-export var max_magic = 1000
-export var basic_damage = 20
-export var basic_defende = 10
-export var basic_shugong = 0
-export var basic_shufang = 0
-export var money = 0
-export var juntuan = 0
-export var level = 1
+var max_health = PlayerInventory.max_health
+var max_magic = PlayerInventory.max_magic
+var basic_damage = PlayerInventory.basic_damage
+var basic_defende = PlayerInventory.basic_defende
+var basic_shugong = PlayerInventory.basic_shugong
+var basic_shufang = PlayerInventory.basic_shufang
+var money = PlayerInventory.money
+var juntuan = PlayerInventory.juntuan
+var level = PlayerInventory.level
 
 var key_state ##技能键位
 var selected_skill
@@ -18,13 +18,15 @@ var skill_damage
 
 var state_machine
 
+onready var enemies = get_tree().get_nodes_in_group("enemy")
+
 onready var userInterface = get_parent().get_node("UserInterFace")
 
 var experience = 0
 var experience_pool = 0 #经验池
 var experience_required = get_required_experience(level+1)
 
-onready var health = max_health setget _set_health
+onready var health = 100
 onready var magic = max_health setget _set_health
 
 signal health_updated(health, magic)
@@ -48,6 +50,7 @@ var target = 0
 var target_derection = 1
 
 func _ready():
+	randomize()
 	$Control/AnimatedSprite.visible = false
 	$Control/AnimatedSprite2.visible = false
 	state_machine = $AnimationTree.get("parameters/playback")
@@ -75,14 +78,14 @@ func gain_experience(amount):
 	userInterface.update_exp(int(experience*100/experience_required))
 
 func level_up():
-	level += 1
-	experience_required = get_required_experience(level + 1)
-	max_health += level * 10
-	max_magic += level * 5
-	basic_damage += level * 2
-	basic_defende += level * 1
-	basic_shugong += level
-	basic_shufang += level
+	PlayerInventory.level += 1
+	experience_required = get_required_experience(PlayerInventory.level + 1)
+	PlayerInventory.max_health += PlayerInventory.level * 10
+	PlayerInventory.max_magic += PlayerInventory.level * 5
+	PlayerInventory.basic_damage += PlayerInventory.level * 2
+	PlayerInventory.basic_defende += PlayerInventory.level * 1
+	PlayerInventory.basic_shugong += PlayerInventory.level
+	PlayerInventory.basic_shufang += PlayerInventory.level
 	
 	$level_up.play()
 	$Control/AnimatedSprite3.visible = true
@@ -90,15 +93,27 @@ func level_up():
 	yield($Control/AnimatedSprite3, "animation_finished")
 	$Control/AnimatedSprite3.visible = false
 	$Control/AnimatedSprite3.stop()
-	userInterface.update_text(level, max_health, max_magic,
-							 basic_damage, basic_defende,
-							 basic_shugong, basic_shufang)
+	userInterface.update_text(PlayerInventory.level, PlayerInventory.max_health, PlayerInventory.max_magic,
+							 PlayerInventory.basic_damage, PlayerInventory.basic_defende,
+							 PlayerInventory.basic_shugong, PlayerInventory.basic_shufang)
 	
 func gain_money(amount_m, amount_j):
-	money += amount_m
-	juntuan += amount_j
-	userInterface.update_inventory(money, juntuan)
+	PlayerInventory.money += amount_m
+	PlayerInventory.juntuan += amount_j
+	userInterface.update_inventory(PlayerInventory.money, PlayerInventory.juntuan)
 	
+func use_item(hp, mana, exprience, money):
+	health += hp
+	print(health)
+	if health > PlayerInventory.max_health:
+		health = PlayerInventory.max_health
+		
+	magic += mana
+	if magic > PlayerInventory.max_magic:
+		magic = PlayerInventory.max_magic
+		
+	experience += exprience
+	PlayerInventory.money += money
 func gain_speed():
 	SPEED *= 2
 	$speed.start(10)
@@ -125,9 +140,10 @@ func _physics_process(delta):
 	else:
 		game_play(delta)
 	
+
+var enemy_id ##标记是哪个敌人
 func move_to_target(delta, min_dist):
 	
-	var enemies = get_tree().get_nodes_in_group("enemy")
 	for i in enemies:
 		var dist = sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2))
 		if dist < min_dist and abs(i.position.y-position.y) <= 30: #垂直距离在同一层
@@ -135,17 +151,20 @@ func move_to_target(delta, min_dist):
 	if min_dist == 99999999: ##当前层没找到目标
 		chase_target_state = 0
 		return
-	var enemy_id ##标记是哪个敌人
-	for i in enemies:
-		if sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2)) == min_dist:
-			#i.call_deferred("injury", 1)
-			target = abs(position.x - i.position.x) + 30
-			target_derection = position.x - i.position.x
-			enemy_id = i
-			i.get_node("Sprite").visible = true
-			chase_target_state = 1
-			break
-	
+	if enemy_id == null:
+		for i in enemies:
+			if sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2)) == min_dist:
+				#i.call_deferred("injury", 1)
+				target = abs(position.x - i.position.x) + 30
+				target_derection = position.x - i.position.x
+				enemy_id = i
+				i.get_node("Sprite").visible = true
+				chase_target_state = 1
+				break
+#	if sqrt(pow(enemy_id.position.y-position.y, 2) + pow(enemy_id.position.x-position.x, 2)) <= 30:
+	target = abs(position.x - enemy_id.position.x) + 30
+	target_derection = position.x - enemy_id.position.x
+	chase_target_state = 1
 	if target_derection > 0:
 		target_derection = -1
 		$Control.rect_scale.x = -1
@@ -153,12 +172,19 @@ func move_to_target(delta, min_dist):
 		target_derection = 1
 		$Control.rect_scale.x = 1
 	##在范围内了 双方同时开始动画 进行伤害计算 并播放动画
+#	print(enemy_id.position)
+	if sqrt(pow(enemy_id.position.y-position.y, 2) + pow(enemy_id.position.x-position.x, 2)) <= 30:
+		yield(get_tree().create_timer(5), "timeout") ##5秒后 当前怪物失去目标 回复普通状态
+		enemy_id.state = "IDLE"
+		userInterface.get_node("Character/Target").visible = false
+		enemy_id.get_node("Sprite").visible = false
+		chase_target_state = 0
+		return
 	if target <= 175: #skill_dist 100
 		chase_target_state = 0
 		enemy_id.injury(basic_damage) ##指定敌人收到伤害 +skill_damage
 #		state_machine.travel("idle")
 		attack()
-		
 		return
 		
 	velocity.x = delta * SPEED * target_derection * 50
@@ -211,17 +237,25 @@ func game_play(delta):
 					state_machine.travel("jump")
 			elif Input.is_action_just_pressed("jump"):
 				velocity.y = JUMP
-			elif Input.is_action_pressed('attack'):
-				key_state = 'D' ##这里先用技能
-				var min_dist = 99999999
-#				min_dist = closet_enemy(min_dist)
-				closet_enemy(min_dist)
-				move_to_target(delta, min_dist)
+#			elif Input.is_action_pressed('attack'):
+#				key_state = 'D' ##这里先用技能
+#				var min_dist = 99999999
+##				min_dist = closet_enemy(min_dist)
+#				closet_enemy(min_dist)
+#				move_to_target(delta, min_dist)
+			
 			elif trans == 1 and Input.is_action_pressed("up"):
-				get_tree().change_scene("res://JiangLinXiJiao.tscn")
+				pass
+#				get_tree().change_scene("res://JiangLinXiJiao.tscn")
 			elif Input.is_action_just_pressed("tab"):
-				var min_dist = 99999999
-#				min_dist = closet_enemy(min_dist)
+#				
+#				var enemy = enemies[int(randi()%enemies.size())]
+#				enemy.get_node("Sprite").visible = true
+#				userInterface.get_node("Character/Target").visible = true
+#				userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+enemy.Name+".png")
+#				userInterface.get_node("Character").get_node("Target").get_node("name").text = enemy.Name
+#				userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = enemy.health
+				pass
 			else:
 				state_machine.travel("idle")
 		else:
@@ -278,34 +312,28 @@ func closet_enemy(min_dist):
 		if dist < min_dist:
 			min_dist = dist
 			velocity.x = i.position.x - position.x
+	return 
 			
-	for i in enemies:
-		if sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2)) == min_dist:
-			#i.call_deferred("injury", 1)
-#			userInterface.get_node("Character").get_node("Target").visible = true
-#			userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+i.Name+".png")
-#			userInterface.get_node("Character").get_node("Target").get_node("name").text = i.Name
-#			userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = i.get_node("HealthBar").get_node("HealthBar").value
-#			print(i.get_node("HealthBar").get_node("HealthBar").value)
-			target = abs(position.x - i.position.x) + 30
-			target_derection = position.x - i.position.x
-			if target_derection > 0:
-				target_derection = -1
-			else:
-				target_derection = 1
-			chase_target_state = 1
-			break
-	
-func _on_TransPort_body_entered(body):
-	print(body)
-	trans = 1
+#	for i in enemies:
+#		if sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2)) == min_dist:
+#			#i.call_deferred("injury", 1)
+##			userInterface.get_node("Character").get_node("Target").visible = true
+##			userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+i.Name+".png")
+##			userInterface.get_node("Character").get_node("Target").get_node("name").text = i.Name
+##			userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = i.get_node("HealthBar").get_node("HealthBar").value
+##			print(i.get_node("HealthBar").get_node("HealthBar").value)
+#			target = abs(position.x - i.position.x) + 30
+#			target_derection = position.x - i.position.x
+#			if target_derection > 0:
+#				target_derection = -1
+#			else:
+#				target_derection = 1
+#			chase_target_state = 1
+#			break
 
 func _on_climb_body_exited(body):
 	state = 0
 	monirable = 0
-
-func _on_TransPort_body_exited(body):
-	trans = 0
 
 func _on_Timer_timeout():
 	attacking = 0
@@ -333,7 +361,7 @@ func _set_health(value):
 	health = clamp(value, 0, max_health)
 	if health != prev_health:
 		emit_signal("health_updated", health, magic)
-		if health == 0:
+		if health <= 0:
 			dead()
 			
 func dead():
@@ -395,16 +423,16 @@ func attack():
 	get_node("BattleSound").play()
 #	yield($AnimationPlayer,"animation_finished")
 #	attacking = 0
-	$Timer.start(1.6)
+	$Timer.start(0.8)
 
 func _on_self_heal_timeout():
 	health += 4 ##每秒回复4点生命
 	
-	if health >= max_health:
-		health = max_health
+	if health > PlayerInventory.max_health:
+		health = PlayerInventory.max_health
 	magic += 2 ##2点魔法
-	if magic >= max_magic:
-		magic = max_magic
+	if magic > PlayerInventory.max_magic:
+		magic = PlayerInventory.max_magic
 	get_parent().get_node("UserInterFace").emit_signal("health_updated",health, magic)
 	pass # Replace with function body.
 
@@ -415,28 +443,28 @@ func get_save_stats():
 		'x_pos' : position.x,
 		'y_pos' : position.y,
 		'stats' : {
-			'max_health' : max_health,
-			'max_magic' : max_magic,
+			'max_health' : PlayerInventory.max_health,
+			'max_magic' : PlayerInventory.max_magic,
 			'health' : health,
 			'magic' : magic,
-			'basic_damage' : basic_damage,
-			'basic_defende' : basic_defende,
-			'money' : money,
-			'juntuan' : juntuan,
+			'basic_damage' : PlayerInventory.basic_damage,
+			'basic_defende' : PlayerInventory.basic_defende,
+			'money' : PlayerInventory.money,
+			'juntuan' : PlayerInventory.juntuan,
 			'exprience' : experience_pool,
 		}
 	}
 
 func load_save_stats(stats): #需要保存的信息 目前是位置 属性
 	position = Vector2(stats.x_pos, stats.y_pos)
-	max_health = stats.stats.max_health
-	max_magic = stats.stats.max_magic
+	PlayerInventory.max_health = stats.stats.max_health
+	PlayerInventory.max_magic = stats.stats.max_magic
 	health = stats.stats.health
 	magic = stats.stats.magic
-	basic_damage = stats.stats.basic_damage
-	basic_defende = stats.stats.basic_defende
-	money = stats.stats.money
-	juntuan = stats.stats.juntuan
+	PlayerInventory.basic_damage = stats.stats.basic_damage
+	PlayerInventory.basic_defende = stats.stats.basic_defende
+	PlayerInventory.money = stats.stats.money
+	PlayerInventory.juntuan = stats.stats.juntuan
 	experience_pool = stats.stats.exprience
 
 

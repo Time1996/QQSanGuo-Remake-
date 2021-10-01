@@ -1,7 +1,6 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=96 format=2]
 
 [ext_resource path="res://Character/Steve.tscn" type="PackedScene" id=1]
-[ext_resource path="res://TransPort.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/map/9023-1.png" type="Texture" id=4]
 [ext_resource path="res://assets/map/9024-1.png" type="Texture" id=5]
 [ext_resource path="res://assets/map/8985-1.png" type="Texture" id=6]
@@ -499,7 +498,26 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="GDScript" id=26]
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 40, 16.5 )
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ ExtResource( 49 ), ExtResource( 35 ), ExtResource( 44 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 50 ), ExtResource( 40 ), ExtResource( 38 ), ExtResource( 32 ), ExtResource( 52 ), ExtResource( 45 ), ExtResource( 41 ), ExtResource( 46 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=28]
+animations = [ {
+"frames": [ ExtResource( 33 ), ExtResource( 47 ), ExtResource( 36 ), ExtResource( 27 ), ExtResource( 42 ), ExtResource( 37 ), ExtResource( 55 ), ExtResource( 34 ), ExtResource( 48 ), ExtResource( 31 ), ExtResource( 53 ), ExtResource( 39 ), ExtResource( 43 ), ExtResource( 28 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="GDScript" id=29]
 script/source = "extends Node2D
 
 signal monster_die
@@ -808,7 +826,7 @@ rotation = -0.00863177
 collision_mask = 2147483648
 
 [node name="Steve" parent="." instance=ExtResource( 1 )]
-position = Vector2( -8, -104 )
+position = Vector2( 2321.43, 520.416 )
 z_index = 1
 
 [node name="Timer" type="Timer" parent="Steve"]
@@ -844,7 +862,26 @@ shape = SubResource( 21 )
 position = Vector2( 1400, 152 )
 shape = SubResource( 21 )
 
-[node name="TransPort" parent="." instance=ExtResource( 2 )]
+[node name="TransPort" type="Area2D" parent="."]
+z_index = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort"]
+position = Vector2( -136, 416.5 )
+z_index = 2
+shape = SubResource( 23 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort"]
+position = Vector2( -136, 352 )
+frames = SubResource( 24 )
+frame = 2
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort"]
+position = Vector2( -136, 416 )
+frames = SubResource( 25 )
+frame = 12
+playing = true
 
 [node name="TransPort2" type="Area2D" parent="."]
 position = Vector2( 2696, 152 )
@@ -854,18 +891,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort2"]
 position = Vector2( -136, 416.5 )
 z_index = 2
-shape = SubResource( 23 )
+shape = SubResource( 26 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
-frames = SubResource( 24 )
-frame = 8
+frames = SubResource( 27 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
-frames = SubResource( 25 )
-frame = 3
+frames = SubResource( 28 )
+frame = 12
 playing = true
 
 [node name="UserInterFace" parent="." instance=ExtResource( 60 )]
@@ -890,7 +927,7 @@ position = Vector2( 760, 400 )
 z_index = 1
 
 [node name="Spawner_Snake" type="Node2D" parent="."]
-script = SubResource( 26 )
+script = SubResource( 29 )
 
 [node name="2_1" type="Position2D" parent="Spawner_Snake"]
 position = Vector2( -272, -64 )
@@ -967,8 +1004,7 @@ texture = ExtResource( 68 )
 [connection signal="body_entered" from="climb" to="Steve" method="_on_climb_body_entered"]
 [connection signal="body_exited" from="climb" to="Steve" method="_on_climb_body_exited"]
 [connection signal="body_entered" from="TransPort" to="." method="_on_TransPort_body_entered"]
-[connection signal="body_entered" from="TransPort2" to="Steve" method="_on_TransPort_body_entered"]
-[connection signal="body_exited" from="TransPort2" to="Steve" method="_on_TransPort_body_exited"]
+[connection signal="body_entered" from="TransPort2" to="." method="_on_TransPort2_body_entered"]
 [connection signal="monster_die" from="Monkey" to="." method="_on_Monkey_monster_die"]
 [connection signal="timeout" from="BattleTime" to="Steve" method="_on_BattleTime_timeout"]
 [connection signal="monster_die" from="Spawner_Snake" to="Spawner_Snake" method="_on_Spawner_monster_die"]

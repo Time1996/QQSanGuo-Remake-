@@ -286,4 +286,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]
 [connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]

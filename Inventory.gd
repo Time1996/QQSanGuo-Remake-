@@ -5,6 +5,7 @@ extends Control
 const SlotClass = preload("res://Slot.gd")
 onready var inventory_slots = $ScrollContainer/VBoxContainer
 
+var drag_position = null
 
 func _ready():
 	var slots = inventory_slots.get_children()
@@ -22,10 +23,11 @@ func slot_gui_input(event: InputEvent, slot: SlotClass):
 				if !slot.item: ##空的 直接放进去
 					left_click_empty_slot(slot)
 				else: ##不空 先把有的存在变量里跟随鼠标 然后拿着的放进去之后 把拿着的变成本来在框里的
-					if find_parent("UserInterFace").holding_item.item_name != slot.item.item_name: ## 如果不是同种物品
-						left_click_different_item(event, slot)
-					else:
-						left_click_same_item(slot)
+					if slot.get_child_count() > 0 :
+						if find_parent("UserInterFace").holding_item.item_name != slot.item.item_name: ## 如果不是同种物品
+							left_click_different_item(event, slot)
+						else:
+							left_click_same_item(slot)
 			elif slot.item: ##已经有了 就把东西拿出来 并且跟随鼠标位置
 				left_click_not_holding(slot)
 				
@@ -70,10 +72,11 @@ func left_click_same_item(slot):
 			find_parent("UserInterFace").holding_item.sub_item_quantity(able_to_add) ##手里拿的减
 
 func left_click_not_holding(slot):
-	PlayerInventory.remove_item(slot)
-	find_parent("UserInterFace").holding_item = slot.item
-	slot.pickFromSlot()
-	find_parent("UserInterFace").holding_item.global_position = get_global_mouse_position()
+	if slot.get_child_count() > 0:
+		PlayerInventory.remove_item(slot)
+		find_parent("UserInterFace").holding_item = slot.item
+		slot.pickFromSlot()
+		find_parent("UserInterFace").holding_item.global_position = get_global_mouse_position()
 
 
 func _on_TextureButton_pressed():
@@ -81,3 +84,15 @@ func _on_TextureButton_pressed():
 	pass # Replace with function body.
 
 
+
+
+func _on_TextureRect_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			drag_position = get_global_mouse_position() - rect_global_position
+		else:
+			drag_position = null
+			
+	if event is InputEventMouseMotion and drag_position:
+		rect_global_position = get_global_mouse_position() - drag_position
+	pass # Replace with function body.

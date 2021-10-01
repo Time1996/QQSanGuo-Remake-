@@ -2,11 +2,9 @@ extends Panel
 
 var default_style = null
 var selected_style = null
-var hotbar_style = null
 
 var default_tex = preload("res://UI/player_inventory/main/67445-1.png")
 var selected_tex = preload("res://UI/player_inventory/main/67445-2.png")
-var hotbar_tex = preload("res://item_slot_default_background.png")
 
 
 var item = null
@@ -22,11 +20,9 @@ func _ready():
 	slot_index = int(self.name.substr(self.name.length()-1, 1))
 	selected_style = StyleBoxTexture.new()
 	default_style = StyleBoxTexture.new()
-	hotbar_style = StyleBoxTexture.new()
 	
 	default_style.texture = default_tex
 	selected_style.texture = selected_tex
-	hotbar_style.texture = hotbar_tex
 	
 	var nodes = get_parent()
 	
@@ -41,23 +37,17 @@ func _ready():
 
 func refresh_style():
 	yield(get_tree(),"idle_frame")
-	if SlotType.HOTBAR == slot_type and PlayerInventory.active_item_slot == slot_index:
-		set('custom_styles/panel', selected_style)
-		pass
-	elif SlotType.INVENTORY == slot_type:
-		set('custom_styles/panel', default_style)
-		pass
-	else:
-		set('custom_styles/panel', hotbar_style)
-		pass
+	set('custom_styles/panel', default_style)
 	
 
 func pickFromSlot():
-	remove_child(item)
-	var inventoryNode = find_parent("UserInterFace")
-	inventoryNode.add_child(item)
-	item.get_node("TextureRect").mouse_filter = MOUSE_FILTER_IGNORE
-	item = null
+	print("pickFromSlot")
+	if self.get_child_count() > 0:
+		remove_child(item)
+		var inventoryNode = find_parent("UserInterFace")
+		inventoryNode.add_child(item)
+		item.get_node("TextureRect").mouse_filter = MOUSE_FILTER_IGNORE
+		item = null
 
 func putIntoSlot(new_item):
 	item = new_item
@@ -75,7 +65,8 @@ func initialize_item(item_name, item_quantity):
 		item.set_item(item_name, item_quantity)
 		add_child(item)
 	else:
-		item.set_item(item_name, item_quantity)
+		if item != null:
+			item.set_item(item_name, item_quantity)
 		
 
 #func _input(event):
@@ -101,3 +92,19 @@ func mouse_enter():
 func mouse_exit():
 	set('custom_styles/panel', default_style)
 	pass # Replace with function body.
+
+func can_drop_data(position, data):
+	if self.get_child_count() == 0:
+		return true
+	else:
+		return false
+	
+func drop_data(position, data):
+	var drag_item = load("res://Item.tscn").instance()
+	drag_item.get_node("TextureRect").texture_normal = data["origin_texture"]
+	drag_item.set_item(data["origin_item_name"], 1)
+	drag_item.scale *= 0.75
+#	drag_texture.rect_size = self.rect_size
+	PlayerInventory.add_item_to_empty_slot(drag_item, self)
+	add_child(drag_item)
+	

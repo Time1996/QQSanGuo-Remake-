@@ -62,6 +62,7 @@ margin_left = -38.0
 margin_top = -47.5
 margin_right = 38.0
 margin_bottom = 47.5
+custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -80,9 +81,9 @@ __meta__ = {
 }
 
 [node name="Load" type="Button" parent="VBoxContainer"]
-margin_top = 33.0
+margin_top = 59.0
 margin_right = 76.0
-margin_bottom = 62.0
+margin_bottom = 88.0
 custom_fonts/font = ExtResource( 2 )
 text = "回忆往事"
 __meta__ = {
@@ -90,9 +91,9 @@ __meta__ = {
 }
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-margin_top = 66.0
+margin_top = 118.0
 margin_right = 76.0
-margin_bottom = 95.0
+margin_bottom = 147.0
 custom_fonts/font = ExtResource( 2 )
 text = "退隐江湖"
 __meta__ = {
@@ -110,7 +111,7 @@ anims/cloud = SubResource( 1 )
 
 [node name="9023-1" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.764706 )
-position = Vector2( 552, 48 )
+position = Vector2( 784, 160 )
 scale = Vector2( 0.741449, 0.639535 )
 texture = ExtResource( 6 )
 

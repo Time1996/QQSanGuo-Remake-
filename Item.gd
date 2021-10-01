@@ -5,6 +5,9 @@ extends Node2D
 var item_name
 var item_quantity
 var item_slot
+
+onready var userInterFace = find_parent("UserInterFace")
+
 func _ready():
 #	var name_set = jsonData.item_data.keys()
 #	item_name = name_set[int(randi()%name_set.size())]
@@ -69,4 +72,29 @@ func _on_TextureRect_mouse_entered():
 
 func _on_TextureRect_mouse_exited():
 	$Label2.visible = false
+	pass # Replace with function body.
+
+
+func _on_TextureRect_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.doubleclick:
+			if jsonData.item_data[item_name].ItemCategory == "Consumble": ##消耗品
+				print(jsonData.item_data[item_name])
+				find_parent("UserInterFace").get_parent().get_node("Steve").use_item(
+											jsonData.item_data[item_name].AddHealth,
+											jsonData.item_data[item_name].AddEnergy,
+											0,
+											0
+				)
+				print("使用" + item_name)
+				item_quantity -= 1
+				
+				if item_quantity == 0:
+					print(get_parent().slot_index)
+					userInterFace.holding_item = null
+					get_parent().item = null
+					PlayerInventory.remove_item(get_parent())
+					queue_free()
+				
+	
 	pass # Replace with function body.

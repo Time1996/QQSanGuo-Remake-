@@ -58,5 +58,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]
 [connection signal="mouse_entered" from="TextureRect" to="." method="_on_TextureRect_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect" to="." method="_on_TextureRect_mouse_exited"]

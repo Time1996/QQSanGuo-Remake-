@@ -798,7 +798,7 @@ __meta__ = {
 material = SubResource( 2 )
 position = Vector2( 20, 12 )
 frames = ExtResource( 60 )
-frame = 3
+frame = 1
 
 [node name="HitBox" type="Area2D" parent="Control/Sprite"]
 collision_mask = 2
@@ -856,6 +856,7 @@ material = SubResource( 9 )
 position = Vector2( 169.748, 20.0399 )
 scale = Vector2( 1.85484, 1.2 )
 frames = SubResource( 10 )
+frame = 5
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Control"]
@@ -863,6 +864,7 @@ modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 11 )
 position = Vector2( 167.066, 19.8214 )
 frames = SubResource( 12 )
+frame = 5
 playing = true
 
 [node name="4" type="Sprite" parent="Control/AnimatedSprite4"]
@@ -1034,6 +1036,7 @@ material = SubResource( 56 )
 position = Vector2( -32.1353, 48.686 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 29 )
+frame = 8
 playing = true
 
 [node name="fly_right" type="AnimatedSprite" parent="."]
@@ -1042,7 +1045,7 @@ material = SubResource( 56 )
 position = Vector2( 42.9738, 48.6878 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 29 )
-frame = 8
+frame = 6
 playing = true
 flip_h = true
 
@@ -1050,7 +1053,7 @@ flip_h = true
 material = SubResource( 57 )
 position = Vector2( 9.51367, 3.56763 )
 frames = SubResource( 58 )
-frame = 3
+frame = 10
 playing = true
 
 [node name="BattleSound" type="AudioStreamPlayer" parent="."]

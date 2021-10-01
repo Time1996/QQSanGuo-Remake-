@@ -1,4 +1,4 @@
-[gd_scene load_steps=273 format=2]
+[gd_scene load_steps=289 format=2]
 
 [ext_resource path="res://assets/map/bajun/16894-1.png" type="Texture" id=1]
 [ext_resource path="res://assets/map/bajun/16878-1.png" type="Texture" id=2]
@@ -173,6 +173,7 @@
 [ext_resource path="res://assets/map/tree_and_flower/19176-1.png" type="Texture" id=171]
 [ext_resource path="res://assets/map/tree_and_flower/19203-1.png" type="Texture" id=172]
 [ext_resource path="res://assets/map/tree_and_flower/19179-1.png" type="Texture" id=173]
+[ext_resource path="res://Scene/bajun.gd" type="Script" id=174]
 [ext_resource path="res://assets/map/tree_and_flower/19185-1.png" type="Texture" id=175]
 [ext_resource path="res://assets/map/tree_and_flower/19280-1.png" type="Texture" id=176]
 [ext_resource path="res://assets/map/tree_and_flower/19175-1.png" type="Texture" id=177]
@@ -180,11 +181,22 @@
 [ext_resource path="res://assets/map/tree_and_flower/19209-1.png" type="Texture" id=179]
 [ext_resource path="res://assets/map/tree_and_flower/19218-1.png" type="Texture" id=180]
 [ext_resource path="res://assets/map/tree_and_flower/19173-1.png" type="Texture" id=181]
+[ext_resource path="res://MUSIC/bajun(shu).ogg" type="AudioStream" id=182]
 [ext_resource path="res://assets/map/tree_and_flower/19202-1.png" type="Texture" id=183]
 [ext_resource path="res://assets/map/tree_and_flower/19219-1.png" type="Texture" id=184]
+[ext_resource path="res://assets/map/bajun/9865-3.png" type="Texture" id=185]
 [ext_resource path="res://assets/map/tree_and_flower/19177-1.png" type="Texture" id=186]
 [ext_resource path="res://assets/map/tree_and_flower/19205-1.png" type="Texture" id=187]
 [ext_resource path="res://assets/map/tree_and_flower/19247-1.png" type="Texture" id=188]
+[ext_resource path="res://assets/map/bajun/9865-5.png" type="Texture" id=189]
+[ext_resource path="res://assets/map/bajun/9865-4.png" type="Texture" id=190]
+[ext_resource path="res://assets/map/bajun/9865-1.png" type="Texture" id=191]
+[ext_resource path="res://assets/map/bajun/9865-2.png" type="Texture" id=192]
+[ext_resource path="res://assets/map/bajun/npc/8733-3.png" type="Texture" id=193]
+[ext_resource path="res://assets/map/bajun/npc/8733-4.png" type="Texture" id=194]
+[ext_resource path="res://assets/map/bajun/npc/8733-2.png" type="Texture" id=195]
+[ext_resource path="res://assets/map/bajun/npc/8733-1.png" type="Texture" id=196]
+[ext_resource path="res://assets/map/bajun/npc/8733-5.png" type="Texture" id=197]
 
 [sub_resource type="TileSet" id=1]
 0/name = "16896-1.png 0"
@@ -1127,70 +1139,70 @@ extents = Vector2( 38.1726, 31.2456 )
 [sub_resource type="RectangleShape2D" id=64]
 extents = Vector2( 49.2413, 18.585 )
 
-[sub_resource type="RectangleShape2D" id=87]
+[sub_resource type="RectangleShape2D" id=65]
 extents = Vector2( 118.51, 18.585 )
 
-[sub_resource type="RectangleShape2D" id=84]
+[sub_resource type="RectangleShape2D" id=66]
 extents = Vector2( 17.7876, 18.585 )
 
-[sub_resource type="RectangleShape2D" id=85]
+[sub_resource type="RectangleShape2D" id=67]
 extents = Vector2( 59.3872, 18.585 )
 
-[sub_resource type="RectangleShape2D" id=86]
+[sub_resource type="RectangleShape2D" id=68]
 extents = Vector2( 75.8625, 18.585 )
 
-[sub_resource type="RectangleShape2D" id=65]
+[sub_resource type="RectangleShape2D" id=69]
 extents = Vector2( 166.477, 31.2456 )
 
-[sub_resource type="RectangleShape2D" id=66]
+[sub_resource type="RectangleShape2D" id=70]
 extents = Vector2( 94.08, 31.2456 )
 
-[sub_resource type="RectangleShape2D" id=67]
+[sub_resource type="RectangleShape2D" id=71]
 extents = Vector2( 105.007, 31.2456 )
 
-[sub_resource type="RectangleShape2D" id=68]
+[sub_resource type="RectangleShape2D" id=72]
 extents = Vector2( 152.026, 61.918 )
 
-[sub_resource type="RectangleShape2D" id=69]
+[sub_resource type="RectangleShape2D" id=73]
 extents = Vector2( 512.261, 23.1542 )
 
-[sub_resource type="RectangleShape2D" id=70]
+[sub_resource type="RectangleShape2D" id=74]
 extents = Vector2( 642.991, 23.1542 )
 
-[sub_resource type="RectangleShape2D" id=71]
+[sub_resource type="RectangleShape2D" id=75]
 extents = Vector2( 327.064, 23.1542 )
 
-[sub_resource type="RectangleShape2D" id=72]
+[sub_resource type="RectangleShape2D" id=76]
 extents = Vector2( 532.01, 23.1542 )
 
-[sub_resource type="RectangleShape2D" id=73]
+[sub_resource type="RectangleShape2D" id=77]
 extents = Vector2( 811.013, 23.1542 )
 
-[sub_resource type="RectangleShape2D" id=74]
+[sub_resource type="RectangleShape2D" id=78]
 extents = Vector2( 1232.96, 23.1542 )
 
-[sub_resource type="RectangleShape2D" id=75]
+[sub_resource type="RectangleShape2D" id=79]
 extents = Vector2( 432.073, 23.1542 )
 
-[sub_resource type="RectangleShape2D" id=76]
+[sub_resource type="RectangleShape2D" id=80]
 extents = Vector2( 160.933, 23.1542 )
 
-[sub_resource type="RectangleShape2D" id=77]
+[sub_resource type="RectangleShape2D" id=81]
 extents = Vector2( 588.414, 23.1542 )
 
-[sub_resource type="RectangleShape2D" id=78]
+[sub_resource type="RectangleShape2D" id=82]
 extents = Vector2( 7.09906, 120.173 )
 
-[sub_resource type="RectangleShape2D" id=79]
+[sub_resource type="RectangleShape2D" id=83]
 extents = Vector2( 9.09912, 121.388 )
 
-[sub_resource type="RectangleShape2D" id=80]
+[sub_resource type="RectangleShape2D" id=84]
 extents = Vector2( 10.5156, 191.69 )
 
-[sub_resource type="RectangleShape2D" id=81]
+[sub_resource type="RectangleShape2D" id=85]
 extents = Vector2( 40, 16.5 )
 
-[sub_resource type="SpriteFrames" id=82]
+[sub_resource type="SpriteFrames" id=86]
 animations = [ {
 "frames": [ ExtResource( 144 ), ExtResource( 142 ), ExtResource( 155 ), ExtResource( 150 ), ExtResource( 139 ), ExtResource( 166 ), ExtResource( 164 ), ExtResource( 140 ), ExtResource( 147 ), ExtResource( 163 ), ExtResource( 141 ), ExtResource( 162 ), ExtResource( 157 ), ExtResource( 159 ), ExtResource( 158 ) ],
 "loop": true,
@@ -1198,7 +1210,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=83]
+[sub_resource type="SpriteFrames" id=87]
 animations = [ {
 "frames": [ ExtResource( 143 ), ExtResource( 165 ), ExtResource( 153 ), ExtResource( 168 ), ExtResource( 156 ), ExtResource( 145 ), ExtResource( 149 ), ExtResource( 152 ), ExtResource( 167 ), ExtResource( 146 ), ExtResource( 148 ), ExtResource( 160 ), ExtResource( 154 ), ExtResource( 151 ), ExtResource( 161 ) ],
 "loop": true,
@@ -1206,7 +1218,51 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=88]
+animations = [ {
+"frames": [ ExtResource( 191 ), ExtResource( 192 ), ExtResource( 185 ), ExtResource( 190 ), ExtResource( 189 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Shader" id=89]
+code = "shader_type canvas_item;
+
+uniform float width:hint_range(0.0,30.0);
+uniform vec4 outline_color:hint_color;
+
+void fragment(){
+    float size = width * 1.0 / float(textureSize(TEXTURE,0).x);
+    vec4 sprite_color = texture(TEXTURE,UV);
+    float alpha = -8.0 * sprite_color.a;
+    alpha += texture(TEXTURE,UV + vec2(0.0,-size)).a;
+    alpha += texture(TEXTURE,UV + vec2(size,-size)).a;
+    alpha += texture(TEXTURE,UV + vec2(size,0)).a;
+    alpha += texture(TEXTURE,UV + vec2(size,size)).a;
+    alpha += texture(TEXTURE,UV + vec2(0.0,size)).a;
+    alpha += texture(TEXTURE,UV + vec2(-size,size)).a;
+    alpha += texture(TEXTURE,UV + vec2(-size,0.0)).a;
+    alpha += texture(TEXTURE,UV + vec2(-size,-size)).a;
+    vec4 final_color = mix(sprite_color,outline_color,clamp(alpha,0.0,1.0));
+    COLOR = vec4(final_color.rgb,clamp(abs(alpha) + sprite_color.a,0.0,1.0));
+} "
+
+[sub_resource type="ShaderMaterial" id=90]
+shader = SubResource( 89 )
+shader_param/width = 0.0
+shader_param/outline_color = Color( 0.968627, 0.956863, 0.141176, 1 )
+
+[sub_resource type="SpriteFrames" id=91]
+animations = [ {
+"frames": [ ExtResource( 196 ), ExtResource( 195 ), ExtResource( 193 ), ExtResource( 194 ), ExtResource( 197 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="bajun" type="Node2D"]
+script = ExtResource( 174 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_offset = Vector2( 10, 0 )
@@ -1570,7 +1626,7 @@ __meta__ = {
 material = SubResource( 3 )
 position = Vector2( 20, 12 )
 frames = ExtResource( 72 )
-frame = 2
+frame = 1
 
 [node name="HitBox" type="Area2D" parent="Steve/Control/Sprite"]
 collision_mask = 2
@@ -1629,7 +1685,7 @@ material = SubResource( 10 )
 position = Vector2( 169.748, 20.0399 )
 scale = Vector2( 1.85484, 1.2 )
 frames = SubResource( 11 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Steve/Control"]
@@ -1637,7 +1693,7 @@ modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 12 )
 position = Vector2( 167.066, 19.8214 )
 frames = SubResource( 13 )
-frame = 1
+frame = 6
 playing = true
 
 [node name="4" type="Sprite" parent="Steve/Control/AnimatedSprite4"]
@@ -1812,7 +1868,7 @@ material = SubResource( 57 )
 position = Vector2( -32.1353, 48.686 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 71 )
-frame = 3
+frame = 5
 playing = true
 
 [node name="fly_right" type="AnimatedSprite" parent="Steve"]
@@ -1821,7 +1877,7 @@ material = SubResource( 57 )
 position = Vector2( 42.9738, 48.6878 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 71 )
-frame = 1
+frame = 3
 playing = true
 flip_h = true
 
@@ -1829,7 +1885,7 @@ flip_h = true
 material = SubResource( 58 )
 position = Vector2( 9.51367, 3.56763 )
 frames = SubResource( 59 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="BattleSound" type="AudioStreamPlayer" parent="Steve"]
@@ -2221,12 +2277,12 @@ one_way_collision = true
 
 [node name="CollisionShape2D27" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 518.078, -454.369 )
-shape = SubResource( 87 )
+shape = SubResource( 65 )
 one_way_collision = true
 
 [node name="CollisionShape2D28" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 876.177, -615.408 )
-shape = SubResource( 87 )
+shape = SubResource( 65 )
 one_way_collision = true
 
 [node name="CollisionShape2D23" type="CollisionShape2D" parent="StaticBody2D"]
@@ -2236,92 +2292,92 @@ one_way_collision = true
 
 [node name="CollisionShape2D26" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 3520.24, 93.2881 )
-shape = SubResource( 84 )
+shape = SubResource( 66 )
 one_way_collision = true
 
 [node name="CollisionShape2D24" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 2049.42, 98.6717 )
-shape = SubResource( 85 )
+shape = SubResource( 67 )
 one_way_collision = true
 
 [node name="CollisionShape2D25" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 3650.62, 93.8625 )
-shape = SubResource( 86 )
+shape = SubResource( 68 )
 one_way_collision = true
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 84.248, 577.008 )
 rotation = 1.5708
-shape = SubResource( 65 )
+shape = SubResource( 69 )
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 631.876, 291.92 )
 rotation = 1.5708
-shape = SubResource( 66 )
+shape = SubResource( 70 )
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 631.876, 262.92 )
 rotation = 1.5708
-shape = SubResource( 66 )
+shape = SubResource( 70 )
 
 [node name="CollisionShape2D21" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -716.685, 279.569 )
 rotation = 1.5708
-shape = SubResource( 66 )
+shape = SubResource( 70 )
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 985.331, 206.954 )
 rotation = 1.5708
-shape = SubResource( 67 )
+shape = SubResource( 71 )
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 4161.38, 11.2869 )
 rotation = 1.5708
-shape = SubResource( 68 )
+shape = SubResource( 72 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1235.91, 77.3519 )
-shape = SubResource( 69 )
+shape = SubResource( 73 )
 one_way_collision = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -42.0942, 397.352 )
-shape = SubResource( 70 )
+shape = SubResource( 74 )
 one_way_collision = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1342.74, 331.95 )
-shape = SubResource( 71 )
+shape = SubResource( 75 )
 one_way_collision = true
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 640.592, 721.909 )
-shape = SubResource( 72 )
+shape = SubResource( 76 )
 one_way_collision = true
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1988.59, 653.909 )
-shape = SubResource( 73 )
+shape = SubResource( 77 )
 one_way_collision = true
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 2868.6, 173.469 )
-shape = SubResource( 74 )
+shape = SubResource( 78 )
 one_way_collision = true
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 3777.9, -146.053 )
-shape = SubResource( 75 )
+shape = SubResource( 79 )
 one_way_collision = true
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 3077.46, -141.296 )
-shape = SubResource( 76 )
+shape = SubResource( 80 )
 one_way_collision = true
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 3351.42, 722.883 )
-shape = SubResource( 77 )
+shape = SubResource( 81 )
 one_way_collision = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
@@ -2350,15 +2406,15 @@ one_way_collision = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="climb"]
 position = Vector2( 278, 477.258 )
-shape = SubResource( 78 )
+shape = SubResource( 82 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="climb"]
 position = Vector2( 1285.79, 410.114 )
-shape = SubResource( 79 )
+shape = SubResource( 83 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="climb"]
 position = Vector2( 2638.7, 318.077 )
-shape = SubResource( 80 )
+shape = SubResource( 84 )
 
 [node name="TransPort" type="Area2D" parent="."]
 position = Vector2( -154.935, -687.916 )
@@ -2368,18 +2424,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort"]
 position = Vector2( -136, 416.5 )
 z_index = 2
-shape = SubResource( 81 )
+shape = SubResource( 85 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 352 )
-frames = SubResource( 82 )
-frame = 13
+frames = SubResource( 86 )
+frame = 3
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 416 )
-frames = SubResource( 83 )
-frame = 8
+frames = SubResource( 87 )
+frame = 13
 playing = true
 
 [node name="TransPort2" type="Area2D" parent="."]
@@ -2390,18 +2446,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort2"]
 position = Vector2( -136, 416.5 )
 z_index = 2
-shape = SubResource( 81 )
+shape = SubResource( 85 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
-frames = SubResource( 82 )
-frame = 12
+frames = SubResource( 86 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
-frames = SubResource( 83 )
-frame = 7
+frames = SubResource( 87 )
+frame = 12
 playing = true
 
 [node name="TransPort3" type="Area2D" parent="."]
@@ -2412,18 +2468,18 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort3"]
 position = Vector2( -136, 416.5 )
 z_index = 2
-shape = SubResource( 81 )
+shape = SubResource( 85 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort3"]
 position = Vector2( -136, 352 )
-frames = SubResource( 82 )
-frame = 12
+frames = SubResource( 86 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort3"]
 position = Vector2( -136, 416 )
-frames = SubResource( 83 )
-frame = 7
+frames = SubResource( 87 )
+frame = 12
 playing = true
 
 [node name="18336-1" type="Sprite" parent="."]
@@ -2529,6 +2585,33 @@ position = Vector2( 900.238, 340.518 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 172 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 182 )
+autoplay = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 83.3026, -351.236 )
+frames = SubResource( 88 )
+frame = 1
+playing = true
+
+[node name="Control2" type="Control" parent="."]
+margin_left = 1155.35
+margin_top = -74.0866
+margin_right = 1237.35
+margin_bottom = 50.9134
+rect_min_size = Vector2( 75, 125 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="npc1" type="AnimatedSprite" parent="Control2"]
+material = SubResource( 90 )
+frames = SubResource( 91 )
+frame = 1
+playing = true
+centered = false
+
 [connection signal="health_updated" from="Steve" to="Steve" method="_on_Steve_health_updated"]
 [connection signal="body_entered" from="Steve/Control/Sprite/HitBox" to="Steve" method="_on_HitBox_body_entered"]
 [connection signal="timeout" from="Steve/Timer" to="Steve" method="_on_Timer_timeout"]
@@ -2539,3 +2622,9 @@ texture = ExtResource( 172 )
 [connection signal="timeout" from="Steve/health" to="Steve" method="_on_health_timeout"]
 [connection signal="body_entered" from="climb" to="Steve" method="_on_climb_body_entered"]
 [connection signal="body_exited" from="climb" to="Steve" method="_on_climb_body_exited"]
+[connection signal="body_entered" from="TransPort" to="." method="_on_TransPort_body_entered"]
+[connection signal="body_entered" from="TransPort2" to="." method="_on_TransPort2_body_entered"]
+[connection signal="body_entered" from="TransPort3" to="." method="_on_TransPort3_body_entered"]
+[connection signal="gui_input" from="Control2" to="." method="_on_Control2_gui_input"]
+[connection signal="mouse_entered" from="Control2" to="." method="_on_Control2_mouse_entered"]
+[connection signal="mouse_exited" from="Control2" to="." method="_on_Control2_mouse_exited"]

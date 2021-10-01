@@ -1,4 +1,4 @@
-[gd_scene load_steps=304 format=2]
+[gd_scene load_steps=336 format=2]
 
 [ext_resource path="res://assets/map/jianglinxi/10459-1.png" type="Texture" id=1]
 [ext_resource path="res://assets/map/jianglinxi/16884-1.png" type="Texture" id=2]
@@ -16,7 +16,7 @@
 [ext_resource path="res://JiangLinXiJiao.gd" type="Script" id=14]
 [ext_resource path="res://UserInterFace.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Character/Steve.tscn" type="PackedScene" id=16]
-[ext_resource path="res://TransPort.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/map/12684-14.png" type="Texture" id=17]
 [ext_resource path="res://assets/map/jianglinxi/16648-1.png" type="Texture" id=18]
 [ext_resource path="res://assets/particle_examples/floaty_64.png" type="Texture" id=19]
 [ext_resource path="res://MUSIC/jianglin.ogg" type="AudioStream" id=20]
@@ -245,6 +245,35 @@
 [ext_resource path="res://assets/map/jianglinxi/13822-18.png" type="Texture" id=243]
 [ext_resource path="res://assets/map/jianglinxi/13822-30.png" type="Texture" id=244]
 [ext_resource path="res://assets/map/jianglinxi/13822-17.png" type="Texture" id=245]
+[ext_resource path="res://assets/map/12685-3.png" type="Texture" id=246]
+[ext_resource path="res://assets/map/12684-12.png" type="Texture" id=247]
+[ext_resource path="res://assets/map/12684-15.png" type="Texture" id=248]
+[ext_resource path="res://assets/map/12685-5.png" type="Texture" id=249]
+[ext_resource path="res://assets/map/12684-13.png" type="Texture" id=250]
+[ext_resource path="res://assets/map/12685-9.png" type="Texture" id=251]
+[ext_resource path="res://assets/map/12685-8.png" type="Texture" id=252]
+[ext_resource path="res://assets/map/12684-4.png" type="Texture" id=253]
+[ext_resource path="res://assets/map/12685-14.png" type="Texture" id=254]
+[ext_resource path="res://assets/map/12684-3.png" type="Texture" id=255]
+[ext_resource path="res://assets/map/12684-7.png" type="Texture" id=256]
+[ext_resource path="res://assets/map/12685-13.png" type="Texture" id=257]
+[ext_resource path="res://assets/map/12685-4.png" type="Texture" id=258]
+[ext_resource path="res://assets/map/12684-11.png" type="Texture" id=259]
+[ext_resource path="res://assets/map/12685-15.png" type="Texture" id=260]
+[ext_resource path="res://assets/map/12685-11.png" type="Texture" id=261]
+[ext_resource path="res://assets/map/12685-1.png" type="Texture" id=262]
+[ext_resource path="res://assets/map/12684-5.png" type="Texture" id=263]
+[ext_resource path="res://assets/map/12685-2.png" type="Texture" id=264]
+[ext_resource path="res://assets/map/12684-10.png" type="Texture" id=265]
+[ext_resource path="res://assets/map/12684-1.png" type="Texture" id=266]
+[ext_resource path="res://assets/map/12684-2.png" type="Texture" id=267]
+[ext_resource path="res://assets/map/12684-8.png" type="Texture" id=268]
+[ext_resource path="res://assets/map/12685-7.png" type="Texture" id=269]
+[ext_resource path="res://assets/map/12685-10.png" type="Texture" id=270]
+[ext_resource path="res://assets/map/12685-6.png" type="Texture" id=271]
+[ext_resource path="res://assets/map/12684-9.png" type="Texture" id=272]
+[ext_resource path="res://assets/map/12685-12.png" type="Texture" id=273]
+[ext_resource path="res://assets/map/12684-6.png" type="Texture" id=274]
 
 [sub_resource type="TileSet" id=1]
 3/name = "10459-1.png 3"
@@ -500,41 +529,48 @@ resource_local_to_scene = true
 flags = 4
 load_path = "res://.import/8997-1.png-fd1728224c722560571a7a4cfe7a53a4.stex"
 
-[sub_resource type="AnimationNodeAnimation" id=32]
-animation = "attackLeft"
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 40, 16.5 )
 
-[sub_resource type="AnimationNodeAnimation" id=33]
-animation = "attackRight"
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 266 ), ExtResource( 267 ), ExtResource( 255 ), ExtResource( 253 ), ExtResource( 263 ), ExtResource( 274 ), ExtResource( 256 ), ExtResource( 268 ), ExtResource( 272 ), ExtResource( 265 ), ExtResource( 259 ), ExtResource( 247 ), ExtResource( 250 ), ExtResource( 17 ), ExtResource( 248 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
-[sub_resource type="AnimationNodeAnimation" id=3]
-animation = "clim"
-
-[sub_resource type="AnimationNodeAnimation" id=4]
-animation = "die"
-
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "idle"
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 262 ), ExtResource( 264 ), ExtResource( 246 ), ExtResource( 258 ), ExtResource( 249 ), ExtResource( 271 ), ExtResource( 269 ), ExtResource( 252 ), ExtResource( 251 ), ExtResource( 270 ), ExtResource( 261 ), ExtResource( 273 ), ExtResource( 257 ), ExtResource( 254 ), ExtResource( 260 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="AnimationNodeAnimation" id=6]
-animation = "injury"
+animation = "attackLeft"
 
 [sub_resource type="AnimationNodeAnimation" id=7]
-animation = "jump"
+animation = "attackRight"
 
 [sub_resource type="AnimationNodeAnimation" id=8]
+animation = "clim"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "injury"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "run"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=9]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=10]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
@@ -543,6 +579,8 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
@@ -555,58 +593,68 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=31]
 resource_local_to_scene = true
-states/attackLeft/node = SubResource( 32 )
+states/attackLeft/node = SubResource( 6 )
 states/attackLeft/position = Vector2( -274, 55 )
-states/attackRight/node = SubResource( 33 )
+states/attackRight/node = SubResource( 7 )
 states/attackRight/position = Vector2( -274, 206 )
-states/clim/node = SubResource( 3 )
+states/clim/node = SubResource( 8 )
 states/clim/position = Vector2( 710, 39 )
-states/die/node = SubResource( 4 )
+states/die/node = SubResource( 9 )
 states/die/position = Vector2( 407, -15 )
-states/idle/node = SubResource( 5 )
+states/idle/node = SubResource( 10 )
 states/idle/position = Vector2( 266, 62 )
-states/injury/node = SubResource( 6 )
+states/injury/node = SubResource( 11 )
 states/injury/position = Vector2( 124.96, -32.32 )
-states/jump/node = SubResource( 7 )
+states/jump/node = SubResource( 12 )
 states/jump/position = Vector2( 525, 192 )
-states/run/node = SubResource( 8 )
+states/run/node = SubResource( 13 )
 states/run/position = Vector2( 252, 212 )
-transitions = [ "idle", "run", SubResource( 9 ), "run", "idle", SubResource( 10 ), "idle", "attackLeft", SubResource( 11 ), "attackLeft", "idle", SubResource( 12 ), "idle", "jump", SubResource( 13 ), "jump", "idle", SubResource( 14 ), "jump", "clim", SubResource( 15 ), "clim", "jump", SubResource( 16 ), "idle", "clim", SubResource( 17 ), "clim", "idle", SubResource( 18 ), "idle", "die", SubResource( 19 ), "run", "attackLeft", SubResource( 20 ), "run", "attackRight", SubResource( 21 ), "idle", "attackRight", SubResource( 22 ), "attackRight", "idle", SubResource( 23 ), "idle", "injury", SubResource( 24 ), "injury", "idle", SubResource( 25 ) ]
+transitions = [ "idle", "run", SubResource( 14 ), "run", "idle", SubResource( 15 ), "idle", "attackLeft", SubResource( 16 ), "attackLeft", "idle", SubResource( 17 ), "idle", "jump", SubResource( 18 ), "jump", "idle", SubResource( 19 ), "jump", "clim", SubResource( 20 ), "clim", "jump", SubResource( 21 ), "idle", "clim", SubResource( 22 ), "clim", "idle", SubResource( 23 ), "idle", "die", SubResource( 24 ), "run", "attackLeft", SubResource( 25 ), "run", "attackRight", SubResource( 26 ), "idle", "attackRight", SubResource( 27 ), "attackRight", "idle", SubResource( 28 ), "idle", "injury", SubResource( 29 ), "injury", "idle", SubResource( 30 ) ]
 start_node = "idle"
 end_node = "die"
 graph_offset = Vector2( -420.198, -78.9 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=35]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
-[sub_resource type="RectangleShape2D" id=36]
+[sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 153.939, 20.1 )
 
-[sub_resource type="RectangleShape2D" id=37]
+[sub_resource type="RectangleShape2D" id=34]
 extents = Vector2( 42.2113, 9.5 )
 
-[sub_resource type="RectangleShape2D" id=38]
+[sub_resource type="RectangleShape2D" id=35]
 extents = Vector2( 64, 20.1 )
 
-[sub_resource type="RectangleShape2D" id=39]
+[sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 496, 20.1 )
 
-[sub_resource type="RectangleShape2D" id=40]
+[sub_resource type="RectangleShape2D" id=37]
 extents = Vector2( 281.36, 20.1 )
 
-[sub_resource type="RectangleShape2D" id=41]
+[sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 432, 16.0001 )
 
-[sub_resource type="SpriteFrames" id=42]
+[sub_resource type="SpriteFrames" id=39]
 animations = [ {
 "frames": [ ExtResource( 60 ), ExtResource( 61 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 42 ), ExtResource( 62 ), ExtResource( 40 ), ExtResource( 63 ), ExtResource( 45 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 47 ), ExtResource( 31 ), ExtResource( 48 ), ExtResource( 46 ), ExtResource( 37 ), ExtResource( 49 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 34 ), ExtResource( 38 ), ExtResource( 41 ), ExtResource( 43 ), ExtResource( 35 ), ExtResource( 44 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 58 ), ExtResource( 57 ), ExtResource( 71 ), ExtResource( 69 ), ExtResource( 65 ), ExtResource( 70 ), ExtResource( 64 ), ExtResource( 66 ), ExtResource( 68 ), ExtResource( 67 ) ],
 "loop": true,
@@ -614,7 +662,7 @@ animations = [ {
 "speed": 14.0
 } ]
 
-[sub_resource type="SpriteFrames" id=43]
+[sub_resource type="SpriteFrames" id=40]
 animations = [ {
 "frames": [ ExtResource( 108 ), ExtResource( 92 ), ExtResource( 73 ), ExtResource( 85 ), ExtResource( 116 ), ExtResource( 95 ), ExtResource( 120 ), ExtResource( 97 ), ExtResource( 117 ), ExtResource( 121 ), ExtResource( 81 ), ExtResource( 99 ), ExtResource( 124 ), ExtResource( 122 ), ExtResource( 74 ), ExtResource( 109 ), ExtResource( 78 ), ExtResource( 83 ), ExtResource( 79 ), ExtResource( 82 ), ExtResource( 86 ), ExtResource( 87 ), ExtResource( 89 ), ExtResource( 126 ), ExtResource( 127 ), ExtResource( 129 ), ExtResource( 128 ), ExtResource( 130 ), ExtResource( 125 ), ExtResource( 131 ) ],
 "loop": true,
@@ -622,7 +670,7 @@ animations = [ {
 "speed": 14.0
 } ]
 
-[sub_resource type="SpriteFrames" id=44]
+[sub_resource type="SpriteFrames" id=41]
 animations = [ {
 "frames": [ ExtResource( 90 ), ExtResource( 110 ), ExtResource( 75 ), ExtResource( 91 ), ExtResource( 80 ), ExtResource( 103 ), ExtResource( 98 ), ExtResource( 101 ), ExtResource( 118 ), ExtResource( 104 ), ExtResource( 88 ), ExtResource( 84 ), ExtResource( 105 ), ExtResource( 115 ), ExtResource( 111 ), ExtResource( 112 ), ExtResource( 107 ), ExtResource( 100 ), ExtResource( 96 ), ExtResource( 94 ), ExtResource( 76 ), ExtResource( 102 ), ExtResource( 119 ), ExtResource( 113 ), ExtResource( 93 ), ExtResource( 77 ), ExtResource( 106 ), ExtResource( 123 ), ExtResource( 72 ), ExtResource( 114 ) ],
 "loop": true,
@@ -630,7 +678,7 @@ animations = [ {
 "speed": 14.0
 } ]
 
-[sub_resource type="SpriteFrames" id=45]
+[sub_resource type="SpriteFrames" id=42]
 animations = [ {
 "frames": [ ExtResource( 143 ), ExtResource( 149 ), ExtResource( 147 ), ExtResource( 138 ), ExtResource( 139 ), ExtResource( 145 ), ExtResource( 141 ), ExtResource( 146 ), ExtResource( 142 ), ExtResource( 144 ), ExtResource( 137 ), ExtResource( 135 ), ExtResource( 136 ), ExtResource( 134 ), ExtResource( 152 ), ExtResource( 151 ), ExtResource( 154 ), ExtResource( 153 ), ExtResource( 157 ), ExtResource( 156 ) ],
 "loop": true,
@@ -638,7 +686,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=46]
+[sub_resource type="SpriteFrames" id=43]
 animations = [ {
 "frames": [ ExtResource( 181 ), ExtResource( 174 ), ExtResource( 179 ), ExtResource( 172 ), ExtResource( 175 ), ExtResource( 177 ), ExtResource( 178 ), ExtResource( 180 ), ExtResource( 176 ), ExtResource( 173 ), ExtResource( 186 ), ExtResource( 193 ), ExtResource( 194 ), ExtResource( 192 ), ExtResource( 187 ), ExtResource( 188 ), ExtResource( 184 ) ],
 "loop": true,
@@ -646,7 +694,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=47]
+[sub_resource type="SpriteFrames" id=44]
 animations = [ {
 "frames": [ ExtResource( 189 ), ExtResource( 185 ), ExtResource( 182 ), ExtResource( 183 ), ExtResource( 190 ), ExtResource( 191 ), ExtResource( 164 ), ExtResource( 163 ), ExtResource( 171 ), ExtResource( 160 ), ExtResource( 165 ), ExtResource( 162 ), ExtResource( 167 ), ExtResource( 161 ), ExtResource( 166 ), ExtResource( 159 ), ExtResource( 169 ), ExtResource( 170 ), ExtResource( 168 ), ExtResource( 158 ) ],
 "loop": true,
@@ -654,7 +702,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=48]
+[sub_resource type="SpriteFrames" id=45]
 animations = [ {
 "frames": [ ExtResource( 208 ), ExtResource( 205 ), ExtResource( 209 ), ExtResource( 203 ), ExtResource( 204 ), ExtResource( 214 ), ExtResource( 206 ), ExtResource( 207 ), ExtResource( 200 ), ExtResource( 210 ), ExtResource( 211 ), ExtResource( 213 ), ExtResource( 212 ), ExtResource( 201 ), ExtResource( 202 ), ExtResource( 195 ), ExtResource( 196 ), ExtResource( 199 ), ExtResource( 197 ), ExtResource( 198 ) ],
 "loop": true,
@@ -662,7 +710,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=49]
+[sub_resource type="SpriteFrames" id=46]
 animations = [ {
 "frames": [ ExtResource( 238 ), ExtResource( 236 ), ExtResource( 239 ), ExtResource( 241 ), ExtResource( 233 ), ExtResource( 216 ), ExtResource( 219 ), ExtResource( 223 ), ExtResource( 226 ), ExtResource( 231 ), ExtResource( 225 ), ExtResource( 221 ), ExtResource( 240 ), ExtResource( 224 ), ExtResource( 217 ), ExtResource( 228 ), ExtResource( 245 ), ExtResource( 243 ), ExtResource( 234 ), ExtResource( 235 ), ExtResource( 237 ), ExtResource( 229 ), ExtResource( 222 ), ExtResource( 218 ), ExtResource( 220 ), ExtResource( 232 ), ExtResource( 227 ), ExtResource( 242 ), ExtResource( 230 ), ExtResource( 244 ), ExtResource( 215 ) ],
 "loop": true,
@@ -670,24 +718,24 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=50]
+[sub_resource type="RectangleShape2D" id=47]
 extents = Vector2( 10, 509.255 )
 
-[sub_resource type="CanvasItemMaterial" id=51]
+[sub_resource type="CanvasItemMaterial" id=48]
 blend_mode = 1
 particles_animation = true
 particles_anim_h_frames = 7
 particles_anim_v_frames = 7
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id=52]
+[sub_resource type="Gradient" id=49]
 offsets = PoolRealArray( 0, 0.327103, 0.668224, 1 )
 colors = PoolColorArray( 0.199436, 0.459961, 0.455381, 1, 0.115776, 0.592773, 0.584389, 1, 0.286736, 0.749023, 0.491695, 1, 0.377132, 0.885742, 0.423821, 1 )
 
-[sub_resource type="GradientTexture" id=53]
-gradient = SubResource( 52 )
+[sub_resource type="GradientTexture" id=50]
+gradient = SubResource( 49 )
 
-[sub_resource type="ParticlesMaterial" id=54]
+[sub_resource type="ParticlesMaterial" id=51]
 emission_shape = 1
 emission_sphere_radius = 16.0
 flag_disable_z = true
@@ -698,32 +746,32 @@ angular_velocity = 100.0
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color_ramp = SubResource( 53 )
+color_ramp = SubResource( 50 )
 hue_variation = 0.01
 hue_variation_random = 0.05
 anim_speed = 1.0
 
-[sub_resource type="CanvasItemMaterial" id=55]
+[sub_resource type="CanvasItemMaterial" id=52]
 blend_mode = 1
 particles_animation = true
 particles_anim_h_frames = 3
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id=56]
+[sub_resource type="Gradient" id=53]
 offsets = PoolRealArray( 0, 0.509346, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=57]
-gradient = SubResource( 56 )
+[sub_resource type="GradientTexture" id=54]
+gradient = SubResource( 53 )
 
-[sub_resource type="Curve" id=58]
+[sub_resource type="Curve" id=55]
 _data = [ Vector2( 0, 0 ), 0.0, 2.15455, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=26]
-curve = SubResource( 58 )
+[sub_resource type="CurveTexture" id=56]
+curve = SubResource( 55 )
 
-[sub_resource type="ParticlesMaterial" id=27]
+[sub_resource type="ParticlesMaterial" id=57]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
@@ -731,27 +779,27 @@ orbit_velocity_random = 0.0
 angle = 360.0
 angle_random = 1.0
 scale_random = 0.3
-scale_curve = SubResource( 26 )
-color_ramp = SubResource( 57 )
+scale_curve = SubResource( 56 )
+color_ramp = SubResource( 54 )
 anim_offset = 1.0
 anim_offset_random = 1.0
 
-[sub_resource type="CanvasItemMaterial" id=28]
+[sub_resource type="CanvasItemMaterial" id=58]
 blend_mode = 1
 
-[sub_resource type="Curve" id=29]
+[sub_resource type="Curve" id=59]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.40969, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=30]
-curve = SubResource( 29 )
+[sub_resource type="CurveTexture" id=60]
+curve = SubResource( 59 )
 
-[sub_resource type="ParticlesMaterial" id=31]
+[sub_resource type="ParticlesMaterial" id=61]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 angular_velocity = -100.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 30 )
+scale_curve = SubResource( 60 )
 
 [node name="JiangLinXiJiao" type="Node2D"]
 script = ExtResource( 14 )
@@ -773,11 +821,49 @@ z_index = -99
 texture = SubResource( 2 )
 centered = false
 
-[node name="TransPort" parent="." instance=ExtResource( 17 )]
+[node name="TransPort" type="Area2D" parent="."]
 position = Vector2( -250.439, 0 )
+z_index = 2
+monitorable = false
 
-[node name="TransPort2" parent="." instance=ExtResource( 17 )]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort"]
+position = Vector2( -136, 416.5 )
+z_index = 2
+shape = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort"]
+position = Vector2( -136, 352 )
+frames = SubResource( 4 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort"]
+position = Vector2( -136, 416 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+
+[node name="TransPort2" type="Area2D" parent="."]
 position = Vector2( 2055.75, -62.5535 )
+z_index = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TransPort2"]
+position = Vector2( -136, 416.5 )
+z_index = 2
+shape = SubResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
+position = Vector2( -136, 352 )
+frames = SubResource( 4 )
+frame = 8
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
+position = Vector2( -136, 416 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
 
 [node name="UserInterFace" parent="." instance=ExtResource( 15 )]
 
@@ -797,63 +883,81 @@ texture = ExtResource( 23 )
 [node name="Steve" parent="." instance=ExtResource( 16 )]
 position = Vector2( -250.439, 357.165 )
 
-[node name="Camera2D" parent="Steve" index="0"]
+[node name="Sprite" parent="Steve/Control" index="0"]
+frame = 0
+
+[node name="AnimatedSprite2" parent="Steve/Control" index="2"]
+frame = 8
+
+[node name="AnimatedSprite5" parent="Steve/Control" index="7"]
+frame = 1
+
+[node name="AnimatedSprite4" parent="Steve/Control" index="8"]
+frame = 3
+
+[node name="Camera2D" parent="Steve" index="1"]
 limit_left = -495
 limit_top = -1342
 limit_right = 2196
 
-[node name="AnimationTree" parent="Steve" index="1"]
-tree_root = SubResource( 34 )
-parameters/playback = SubResource( 35 )
+[node name="AnimationTree" parent="Steve" index="2"]
+tree_root = SubResource( 31 )
+parameters/playback = SubResource( 32 )
 
-[node name="AnimatedSprite" parent="Steve" index="5"]
-frame = 2
+[node name="fly_left" parent="Steve" index="17"]
+frame = 3
+
+[node name="fly_right" parent="Steve" index="18"]
+frame = 1
+
+[node name="recover" parent="Steve" index="19"]
+frame = 11
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -322.439, 433.6 )
-shape = SubResource( 36 )
+shape = SubResource( 33 )
 one_way_collision = true
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 228, 438.4 )
-shape = SubResource( 37 )
+shape = SubResource( 34 )
 one_way_collision = true
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 352, 447.219 )
-shape = SubResource( 37 )
+shape = SubResource( 34 )
 one_way_collision = true
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1024, 318.165 )
-shape = SubResource( 37 )
+shape = SubResource( 34 )
 one_way_collision = true
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1183, 317.165 )
-shape = SubResource( 37 )
+shape = SubResource( 34 )
 one_way_collision = true
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1699.66, 290 )
-shape = SubResource( 37 )
+shape = SubResource( 34 )
 one_way_collision = true
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1649.21, 224.8 )
-shape = SubResource( 37 )
+shape = SubResource( 34 )
 one_way_collision = true
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1788.74, 206 )
-shape = SubResource( 37 )
+shape = SubResource( 34 )
 one_way_collision = true
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1926.06, 160 )
-shape = SubResource( 37 )
+shape = SubResource( 34 )
 one_way_collision = true
 
 [node name="CollisionShape2D5" type="CollisionPolygon2D" parent="StaticBody2D"]
@@ -878,58 +982,58 @@ one_way_collision = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -24, 433.6 )
-shape = SubResource( 38 )
+shape = SubResource( 35 )
 one_way_collision = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1456, 560 )
-shape = SubResource( 39 )
+shape = SubResource( 36 )
 one_way_collision = true
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1927.3, 377.571 )
-shape = SubResource( 40 )
+shape = SubResource( 37 )
 one_way_collision = true
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1926.06, 560 )
-shape = SubResource( 40 )
+shape = SubResource( 37 )
 one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -64, 640 )
-shape = SubResource( 41 )
+shape = SubResource( 38 )
 one_way_collision = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 636.901, 388.326 )
-frames = SubResource( 42 )
-frame = 30
+frames = SubResource( 39 )
+frame = 33
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 1093.58, 504.469 )
-frames = SubResource( 43 )
-frame = 2
+frames = SubResource( 40 )
+frame = 25
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 1611.83, 256 )
-frames = SubResource( 44 )
-frame = 22
+frames = SubResource( 41 )
+frame = 15
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 1641.33, 256 )
-frames = SubResource( 44 )
-frame = 21
+frames = SubResource( 41 )
+frame = 14
 playing = true
 
 [node name="AnimatedSprite5" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 1691.02, 256 )
 z_index = -98
-frames = SubResource( 44 )
-frame = 21
+frames = SubResource( 41 )
+frame = 14
 playing = true
 
 [node name="16638-1" type="Sprite" parent="StaticBody2D"]
@@ -944,26 +1048,26 @@ texture = ExtResource( 132 )
 
 [node name="AnimatedSprite6" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 1756.75, 40 )
-frames = SubResource( 45 )
-frame = 12
+frames = SubResource( 42 )
+frame = 7
 playing = true
 
 [node name="AnimatedSprite7" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 1926.06, -16.494 )
-frames = SubResource( 45 )
-frame = 2
+frames = SubResource( 42 )
+frame = 17
 playing = true
 
 [node name="AnimatedSprite8" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 2044.68, -16.494 )
-frames = SubResource( 45 )
-frame = 2
+frames = SubResource( 42 )
+frame = 17
 playing = true
 
 [node name="AnimatedSprite9" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 2197.41, 40 )
-frames = SubResource( 45 )
-frame = 12
+frames = SubResource( 42 )
+frame = 7
 playing = true
 
 [node name="19175-1" type="Sprite" parent="StaticBody2D"]
@@ -991,68 +1095,69 @@ texture = ExtResource( 140 )
 
 [node name="AnimatedSprite10" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 1817.24, 278 )
-frames = SubResource( 46 )
-frame = 8
+frames = SubResource( 43 )
+frame = 4
 playing = true
 
 [node name="AnimatedSprite11" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 2027.75, 278 )
-frames = SubResource( 46 )
-frame = 2
+frames = SubResource( 43 )
+frame = 15
 playing = true
 flip_h = true
 
 [node name="AnimatedSprite12" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 1789.24, 133.506 )
-frames = SubResource( 47 )
-frame = 9
+frames = SubResource( 44 )
+frame = 4
 playing = true
 flip_h = true
 
 [node name="AnimatedSprite13" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 654, 176 )
-frames = SubResource( 48 )
+frames = SubResource( 45 )
+frame = 15
 playing = true
 
 [node name="AnimatedSprite14" type="AnimatedSprite" parent="StaticBody2D"]
 position = Vector2( 74.811, 570.396 )
-frames = SubResource( 49 )
-frame = 3
+frames = SubResource( 46 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 2202.77, 29 )
-shape = SubResource( 50 )
+shape = SubResource( 47 )
 
 [node name="CollisionShape2D20" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -488.058, 113.8 )
-shape = SubResource( 50 )
+shape = SubResource( 47 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
-material = SubResource( 51 )
+material = SubResource( 48 )
 position = Vector2( 1024, 302 )
 z_index = -1
 amount = 40
 lifetime = 1.5
-process_material = SubResource( 54 )
+process_material = SubResource( 51 )
 texture = ExtResource( 19 )
 
 [node name="Particles2D2" type="Particles2D" parent="."]
-material = SubResource( 51 )
+material = SubResource( 48 )
 position = Vector2( 1183, 298 )
 z_index = -1
 amount = 40
 lifetime = 1.5
-process_material = SubResource( 54 )
+process_material = SubResource( 51 )
 texture = ExtResource( 19 )
 
 [node name="Particles2D3" type="Particles2D" parent="."]
-material = SubResource( 51 )
+material = SubResource( 48 )
 position = Vector2( -434.939, 640 )
 z_index = -1
 amount = 40
 lifetime = 1.5
-process_material = SubResource( 54 )
+process_material = SubResource( 51 )
 texture = ExtResource( 19 )
 
 [node name="Label" type="RichTextLabel" parent="."]
@@ -1068,19 +1173,19 @@ __meta__ = {
 }
 
 [node name="Particles2D4" type="Particles2D" parent="."]
-material = SubResource( 55 )
+material = SubResource( 52 )
 position = Vector2( -254.639, 560 )
 scale = Vector2( 0.8, 0.8 )
 amount = 4
-process_material = SubResource( 27 )
+process_material = SubResource( 57 )
 texture = ExtResource( 22 )
 
 [node name="Particles2D5" type="Particles2D" parent="."]
-material = SubResource( 28 )
+material = SubResource( 58 )
 position = Vector2( -64, 553.427 )
 scale = Vector2( 0.2, 0.2 )
 amount = 4
-process_material = SubResource( 31 )
+process_material = SubResource( 61 )
 texture = ExtResource( 25 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -1095,5 +1200,7 @@ text = "海内存知己，天涯若比邻。"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="body_entered" from="TransPort" to="." method="_on_TransPort_body_entered"]
 
 [editable path="Steve"]

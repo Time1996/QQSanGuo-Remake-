@@ -193,6 +193,7 @@ func dead():
 	Drop()
 	emit_signal("monster_die")
 	userInterface.get_node("Character").get_node("Target").visible = false
+	get_parent().get_node("Steve").enemy_id = null
 	yield($AnimatedSprite, "animation_finished")
 	
 	queue_free()

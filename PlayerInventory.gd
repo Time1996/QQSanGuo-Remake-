@@ -5,6 +5,15 @@ signal active_item_updated
 const NUM_INVENTORY_SLOTS = 9
 const NUM_HOTBAR_SLOTS = 8
 
+var money = 0
+var juntuan = 0
+var max_health = 1000
+var max_magic = 1000
+var basic_damage = 20
+var basic_defende = 10
+var basic_shugong = 0
+var basic_shufang = 0
+var level = 1
 ##背包初始内容
 var inventory = {
 #	0 : ["金疮药", 99]
@@ -35,6 +44,8 @@ func add_item(item_name, item_quantity):
 			inventory[i] = [item_name, item_quantity]
 			update_slot_visual(i, inventory[i][0], inventory[i][1])
 			return
+			
+
 func _ready():
 	pass
 
@@ -57,34 +68,13 @@ func add_item_quantity(slot, quantity_to_add, is_hotbar: bool = false):
 		inventory[slot.slot_index][1] += quantity_to_add
 
 func update_slot_visual(slot_index, item_name, new_quantity):
-	var slot = get_tree().root.get_node("/root/Level1/UserInterFace/Inventory/ScrollContainer/VBoxContainer/Panel" + str(slot_index + 1))
-	#print(slot.name)
-	if slot.item != null:
+	var slot = get_tree().get_root().get_node("Level1/UserInterFace/Inventory/ScrollContainer/VBoxContainer/Panel" + str(slot_index + 1))
+	if slot.item != null and slot.get_child_count() != 0:
 		slot.item.set_item(item_name, new_quantity)
 	else:
 		slot.initialize_item(item_name, new_quantity)
 
-func active_item_scroll_down():
-	active_item_slot = (active_item_slot + 1) % NUM_HOTBAR_SLOTS #向右移动
-#	print(active_item_slot)
-	emit_signal("active_item_updated")
-	
-func active_item_scroll_up():
-	if active_item_slot == 0:
-		active_item_slot = NUM_HOTBAR_SLOTS - 1
-	else:
-		active_item_slot -= 1
-#	print(active_item_slot)
-	emit_signal("active_item_updated")
-
 func remove_all_item():
 	print("clear")
 	hotbar.clear()
-#	get_tree().get_root().get_node("Level1").get_node("UserInterFace").get_node("Hotbar").initialize_hotbar()
 	inventory.clear()
-#	for i in NUM_HOTBAR_SLOTS:
-#		if hotbar.has(i):
-#			hotbar.erase(i)
-#	for i in NUM_INVENTORY_SLOTS:
-#		if inventory.has(i):
-#			inventory.erase(i)
