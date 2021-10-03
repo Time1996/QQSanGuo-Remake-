@@ -31,9 +31,11 @@ func update_inventory(m, j):
 			cnt += 1
 	$Inventory/Backpack.text = str(cnt) + "/50"
 	
-func update_exp(value):
+func update_exp(experience, experience_required):
+	var value = int(experience*100/experience_required)
 	$exprience/TextureProgress.value = value
 	$exprience/Label.text = str(value) + "%"
+	$exprience/Control.hint_tooltip = str(experience) + "/" + str(experience_required)
 
 func _on_UserInterFace_health_updated(health, magic):
 	$Character/Bar/HealthBar.max_value = max_health

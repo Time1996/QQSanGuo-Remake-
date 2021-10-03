@@ -50,6 +50,7 @@ var target = 0
 var target_derection = 1
 
 func _ready():
+	print(position)
 	randomize()
 	$Control/AnimatedSprite.visible = false
 	$Control/AnimatedSprite2.visible = false
@@ -75,7 +76,10 @@ func gain_experience(amount):
 	while experience >= experience_required:
 		experience -= experience_required
 		level_up()
-	userInterface.update_exp(int(experience*100/experience_required))
+	userInterface.update_exp(experience, experience_required)
+	yield($AnimationPlayer, "animation_finished")
+	for i in $HBoxContainer.get_children():
+		i.visible = false
 
 func level_up():
 	PlayerInventory.level += 1
@@ -103,17 +107,19 @@ func gain_money(amount_m, amount_j):
 	userInterface.update_inventory(PlayerInventory.money, PlayerInventory.juntuan)
 	
 func use_item(hp, mana, exprience, money):
-	health += hp
+	if hp != null:
+		health += hp
 	print(health)
 	if health > PlayerInventory.max_health:
 		health = PlayerInventory.max_health
-		
-	magic += mana
+	if mana != null:
+		magic += mana
 	if magic > PlayerInventory.max_magic:
 		magic = PlayerInventory.max_magic
 		
-	experience += exprience
-	PlayerInventory.money += money
+	
+	gain_experience(exprience)
+	gain_money(money, 0)
 func gain_speed():
 	SPEED *= 2
 	$speed.start(10)

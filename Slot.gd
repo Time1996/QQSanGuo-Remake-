@@ -5,7 +5,7 @@ var selected_style = null
 
 var default_tex = preload("res://UI/player_inventory/main/67445-1.png")
 var selected_tex = preload("res://UI/player_inventory/main/67445-2.png")
-
+var drag_item = preload("res://Item.tscn").instance()
 
 var item = null
 var ItemClass = preload("res://Item.tscn")
@@ -50,6 +50,7 @@ func pickFromSlot():
 		item = null
 
 func putIntoSlot(new_item):
+	print(new_item)
 	item = new_item
 	item.position = Vector2(0, 0)
 	var inventoryNode = find_parent("UserInterFace")
@@ -65,8 +66,7 @@ func initialize_item(item_name, item_quantity):
 		item.set_item(item_name, item_quantity)
 		add_child(item)
 	else:
-		if item != null:
-			item.set_item(item_name, item_quantity)
+		item.set_item(item_name, item_quantity)
 		
 
 #func _input(event):
@@ -100,11 +100,32 @@ func can_drop_data(position, data):
 		return false
 	
 func drop_data(position, data):
-	var drag_item = load("res://Item.tscn").instance()
 	drag_item.get_node("TextureRect").texture_normal = data["origin_texture"]
-	drag_item.set_item(data["origin_item_name"], 1)
+	drag_item.set_item(data["origin_item_name"], data["origin_item_quantity"])
 	drag_item.scale *= 0.75
-#	drag_texture.rect_size = self.rect_size
+
+#	PlayerInventory.add_item(drag_item.item_name, 1)
 	PlayerInventory.add_item_to_empty_slot(drag_item, self)
-	add_child(drag_item)
-	
+#	PlayerInventory.update_slot_visual(slot_index, drag_item.item_name, drag_item.item_quantity)
+#	add_child(drag_item) 
+	drag_item.get_node("TextureRect").mouse_filter = MOUSE_FILTER_STOP
+#	if data["slot_type"] == "inventory":
+#		for i in get_parent().get_children():
+#			if i.slot_index == data["slot_index"]:
+#				print(i.slot_index, data["slot_index"])
+#				i.remove_child(i.get_child(0))
+##				PlayerInventory.update_slot_visual(i.slot_index, drag_item.item_name, drag_item.item_quantity)
+#				break
+#		PlayerInventory.inventory.erase(data["slot_index"])
+
+	PlayerInventory.update_slot_visual(slot_index, drag_item.item_name, drag_item.item_quantity)
+	if data["slot_type"] == "equipment":
+		get_tree().get_root().get_node(data["origin_path"]).texture_normal = null
+	elif data["slot_type"] == "inventory":
+		get_tree().get_root().get_node(data["origin_path"]).get_parent().item = null
+		get_tree().get_root().get_node(data["origin_path"]).queue_free()
+#	data["slot"].remove_child(data["item"])
+#	remove_child(0)
+	pass
+
+

@@ -223,14 +223,3 @@ func _on_noncombat_timeout():
 	#state = IDLE
 	pass # Replace with function body.
 
-
-func _on_mouse_event_mouse_entered():
-	print("mouse inter")
-	Input.set_custom_mouse_cursor(mouse_shape)
-	pass # Replace with function body.
-
-
-func _on_Snake_mouse_exited():
-	print("mouse exited")
-	Input.set_custom_mouse_cursor(mouse_default)
-	pass # Replace with function body.

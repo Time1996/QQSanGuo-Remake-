@@ -295,6 +295,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Control" type="Control" parent="."]
+margin_left = 50.0
+margin_top = 10.0
+margin_right = 683.0
+margin_bottom = 18.0
+
 [connection signal="pressed" from="HBoxContainer/shortcut1" to="." method="_on_shortcut1_pressed"]
 [connection signal="pressed" from="HBoxContainer/shortcut2" to="." method="_on_shortcut2_pressed"]
 [connection signal="pressed" from="HBoxContainer/shortcut3" to="." method="_on_shortcut3_pressed"]

@@ -16,6 +16,7 @@ var basic_shufang = 0
 var level = 1
 ##背包初始内容
 var inventory = {
+	0 : ["回城符", 2]
 #	0 : ["金疮药", 99]
 }
 
@@ -68,7 +69,14 @@ func add_item_quantity(slot, quantity_to_add, is_hotbar: bool = false):
 		inventory[slot.slot_index][1] += quantity_to_add
 
 func update_slot_visual(slot_index, item_name, new_quantity):
-	var slot = get_tree().get_root().get_node("Level1/UserInterFace/Inventory/ScrollContainer/VBoxContainer/Panel" + str(slot_index + 1))
+	var slot
+	if get_tree().get_root().has_node("Level1"):
+		slot = get_tree().get_root().get_node("Level1/UserInterFace/Inventory/ScrollContainer/VBoxContainer/Panel" + str(slot_index + 1))
+	elif get_tree().get_root().has_node("bajun"):
+		slot = get_tree().get_root().get_node("bajun/UserInterFace/Inventory/ScrollContainer/VBoxContainer/Panel" + str(slot_index + 1))
+	elif get_tree().get_root().has_node("JiangLinXiJiao"):
+		slot = get_tree().get_root().get_node("JiangLinXiJiao/UserInterFace/Inventory/ScrollContainer/VBoxContainer/Panel" + str(slot_index + 1))
+	
 	if slot.item != null and slot.get_child_count() != 0:
 		slot.item.set_item(item_name, new_quantity)
 	else:

@@ -1284,7 +1284,7 @@ centered = false
 
 [node name="cloud" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 0.4, 0.4 )
-motion_offset = Vector2( 0, -120 )
+motion_offset = Vector2( 0, -160 )
 motion_mirroring = Vector2( 2236.5, 774 )
 
 [node name="Sprite2" type="Sprite" parent="ParallaxBackground/cloud"]
@@ -1299,7 +1299,7 @@ texture = ExtResource( 134 )
 centered = false
 
 [node name="mountain" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 32, 352 )
+position = Vector2( 32, 200 )
 scale = Vector2( 1, 1.2 )
 motion_scale = Vector2( 0.6, 0.6 )
 motion_offset = Vector2( 0, -120 )
@@ -1312,7 +1312,7 @@ __meta__ = {
 texture = ExtResource( 136 )
 
 [node name="mountain2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 640, 416 )
+position = Vector2( 640, 240 )
 scale = Vector2( 1, 1.2 )
 motion_scale = Vector2( 0.6, 0.6 )
 motion_offset = Vector2( 0, -120 )
@@ -1325,7 +1325,7 @@ __meta__ = {
 texture = ExtResource( 138 )
 
 [node name="mountain3" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( 80, 384 )
+position = Vector2( 80, 270 )
 scale = Vector2( 1, 1.2 )
 motion_scale = Vector2( 0.6, 0.6 )
 motion_offset = Vector2( 0, -120 )
@@ -1626,7 +1626,7 @@ __meta__ = {
 material = SubResource( 3 )
 position = Vector2( 20, 12 )
 frames = ExtResource( 72 )
-frame = 1
+frame = 3
 
 [node name="HitBox" type="Area2D" parent="Steve/Control/Sprite"]
 collision_mask = 2
@@ -1651,7 +1651,7 @@ position = Vector2( 24, 10 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 7 )
 animation = "accmulate"
-frame = 3
+frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Steve/Control"]
@@ -1685,7 +1685,7 @@ material = SubResource( 10 )
 position = Vector2( 169.748, 20.0399 )
 scale = Vector2( 1.85484, 1.2 )
 frames = SubResource( 11 )
-frame = 3
+frame = 4
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Steve/Control"]
@@ -1693,7 +1693,7 @@ modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 12 )
 position = Vector2( 167.066, 19.8214 )
 frames = SubResource( 13 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="4" type="Sprite" parent="Steve/Control/AnimatedSprite4"]
@@ -1868,7 +1868,7 @@ material = SubResource( 57 )
 position = Vector2( -32.1353, 48.686 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 71 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="fly_right" type="AnimatedSprite" parent="Steve"]
@@ -1877,7 +1877,6 @@ material = SubResource( 57 )
 position = Vector2( 42.9738, 48.6878 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 71 )
-frame = 3
 playing = true
 flip_h = true
 
@@ -1885,7 +1884,7 @@ flip_h = true
 material = SubResource( 58 )
 position = Vector2( 9.51367, 3.56763 )
 frames = SubResource( 59 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="BattleSound" type="AudioStreamPlayer" parent="Steve"]
@@ -2429,13 +2428,13 @@ shape = SubResource( 85 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 352 )
 frames = SubResource( 86 )
-frame = 3
+frame = 7
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 416 )
 frames = SubResource( 87 )
-frame = 13
+frame = 2
 playing = true
 
 [node name="TransPort2" type="Area2D" parent="."]
@@ -2451,13 +2450,13 @@ shape = SubResource( 85 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
 frames = SubResource( 86 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
 frames = SubResource( 87 )
-frame = 12
+frame = 1
 playing = true
 
 [node name="TransPort3" type="Area2D" parent="."]
@@ -2473,13 +2472,13 @@ shape = SubResource( 85 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort3"]
 position = Vector2( -136, 352 )
 frames = SubResource( 86 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort3"]
 position = Vector2( -136, 416 )
 frames = SubResource( 87 )
-frame = 12
+frame = 1
 playing = true
 
 [node name="18336-1" type="Sprite" parent="."]
@@ -2592,7 +2591,6 @@ autoplay = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 83.3026, -351.236 )
 frames = SubResource( 88 )
-frame = 1
 playing = true
 
 [node name="Control2" type="Control" parent="."]
@@ -2608,7 +2606,6 @@ __meta__ = {
 [node name="npc1" type="AnimatedSprite" parent="Control2"]
 material = SubResource( 90 )
 frames = SubResource( 91 )
-frame = 1
 playing = true
 centered = false
 

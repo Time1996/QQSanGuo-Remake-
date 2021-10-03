@@ -83,18 +83,31 @@ func _on_TextureRect_gui_input(event):
 				find_parent("UserInterFace").get_parent().get_node("Steve").use_item(
 											jsonData.item_data[item_name].AddHealth,
 											jsonData.item_data[item_name].AddEnergy,
-											0,
+											1110,
 											0
 				)
-				print("使用" + item_name)
-				item_quantity -= 1
-				
-				if item_quantity == 0:
-					print(get_parent().slot_index)
-					userInterFace.holding_item = null
-					get_parent().item = null
-					PlayerInventory.remove_item(get_parent())
-					queue_free()
-				
-	
+			elif jsonData.item_data[item_name].ItemCategory == "Translation":
+				if get_tree().get_root().has_node("bajun"):
+					get_tree().get_root().get_node("bajun/Steve").position = Vector2(-16, -328)
+				elif get_tree().get_root().has_node("Level1"):
+					SceneChange.goto_scene("res://Scene/bajun.tscn", find_parent("Level1"))
+				elif get_tree().get_root().has_node("JiangLinXiJiao"):
+					SceneChange.goto_scene("res://Scene/bajun.tscn", find_parent("JiangLinXiJiao"))
+					
+			elif jsonData.item_data[item_name].ItemCategory == "Time":
+				pass
+			elif jsonData.item_data[item_name].ItemCategory == "Sword":
+				pass
+			
+			var index = get_parent().slot_index
+			PlayerInventory.inventory[index][1] -= 1
+			PlayerInventory.update_slot_visual(index, 
+												PlayerInventory.inventory[index][0], 
+												PlayerInventory.inventory[index][1]
+			)
+			if item_quantity == 0:
+				userInterFace.holding_item = null
+				get_parent().item = null
+				PlayerInventory.remove_item(get_parent())
+				queue_free()
 	pass # Replace with function body.

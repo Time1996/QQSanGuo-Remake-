@@ -17,7 +17,7 @@ func _ready():
 	print(item_name)
 	#if randi() % 2 == 0:
 	#	item_name = "铁剑"
-	#else:
+	#else: 
 #	item_name = "金疮药"
 
 func _physics_process(delta): ##物理效果
@@ -28,7 +28,7 @@ func _physics_process(delta): ##物理效果
 		velocity = velocity.move_toward(dir * MAX_SPEED , ACCELERATION * delta)
 		
 		var dist = global_position.distance_to(player.global_position)
-		if dist < 5:
+		if dist < 15:
 			##if item is effect:
 #			player.gain_speed()
 			##else:

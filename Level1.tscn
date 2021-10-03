@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://Character/Steve.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/map/9023-1.png" type="Texture" id=4]
@@ -61,7 +61,6 @@
 [ext_resource path="res://Enemy/Monkeyy.tscn" type="PackedScene" id=61]
 [ext_resource path="res://MUSIC/fmusic001.ogg" type="AudioStream" id=62]
 [ext_resource path="res://assets/map/bajun/13312-1.png" type="Texture" id=63]
-[ext_resource path="res://ItemDrop.tscn" type="PackedScene" id=64]
 [ext_resource path="res://16898-1.png" type="Texture" id=66]
 [ext_resource path="res://19470-1.png" type="Texture" id=67]
 [ext_resource path="res://16899-1.png" type="Texture" id=68]
@@ -874,13 +873,13 @@ shape = SubResource( 23 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 352 )
 frames = SubResource( 24 )
-frame = 2
+frame = 10
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort"]
 position = Vector2( -136, 416 )
 frames = SubResource( 25 )
-frame = 12
+frame = 5
 playing = true
 
 [node name="TransPort2" type="Area2D" parent="."]
@@ -896,13 +895,13 @@ shape = SubResource( 26 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 352 )
 frames = SubResource( 27 )
-frame = 2
+frame = 10
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="TransPort2"]
 position = Vector2( -136, 416 )
 frames = SubResource( 28 )
-frame = 12
+frame = 5
 playing = true
 
 [node name="UserInterFace" parent="." instance=ExtResource( 60 )]
@@ -917,14 +916,6 @@ collision_mask = 0
 stream = ExtResource( 62 )
 
 [node name="BattleTime" type="Timer" parent="."]
-
-[node name="ItemDrop" parent="." instance=ExtResource( 64 )]
-position = Vector2( 712, 400 )
-z_index = 1
-
-[node name="ItemDrop2" parent="." instance=ExtResource( 64 )]
-position = Vector2( 760, 400 )
-z_index = 1
 
 [node name="Spawner_Snake" type="Node2D" parent="."]
 script = SubResource( 29 )

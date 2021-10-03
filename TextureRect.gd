@@ -2,18 +2,21 @@ extends TextureButton
 
 
 func get_drag_data(position):
-	if has_node("Sprite"):
-		var texture = TextureButton.new()
-		texture.texture = $Sprite.texture
-		texture.rect_scale = $Sprite.scale
-		set_drag_preview(texture)
-		return $Sprite
-	return false
+	var data = {}
+	data["origin_path"] = get_parent().get_path()
+	data["origin_texture"] = self.texture_normal
+	data["origin_item_name"] = get_parent().item_name
+	data["origin_item_quantity"] = get_parent().item_quantity
+	data["slot_index"] = get_parent().get_parent().slot_index
+	data["slot_type"] = "inventory"
+	data["equipment"] = jsonData.item_data[get_parent().item_name].ItemCategory
+	var drag_texture = TextureRect.new()
+	drag_texture.texture = self.texture_normal
+	drag_texture.rect_size = self.rect_size
 	
-func can_drop_data(position, data):
-	return true
-
-func drop_data(position, data):
-	if data and get_child_count()==0:
-		self.add_child(data.duplicate())
-		data.queue_free()
+	var control = Control.new()
+	control.add_child(drag_texture)
+	drag_texture.rect_position = -0.5 * drag_texture.rect_size
+	
+	set_drag_preview(control)
+	return data

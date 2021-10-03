@@ -10,7 +10,22 @@ func _ready():
 	self.visible = false
 	pass
 
-
+func refresh():
+	print("refresh")
+	var a = 0
+	var b = 0
+	for i in $ScrollContainer/VBoxContainer.get_children():
+		b = 0
+		for j in find_parent("UserInterFace").get_node("Inventory/ScrollContainer/VBoxContainer").get_children():
+			if a==0 and b==0: 
+				if j.get_child_count() > 0:
+					print(j.get_child(0))
+					i.get_child(0).texture_normal = j.get_child(0).get_child(0).texture_normal
+					print(i)
+				break
+			b += 1
+		a += 1
+	
 func _on_TextureRect_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:

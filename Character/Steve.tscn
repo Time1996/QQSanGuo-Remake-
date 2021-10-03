@@ -1,10 +1,8 @@
-[gd_scene load_steps=135 format=2]
+[gd_scene load_steps=133 format=2]
 
 [ext_resource path="res://Character/Steve.gd" type="Script" id=1]
 [ext_resource path="res://Character/Sprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ANIMATION/idle.tres" type="Animation" id=3]
-[ext_resource path="res://assets/map/jianglinxi/8997-1.png" type="Texture" id=4]
-[ext_resource path="res://assets/map/jianglinxi/10460-1.png" type="Texture" id=5]
 [ext_resource path="res://EFECTIVE/js/digit/435-1.png" type="Texture" id=6]
 [ext_resource path="res://EFECTIVE/js/digit/437-1.png" type="Texture" id=7]
 [ext_resource path="res://EFECTIVE/js/2/232-1.png" type="Texture" id=8]
@@ -798,7 +796,6 @@ __meta__ = {
 material = SubResource( 2 )
 position = Vector2( 20, 12 )
 frames = ExtResource( 60 )
-frame = 1
 
 [node name="HitBox" type="Area2D" parent="Control/Sprite"]
 collision_mask = 2
@@ -823,6 +820,7 @@ position = Vector2( 24, 10 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 6 )
 animation = "accmulate"
+frame = 7
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Control"]
@@ -856,7 +854,7 @@ material = SubResource( 9 )
 position = Vector2( 169.748, 20.0399 )
 scale = Vector2( 1.85484, 1.2 )
 frames = SubResource( 10 )
-frame = 5
+frame = 2
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Control"]
@@ -864,7 +862,7 @@ modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 11 )
 position = Vector2( 167.066, 19.8214 )
 frames = SubResource( 12 )
-frame = 5
+frame = 8
 playing = true
 
 [node name="4" type="Sprite" parent="Control/AnimatedSprite4"]
@@ -875,18 +873,6 @@ texture = ExtResource( 65 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 67 )]
 drag_margin_h_enabled = false
-
-[node name="jianglinxijiao" type="Sprite" parent="Camera2D"]
-visible = false
-z_index = -99
-texture = ExtResource( 4 )
-
-[node name="jianglinxijiao2" type="Sprite" parent="Camera2D"]
-visible = false
-position = Vector2( 152, -152 )
-scale = Vector2( 0.5, 0.5 )
-z_index = -99
-texture = ExtResource( 5 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 42 )
@@ -928,7 +914,6 @@ shape = SubResource( 55 )
 autostart = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-visible = false
 margin_left = -27.5
 margin_top = -7.5
 margin_right = 141.5
@@ -1036,7 +1021,7 @@ material = SubResource( 56 )
 position = Vector2( -32.1353, 48.686 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 29 )
-frame = 8
+frame = 3
 playing = true
 
 [node name="fly_right" type="AnimatedSprite" parent="."]
@@ -1045,7 +1030,7 @@ material = SubResource( 56 )
 position = Vector2( 42.9738, 48.6878 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 29 )
-frame = 6
+frame = 1
 playing = true
 flip_h = true
 
@@ -1053,7 +1038,7 @@ flip_h = true
 material = SubResource( 57 )
 position = Vector2( 9.51367, 3.56763 )
 frames = SubResource( 58 )
-frame = 10
+frame = 6
 playing = true
 
 [node name="BattleSound" type="AudioStreamPlayer" parent="."]

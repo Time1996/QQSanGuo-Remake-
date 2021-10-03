@@ -278,19 +278,11 @@ script = ExtResource( 30 )
 attack1 = 4
 defend = 2
 
-[node name="mouse_event" type="Control" parent="."]
-margin_left = -48.0
-margin_top = -24.0
-margin_right = 64.0
-margin_bottom = 48.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 material = SubResource( 3 )
 frames = SubResource( 4 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -416,11 +408,11 @@ autoplay = "Enemytarget"
 anims/Enemytarget = ExtResource( 37 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -47.7533 )
 texture = ExtResource( 38 )
 
 [connection signal="monster_die" from="." to="." method="_on_Monster_monster_die"]
-[connection signal="mouse_entered" from="mouse_event" to="." method="_on_mouse_event_mouse_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
