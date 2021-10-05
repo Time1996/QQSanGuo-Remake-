@@ -96,5 +96,127 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Force" type="Label" parent="."]
+margin_left = 86.5746
+margin_top = 235.34
+margin_right = 126.575
+margin_bottom = 258.34
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wisdom" type="Label" parent="."]
+margin_left = 137.41
+margin_top = 226.205
+margin_right = 177.41
+margin_bottom = 249.205
+text = "1"
+align = 1
+
+[node name="Aim" type="Label" parent="."]
+margin_left = 49.0207
+margin_top = 330.343
+margin_right = 89.0207
+margin_bottom = 353.343
+text = "1"
+align = 1
+
+[node name="Agility" type="Label" parent="."]
+margin_left = 41.2724
+margin_top = 223.824
+margin_right = 81.2724
+margin_bottom = 246.824
+text = "1"
+align = 1
+
+[node name="Strong" type="Label" parent="."]
+margin_left = 126.173
+margin_top = 329.247
+margin_right = 166.173
+margin_bottom = 352.247
+text = "1"
+align = 1
+
+[node name="Name" type="Label" parent="."]
+margin_left = 207.0
+margin_top = 91.0
+margin_right = 330.0
+margin_bottom = 114.0
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 207.707
+margin_top = 112.213
+margin_right = 330.707
+margin_bottom = 135.213
+align = 1
+
+[node name="PinJie" type="Label" parent="."]
+margin_left = 205.413
+margin_top = 156.451
+margin_right = 328.413
+margin_bottom = 179.451
+align = 1
+
+[node name="Job" type="Label" parent="."]
+margin_left = 276.0
+margin_top = 134.0
+margin_right = 332.0
+margin_bottom = 157.0
+align = 1
+
+[node name="Contry" type="Label" parent="."]
+margin_left = 207.191
+margin_top = 133.413
+margin_right = 241.191
+margin_bottom = 156.413
+align = 1
+
+[node name="FuZhi" type="Label" parent="."]
+margin_left = 206.206
+margin_top = 177.863
+margin_right = 329.206
+margin_bottom = 200.863
+align = 1
+
+[node name="EXing" type="Label" parent="."]
+margin_left = 207.0
+margin_top = 200.016
+margin_right = 330.0
+margin_bottom = 223.016
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP" type="Label" parent="."]
+margin_left = 202.995
+margin_top = 321.486
+margin_right = 325.995
+margin_bottom = 344.486
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mana" type="Label" parent="."]
+margin_left = 203.217
+margin_top = 341.954
+margin_right = 326.217
+margin_bottom = 364.954
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prestige" type="Label" parent="."]
+margin_left = 207.206
+margin_top = 221.619
+margin_right = 330.206
+margin_bottom = 244.619
+align = 1
+
 [connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]
 [connection signal="pressed" from="TextureButton3" to="." method="_on_TextureButton3_pressed"]

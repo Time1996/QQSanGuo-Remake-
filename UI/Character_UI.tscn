@@ -210,7 +210,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect" type="HBoxContainer" parent="."]
+[node name="state" type="HBoxContainer" parent="."]
 margin_left = 59.0
 margin_top = 77.0
 margin_right = 219.0
@@ -219,7 +219,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="NinePatchRect"]
+[node name="speed" type="TextureButton" parent="state"]
 margin_right = 25.0
 margin_bottom = 26.0
 hint_tooltip = "提高速度，持续10秒"
@@ -229,7 +229,7 @@ texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 14 )
 texture_disabled = ExtResource( 12 )
 
-[node name="TextureButton2" type="TextureButton" parent="NinePatchRect"]
+[node name="recover" type="TextureButton" parent="state"]
 margin_left = 29.0
 margin_right = 54.0
 margin_bottom = 26.0

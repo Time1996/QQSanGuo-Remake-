@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://UI/player_inventory/main/67445-1.png" type="Texture" id=1]
 [ext_resource path="res://Inventory.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/ui/main_item.png" type="Texture" id=5]
 [ext_resource path="res://new_dynamicfont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://UI/side_bar/75606-3.png" type="Texture" id=7]
-[ext_resource path="res://UI/item_icons/精制护手.png" type="Texture" id=8]
 [ext_resource path="res://UI/side_bar/75616-2.png" type="Texture" id=9]
 [ext_resource path="res://UI/side_bar/75616-3.png" type="Texture" id=10]
 [ext_resource path="res://UI/side_bar/75606-2.png" type="Texture" id=11]
@@ -19,14 +18,6 @@
 [ext_resource path="res://UI/67378-1.png" type="Texture" id=17]
 [ext_resource path="res://UI/67379-2.png" type="Texture" id=18]
 [ext_resource path="res://UI/67378-2.png" type="Texture" id=19]
-[ext_resource path="res://UI/item_icons/五级翅膀(男).png" type="Texture" id=20]
-[ext_resource path="res://UI/item_icons/精制靴.png" type="Texture" id=21]
-[ext_resource path="res://UI/item_icons/精制冠.png" type="Texture" id=22]
-[ext_resource path="res://UI/item_icons/粗制甲.png" type="Texture" id=23]
-[ext_resource path="res://UI/item_icons/灵骨项链.png" type="Texture" id=24]
-[ext_resource path="res://UI/item_icons/精制甲下装.png" type="Texture" id=25]
-[ext_resource path="res://UI/item_icons/巨齿剑.png" type="Texture" id=26]
-[ext_resource path="res://UI/item_icons/如意金戒.png" type="Texture" id=27]
 [ext_resource path="res://equipment.gd" type="Script" id=47]
 [ext_resource path="res://slot1.gd" type="Script" id=48]
 [ext_resource path="res://Slot.gd" type="Script" id=49]
@@ -224,7 +215,6 @@ __meta__ = {
 [node name="Sprite" parent="." instance=ExtResource( 4 )]
 position = Vector2( 360.73, 274.618 )
 scale = Vector2( 0.7, 0.7 )
-frame = 3
 
 [node name="name" type="Label" parent="."]
 margin_left = 262.0
@@ -301,7 +291,6 @@ margin_left = 255.327
 margin_top = 195.931
 margin_right = 287.327
 margin_bottom = 225.931
-texture_normal = ExtResource( 22 )
 script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -312,7 +301,6 @@ margin_left = 255.752
 margin_top = 289.036
 margin_right = 287.752
 margin_bottom = 319.036
-texture_normal = ExtResource( 23 )
 script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -323,7 +311,6 @@ margin_left = 255.327
 margin_top = 243.075
 margin_right = 287.327
 margin_bottom = 273.075
-texture_normal = ExtResource( 24 )
 script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -334,7 +321,6 @@ margin_left = 255.752
 margin_top = 335.706
 margin_right = 287.752
 margin_bottom = 365.706
-texture_normal = ExtResource( 8 )
 script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -345,7 +331,6 @@ margin_left = 430.658
 margin_top = 380.618
 margin_right = 462.658
 margin_bottom = 410.618
-texture_normal = ExtResource( 26 )
 script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -356,7 +341,6 @@ margin_left = 430.658
 margin_top = 335.706
 margin_right = 462.658
 margin_bottom = 365.706
-texture_normal = ExtResource( 21 )
 script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -367,7 +351,6 @@ margin_left = 430.658
 margin_top = 289.036
 margin_right = 462.658
 margin_bottom = 319.036
-texture_normal = ExtResource( 25 )
 script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -378,7 +361,6 @@ margin_left = 430.658
 margin_top = 243.075
 margin_right = 462.658
 margin_bottom = 273.075
-texture_normal = ExtResource( 20 )
 script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -399,7 +381,6 @@ margin_left = 255.327
 margin_top = 426.0
 margin_right = 287.327
 margin_bottom = 456.0
-texture_normal = ExtResource( 27 )
 script = ExtResource( 48 )
 __meta__ = {
 "_edit_use_anchors_": false

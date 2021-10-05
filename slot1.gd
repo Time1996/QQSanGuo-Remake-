@@ -1,5 +1,6 @@
 extends TextureButton
 
+var item_name = null
 
 func _ready():
 	pass
@@ -45,9 +46,21 @@ func can_drop_data(position, data):
 
 func drop_data(position, data):
 	self.texture_normal = data["origin_texture"]
+	self.item_name = data["origin_item_name"]
 	#删掉包里的
 	PlayerInventory.inventory.erase(data["slot_index"])
 	print(data["origin_path"])
 	get_tree().get_root().get_node(data["origin_path"]).get_parent().item = null
 	get_tree().get_root().get_node(data["origin_path"]).queue_free()
+	
+	print(data["origin_item_name"])
+	PlayerInventory.update_put_on(data["origin_item_name"])
+	
+	find_parent("UserInterFace").update_text(PlayerInventory.level, PlayerInventory.max_health, PlayerInventory.max_magic,
+											 PlayerInventory.basic_damage, PlayerInventory.basic_defende,
+											 PlayerInventory.basic_shugong, PlayerInventory.basic_shufang,
+											PlayerInventory.force, PlayerInventory.agility,
+											PlayerInventory.wisdom, PlayerInventory.strong,
+											PlayerInventory.aim
+	)
 #	PlayerInventory.update_slot_visual(data["slot_index"], drag["item_name"], drag_item.item_quantity)

@@ -11,7 +11,20 @@ func _ready():
 		i.visible = false
 	pass
 
-func update_text(level, m_health, m_magic, b_damage, b_defend, b_shugong, b_shufang):
+func update_text(level, 
+					m_health, 
+					m_magic, 
+					b_damage, 
+					b_defend, 
+					b_shugong, 
+					b_shufang,
+					force,
+					agility,
+					wisdom,
+					strong,
+					aim
+	):
+		
 	for i in str(level).length():
 		get_node("Character/HBoxContainer/"+str(i+1)).texture = load("res://UI/level/"+str(level).substr(i,1)+".png")
 		get_node("Character/HBoxContainer/"+str(i+1)).visible = true
@@ -21,6 +34,11 @@ func update_text(level, m_health, m_magic, b_damage, b_defend, b_shugong, b_shuf
 	$Inventory/Wufang.text = str(b_defend)
 	$Inventory/Shugong.text = str(b_shugong)
 	$Inventory/Shufang.text = str(b_shufang)
+	$player_state/Force.text = str(force)
+	$player_state/Agility.text = str(agility)
+	$player_state/Wisdom.text = str(wisdom)
+	$player_state/Strong.text = str(strong)
+	$player_state/Aim.text = str(aim)
 	
 func update_inventory(m, j):
 	$Inventory/Money.text = str(m)

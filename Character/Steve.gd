@@ -56,8 +56,11 @@ func _ready():
 	$Control/AnimatedSprite2.visible = false
 	state_machine = $AnimationTree.get("parameters/playback")
 	$HBoxContainer.visible = false
+	$Cure.visible = false
 	$fly_left.frame = $fly_right.frame
 	for i in $HBoxContainer.get_children():
+		i.visible = false
+	for i in $Cure.get_children():
 		i.visible = false
 var items_in_range = {} ##掉落物范围检测 暂存数组
 
@@ -99,36 +102,55 @@ func level_up():
 	$Control/AnimatedSprite3.stop()
 	userInterface.update_text(PlayerInventory.level, PlayerInventory.max_health, PlayerInventory.max_magic,
 							 PlayerInventory.basic_damage, PlayerInventory.basic_defende,
-							 PlayerInventory.basic_shugong, PlayerInventory.basic_shufang)
+							 PlayerInventory.basic_shugong, PlayerInventory.basic_shufang,
+							PlayerInventory.force, PlayerInventory.agility,
+							PlayerInventory.wisdom, PlayerInventory.strong,
+							PlayerInventory.aim
+							)
 	
 func gain_money(amount_m, amount_j):
 	PlayerInventory.money += amount_m
 	PlayerInventory.juntuan += amount_j
 	userInterface.update_inventory(PlayerInventory.money, PlayerInventory.juntuan)
 	
-func use_item(hp, mana, exprience, money):
-	if hp != null:
-		health += hp
-	print(health)
-	if health > PlayerInventory.max_health:
-		health = PlayerInventory.max_health
-	if mana != null:
-		magic += mana
-	if magic > PlayerInventory.max_magic:
-		magic = PlayerInventory.max_magic
-		
-	
-	gain_experience(exprience)
-	gain_money(money, 0)
+func use_item(new_item):
+	add_property(new_item)
+
+func add_property(item_name):
+	var temp_item = jsonData.item_data[item_name]
+	if temp_item.AddHealth != null:
+		gain_health(int(temp_item.AddHealth))
+	if temp_item.AddEnergy != null:
+		gain_magic(int(temp_item.AddEnergy))
+
 func gain_speed():
-	SPEED *= 2
+	userInterface.get_node("Character/state/speed").visible = true
+	SPEED = 2 * 400
 	$speed.start(10)
 	$fly_left.visible = true
 	$fly_right.visible = true
 	
-func gain_recover():
-	$health.start(60*5)
+var str_amount
+func gain_recover(duration_time, amount):
+	userInterface.get_node("Character/state/recover").visible = true
+	$health.start(duration_time)
+	$small_health.start(1)
 	$recover.visible = true
+#	yield($recover,"animation_finished")
+	print("cure")
+	
+	str_amount = str(amount)
+	
+	
+func gain_health(value):
+	health += value
+	if health > PlayerInventory.max_health:
+		health = PlayerInventory.max_health
+
+func gain_magic(value):
+	magic += value
+	if magic > PlayerInventory.max_magic:
+		magic = PlayerInventory.max_magic
 
 func _input(event):
 	if event.is_action_pressed("pickUp"):
@@ -477,6 +499,7 @@ func load_save_stats(stats): #需要保存的信息 目前是位置 属性
 
 
 func _on_speed_timeout():
+	userInterface.get_node("Character/state/speed").visible = false
 	$speed.stop()
 	$fly_left.visible = false
 	$fly_right.visible = false
@@ -485,6 +508,24 @@ func _on_speed_timeout():
 
 
 func _on_health_timeout():
+	userInterface.get_node("Character/state/recover").visible = false
 	$health.stop()
+	$recover.stop()
 	$recover.visible = false
+	$small_health.paused
+	pass # Replace with function body.
+
+
+func _on_small_health_timeout():
+	print(str_amount)
+	gain_health(int(str_amount))
+	for i in str_amount.length():
+		get_node("Cure/"+str(i)).texture = load("res://EFECTIVE/digit/"+str_amount.substr(i,1)+".png")
+		get_node("Cure/"+str(i)).visible = true
+	$AnimationPlayer2.play("cure")
+	
+	yield($AnimationPlayer2, "animation_finished")
+	for i in $Cure.get_children():
+		i.visible = false
+	$small_health.start(1)
 	pass # Replace with function body.

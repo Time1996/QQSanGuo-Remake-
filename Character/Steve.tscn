@@ -1,8 +1,9 @@
-[gd_scene load_steps=133 format=2]
+[gd_scene load_steps=135 format=2]
 
 [ext_resource path="res://Character/Steve.gd" type="Script" id=1]
 [ext_resource path="res://Character/Sprite.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ANIMATION/idle.tres" type="Animation" id=3]
+[ext_resource path="res://EFECTIVE/digit/751-1.png" type="Texture" id=4]
 [ext_resource path="res://EFECTIVE/js/digit/435-1.png" type="Texture" id=6]
 [ext_resource path="res://EFECTIVE/js/digit/437-1.png" type="Texture" id=7]
 [ext_resource path="res://EFECTIVE/js/2/232-1.png" type="Texture" id=8]
@@ -775,6 +776,45 @@ animations = [ {
 "speed": 8.0
 } ]
 
+[sub_resource type="Animation" id=59]
+resource_name = "cure"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cure:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Cure:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1, -56 ), Vector2( -1, -66 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Cure:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Steve" type="KinematicBody2D" groups=[
 "Persist",
 ]]
@@ -796,6 +836,7 @@ __meta__ = {
 material = SubResource( 2 )
 position = Vector2( 20, 12 )
 frames = ExtResource( 60 )
+frame = 3
 
 [node name="HitBox" type="Area2D" parent="Control/Sprite"]
 collision_mask = 2
@@ -820,7 +861,7 @@ position = Vector2( 24, 10 )
 scale = Vector2( 0.3, 0.3 )
 frames = SubResource( 6 )
 animation = "accmulate"
-frame = 7
+frame = 8
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="Control"]
@@ -854,7 +895,7 @@ material = SubResource( 9 )
 position = Vector2( 169.748, 20.0399 )
 scale = Vector2( 1.85484, 1.2 )
 frames = SubResource( 10 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Control"]
@@ -862,7 +903,7 @@ modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 11 )
 position = Vector2( 167.066, 19.8214 )
 frames = SubResource( 12 )
-frame = 8
+frame = 6
 playing = true
 
 [node name="4" type="Sprite" parent="Control/AnimatedSprite4"]
@@ -914,10 +955,12 @@ shape = SubResource( 55 )
 autostart = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = -27.5
-margin_top = -7.5
-margin_right = 141.5
-margin_bottom = 32.5
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -1.0
+margin_top = -86.0
+margin_right = 168.0
+margin_bottom = -46.0
 custom_constants/separation = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1008,6 +1051,8 @@ __meta__ = {
 
 [node name="health" type="Timer" parent="."]
 
+[node name="small_health" type="Timer" parent="."]
+
 [node name="magic" type="Timer" parent="."]
 
 [node name="miss" type="Sprite" parent="."]
@@ -1021,7 +1066,7 @@ material = SubResource( 56 )
 position = Vector2( -32.1353, 48.686 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 29 )
-frame = 3
+frame = 7
 playing = true
 
 [node name="fly_right" type="AnimatedSprite" parent="."]
@@ -1030,18 +1075,92 @@ material = SubResource( 56 )
 position = Vector2( 42.9738, 48.6878 )
 scale = Vector2( 0.431948, 0.34901 )
 frames = ExtResource( 29 )
-frame = 1
+frame = 5
 playing = true
 flip_h = true
 
 [node name="recover" type="AnimatedSprite" parent="."]
+visible = false
 material = SubResource( 57 )
 position = Vector2( 9.51367, 3.56763 )
 frames = SubResource( 58 )
-frame = 6
+frame = 1
 playing = true
 
 [node name="BattleSound" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/cure = SubResource( 59 )
+
+[node name="Cure" type="HBoxContainer" parent="."]
+visible = false
+margin_left = -1.0
+margin_top = -66.0
+margin_right = 168.0
+margin_bottom = -26.0
+custom_constants/separation = -5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="TextureRect" parent="Cure"]
+margin_right = 16.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="1" type="TextureRect" parent="Cure"]
+margin_left = 11.0
+margin_right = 27.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="2" type="TextureRect" parent="Cure"]
+margin_left = 22.0
+margin_right = 38.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="3" type="TextureRect" parent="Cure"]
+margin_left = 33.0
+margin_right = 49.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="4" type="TextureRect" parent="Cure"]
+margin_left = 44.0
+margin_right = 60.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="5" type="TextureRect" parent="Cure"]
+margin_left = 55.0
+margin_right = 71.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="6" type="TextureRect" parent="Cure"]
+margin_left = 66.0
+margin_right = 82.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="7" type="TextureRect" parent="Cure"]
+margin_left = 77.0
+margin_right = 93.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="8" type="TextureRect" parent="Cure"]
+margin_left = 88.0
+margin_right = 104.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
+
+[node name="9" type="TextureRect" parent="Cure"]
+margin_left = 99.0
+margin_right = 115.0
+margin_bottom = 40.0
+texture = ExtResource( 4 )
 
 [connection signal="health_updated" from="." to="." method="_on_Steve_health_updated"]
 [connection signal="body_entered" from="Control/Sprite/HitBox" to="." method="_on_HitBox_body_entered"]
@@ -1051,3 +1170,4 @@ playing = true
 [connection signal="timeout" from="self_heal" to="." method="_on_self_heal_timeout"]
 [connection signal="timeout" from="speed" to="." method="_on_speed_timeout"]
 [connection signal="timeout" from="health" to="." method="_on_health_timeout"]
+[connection signal="timeout" from="small_health" to="." method="_on_small_health_timeout"]

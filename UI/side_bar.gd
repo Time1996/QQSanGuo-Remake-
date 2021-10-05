@@ -15,10 +15,12 @@ func _on_Button6_pressed():
 func _on_Button2_pressed():
 	print("UPDATE")
 	print(PlayerInventory.inventory)
-	find_parent("UserInterFace").update_text(
-											PlayerInventory.level, PlayerInventory.max_health, PlayerInventory.max_magic,
-											PlayerInventory.basic_damage, PlayerInventory.basic_defende,
-											PlayerInventory.basic_shugong, PlayerInventory.basic_shufang
+	find_parent("UserInterFace").update_text(PlayerInventory.level, PlayerInventory.max_health, PlayerInventory.max_magic,
+											 PlayerInventory.basic_damage, PlayerInventory.basic_defende,
+											 PlayerInventory.basic_shugong, PlayerInventory.basic_shufang,
+											PlayerInventory.force, PlayerInventory.agility,
+											PlayerInventory.wisdom, PlayerInventory.strong,
+											PlayerInventory.aim
 	)
 	find_parent("UserInterFace").update_inventory(PlayerInventory.money, PlayerInventory.juntuan)
 	get_parent().get_node("Inventory").visible = !get_parent().get_node("Inventory").visible

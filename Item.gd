@@ -41,6 +41,8 @@ func set_item(nm, qt):
 	else:
 		$Label.visible = true
 		$Label.text = "X"+str(item_quantity)
+	
+	$Label3.text = item_name
 
 func get_save_stats():
 	item_slot = get_parent().slot_index
@@ -78,14 +80,13 @@ func _on_TextureRect_mouse_exited():
 func _on_TextureRect_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.doubleclick:
-			if jsonData.item_data[item_name].ItemCategory == "Consumble": ##消耗品
+			if item_name == "神行之卷":
+				find_parent("UserInterFace").get_parent().get_node("Steve").gain_speed()
+			elif item_name == "通络丹":
+				find_parent("UserInterFace").get_parent().get_node("Steve").gain_health(int(PlayerInventory.max_health/2))
+			elif jsonData.item_data[item_name].ItemCategory == "Consumble": ##消耗品
 				print(jsonData.item_data[item_name])
-				find_parent("UserInterFace").get_parent().get_node("Steve").use_item(
-											jsonData.item_data[item_name].AddHealth,
-											jsonData.item_data[item_name].AddEnergy,
-											1110,
-											0
-				)
+				find_parent("UserInterFace").get_parent().get_node("Steve").use_item(item_name)
 			elif jsonData.item_data[item_name].ItemCategory == "Translation":
 				if get_tree().get_root().has_node("bajun"):
 					get_tree().get_root().get_node("bajun/Steve").position = Vector2(-16, -328)
@@ -95,19 +96,70 @@ func _on_TextureRect_gui_input(event):
 					SceneChange.goto_scene("res://Scene/bajun.tscn", find_parent("JiangLinXiJiao"))
 					
 			elif jsonData.item_data[item_name].ItemCategory == "Time":
+				find_parent("UserInterFace").get_parent().get_node("Steve").gain_recover(300, 40)
 				pass
 			elif jsonData.item_data[item_name].ItemCategory == "Sword":
-				pass
-			
+				exchange_equipment("Sword")
+			elif jsonData.item_data[item_name].ItemCategory == "Up_Body":
+				exchange_equipment("Up_Body")
+			elif jsonData.item_data[item_name].ItemCategory == "Down_Body":
+				exchange_equipment("Down_Body")
+			elif jsonData.item_data[item_name].ItemCategory == "Hand":
+				exchange_equipment("Hand")
+			elif jsonData.item_data[item_name].ItemCategory == "Head":
+				exchange_equipment("Head")
+			elif jsonData.item_data[item_name].ItemCategory == "Wing":
+				exchange_equipment("Wing")
+			elif jsonData.item_data[item_name].ItemCategory == "Ring":
+				exchange_equipment("Ring")
+			elif jsonData.item_data[item_name].ItemCategory == "Necklace":
+				exchange_equipment("Necklace")
 			var index = get_parent().slot_index
-			PlayerInventory.inventory[index][1] -= 1
-			PlayerInventory.update_slot_visual(index, 
+			
+			if (jsonData.item_data[item_name].ItemCategory == "Time"
+				or 
+				jsonData.item_data[item_name].ItemCategory == "Consumble"
+				or
+				jsonData.item_data[item_name].ItemCategory == "Translation"):
+					
+				PlayerInventory.inventory[index][1] -= 1
+				
+				PlayerInventory.update_slot_visual(index, 
 												PlayerInventory.inventory[index][0], 
 												PlayerInventory.inventory[index][1]
-			)
-			if item_quantity == 0:
-				userInterFace.holding_item = null
-				get_parent().item = null
-				PlayerInventory.remove_item(get_parent())
-				queue_free()
+				)
+				if item_quantity == 0:
+					remove_inventory_item()
 	pass # Replace with function body.
+
+func remove_inventory_item():
+	userInterFace.holding_item = null
+	get_parent().item = null
+	PlayerInventory.remove_item(get_parent())
+	queue_free()
+
+func exchange_equipment(catagory):
+	var temp = find_parent("Inventory").get_node("equipment").get_node(catagory).item_name
+	if find_parent("Inventory").get_node("equipment").get_node(catagory).texture_normal != null:
+		find_parent("Inventory").get_node("equipment").get_node(catagory).texture_normal = self.get_node("TextureRect").texture_normal
+		find_parent("Inventory").get_node("equipment").get_node(catagory).item_name = self.item_name
+		print(temp)
+		print(self.item_name)
+		PlayerInventory.update_put_on(item_name)
+		PlayerInventory.update_put_off(temp)
+		self.set_item(temp, 1)
+		#交换图片即可
+	else:
+		find_parent("Inventory").get_node("equipment").get_node(catagory).texture_normal = self.get_node("TextureRect").texture_normal
+		find_parent("Inventory").get_node("equipment").get_node(catagory).item_name = self.item_name
+		PlayerInventory.update_put_on(item_name)
+		remove_inventory_item()
+	
+	
+	find_parent("UserInterFace").update_text(PlayerInventory.level, PlayerInventory.max_health, PlayerInventory.max_magic,
+		 PlayerInventory.basic_damage, PlayerInventory.basic_defende,
+		 PlayerInventory.basic_shugong, PlayerInventory.basic_shufang,
+		PlayerInventory.force, PlayerInventory.agility,
+		PlayerInventory.wisdom, PlayerInventory.strong,
+		PlayerInventory.aim
+	)

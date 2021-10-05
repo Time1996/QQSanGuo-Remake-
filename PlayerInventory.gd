@@ -13,10 +13,21 @@ var basic_damage = 20
 var basic_defende = 10
 var basic_shugong = 0
 var basic_shufang = 0
+var force = 0
+var agility = 0
+var strong = 0
+var wisdom = 0
+var aim = 0
 var level = 1
+
+
+
 ##背包初始内容
 var inventory = {
-	0 : ["回城符", 2]
+	0 : ["回城符", 2],
+	1 : ["铁剑", 1],
+	2 : ["紫金剑", 1],
+	3 : ["红红肉", 5]
 #	0 : ["金疮药", 99]
 }
 
@@ -81,6 +92,62 @@ func update_slot_visual(slot_index, item_name, new_quantity):
 		slot.item.set_item(item_name, new_quantity)
 	else:
 		slot.initialize_item(item_name, new_quantity)
+
+func update_put_on(new_name):
+	var temp_item = jsonData.item_data[new_name]
+	add_property(temp_item)
+
+func update_put_off(new_name):
+	var temp_item = jsonData.item_data[new_name]
+	sub_property(temp_item)
+
+func sub_property(temp_item):
+	if temp_item.WuGong != null:
+		basic_damage -= int(temp_item.WuGong)
+	if temp_item.ShuGong != null:
+		basic_shugong -= int(temp_item.ShuGong)
+	if temp_item.Force != null:
+		force -= int(temp_item.Force)
+	if temp_item.Agility != null:
+		agility -= int(temp_item.Agility)
+	if temp_item.Strong != null:
+		strong -= int(temp_item.Strong)
+	if temp_item.Wisdom != null:
+		wisdom -= int(temp_item.Wisdom)
+	if temp_item.Aim != null:
+		aim -= int(temp_item.Aim)
+	if temp_item.WuFang != null:
+		basic_defende -= int(temp_item.WuFang)
+	if temp_item.ShuFang != null:
+		basic_shufang -= int(temp_item.ShuFang)
+	if temp_item.HP != null:
+		max_health -= int(temp_item.HP)
+	if temp_item.Mana != null:
+		max_magic -= int(temp_item.Mana)
+
+func add_property(temp_item):
+	if temp_item.WuGong != null:
+		basic_damage += int(temp_item.WuGong)
+	if temp_item.ShuGong != null:
+		basic_shugong += int(temp_item.ShuGong)
+	if temp_item.Force != null:
+		force += int(temp_item.Force)
+	if temp_item.Agility != null:
+		agility += int(temp_item.Agility)
+	if temp_item.Strong != null:
+		strong += int(temp_item.Strong)
+	if temp_item.Wisdom != null:
+		wisdom += int(temp_item.Wisdom)
+	if temp_item.Aim != null:
+		aim += int(temp_item.Aim)
+	if temp_item.WuFang != null:
+		basic_defende += int(temp_item.WuFang)
+	if temp_item.ShuFang != null:
+		basic_shufang += int(temp_item.ShuFang)
+	if temp_item.HP != null:
+		max_health += int(temp_item.HP)
+	if temp_item.Mana != null:
+		max_magic += int(temp_item.Mana)
 
 func remove_all_item():
 	print("clear")

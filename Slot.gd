@@ -121,9 +121,18 @@ func drop_data(position, data):
 	PlayerInventory.update_slot_visual(slot_index, drag_item.item_name, drag_item.item_quantity)
 	if data["slot_type"] == "equipment":
 		get_tree().get_root().get_node(data["origin_path"]).texture_normal = null
+		PlayerInventory.update_put_off(data["origin_item_name"])
 	elif data["slot_type"] == "inventory":
 		get_tree().get_root().get_node(data["origin_path"]).get_parent().item = null
 		get_tree().get_root().get_node(data["origin_path"]).queue_free()
+	
+	find_parent("UserInterFace").update_text(PlayerInventory.level, PlayerInventory.max_health, PlayerInventory.max_magic,
+											 PlayerInventory.basic_damage, PlayerInventory.basic_defende,
+											 PlayerInventory.basic_shugong, PlayerInventory.basic_shufang,
+											PlayerInventory.force, PlayerInventory.agility,
+											PlayerInventory.wisdom, PlayerInventory.strong,
+											PlayerInventory.aim
+	)
 #	data["slot"].remove_child(data["item"])
 #	remove_child(0)
 	pass

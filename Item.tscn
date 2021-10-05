@@ -60,6 +60,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label3" type="Label" parent="."]
+margin_left = 69.0519
+margin_top = 7.14331
+margin_right = 109.052
+margin_bottom = 30.1433
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="gui_input" from="TextureRect" to="." method="_on_TextureRect_gui_input"]
 [connection signal="mouse_entered" from="TextureRect" to="." method="_on_TextureRect_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect" to="." method="_on_TextureRect_mouse_exited"]

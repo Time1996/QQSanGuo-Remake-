@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://UI/装备图标/drop/29652-1.png" type="Texture" id=1]
 [ext_resource path="res://UI/装备图标/drop/29652-4.png" type="Texture" id=2]
@@ -69,6 +69,34 @@
 [ext_resource path="res://UI/item_drop/js/body/29889-3.png" type="Texture" id=67]
 [ext_resource path="res://UI/item_drop/js/body/29885-3.png" type="Texture" id=68]
 [ext_resource path="res://UI/item_drop/js/body/29885-2.png" type="Texture" id=69]
+[ext_resource path="res://UI/item_drop/nakelace_and_ring/29918-2.png" type="Texture" id=70]
+[ext_resource path="res://UI/item_drop/nakelace_and_ring/29918-3.png" type="Texture" id=71]
+[ext_resource path="res://UI/item_drop/nakelace_and_ring/29919-3.png" type="Texture" id=72]
+[ext_resource path="res://UI/item_drop/nakelace_and_ring/29918-1.png" type="Texture" id=73]
+[ext_resource path="res://UI/item_drop/nakelace_and_ring/29918-4.png" type="Texture" id=74]
+[ext_resource path="res://UI/item_drop/nakelace_and_ring/29919-1.png" type="Texture" id=75]
+[ext_resource path="res://UI/item_drop/nakelace_and_ring/29919-2.png" type="Texture" id=76]
+[ext_resource path="res://UI/item_drop/nakelace_and_ring/29919-4.png" type="Texture" id=77]
+[ext_resource path="res://UI/item_drop/wing/29957-3.png" type="Texture" id=78]
+[ext_resource path="res://UI/item_drop/wing/29957-4.png" type="Texture" id=79]
+[ext_resource path="res://UI/item_drop/wing/29957-1.png" type="Texture" id=80]
+[ext_resource path="res://UI/item_drop/wing/29957-2.png" type="Texture" id=81]
+[ext_resource path="res://UI/item_drop/wing/29954-2.png" type="Texture" id=82]
+[ext_resource path="res://UI/item_drop/wing/29954-3.png" type="Texture" id=83]
+[ext_resource path="res://UI/item_drop/wing/29955-4.png" type="Texture" id=84]
+[ext_resource path="res://UI/item_drop/wing/29956-3.png" type="Texture" id=85]
+[ext_resource path="res://UI/item_drop/wing/29956-1.png" type="Texture" id=86]
+[ext_resource path="res://UI/item_drop/wing/29953-1.png" type="Texture" id=87]
+[ext_resource path="res://UI/item_drop/wing/29954-4.png" type="Texture" id=88]
+[ext_resource path="res://UI/item_drop/wing/29954-1.png" type="Texture" id=89]
+[ext_resource path="res://UI/item_drop/wing/29955-1.png" type="Texture" id=90]
+[ext_resource path="res://UI/item_drop/wing/29955-2.png" type="Texture" id=91]
+[ext_resource path="res://UI/item_drop/wing/29953-3.png" type="Texture" id=92]
+[ext_resource path="res://UI/item_drop/wing/29955-3.png" type="Texture" id=93]
+[ext_resource path="res://UI/item_drop/wing/29956-4.png" type="Texture" id=94]
+[ext_resource path="res://UI/item_drop/wing/29953-2.png" type="Texture" id=95]
+[ext_resource path="res://UI/item_drop/wing/29956-2.png" type="Texture" id=96]
+[ext_resource path="res://UI/item_drop/wing/29953-4.png" type="Texture" id=97]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -82,39 +110,9 @@ animations = [ {
 "name": "金疮药",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 30 ) ],
 "loop": true,
-"name": "回城符",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ],
-"loop": true,
-"name": "铁剑",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "清心露",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 24 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "神行之卷",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 46 ), ExtResource( 47 ) ],
-"loop": true,
-"name": "巨齿剑",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 45 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 44 ) ],
-"loop": true,
-"name": "龙泉剑",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 46 ), ExtResource( 47 ) ],
-"loop": true,
-"name": "风灵剑",
+"name": "红红肉",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 33 ), ExtResource( 37 ), ExtResource( 40 ), ExtResource( 38 ) ],
@@ -122,34 +120,9 @@ animations = [ {
 "name": "通络丹",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 41 ), ExtResource( 31 ), ExtResource( 39 ), ExtResource( 26 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "紫金剑",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 35 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "红红肉",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 29 ) ],
-"loop": true,
-"name": "一飞冲天",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 59 ), ExtResource( 53 ), ExtResource( 55 ), ExtResource( 56 ) ],
-"loop": true,
-"name": "精致冠",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 65 ), ExtResource( 61 ) ],
-"loop": true,
-"name": "精致甲下装",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 62 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 50 ) ],
-"loop": true,
-"name": "精致靴",
+"name": "铁剑",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 63 ), ExtResource( 54 ), ExtResource( 60 ), ExtResource( 64 ) ],
@@ -157,9 +130,99 @@ animations = [ {
 "name": "粗制甲",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 45 ), ExtResource( 49 ), ExtResource( 48 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "龙泉剑",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 31 ), ExtResource( 39 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "紫金剑",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "神行之卷",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 32 ), ExtResource( 27 ), ExtResource( 29 ) ],
+"loop": true,
+"name": "一飞冲天",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "回城符",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 73 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 74 ) ],
+"loop": true,
+"name": "灵骨项链",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 75 ), ExtResource( 76 ), ExtResource( 72 ), ExtResource( 77 ) ],
+"loop": true,
+"name": "如意金戒",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "清心露",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 46 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "巨齿剑",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 46 ), ExtResource( 47 ) ],
+"loop": true,
+"name": "风灵剑",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 86 ), ExtResource( 96 ), ExtResource( 85 ), ExtResource( 94 ) ],
+"loop": true,
+"name": "四级翅膀男",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 51 ), ExtResource( 52 ), ExtResource( 65 ), ExtResource( 61 ) ],
+"loop": true,
+"name": "精制甲下装",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 59 ), ExtResource( 53 ), ExtResource( 55 ), ExtResource( 56 ) ],
+"loop": true,
+"name": "精制冠",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 57 ), ExtResource( 69 ), ExtResource( 68 ), ExtResource( 58 ) ],
 "loop": true,
-"name": "精致护手",
+"name": "精制护手",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 62 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 50 ) ],
+"loop": true,
+"name": "精制靴",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 80 ), ExtResource( 81 ), ExtResource( 78 ), ExtResource( 79 ) ],
+"loop": true,
+"name": "五级翅膀男",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 87 ), ExtResource( 95 ), ExtResource( 92 ), ExtResource( 97 ) ],
+"loop": true,
+"name": "一级翅膀男",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 89 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 88 ) ],
+"loop": true,
+"name": "二级翅膀男",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 90 ), ExtResource( 91 ), ExtResource( 93 ), ExtResource( 84 ) ],
+"loop": true,
+"name": "三级翅膀男",
 "speed": 5.0
 } ]
 
@@ -192,8 +255,8 @@ script = ExtResource( 5 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -0.575796 )
 frames = SubResource( 1 )
-animation = "精致靴"
-frame = 2
+animation = "一级翅膀男"
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
