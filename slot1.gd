@@ -63,4 +63,5 @@ func drop_data(position, data):
 											PlayerInventory.wisdom, PlayerInventory.strong,
 											PlayerInventory.aim
 	)
+	return
 #	PlayerInventory.update_slot_visual(data["slot_index"], drag["item_name"], drag_item.item_quantity)

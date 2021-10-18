@@ -36,7 +36,7 @@ var player = null
 var state_machine
 
 func init():
-	state_machine = $AnimationPlayer/AnimationTree.get("parameters/playback")
+	state_machine = $AnimationTree.get("parameters/playback")
 	time = 0
 	$HealthBar.visible = true
 	$Name.visible = true
@@ -105,8 +105,8 @@ func attack(player):
 	state_machine.travel("attack")
 	yield($AnimatedSprite,"animation_finished")
 	attacking = 0
-	if player:
-		state = COMBAT
+#	if player:
+	state = COMBAT
 func check_border():##边缘检测 目前是检测左右两边 返回正确方向
 	
 	if !($floor_left.is_colliding()):
@@ -137,11 +137,29 @@ func injury(damage):
 		$deathAndInjury.play()
 	#$Tween.interpolate_property(self, "modulate", Color(255,255,255,0), Color(255, 255, 255, 1), 1,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	#$Tween.start()
+	
+	state_machine.travel("injury")
+	if health <= 0:
+		state = DIE
+	else:
+		state = COMBAT
+	
+	health -= damage
+	$HealthBar/HealthBar.value = health
+	userInterface.get_node("Character").get_node("Target").visible = true
+	userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+Name+".png")
+	userInterface.get_node("Character").get_node("Target").get_node("name").text = Name
+	userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = health
+	
 	var crit = rand_range(0, 1)
 	if crit < 0.5:
 		damage *= 1.5
 		
 		$critical_attack.visible = true
+		$"407-1".visible = true
+		$AnimatedSprite2.visible = true
+		$AnimatedSprite2.frame = 0
+		$AnimatedSprite2.play("2")
 		
 		var offset = Vector2()
 		offset.x = rand_range(-15, 15)
@@ -154,24 +172,16 @@ func injury(damage):
 		get_parent().get_node("Steve/Camera2D").set_position(oldpos)
 		yield(get_tree().create_timer(0.18),"timeout")
 		$critical_attack.visible = false
-		
+		$AnimatedSprite2.stop()
+		$AnimatedSprite2.visible = false
+		$"407-1".visible = false
 		
 		$FCTmgr.show_value(damage, true)
 	else:
 		$FCTmgr.show_value(damage, false)
-		
-	health -= damage
-	$HealthBar/HealthBar.value = health
-	userInterface.get_node("Character").get_node("Target").visible = true
-	userInterface.get_node("Character").get_node("Target").get_node("profile").texture = load("res://Monster_ui/profile/"+Name+".png")
-	userInterface.get_node("Character").get_node("Target").get_node("name").text = Name
-	userInterface.get_node("Character").get_node("Target").get_node("health_bar").value = health
-	state_machine.travel("injury")
-	if health <= 0:
-		state = DIE
-	else:
-		state = COMBAT
-		yield($AnimatedSprite, "animation_finished")
+	
+	
+#		yield($AnimatedSprite, "animation_finished")
 	
 		
 func Drop():
@@ -194,6 +204,7 @@ func dead():
 	emit_signal("monster_die")
 	userInterface.get_node("Character").get_node("Target").visible = false
 	get_parent().get_node("Steve").enemy_id = null
+	remove_from_group("enemy")
 	yield($AnimatedSprite, "animation_finished")
 	
 	queue_free()
@@ -203,7 +214,7 @@ func choose(array):
 	return array.front()
 
 func _on_Timer_timeout():
-	$Timer.wait_time = choose([0.5, 1, 1.5])
+	$Timer.wait_time = choose([1]) #0.5 1 1.5
 	state = choose([IDLE, NEW_DIRECTION, MOVE])
 	
 func _on_Area2D_body_entered(body):
@@ -223,3 +234,14 @@ func _on_noncombat_timeout():
 	#state = IDLE
 	pass # Replace with function body.
 
+
+
+func _on_mouse_event_mouse_entered():
+	print("SS")
+	$AnimatedSprite.material.set("shader_param/width", 1)
+	pass # Replace with function body.
+
+
+func _on_mouse_event_mouse_exited():
+	$AnimatedSprite.material.set("shader_param/width", 0)
+	pass # Replace with function body.

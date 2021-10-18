@@ -5,7 +5,7 @@ extends Node2D
 var item_name
 var item_quantity
 var item_slot
-
+var Tooltip = load("UI/ToolTip.tscn")
 onready var userInterFace = find_parent("UserInterFace")
 
 func _ready():
@@ -67,70 +67,85 @@ func load_save_stats(stats):
 	item_slot = stats.data.slot
 
 func _on_TextureRect_mouse_entered():
-	$Label2.text = item_name
-	$Label2.visible = true
+	self.z_index = 99
+	var tooltip = Tooltip.instance()
+	add_child(tooltip)
+	tooltip.rect_position = get_global_mouse_position()
+	yield(get_tree().create_timer(0.35), "timeout")
+	if has_node("ToolTip"):
+		$ToolTip.assignment()
+		$ToolTip.show()
+#	$Label2.text = item_name
+#	$Label2.visible = true
 	pass # Replace with function body.
 
 
 func _on_TextureRect_mouse_exited():
-	$Label2.visible = false
+	self.z_index = 0
+	$ToolTip.queue_free()
+#	$Label2.visible = false
 	pass # Replace with function body.
 
 
 func _on_TextureRect_gui_input(event):
 	if event is InputEventMouseButton:
 		if event.doubleclick:
-			if item_name == "神行之卷":
-				find_parent("UserInterFace").get_parent().get_node("Steve").gain_speed()
-			elif item_name == "通络丹":
-				find_parent("UserInterFace").get_parent().get_node("Steve").gain_health(int(PlayerInventory.max_health/2))
-			elif jsonData.item_data[item_name].ItemCategory == "Consumble": ##消耗品
-				print(jsonData.item_data[item_name])
-				find_parent("UserInterFace").get_parent().get_node("Steve").use_item(item_name)
-			elif jsonData.item_data[item_name].ItemCategory == "Translation":
-				if get_tree().get_root().has_node("bajun"):
-					get_tree().get_root().get_node("bajun/Steve").position = Vector2(-16, -328)
-				elif get_tree().get_root().has_node("Level1"):
-					SceneChange.goto_scene("res://Scene/bajun.tscn", find_parent("Level1"))
-				elif get_tree().get_root().has_node("JiangLinXiJiao"):
-					SceneChange.goto_scene("res://Scene/bajun.tscn", find_parent("JiangLinXiJiao"))
-					
-			elif jsonData.item_data[item_name].ItemCategory == "Time":
-				find_parent("UserInterFace").get_parent().get_node("Steve").gain_recover(300, 40)
-				pass
-			elif jsonData.item_data[item_name].ItemCategory == "Sword":
-				exchange_equipment("Sword")
-			elif jsonData.item_data[item_name].ItemCategory == "Up_Body":
-				exchange_equipment("Up_Body")
-			elif jsonData.item_data[item_name].ItemCategory == "Down_Body":
-				exchange_equipment("Down_Body")
-			elif jsonData.item_data[item_name].ItemCategory == "Hand":
-				exchange_equipment("Hand")
-			elif jsonData.item_data[item_name].ItemCategory == "Head":
-				exchange_equipment("Head")
-			elif jsonData.item_data[item_name].ItemCategory == "Wing":
-				exchange_equipment("Wing")
-			elif jsonData.item_data[item_name].ItemCategory == "Ring":
-				exchange_equipment("Ring")
-			elif jsonData.item_data[item_name].ItemCategory == "Necklace":
-				exchange_equipment("Necklace")
-			var index = get_parent().slot_index
-			
-			if (jsonData.item_data[item_name].ItemCategory == "Time"
-				or 
-				jsonData.item_data[item_name].ItemCategory == "Consumble"
-				or
-				jsonData.item_data[item_name].ItemCategory == "Translation"):
-					
-				PlayerInventory.inventory[index][1] -= 1
-				
-				PlayerInventory.update_slot_visual(index, 
-												PlayerInventory.inventory[index][0], 
-												PlayerInventory.inventory[index][1]
-				)
-				if item_quantity == 0:
-					remove_inventory_item()
+			use_item()
 	pass # Replace with function body.
+
+func use_item():
+	if item_name == "神行之卷":
+		find_parent("UserInterFace").get_parent().get_node("Steve").gain_speed()
+	elif item_name == "通络丹":
+		find_parent("UserInterFace").get_parent().get_node("Steve").gain_health(int(PlayerInventory.max_health/2))
+	elif jsonData.item_data[item_name].ItemCategory == "Consumble": ##消耗品
+		print(jsonData.item_data[item_name])
+		find_parent("UserInterFace").get_parent().get_node("Steve").use_item(item_name)
+	elif jsonData.item_data[item_name].ItemCategory == "Translation":
+		if get_tree().get_root().has_node("bajun"):
+			get_tree().get_root().get_node("bajun/Steve").position = Vector2(-16, -328)
+		elif get_tree().get_root().has_node("Level1"):
+			SceneChange.goto_scene("res://Scene/bajun.tscn", find_parent("Level1"))
+		elif get_tree().get_root().has_node("JiangLinXiJiao"):
+			SceneChange.goto_scene("res://Scene/bajun.tscn", find_parent("JiangLinXiJiao"))
+			
+	elif jsonData.item_data[item_name].ItemCategory == "Time":
+		find_parent("UserInterFace").get_parent().get_node("Steve").gain_recover(300, 40)
+		pass
+	elif jsonData.item_data[item_name].ItemCategory == "Sword":
+		exchange_equipment("Sword")
+	elif jsonData.item_data[item_name].ItemCategory == "Up_Body":
+		exchange_equipment("Up_Body")
+	elif jsonData.item_data[item_name].ItemCategory == "Down_Body":
+		exchange_equipment("Down_Body")
+	elif jsonData.item_data[item_name].ItemCategory == "Hand":
+		exchange_equipment("Hand")
+	elif jsonData.item_data[item_name].ItemCategory == "Head":
+		exchange_equipment("Head")
+	elif jsonData.item_data[item_name].ItemCategory == "Boot":
+		exchange_equipment("Boot")
+	elif jsonData.item_data[item_name].ItemCategory == "Wing":
+		exchange_equipment("Wing")
+	elif jsonData.item_data[item_name].ItemCategory == "Ring":
+		exchange_equipment("Ring")
+	elif jsonData.item_data[item_name].ItemCategory == "Necklace":
+		exchange_equipment("Necklace")
+	var index = get_parent().slot_index
+	
+	if (jsonData.item_data[item_name].ItemCategory == "Time"
+		or 
+		jsonData.item_data[item_name].ItemCategory == "Consumble"
+		or
+		jsonData.item_data[item_name].ItemCategory == "Translation"):
+			
+		PlayerInventory.inventory[index][1] -= 1
+		
+		PlayerInventory.update_slot_visual(index, 
+										PlayerInventory.inventory[index][0], 
+										PlayerInventory.inventory[index][1]
+		)
+		if item_quantity == 0:
+			remove_inventory_item()
 
 func remove_inventory_item():
 	userInterFace.holding_item = null

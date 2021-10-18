@@ -64,10 +64,11 @@ func _ready():
 	selected_style.texture = selected_tex
 	
 	var nodes = get_parent()
-	
-	for i in nodes.get_children(): ## 这串代码会卡 不知道为什么
-		i.connect(\"mouse_entered\", i, \"mouse_enter\")
-		i.connect(\"mouse_exited\", i, \"mouse_exit\")
+	self.connect(\"mouse_entered\", self, \"mouse_enter\")
+	self.connect(\"mouse_exited\", self, \"mouse_exit\")
+#	for i in nodes.get_children(): ## 这串代码会卡 不知道为什么
+#		i.connect(\"mouse_entered\", i, \"mouse_enter\")
+#		i.connect(\"mouse_exited\", i, \"mouse_exit\")
 	refresh_style()
 #	styleBox.texture = preload(\"res://UI/21804-1.png\")
 #	self.hint_tooltip = \"111\"
@@ -138,7 +139,7 @@ func _on_TextureButton_pressed():
 	pass # Replace with function body.
 "
 
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Panel
 
 var default_style = null
@@ -167,10 +168,12 @@ func _ready():
 	selected_style.texture = selected_tex
 	
 	var nodes = get_parent()
-	
-	for i in nodes.get_children(): ## 这串代码会卡 不知道为什么
-		i.connect(\"mouse_entered\", i, \"mouse_enter\")
-		i.connect(\"mouse_exited\", i, \"mouse_exit\")
+	self.connect(\"mouse_entered\", self, \"mouse_enter\")
+	self.connect(\"mouse_exited\", self, \"mouse_exit\")
+#
+#	for i in nodes.get_children(): ## 这串代码会卡 不知道为什么 因为重复连信号了 每次对于自己连就好了 因为每个都有脚本都会执行一遍
+#		i.connect(\"mouse_entered\", i, \"mouse_enter\")
+#		i.connect(\"mouse_exited\", i, \"mouse_exit\")
 	refresh_style()
 #	styleBox.texture = preload(\"res://UI/21804-1.png\")
 #	self.hint_tooltip = \"111\"
@@ -242,7 +245,7 @@ func _on_TextureButton_pressed():
 
 "
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=4]
 script/source = "extends Panel
 
 var default_style = null
@@ -273,10 +276,11 @@ func _ready():
 	selected_style.texture = selected_tex
 	
 	var nodes = get_parent()
-	
-	for i in nodes.get_children(): ## 这串代码会卡 不知道为什么
-		i.connect(\"mouse_entered\", i, \"mouse_enter\")
-		i.connect(\"mouse_exited\", i, \"mouse_exit\")
+	self.connect(\"mouse_entered\", self, \"mouse_enter\")
+	self.connect(\"mouse_exited\", self, \"mouse_exit\")
+#	for i in nodes.get_children(): ## 这串代码会卡 不知道为什么
+#		i.connect(\"mouse_entered\", i, \"mouse_enter\")
+#		i.connect(\"mouse_exited\", i, \"mouse_exit\")
 	refresh_style()
 #	styleBox.texture = preload(\"res://UI/21804-1.png\")
 #	self.hint_tooltip = \"111\"
@@ -886,7 +890,7 @@ margin_right = 235.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer3/VBoxContainer/Panel1"]
 margin_top = 2.0
@@ -922,7 +926,7 @@ margin_right = 235.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer3/VBoxContainer/Panel2"]
 margin_top = 2.0
@@ -958,7 +962,7 @@ margin_right = 235.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer3/VBoxContainer/Panel3"]
 margin_top = 2.0
@@ -994,7 +998,7 @@ margin_right = 235.0
 margin_bottom = 190.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer3/VBoxContainer/Panel4"]
 margin_top = 2.0
@@ -1030,7 +1034,7 @@ margin_right = 235.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer3/VBoxContainer/Panel5"]
 margin_top = 2.0
@@ -1066,7 +1070,7 @@ margin_right = 235.0
 margin_bottom = 290.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer3/VBoxContainer/Panel6"]
 margin_top = 2.0
@@ -1100,7 +1104,7 @@ margin_right = 235.0
 margin_bottom = 340.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer3/VBoxContainer/Panel7"]
 margin_top = 2.0
@@ -1134,7 +1138,7 @@ margin_right = 235.0
 margin_bottom = 390.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer3/VBoxContainer/Panel8"]
 margin_top = 2.0
@@ -1168,7 +1172,7 @@ margin_right = 235.0
 margin_bottom = 440.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer3/VBoxContainer/Panel9"]
 margin_top = 2.0
@@ -1217,7 +1221,7 @@ margin_right = 235.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer2/VBoxContainer/Panel1"]
 margin_top = 2.0
@@ -1264,7 +1268,7 @@ margin_right = 235.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer2/VBoxContainer/Panel2"]
 margin_top = 2.0
@@ -1311,7 +1315,7 @@ margin_right = 235.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer2/VBoxContainer/Panel3"]
 margin_top = 2.0
@@ -1358,7 +1362,7 @@ margin_right = 235.0
 margin_bottom = 190.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer2/VBoxContainer/Panel4"]
 margin_top = 2.0
@@ -1405,7 +1409,7 @@ margin_right = 235.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer2/VBoxContainer/Panel5"]
 margin_top = 2.0
@@ -1452,7 +1456,7 @@ margin_right = 235.0
 margin_bottom = 290.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer2/VBoxContainer/Panel6"]
 margin_top = 2.0
@@ -1499,7 +1503,7 @@ margin_right = 235.0
 margin_bottom = 340.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer2/VBoxContainer/Panel7"]
 margin_top = 2.0
@@ -1546,7 +1550,7 @@ margin_right = 235.0
 margin_bottom = 390.0
 rect_min_size = Vector2( 235, 40 )
 custom_styles/panel = SubResource( 1 )
-script = SubResource( 3 )
+script = SubResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer2/VBoxContainer/Panel8"]
 margin_top = 2.0

@@ -16,6 +16,8 @@ var key_state ##技能键位
 var selected_skill
 var skill_damage
 
+var enemy_array = []
+
 var state_machine
 
 onready var enemies = get_tree().get_nodes_in_group("enemy")
@@ -45,7 +47,7 @@ var upOrDown = 0#上下梯子
 
 var attacking = 0#攻击状态
 
-var chase_target_state = 0
+#var chase_target_state = 0
 var target = 0
 var target_derection = 1
 
@@ -162,22 +164,24 @@ func _input(event):
 
 
 func _physics_process(delta):
-	if chase_target_state:##释放技能 跑到能达到怪物的地方
-		var min_dist = 99999999
-		move_to_target(delta, min_dist)
-	else:
-		game_play(delta)
+#	if chase_target_state == 1:##释放技能 跑到能达到怪物的地方
+#		var min_dist = 99999999
+#		move_to_target(delta, min_dist)
+#	else:
+	game_play(delta)
 	
 
 var enemy_id ##标记是哪个敌人
+
 func move_to_target(delta, min_dist):
-	
+	enemies = get_tree().get_nodes_in_group("enemy")
 	for i in enemies:
 		var dist = sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2))
 		if dist < min_dist and abs(i.position.y-position.y) <= 30: #垂直距离在同一层
+			print(i," ",i.name)
 			min_dist = dist
-	if min_dist == 99999999: ##当前层没找到目标
-		chase_target_state = 0
+	if min_dist >= 99999999: ##当前层没找到目标
+#		chase_target_state = 0
 		return
 	if enemy_id == null:
 		for i in enemies:
@@ -187,12 +191,12 @@ func move_to_target(delta, min_dist):
 				target_derection = position.x - i.position.x
 				enemy_id = i
 				i.get_node("Sprite").visible = true
-				chase_target_state = 1
+#				chase_target_state = 1
 				break
 #	if sqrt(pow(enemy_id.position.y-position.y, 2) + pow(enemy_id.position.x-position.x, 2)) <= 30:
 	target = abs(position.x - enemy_id.position.x) + 30
 	target_derection = position.x - enemy_id.position.x
-	chase_target_state = 1
+#	chase_target_state = 1
 	if target_derection > 0:
 		target_derection = -1
 		$Control.rect_scale.x = -1
@@ -206,10 +210,10 @@ func move_to_target(delta, min_dist):
 		enemy_id.state = "IDLE"
 		userInterface.get_node("Character/Target").visible = false
 		enemy_id.get_node("Sprite").visible = false
-		chase_target_state = 0
+#		chase_target_state = 0
 		return
 	if target <= 175: #skill_dist 100
-		chase_target_state = 0
+#		chase_target_state = 0
 		enemy_id.injury(basic_damage) ##指定敌人收到伤害 +skill_damage
 #		state_machine.travel("idle")
 		attack()
@@ -276,7 +280,16 @@ func game_play(delta):
 				pass
 #				get_tree().change_scene("res://JiangLinXiJiao.tscn")
 			elif Input.is_action_just_pressed("tab"):
-#				
+				if enemy_id != null:
+					enemy_id.get_node("Sprite").visible = false
+#				enemy_id = null
+				closet_enemy(99999999)
+				for i in enemy_array:
+					print(i, " ", i.name)
+				enemy_id = enemy_array.back()
+#				print(enemy_id," ", enemy_id.name)
+				if enemy_id != null:
+					enemy_id.get_node("Sprite").visible = true
 #				var enemy = enemies[int(randi()%enemies.size())]
 #				enemy.get_node("Sprite").visible = true
 #				userInterface.get_node("Character/Target").visible = true
@@ -335,12 +348,17 @@ func die():
 func closet_enemy(min_dist):
 	## 遍历敌人组 选择两点间距离最近的敌人
 	var enemies = get_tree().get_nodes_in_group("enemy")
+	enemy_array.clear()
 	for i in enemies:
 		var dist = sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2))
-		if dist < min_dist:
+		if dist < min_dist and abs(i.position.y-position.y) <= 30:
 			min_dist = dist
 			velocity.x = i.position.x - position.x
-	return 
+			enemy_array.append(i)
+		else:
+			if enemy_array.has(i):
+				enemy_array.erase(i)
+	return
 			
 #	for i in enemies:
 #		if sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2)) == min_dist:
@@ -426,12 +444,12 @@ func _on_pickableArea_body_exited(body):
 
 func attack():
 	attacking = 1
-	get_parent().get_node("AudioStreamPlayer").stop()
-	if  get_parent().get_node("Battle").playing == false:
+	
+	if get_parent().has_node("Battle") and get_parent().get_node("Battle").playing == false:
+		get_parent().get_node("AudioStreamPlayer").stop()
 		get_parent().get_node("Battle").play()
 		get_parent().get_node("BattleTime").start(25)
 
-	
 #	match selected_skill:
 #		SkillsFactory.skill_data[selected_skill].skill_type
 #		var skill = load("res://Skill.tscn").instance()
@@ -512,7 +530,7 @@ func _on_health_timeout():
 	$health.stop()
 	$recover.stop()
 	$recover.visible = false
-	$small_health.paused
+#	$small_health.paused
 	pass # Replace with function body.
 
 
@@ -528,4 +546,9 @@ func _on_small_health_timeout():
 	for i in $Cure.get_children():
 		i.visible = false
 	$small_health.start(1)
+	pass # Replace with function body.
+
+
+func _on_pickableArea_mouse_entered():
+	print("FFCUUK")
 	pass # Replace with function body.

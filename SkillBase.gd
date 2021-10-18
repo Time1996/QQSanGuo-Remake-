@@ -51,10 +51,10 @@ func _ready():
 	##设置相应的技能图标
 	$background.texture = skill_icon
 	
-func _unhandled_input(event):
-	if event.is_action_pressed(input_key):
-		if is_can_cast():
-			cast_skill()
+#func _unhandled_input(event):
+#	if event.is_action_pressed(input_key):
+#		if is_can_cast():
+#			cast_skill()
 func _physics_process(delta):
 	if _duration_countdown <= 0:
 		cast_over()

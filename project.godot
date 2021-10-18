@@ -39,6 +39,7 @@ SkillsProperty="*res://system/skill/SkillsProperty.gd"
 jsonData="*res://JSONdata.gd"
 SaveState="*res://SaveState.gd"
 SceneChange="*res://Scene/SceneChange.gd"
+FreeNodes="*res://free_nodes.gd"
 
 [display]
 
@@ -47,7 +48,7 @@ window/per_pixel_transparency/allowed=true
 window/per_pixel_transparency/enabled=true
 mouse_cursor/custom_image="res://assets/mouse/28168-1.png"
 window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 

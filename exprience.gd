@@ -1,9 +1,10 @@
 extends Control
 
-onready var steve = get_tree().get_root().get_node("Level1/Steve")
+onready var steve = find_parent("UserInterFace").get_parent().get_node("Steve")
 
 func _ready():
 	pass
+
 
 
 func _on_shortcut2_pressed():

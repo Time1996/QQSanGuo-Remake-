@@ -5,7 +5,7 @@ var drag_position = null
 onready var backpack = get_parent().get_node("Inventory/ScrollContainer")
 
 func _ready():
-	add_child(backpack)
+#	add_child(backpack)
 	self.visible = false
 	pass
 
@@ -74,11 +74,9 @@ func _on_TextureButton5_pressed():
 	if $ScrollContainer.visible == true: #卖的界面
 		for i in userInterFace.get_node("Inventory/ScrollContainer/VBoxContainer").get_children():
 			for j in get_node("ScrollContainer2/VBoxContainer").get_children():
-				if i.get_child_count() > 0:
+				if i.get_child_count() > 1:##因为自带一个PopupMenu
 					if i.get_node("Item/TextureRect").texture_normal == j.get_node("TextureRect").texture:
-						i.item = null
-						i.get_node("Item").queue_free()
-						PlayerInventory.inventory.erase(i.slot_index)
+						i.delete_item()
 						break
 	else:
 		for i in $ScrollContainer2/VBoxContainer.get_children():

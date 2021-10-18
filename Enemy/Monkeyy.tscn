@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://Monster_ui/小猕猴/28616-1.png" type="Texture" id=1]
 [ext_resource path="res://Monster_ui/小猕猴/28611-4.png" type="Texture" id=2]
@@ -38,6 +38,18 @@
 [ext_resource path="res://UI/name/name_left.png" type="Texture" id=36]
 [ext_resource path="res://Enemy/Enemytarget.tres" type="Animation" id=37]
 [ext_resource path="res://Monster_ui/19613-1.png" type="Texture" id=38]
+[ext_resource path="res://EFECTIVE/injury/472-1.png" type="Texture" id=39]
+[ext_resource path="res://EFECTIVE/injury/472-3.png" type="Texture" id=40]
+[ext_resource path="res://EFECTIVE/injury/472-2.png" type="Texture" id=41]
+[ext_resource path="res://EFECTIVE/injury/472-4.png" type="Texture" id=42]
+[ext_resource path="res://EFECTIVE/injury/407-1.png" type="Texture" id=43]
+[ext_resource path="res://EFECTIVE/injury/742-2.png" type="Texture" id=44]
+[ext_resource path="res://EFECTIVE/injury/742-3.png" type="Texture" id=45]
+[ext_resource path="res://EFECTIVE/injury/742-1.png" type="Texture" id=46]
+[ext_resource path="res://EFECTIVE/injury/742-4.png" type="Texture" id=47]
+[ext_resource path="res://EFECTIVE/injury/742-5.png" type="Texture" id=48]
+[ext_resource path="res://EFECTIVE/injury/742-7.png" type="Texture" id=49]
+[ext_resource path="res://EFECTIVE/injury/742-6.png" type="Texture" id=50]
 
 [sub_resource type="ShaderMaterial" id=1]
 
@@ -85,15 +97,15 @@ animations = [ {
 "name": "injury",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 26 ), ExtResource( 6 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "die",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 25 ), ExtResource( 20 ), ExtResource( 14 ), ExtResource( 7 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "walk",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 6 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=5]
@@ -208,66 +220,81 @@ tracks/0/keys = {
 "values": [ "walk" ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=11]
-animation = "attack"
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 296, 40 )
 
 [sub_resource type="AnimationNodeAnimation" id=12]
-animation = "die"
+animation = "attack"
 
 [sub_resource type="AnimationNodeAnimation" id=13]
-animation = "idle"
+animation = "die"
 
 [sub_resource type="AnimationNodeAnimation" id=14]
-animation = "injury"
+animation = "idle"
 
 [sub_resource type="AnimationNodeAnimation" id=15]
-animation = "run"
+animation = "injury"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "run"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
-switch_mode = 2
-auto_advance = true
-priority = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
 [sub_resource type="AnimationNodeStateMachine" id=26]
-states/attack/node = SubResource( 11 )
-states/attack/position = Vector2( 746, 263 )
-states/die/node = SubResource( 12 )
-states/die/position = Vector2( 582, 63 )
-states/idle/node = SubResource( 13 )
-states/idle/position = Vector2( 582, 194 )
-states/injury/node = SubResource( 14 )
-states/injury/position = Vector2( 318, 63 )
-states/run/node = SubResource( 15 )
-states/run/position = Vector2( 318, 194 )
-transitions = [ "idle", "injury", SubResource( 16 ), "idle", "run", SubResource( 17 ), "run", "injury", SubResource( 18 ), "injury", "idle", SubResource( 19 ), "idle", "die", SubResource( 20 ), "run", "idle", SubResource( 21 ), "injury", "die", SubResource( 22 ), "idle", "attack", SubResource( 23 ), "attack", "idle", SubResource( 24 ), "attack", "run", SubResource( 25 ) ]
+states/attack/node = SubResource( 12 )
+states/attack/position = Vector2( 882, 47 )
+states/die/node = SubResource( 13 )
+states/die/position = Vector2( 345, 61 )
+states/idle/node = SubResource( 14 )
+states/idle/position = Vector2( 448, 190 )
+states/injury/node = SubResource( 15 )
+states/injury/position = Vector2( 510, 47 )
+states/run/node = SubResource( 16 )
+states/run/position = Vector2( 954, 185 )
+transitions = [ "idle", "die", SubResource( 17 ), "idle", "injury", SubResource( 18 ), "idle", "attack", SubResource( 19 ), "idle", "run", SubResource( 20 ), "injury", "idle", SubResource( 21 ), "attack", "idle", SubResource( 22 ), "run", "idle", SubResource( 23 ), "run", "injury", SubResource( 24 ), "attack", "injury", SubResource( 25 ) ]
 start_node = "idle"
 end_node = "die"
-graph_offset = Vector2( -196, 10 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
-[sub_resource type="RectangleShape2D" id=28]
-extents = Vector2( 296, 40 )
+[sub_resource type="CanvasItemMaterial" id=28]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=29]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id=30]
+animations = [ {
+"frames": [ ExtResource( 39 ), ExtResource( 41 ), ExtResource( 40 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 46 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 49 ) ],
+"loop": true,
+"name": "2",
+"speed": 8.0
+} ]
 
 [node name="Monster" type="KinematicBody2D"]
 material = SubResource( 1 )
@@ -282,7 +309,6 @@ defend = 2
 material = SubResource( 3 )
 frames = SubResource( 4 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -295,12 +321,6 @@ anims/die = SubResource( 7 )
 anims/idle = SubResource( 8 )
 anims/injury = SubResource( 9 )
 anims/run = SubResource( 10 )
-
-[node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer"]
-tree_root = SubResource( 26 )
-anim_player = NodePath("..")
-active = true
-parameters/playback = SubResource( 27 )
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -371,7 +391,7 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0, 8 )
-shape = SubResource( 28 )
+shape = SubResource( 11 )
 
 [node name="FCTmgr" parent="." instance=ExtResource( 27 )]
 
@@ -411,6 +431,30 @@ anims/Enemytarget = ExtResource( 37 )
 visible = false
 position = Vector2( 0, -47.7533 )
 texture = ExtResource( 38 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 26 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+root_motion_track = NodePath("AnimatedSprite:animation")
+parameters/playback = SubResource( 27 )
+
+[node name="407-1" type="Sprite" parent="."]
+visible = false
+material = SubResource( 28 )
+position = Vector2( 8, 8 )
+scale = Vector2( 0.84375, 0.90625 )
+texture = ExtResource( 43 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+visible = false
+material = SubResource( 29 )
+position = Vector2( 16, -8 )
+scale = Vector2( 0.647059, 0.690529 )
+frames = SubResource( 30 )
+animation = "2"
+frame = 2
+playing = true
 
 [connection signal="monster_die" from="." to="." method="_on_Monster_monster_die"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

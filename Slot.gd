@@ -12,11 +12,17 @@ var ItemClass = preload("res://Item.tscn")
 var slot_index
 var slot_type
 
+var last_mouse_position
+onready var pm = $PopupMenu
+
 enum SlotType{#第一个设置0 后面的自动递增+1
 	HOTBAR = 0,
 	INVENTORY,
 }
 func _ready():
+	pm.add_item("使用", 0)
+	pm.add_item("丢弃", 1)
+	pm.add_item("销毁", 2)
 	slot_index = int(self.name.substr(self.name.length()-1, 1))
 	selected_style = StyleBoxTexture.new()
 	default_style = StyleBoxTexture.new()
@@ -25,15 +31,29 @@ func _ready():
 	selected_style.texture = selected_tex
 	
 	var nodes = get_parent()
-	
-	for i in nodes.get_children(): ## 这串代码会卡 不知道为什么
-		i.connect("mouse_entered", i, "mouse_enter")
-		i.connect("mouse_exited", i, "mouse_exit")
+	self.connect("gui_input", self, "gui")
+	self.connect("mouse_entered", self, "mouse_enter")
+	self.connect("mouse_exited", self, "mouse_exit")
+#	for i in nodes.get_children(): ## 这串代码会卡 不知道为什么
+#		i.connect("mouse_entered", i, "mouse_enter")
+#		i.connect("mouse_exited", i, "mouse_exit")
+#		i.connect("gui_input", i, "gui")
+#		i.get_node("PopupMenu").connect("id_pressed", i, "_on_PopupMenu_id_pressed")
 	
 	refresh_style()
 #	styleBox.texture = preload("res://UI/21804-1.png")
 #	self.hint_tooltip = "111"
 	pass
+
+func delete_item():
+	item = null
+	get_node("Item").queue_free()
+	PlayerInventory.inventory.erase(slot_index)
+
+func gui(event):
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_RIGHT:
+		last_mouse_position = get_global_mouse_position()
+		pm.popup(Rect2(last_mouse_position.x, last_mouse_position.y, pm.rect_size.x, pm.rect_size.y))
 
 func refresh_style():
 	yield(get_tree(),"idle_frame")
@@ -44,6 +64,7 @@ func pickFromSlot():
 	print("pickFromSlot")
 	if self.get_child_count() > 0:
 		remove_child(item)
+		FreeNodes.free_orphaned_nodes()
 		var inventoryNode = find_parent("UserInterFace")
 		inventoryNode.add_child(item)
 		item.get_node("TextureRect").mouse_filter = MOUSE_FILTER_IGNORE
@@ -55,6 +76,7 @@ func putIntoSlot(new_item):
 	item.position = Vector2(0, 0)
 	var inventoryNode = find_parent("UserInterFace")
 	inventoryNode.remove_child(item)
+	FreeNodes.free_orphaned_nodes()
 	add_child(item)
 	item.get_node("TextureRect").mouse_filter = MOUSE_FILTER_STOP
 	#refresh_style() ##暂时不用 用了之后会导致放下后 大小不对
@@ -138,3 +160,16 @@ func drop_data(position, data):
 	pass
 
 
+
+
+func _on_PopupMenu_id_pressed(id):
+	if id == 0:
+		if has_node("Item"):
+			get_node("Item").use_item()
+	if id == 1:
+		print("丢弃")
+	if id == 2:
+		if has_node("Item"):
+			delete_item()
+		print("销毁")
+	pass # Replace with function body.
