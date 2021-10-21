@@ -207,13 +207,13 @@ autoplay = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -136, -76 )
 frames = SubResource( 1 )
-frame = 6
+frame = 36
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( 120, 100 )
 frames = SubResource( 2 )
-frame = 16
+frame = 4
 playing = true
 flip_h = true
 
@@ -221,7 +221,7 @@ flip_h = true
 position = Vector2( 424, -252 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 3 )
-frame = 7
+frame = 8
 playing = true
 flip_h = true
 
@@ -229,7 +229,7 @@ flip_h = true
 position = Vector2( 504, -204 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 3 )
-frame = 7
+frame = 8
 playing = true
 flip_h = true
 
@@ -237,7 +237,7 @@ flip_h = true
 position = Vector2( 536, -276 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 3 )
-frame = 6
+frame = 7
 playing = true
 flip_h = true
 

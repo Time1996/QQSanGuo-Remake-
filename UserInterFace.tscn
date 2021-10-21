@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Inventory.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Control.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://UI/side_bar/player_state.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/side_bar/player_skill.tscn" type="PackedScene" id=10]
 [ext_resource path="res://UI/buy_and_sell.tscn" type="PackedScene" id=11]
+[ext_resource path="res://UI/item_drop/show_item/show_item.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "shade_in"
@@ -130,6 +131,10 @@ autostart = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/shade_in = SubResource( 1 )
 anims/shade_out = SubResource( 2 )
+
+[node name="show_item" parent="." instance=ExtResource( 12 )]
+margin_top = 94.753
+margin_bottom = -452.247
 
 [connection signal="health_updated" from="." to="." method="_on_UserInterFace_health_updated"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

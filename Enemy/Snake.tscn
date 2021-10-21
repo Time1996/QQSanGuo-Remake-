@@ -92,6 +92,11 @@ animations = [ {
 "name": "attack",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 34 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "injury",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 12 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "walk",
@@ -105,11 +110,6 @@ animations = [ {
 "frames": [ ExtResource( 15 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 26 ), ExtResource( 3 ) ],
 "loop": false,
 "name": "die",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 34 ), ExtResource( 18 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 23 ) ],
-"loop": true,
-"name": "injury",
 "speed": 5.0
 } ]
 
@@ -225,70 +225,70 @@ tracks/0/keys = {
 "values": [ "walk" ]
 }
 
-[sub_resource type="RectangleShape2D" id=28]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 296, 40 )
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "attack"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "injury"
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "run"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
 priority = 0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 priority = 0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 priority = 0
 
-[sub_resource type="AnimationNodeStateMachine" id=41]
-states/attack/node = SubResource( 29 )
+[sub_resource type="AnimationNodeStateMachine" id=26]
+states/attack/node = SubResource( 12 )
 states/attack/position = Vector2( 882, 47 )
-states/die/node = SubResource( 30 )
+states/die/node = SubResource( 13 )
 states/die/position = Vector2( 345, 61 )
-states/idle/node = SubResource( 31 )
+states/idle/node = SubResource( 14 )
 states/idle/position = Vector2( 454, 191 )
-states/injury/node = SubResource( 32 )
+states/injury/node = SubResource( 15 )
 states/injury/position = Vector2( 510, 47 )
-states/run/node = SubResource( 33 )
+states/run/node = SubResource( 16 )
 states/run/position = Vector2( 954, 185 )
-transitions = [ "idle", "die", SubResource( 34 ), "idle", "attack", SubResource( 36 ), "idle", "run", SubResource( 37 ), "injury", "idle", SubResource( 38 ), "attack", "idle", SubResource( 39 ), "run", "idle", SubResource( 40 ), "run", "injury", SubResource( 43 ), "attack", "injury", SubResource( 44 ), "idle", "injury", SubResource( 45 ) ]
+transitions = [ "idle", "die", SubResource( 17 ), "idle", "attack", SubResource( 18 ), "idle", "run", SubResource( 19 ), "injury", "idle", SubResource( 20 ), "attack", "idle", SubResource( 21 ), "run", "idle", SubResource( 22 ), "run", "injury", SubResource( 23 ), "attack", "injury", SubResource( 24 ), "idle", "injury", SubResource( 25 ) ]
 start_node = "idle"
 end_node = "die"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=42]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
-[sub_resource type="CanvasItemMaterial" id=46]
+[sub_resource type="CanvasItemMaterial" id=28]
 blend_mode = 1
 
-[sub_resource type="SpriteFrames" id=47]
+[sub_resource type="SpriteFrames" id=29]
 animations = [ {
 "frames": [ ExtResource( 44 ), ExtResource( 46 ), ExtResource( 45 ), ExtResource( 47 ) ],
 "loop": true,
@@ -316,7 +316,7 @@ shape = SubResource( 1 )
 material = SubResource( 3 )
 frames = SubResource( 4 )
 animation = "injury"
-frame = 3
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -398,7 +398,7 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 28 )
+shape = SubResource( 11 )
 
 [node name="FCTmgr" parent="." instance=ExtResource( 30 )]
 
@@ -440,15 +440,15 @@ autoplay = "Enemytarget"
 anims/Enemytarget = ExtResource( 41 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 41 )
+tree_root = SubResource( 26 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 root_motion_track = NodePath("AnimatedSprite:animation")
-parameters/playback = SubResource( 42 )
+parameters/playback = SubResource( 27 )
 
 [node name="407-1" type="Sprite" parent="."]
 visible = false
-material = SubResource( 46 )
+material = SubResource( 28 )
 position = Vector2( 8, 8 )
 scale = Vector2( 0.84375, 0.90625 )
 texture = ExtResource( 43 )
@@ -456,7 +456,7 @@ texture = ExtResource( 43 )
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 visible = false
 position = Vector2( -22, -16 )
-frames = SubResource( 47 )
+frames = SubResource( 29 )
 
 [connection signal="mouse_entered" from="mouse_event" to="." method="_on_mouse_event_mouse_entered"]
 [connection signal="mouse_exited" from="mouse_event" to="." method="_on_mouse_event_mouse_exited"]

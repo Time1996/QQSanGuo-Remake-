@@ -17,6 +17,7 @@ var selected_skill
 var skill_damage
 
 var enemy_array = []
+var enemy_id ##标记是哪个敌人
 
 var state_machine
 
@@ -47,7 +48,7 @@ var upOrDown = 0#上下梯子
 
 var attacking = 0#攻击状态
 
-#var chase_target_state = 0
+var chase_target_state = 0
 var target = 0
 var target_derection = 1
 
@@ -164,39 +165,19 @@ func _input(event):
 
 
 func _physics_process(delta):
-#	if chase_target_state == 1:##释放技能 跑到能达到怪物的地方
-#		var min_dist = 99999999
-#		move_to_target(delta, min_dist)
-#	else:
-	game_play(delta)
+	if chase_target_state == 1:##释放技能 跑到能达到怪物的地方
+		move_to_target(delta)
+	else:
+		game_play(delta)
 	
 
-var enemy_id ##标记是哪个敌人
 
-func move_to_target(delta, min_dist):
-	enemies = get_tree().get_nodes_in_group("enemy")
-	for i in enemies:
-		var dist = sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2))
-		if dist < min_dist and abs(i.position.y-position.y) <= 30: #垂直距离在同一层
-			print(i," ",i.name)
-			min_dist = dist
-	if min_dist >= 99999999: ##当前层没找到目标
-#		chase_target_state = 0
-		return
-	if enemy_id == null:
-		for i in enemies:
-			if sqrt(pow(i.position.y-position.y, 2) + pow(i.position.x-position.x, 2)) == min_dist:
-				#i.call_deferred("injury", 1)
-				target = abs(position.x - i.position.x) + 30
-				target_derection = position.x - i.position.x
-				enemy_id = i
-				i.get_node("Sprite").visible = true
-#				chase_target_state = 1
-				break
+
+func move_to_target(delta):
 #	if sqrt(pow(enemy_id.position.y-position.y, 2) + pow(enemy_id.position.x-position.x, 2)) <= 30:
 	target = abs(position.x - enemy_id.position.x) + 30
 	target_derection = position.x - enemy_id.position.x
-#	chase_target_state = 1
+	chase_target_state = 1
 	if target_derection > 0:
 		target_derection = -1
 		$Control.rect_scale.x = -1
@@ -213,7 +194,7 @@ func move_to_target(delta, min_dist):
 #		chase_target_state = 0
 		return
 	if target <= 175: #skill_dist 100
-#		chase_target_state = 0
+		chase_target_state = 0
 		enemy_id.injury(basic_damage) ##指定敌人收到伤害 +skill_damage
 #		state_machine.travel("idle")
 		attack()
@@ -223,7 +204,7 @@ func move_to_target(delta, min_dist):
 	state_machine.travel("run")
 	velocity.y = 0
 	velocity = move_and_slide(velocity)
-	yield(get_tree(), "idle_frame")
+#	yield(get_tree(), "idle_frame")
 
 
 func game_play(delta):
@@ -290,6 +271,7 @@ func game_play(delta):
 #				print(enemy_id," ", enemy_id.name)
 				if enemy_id != null:
 					enemy_id.get_node("Sprite").visible = true
+					move_to_target(delta)
 #				var enemy = enemies[int(randi()%enemies.size())]
 #				enemy.get_node("Sprite").visible = true
 #				userInterface.get_node("Character/Target").visible = true
